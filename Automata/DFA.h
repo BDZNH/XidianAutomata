@@ -34,7 +34,7 @@ the subset construction (see (Wat93a, p. 12-13] for the subset construction).
 #include "DFA_components.h"
 #include "DFAseed.h"
 
-// Deterministic finite automata: 
+// Deterministic finite automata:
 // can be constructed from non-det. finite automata, can be minimized.
 class DFA : virtual public FAabs
 {
@@ -77,7 +77,7 @@ public:
 	int Usefulf() const;
 
 	// Remove any States that cannot reach a final State.
-	// (This is a last step in minimization, since some of the min. algorithms may yield 
+	// (This is a last step in minimization, since some of the min. algorithms may yield
 	// a DFA with a sink state.)
 	// Implement Remark 2.39  removing states that are not final - reachable.
 	DFA& usefulf();
