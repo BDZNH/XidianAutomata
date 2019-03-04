@@ -2,6 +2,8 @@
 CCFLAG = -Wall -fexceptions -g -std=c++11 -lwiringPi -lpthread -DNDEBUG
 CC = g++
 
+ALL: Automata.o BitVec.o CharRange.o
+
 Automata.o: Automata.cpp
 	$(CC) $(CCFLAG) -c "Automata/Automata.cpp" -o "obj/Automata.o"
 
