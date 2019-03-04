@@ -138,9 +138,6 @@
     <ClCompile Include="Test\AutomataTest.cpp">
       <Filter>Test</Filter>
     </ClCompile>
-    <ClCompile Include="Test\ThompsonTest.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Test\CRSetTest.cpp">
       <Filter>Test</Filter>
     </ClCompile>
@@ -157,6 +154,9 @@
       <Filter>Test</Filter>
     </ClCompile>
     <ClCompile Include="Test\RFATest.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="Test\ThompsonTest.cpp">
       <Filter>Test</Filter>
     </ClCompile>
   </ItemGroup>
@@ -270,9 +270,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="StateTo.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stdafx.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="SymRel.h">

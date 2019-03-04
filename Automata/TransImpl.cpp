@@ -4,7 +4,7 @@ an integer indicating the size of the array, and an integer indicating how much 
 
 	Performance: Use-counting this class would bring a great benefit to Trans, DTrans, TransRel, and D TransRel.
  *************************************************************************/
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "TransImpl.h"
 
 

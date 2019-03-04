@@ -1,4 +1,4 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "Iconstrs.h"
 #include "Dconstrs.h"
 #include "DSIS.h"

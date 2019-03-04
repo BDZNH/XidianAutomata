@@ -11,7 +11,7 @@ class Reg) can be used to construct the homomorphic image of the regular express
 
 Implementation: The implementation follows directly from [Wat93a, Definition 4.29].
 ***********************************************************************************/
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "CharRange.h"
 #include "RFA.h"
 #include "Sigma.h"

@@ -3,7 +3,7 @@ Implementation: A DSRFA contains a StateSet, representing the set of RFA States 
 up a DFA state in the subset construction (under the right-biased interpretation of states).
 It also contains an integer indicating if the abstract state is a final one.
  ************************************************************************************/
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "DSRFA.h"
 
 // Use the RBFA interpretation of State's (Section 4.3 of the Taxonomy).
