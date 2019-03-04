@@ -11,7 +11,14 @@ takes a structure containing the essential components of a DFA, and uses those c
 to construct the automaton; this constructor is used in several DFA constructions involving
 the subset construction (see (Wat93a, p. 12-13] for the subset construction).
  ************************************************************************/
-#pragma once
+//#pragma once
+
+#ifndef AUTOMATA_DFA_H
+#define AUTOMATA_DFA_H
+
+
+
+
 #include<iostream>
 // 去下行注释则禁用 assert()
 // #define NDEBUG
@@ -33,18 +40,18 @@ class DFA : virtual public FAabs
 {
 public:
 	// Constructors, destructors, operator=:
-	
+
 	// Default copy constructor, destructor, operator= are okay.
 	inline DFA();
 
 	// A special constructor used for subset construction etc.
 	inline DFA(const DFA_components& r);
-	
+
 	// Some member functions :
-    
+
 	// A special one, to reconstruct a DFA, given new components, etc.
 	inline DFA& reconstruct(const DFA_components& r);
-	
+
 	// Member functions required by class FAabs :
 	virtual int num_states() const;
 	virtual void restart();
@@ -52,7 +59,7 @@ public:
 	virtual int in_final() const;
 	virtual int stuck();
 	virtual DFA determinism() const;
-	
+
 	// A function to reverse *this.
 	DFA& reverse();
 
@@ -64,11 +71,11 @@ public:
 	DFA& min_Watson();
 
 	// Some member functions relating to useful State's.
-	
+
 	// Can all States reach a final State?
 	// Implement Definition 2.23
 	int Usefulf() const;
-	
+
 	// Remove any States that cannot reach a final State.
 	// (This is a last step in minimization, since some of the min. algorithms may yield 
 	// a DFA with a sink state.)
@@ -76,9 +83,9 @@ public:
 	DFA& usefulf();
 
 	// Special member functions :
-	
+
 	friend std::ostream& operator<<(std::ostream& os, const DFA& r);
-	
+
 	inline int class_invariant() const;
 
 protected:
@@ -87,14 +94,14 @@ protected:
 	DFA& compress(const SymRel& r);
 
 	// Attempt to split the eq.class [p]_P w.r.t.[q]_P
-    // (Return 1 if it was split, 0 otherwise.)
+	// (Return 1 if it was split, 0 otherwise.)
 	State split(const State p, const State q, const CharRange a, StateEqRel& P) const;
 
 	// A helper for min_ Watson.
 	int are_eq(State p, State q, SymRel& S, const StateEqRel& H, const SymRel& Z) const;
 
 	// Implementation details:
-	
+
 	StatePool Q;
 	// S must be a singleton set, or empty. |S| <= 1
 	StateSet S;
@@ -147,4 +154,11 @@ inline int DFA::class_invariant() const
 		&& current < Q.size()
 		&& S.size() <= 1);
 }
+
+
+
+
+#endif // !AUTOMATA_DFA_H
+
+
 

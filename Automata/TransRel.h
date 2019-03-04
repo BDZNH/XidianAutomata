@@ -7,7 +7,12 @@
 	responsibility of maintaining the domain of the relation lies with the client. Transitions can
 	be added, but not removed.
 ****************************************************************************/
-#pragma once
+//#pragma once
+
+#ifndef AUTOMATA_TRANSREL_H
+#define AUTOMATA_TRANSREL_H
+
+
 #include<iostream>
 // 去下行注释则禁用 assert()
 // #define NDEBUG
@@ -21,44 +26,44 @@ class TransRel :public StateTo<Trans>
 {
 public:
 	// Constructors, destructors, operutor=:
-	
+
 	// Default argument-less constructor is okay.
 	inline TransRel();
 	inline TransRel(const TransRel& r);
-	
+
 	// Default destructor is okay
 
 	inline const TransRel& operator=(const TransRel& r);
-	
+
 	// Some relational operators:
 	// Compute the image of r, and a under *this. return T(r,a) = { image }
 	StateSet image(const StateSet& r, const char a) const;
 
 	// Transitioning on a CharRange? (Same idea as above.)
 	StateSet transition_on_range(const StateSet& r, const CharRange a) const;
-	
+
 	// On which labels can we transition?
 	CRSet out_labels(const StateSet& r) const;
-	
+
 	// Some functions updating *this:  T(p) = {(r,q)}
 	inline TransRel& add_transition(const State p, const CharRange r, const State q);
-	
+
 	// Some domain related members:
-	
+
 	// What is the domain of this relation.
 	inline int domain() const;
-	
+
 	// Change the domain of this relation.
 	void set_domain(const int r);
-	
+
 	// Recycle this entire structure.
 	void reincarnate();
-	
+
 	// Union relation r into *this, while adjusting r.
 	TransRel& disjointing_union(const TransRel& r);
-	
+
 	// Some special members:
-	
+
 	// 必须类内定义
 	friend std::ostream& operator<<(std::ostream& os, const TransRel& r);
 
@@ -66,11 +71,11 @@ public:
 };
 
 // Default argument-less constructor is okay.
-inline TransRel::TransRel():StateTo<Trans>()
+inline TransRel::TransRel() :StateTo<Trans>()
 {
 	assert(class_invariant());
 }
-inline TransRel::TransRel(const TransRel& r):StateTo<Trans>(r)
+inline TransRel::TransRel(const TransRel& r) : StateTo<Trans>(r)
 {
 	assert(class_invariant());
 }
@@ -121,3 +126,6 @@ inline std::ostream& operator<<(std::ostream& os, const TransRel& r)
 	//return(os << r); // 引起递归
 }
 
+
+
+#endif // !AUTOMATA_TRANSREL_H

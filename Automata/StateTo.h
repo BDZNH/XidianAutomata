@@ -25,7 +25,13 @@
 	Performance: StateTo would benefit from use-counting in the class T. Use-counting in StateTo
 	itself would likely add too much overhead if it were already done in T.
  *************************************************************************/
-#pragma once
+//#pragma once
+
+
+#ifndef AUTOMATA_STATETO_H
+#define AUTOMATA_STATETO_H
+
+
 #include<iostream>
  // 去下行注释则禁用 assert()
  // #define NDEBUG
@@ -56,7 +62,7 @@ class StateTo
 	// Cannot be protected because the function in DFAseed.h(construct_components) needs access.
 public:
 	// Constructors, destructors, operator=:
-	
+
 	// Default is to not map anything.
 	StateTo();
 
@@ -74,7 +80,7 @@ public:
 
 	// Used to associate a State and a T in the mapping. Note: not const.
 	inline T& map(const State r);
-	
+
 	// Some domain members:
 
 	// How many States can *this map ?
@@ -91,7 +97,7 @@ public:
 	StateTo<T>& disjointing_union(const StateTo<T>& r);
 
 	//Some extras:
-	
+
 	// 必须类内定义，使其派生类可以使用inline，在.h文件的类外定义std::ostream& operator<<()
 	friend std::ostream& operator<<(std::ostream& os, const StateTo<T>& r)
 	{
@@ -114,7 +120,7 @@ private:
 	int in_use;
 	// dynamically allocated array of T's (include expansion_extra).
 	T *data;
-	
+
 	// When the array is grown by a certain amount, it also grows by an extra
 	// buffer amount for efficiency.
 	enum { expansion_extra = 5 };
@@ -132,7 +138,7 @@ StateTo<T>::StateTo() :
 
 // Copying can be costly. Use-counts could make this cheaper.
 template<class T>
-StateTo<T>::StateTo(const StateTo<T>& r):
+StateTo<T>::StateTo(const StateTo<T>& r) :
 	howmany(r.in_use + expansion_extra),
 	in_use(r.in_use),
 	data(new T[r.in_use + expansion_extra])
@@ -265,3 +271,5 @@ inline int StateTo<T>::class_invariant() const
 		// So 0 <= howmany by transitivity.
 		&& (howmany != 0 ? data != 0 : data == 0));
 }
+
+#endif // !AUTOMATA_STATETO_H

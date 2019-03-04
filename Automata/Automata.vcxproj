@@ -213,7 +213,6 @@
     <ClInclude Include="StateSet.h" />
     <ClInclude Include="StateTo.h" />
     <ClInclude Include="SymRel.h" />
-    <ClInclude Include="targetver.h" />
     <ClInclude Include="Trans.h" />
     <ClInclude Include="TransImpl.h" />
     <ClInclude Include="TransPair.h" />
