@@ -27,7 +27,6 @@ making such transformations as φ. E ----> φ and 0* ----> ε.
 	All of these members (including the total ordering) are defined in file Deriv.cpp.
  ******************************************************************************************************************/
 
-//#include "stdafx.h"
 #include <iostream>
 #include <iomanip>
 #include "RE.h"

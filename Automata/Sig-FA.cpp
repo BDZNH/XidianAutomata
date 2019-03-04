@@ -25,7 +25,7 @@ M0 = {Q0,V,T0,E0,S0,F0}, M1 = {Q1,V,T1,E1,S1,F1}
 // Definition 2.6 (Isomorphism of FA's)
 // Definition 3.7 (Sigma-homomorphism): Given E-a1gebras (V,F) and (W,G), a Sigma-homomorphism from(V, F) to(W, G)
  ***********************************************************************************/
-//#include "stdafx.h"
+
 #include "CharRange.h"
 #include "FA.h"
 #include "Sigma.h"

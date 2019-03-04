@@ -6,7 +6,7 @@ regular expressions is defined recursively and uses a depth-first traversal.
 be stored as a prefix-form string, as in [RW93J; this could give some problems with the heavy
 use of members such as left_subexpr and right_subexpr.
  **********************************************************************************/
-//#include "stdafx.h"
+
 #include <iostream>
 #include <iomanip>
 #include "RE.h"

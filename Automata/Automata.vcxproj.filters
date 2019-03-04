@@ -117,9 +117,6 @@
     <ClCompile Include="StateSet.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="SymRel.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -130,9 +127,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="TransRel.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Automata.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Test\AutomataTest.cpp">
@@ -157,6 +151,9 @@
       <Filter>Test</Filter>
     </ClCompile>
     <ClCompile Include="Test\ThompsonTest.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="Automata.cpp">
       <Filter>Test</Filter>
     </ClCompile>
   </ItemGroup>

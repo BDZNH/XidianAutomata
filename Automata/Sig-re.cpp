@@ -13,7 +13,7 @@
 	unary operator(star,plus,question): this ==> left = this, right = 0
 	binary operator(union(or),concat): this ==> left(this) operator right
  ************************************************************************/
-//#include "stdafx.h"
+
 #include "CharRange.h"
 #include "RE.h"
 #include "REops.h"

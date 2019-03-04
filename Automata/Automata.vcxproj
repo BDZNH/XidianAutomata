@@ -161,7 +161,6 @@
     <ClCompile Include="StateEqRel.cpp" />
     <ClCompile Include="StateRel.cpp" />
     <ClCompile Include="StateSet.cpp" />
-    <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="SymRel.cpp" />
     <ClCompile Include="Test\AutomataTest.cpp" />
     <ClCompile Include="Test\CRSetTest.cpp" />
