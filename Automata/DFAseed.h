@@ -56,7 +56,7 @@ that, by starting with the start state, only reachable States are constructed.
 // #define NDEBUG
 #include <cassert>  // 必须包含
 #include "State.h"
-#include "StateTO.h"
+#include "StateTo.h"
 #include "CharRange.h"
 #include "CRSet.h"
 #include "DFA_components.h"
