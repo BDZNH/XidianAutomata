@@ -71,14 +71,15 @@ private:
 	const StateSet *last;
 };
 
+// 初始化列表的初始化顺序应该与变量声明顺序相同
 // Must always have an argument-less constructor.
 inline DSRFA::DSRFA() :
-	which(),
+	which(), 
+	finalness(0),
 	Qmap_inverse(0),
 	follow(0),
 	first(0),
-	last(0),
-	finalness(0)
+	last(0)
 {
 	// No assert since it won't satisfy the class invariant
 }

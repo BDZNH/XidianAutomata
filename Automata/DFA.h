@@ -120,7 +120,9 @@ inline DFA::DFA() :Q(), S(), F(), T(), current(Invalid)
 
 // A special constructor used for subset construction etc.
 // A DFA constructed this way will always have a start State.
-inline DFA::DFA(const DFA_components& r) :Q(r.Q), S(r.S), T(r.T), F(r.F)
+
+//inline DFA::DFA(const DFA_components& r) :Q(r.Q), S(r.S), F(r.F), T(r.T)  初始化列表的初始化顺序是变量的声明顺序，否则在g++编译器会有 "will be initialized after [-Wreorder]"错误提示
+inline DFA::DFA(const DFA_components& r) :Q(r.Q), S(r.S), F(r.F), T(r.T)
 {
 	current = Invalid;
 	assert(class_invariant());
