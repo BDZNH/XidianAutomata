@@ -85,7 +85,7 @@ const RE& RE::operator = (const RE& e)
 int RE::num_symbols() const
 {
 	assert(class_invariant());
-	int ret;
+	int ret;  //warning: 'ret' may be used uninitialized in this function [-Wmaybe-uninitialized]|
 	switch (op)
 	{
 	case EPSILON:
@@ -150,7 +150,7 @@ std::ostream& operator<<(std::ostream& os, const RE& r)
 	case SYMBOL:
 		os << r.symbol(); break;
 	case OR:
-		os << "| " << r.left_subexpr() << ' ' << r.right_subexpr(); 
+		os << "| " << r.left_subexpr() << ' ' << r.right_subexpr();
 		break;
 	case CONCAT:
 		os << ". " << r.left_subexpr() << ' ' << r.right_subexpr();
@@ -182,7 +182,7 @@ std::istream& operator>>(std::istream& is, RE& r)
 	r.op = EMPTY;
 	char c;
 	// If could be that there is nothing in th input.
-	if (!(is >> c)) 
+	if (!(is >> c))
 	{
 		is.clear(std::ios::badbit | is.rdstate());
 	}

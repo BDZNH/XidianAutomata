@@ -42,13 +42,13 @@ making such transformations as φ. E ----> φ and 0* ----> ε.
  * The constants are: true,flase,and false(corresponding respectively to epsilon,empty,and a:a in V).
  * Here the constant false corresponds to empty and to all a in V.
  * The operators are: ∨(析取disjunction,"OR"),∧(conjunction合取,"AND"), the constant function true, the identity function, and (again) the constant
- * function true (corresponding respectively to uion,concat,start,plus,and question). 
+ * function true (corresponding respectively to uion,concat,start,plus,and question).
  * The operators corresponding to star and to qustion are interesting because they map their argument to the constant true.
  *********************************************************/
 int RE::Null() const
 {
 	assert(class_invariant());
-	int ret;
+	int ret;  //warning: 'ret' may be used uninitialized in this function [-Wmaybe-uninitialized]|
 	switch (op)
 	{
 	case EPSILON:
@@ -121,7 +121,7 @@ int RE::in_snf() const
 	// SNF means that all OR nodes are left-associative,and in the two case:
 	// A OR B that A < B, or
 	// (A OR B) OR C that B < C and (A OR B) is in SNF.
-	int ret;
+	int ret;  //warning: 'ret' may be used uninitialized in this function [-Wmaybe-uninitialized]|
 	switch (op)
 	{
 	case EPSILON:
@@ -157,7 +157,7 @@ int RE::in_snf() const
 	case PLUS:
 	case QUESTION:
 		// A unary subexpr. is in SNF if it's subexpressions are too.
-		ret = left->in_snf(); 
+		ret = left->in_snf();
 		break;
 	}
 	return(ret);
@@ -420,7 +420,7 @@ int RE::ordering(const RE& r) const
 	else
 	{
 		assert(op == r.op);
-		int ret;
+		int ret; //warning: 'ret' may be used uninitialized in this function [-Wmaybe-uninitialized]|
 		switch (op)
 		{
 		case EPSILON:
@@ -453,7 +453,7 @@ int RE::ordering(const RE& r) const
 }
 
 // Put *this into OR normal form(ONF) (used in the snf functions)
-RE& RE::onf() 
+RE& RE::onf()
 {
 	assert(class_invariant());
 	assert(op == OR);
