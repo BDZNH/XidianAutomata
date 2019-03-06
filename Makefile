@@ -17,7 +17,7 @@ Automata.exe: Automata.o BitVec.o CharRange.o Constrs.o CRSet.o Dconstrs.o Deriv
 	$(CC) -o Automata.exe $(ALL)
 
 Automata.o: Automata/Automata.cpp
-	mkdir obj
+	test -d obj || mkdir obj
 	$(CC) $(CCFLAG) -c Automata/Automata.cpp -o "obj/Automata.o"
 
 BitVec.o: Automata/BitVec.cpp
