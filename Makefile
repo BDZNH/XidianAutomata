@@ -144,7 +144,7 @@ StateRelTest.o: Automata/Test/StateRelTest.cpp
 	$(CC) $(CCFLAG) -c Automata/Test/StateRelTest.cpp -o obj/StateRelTest.o
 
 StateSetTest.o: Automata/Test/StateSetTest.cpp
-	$(CC) $(CCFLAG) -c Automata/Test/StateSetTest.cpp -o obj/StateSetTest.o"
+	$(CC) $(CCFLAG) -c Automata/Test/StateSetTest.cpp -o obj/StateSetTest.o
 	
 StateTo(StateSet)Test.o: Automata/Test/StateTo(StateSet)Test.cpp
 	$(CC) $(CCFLAG) -c "Automata/Test/StateTo(StateSet)Test.cpp" -o "obj/StateTo(StateSet)Test.o"
