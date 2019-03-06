@@ -102,7 +102,7 @@ DFA RFA::determinism() const
 	// Make sure that *this is structurally sound.
 	assert(class_invariant());
 	// Now construct the DFA components
-	return(construct_components(DSRFA(first, &Qmap_inverse, &follow, &first,&last,Nullable)));
+	return(construct_components(DSRFA(first, Nullable, &Qmap_inverse, &follow, &first,&last)));
 }
 
 DFA RFA::determinism2() const
