@@ -6,20 +6,23 @@ It also contains an integer indicating if the abstract state is a final one.
 
 #include "DSRFA.h"
 
+
+//// 初始化列表的初始化顺序应该与变量声明顺序相同 "warning will be initialized after [-Wreorder]"
 // Use the RBFA interpretation of State's (Section 4.3 of the Taxonomy).
 // A special constructor:
 DSRFA::DSRFA(const StateSet& rq,
+	const int rfinalness,
 	const Trans *rQmap_inverse,
 	const StateRel *rfollow,
 	const StateSet *rfirst,
-	const StateSet *rlast,
-	const int rfinalness):
+	const StateSet *rlast
+	):
 	which(rq),
+	finalness(rfinalness),
 	Qmap_inverse(rQmap_inverse),
 	follow(rfollow),
 	first(rfirst),
-	last(rlast),
-	finalness(rfinalness)
+	last(rlast)
 {
 	assert(class_invariant());
 }
@@ -36,9 +39,9 @@ DSRFA DSRFA::out_transition(const CharRange a) const
 	assert(class_invariant());
 	StateSet t(Qmap_inverse->range_transition(a).intersection(which));
 	return(DSRFA(follow->image(t),
+		t.not_disjoint(*last),
 		Qmap_inverse,
 		follow,
 		first,
-		last,
-		t.not_disjoint(*last)));
+		last));
 }

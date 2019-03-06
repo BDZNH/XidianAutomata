@@ -36,13 +36,15 @@ public:
 
 	inline DSRFA(const DSRFA& r);
 
+	// // 初始化列表的初始化顺序应该与变量声明顺序相同 "warning will be initialized after [-Wreorder]"
 	// A special constructor:
 	DSRFA(const StateSet& rq,
+		const int rfinalness,
 		const Trans *rQmap_inverse,
 		const StateRel *rfollow,
 		const StateSet *rfirst,
-		const StateSet *rlast,
-		const int rfinalness);
+		const StateSet *rlast
+		);
 
 	inline const DSRFA& operator = (const DSRFA& r);
 
