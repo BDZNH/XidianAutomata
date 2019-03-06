@@ -162,7 +162,7 @@ std::ostream& operator<<(std::ostream& os, const RE& r)
 		os << "+ " << r.left_subexpr();
 		break;
 	case QUESTION:
-		os << "£¿ " << r.left_subexpr();
+		os << "? " << r.left_subexpr();  //convert "£¿"   to "?"
 		break;
 	default:
 		// Shold throw() something!

@@ -36,7 +36,8 @@ const TransImpl& TransImpl::operator=(const TransImpl& r)
 	if (howmany < r.in_use)
 	{
 		TransPair *d(new TransPair[howmany = r.in_use + expansion_extra]);
-		delete data;
+		/*delete data;*/  //allocated with 'new[]' in line 15,   data(new TransPair[r.in_use + expansion_extra])
+		delete[]data;  
 		data = d;
 	}
 	assert(howmany >= r.in_use);
