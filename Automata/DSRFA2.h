@@ -69,7 +69,7 @@ private:
 
 	// This stuff may vary from object to object.
 	StateSet which;
-	int finalness;
+	
 
 	// This stuff should be the same for all objects corresponding
 	// to a particular RFA.
@@ -77,6 +77,8 @@ private:
 	const StateRel *follow;
 	const StateSet *first;
 	const StateSet *last;
+
+	int finalness;
 };
 
 // Must always have an argument-less constructor.
