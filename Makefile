@@ -1,5 +1,5 @@
 #!/bin/bash
-CCFLAG = -Wall -fexceptions -g -std=c++11 -lpthread
+CCFLAG = -Wall -fexceptions -g -std=c++11
 CC = g++
 
 ALL = ./obj/Automata.o ./obj/BitVec.o ./obj/CharRange.o ./obj/Constrs.o ./obj/CRSet.o ./obj/Dconstrs.o ./obj/Deriv.o ./obj/DFA.o ./obj/DSIS.o \
