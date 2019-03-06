@@ -12,7 +12,8 @@ void AutomataTest();  // AutomataTest.cpp
 int main()
 {
 	AutomataTest();
-	system("pause");
+	/*system("pause");*/ //pause 命令在Linux不可用
+	cin.get();
 	return 0;
 }
 
