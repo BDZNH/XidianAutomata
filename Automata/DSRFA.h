@@ -71,7 +71,7 @@ private:
 	const StateSet *last;
 };
 
-// 初始化列表的初始化顺序应该与变量声明顺序相同
+// 初始化列表的初始化顺序应该与变量声明顺序相同 "warning will be initialized after [-Wreorder]"
 // Must always have an argument-less constructor.
 inline DSRFA::DSRFA() :
 	which(), 
@@ -84,13 +84,15 @@ inline DSRFA::DSRFA() :
 	// No assert since it won't satisfy the class invariant
 }
 
+//// 初始化列表的初始化顺序应该与变量声明顺序相同 "warning will be initialized after [-Wreorder]"
 inline DSRFA::DSRFA(const DSRFA& r) :
 	which(r.which),
+	finalness(r.finalness),
 	Qmap_inverse(r.Qmap_inverse),
 	follow(r.follow),
 	first(r.first),
-	last(r.last),
-	finalness(r.finalness)
+	last(r.last)
+	
 {
 	assert(class_invariant());
 }
