@@ -30,7 +30,7 @@ void DFA::restart()
 void DFA::advance(char a)
 {
 	assert(class_invariant());
-	assert(a != Invalid);
+	assert(a != Invalid); //clang++ 编译警告 "comparison of constant -1 with expression of type 'char' is always true"，按理来说char类型不会为负值，留有疑问。
 	current = T.image(current, a);
 }
 int DFA::in_final() const
