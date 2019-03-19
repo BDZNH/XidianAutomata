@@ -69,6 +69,13 @@ artifacts/
 *.pidb
 *.svclog
 *.scc
+*.aux
+*.log
+*.out
+*.toc
+*.gz
+*.tex
+
 
 # Chutzpah Test files
 _Chutzpah*
@@ -263,3 +270,5 @@ Automata.layout
 Automata.cbp
 Automata.depend
 Automata.exe
+translation/image/bbb.jpg
+translation/template.txt
