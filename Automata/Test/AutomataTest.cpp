@@ -15,4 +15,9 @@ void AutomataTest()
 	TransTest();
 	ThompsonTest();
 	RFATest();
+
+
+
+	//int double 
+	//CharRange
 }
