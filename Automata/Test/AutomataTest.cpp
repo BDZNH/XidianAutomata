@@ -5,18 +5,19 @@ void StateRelTest();
 void TransTest();
 void ThompsonTest();
 void RFATest();
+void DFATest();
 
 void AutomataTest()
 {
-	CRSetTest();
+	/*CRSetTest();
 	StateSetTest();
 	StateToStateSetTest();
 	StateRelTest();
 	TransTest();
 	ThompsonTest();
-	RFATest();
+	RFATest();*/
 
-
+	DFATest();
 
 	//int double 
 	//CharRange

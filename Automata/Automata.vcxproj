@@ -135,6 +135,7 @@
     <ClCompile Include="Dconstrs.cpp" />
     <ClCompile Include="Deriv.cpp" />
     <ClCompile Include="DFA.cpp" />
+    <ClCompile Include="DFATest.cpp" />
     <ClCompile Include="DSDeRemer.cpp" />
     <ClCompile Include="DSDFARev.cpp" />
     <ClCompile Include="DSFA.cpp" />

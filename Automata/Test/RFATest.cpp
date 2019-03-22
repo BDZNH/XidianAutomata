@@ -336,7 +336,7 @@ void reExample2_9StarRFATest()
 	 **/
 }
 
-void RFATest()
+void SA()
 {
 	cout << "=====RFATest=====\n" <<flush;
 	reExample315RFATest();
