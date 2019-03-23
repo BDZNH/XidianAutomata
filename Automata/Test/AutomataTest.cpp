@@ -10,14 +10,14 @@ void DFATest();
 void AutomataTest()
 {
 	/*CRSetTest();*/
-	StateSetTest();
+	//StateSetTest();
 	/*StateToStateSetTest();
 	StateRelTest();
 	TransTest();
 	ThompsonTest();
 	RFATest();*/
 
-	//DFATest();
+	DFATest();
 
 	//int double 
 	//CharRange
