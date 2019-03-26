@@ -1,0 +1,39 @@
+\section*{A 一些基本定义}
+\addcontentsline{toc}{section}{A 一些基本定义}
+
+\noindent{\textbf{惯例 A.1 (幂集)}：对于任意集合$A$，我们使用$\mathcal{P}(A)$代表$A$的所有子集。$\mathcal{P}(A)$也叫做$A$的幂集。有时也写作 $2^A$。}
+\newline
+
+\noindent{\textbf{惯例 A.2 (函数集)} ： 对于集合 $A$ 和 $B$ ，$A\longrightarrow B$代表所有从$A$到$B$的函数的集合。而 $ A \not\longrightarrow B$代表所有从$A$到$B$的局部函数。}
+\newline
+
+\noindent{\textbf{备注 4.3}： 对于集合$A,B$，关系 $\mathcal{C}\subseteq A \times B$ ，我们可以把$\mathcal{C}$理解为函数 $\mathcal{C} \in A \longrightarrow \mathcal{P}(B)$ }
+\newline
+
+\noindent{\textbf{惯例 A.4(元组投影)}: 对于一个元组 $n$-tuple $t=(x_1,x_2,\cdots,x_n)$，我们使用符号$\pi (t) (1 \leq i \leq n)$ 代表元组元素$x_i$；我们使用符号 $\bar{\pi}_i(1 \leq i \leq n)$代表$(n-1)$-$tuple(x_1,\cdots,x_{i-1},x_{i+1},\cdots,x_n)$。$\pi$ 和 $\bar{\pi}$ 自然扩展到元组集。 }
+\newline
+
+\noindent{\textbf{惯例 A.5(组合关系)}: 给出集合$A,B,C$和两个关系$E \subseteq A \times B$ 和 $ F \subseteq B \times C $，定义组合关系（插入操作符$\circ$）：} \\
+$$ E\circ F = \{ (a,c) : (\exists b:b \in B : (a,b) \in E \land (b,c) \in F) \} $$ 
+\newline
+\noindent{\textbf{惯例 4.6（等价关系的等价类）}: 对任何集合 $A$ 上的等价关系 $E$，我们使用 $[A]_E$代表等价类集合，即： }
+$$ [A]_E = \{ [a]_E :a \in A \} $$
+集合 $[A]_E$ 也叫做 $A$ 的由 $E$ 引出的“partition”。
+\newline
+
+\noindent{\textbf{定义 A.7（等价类的指数）}:对于集合$A$上的等价关系$E$，定义$\sharp E = | [A]_E |$。$\sharp E$ 也叫做$E$的“index”。}
+\newline
+
+\noindent{\textbf{定义 A.8（字母表）}:  字母表是有限大小的非空集合。}
+\newline
+
+\noindent{\textbf{定义 A.9（等价关系的细化）}: 对于等价关系$E$和$E'$（在集合$A$上），当且仅当$E \subseteq E'$，$E$是$E'$的“细化”。}
+\newline
+
+\noindent{\textbf{定义 A.10（划分的细化关系$\sqsubseteq$）}: 对于等价关系$E$和$E'$（在集合$A$上），当且仅当$ E \subseteq E' $， $[A]_E$也被称为$ [A]_{E'} $的细化（写作$ [A]_E \sqsubseteq [A]_{E'} $）。当且仅当 $E$ 下的每一个等价类完全包含在$E'$下的某些等价类时，等价命题是$ [A]_E \sqsubseteq [A]_{E'} $ 。}
+\newline
+
+\noindent{\textbf{定义 A.11（元组和关系反转）}: 对一个$n$-$tuple(x_1,x_2,\cdots,x_n)$，定义反转为函数$R$（后缀和上标）：}
+$$ (x_1,x_2,\cdots,x_n)^R = (x_n,\cdots,x_2,x_1) $$
+给出一个集合元组$A$，定义$A^R = \{ x^R:x\in A \}$
+

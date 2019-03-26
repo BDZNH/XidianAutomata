@@ -74,7 +74,7 @@ artifacts/
 *.out
 *.toc
 *.gz
-*.tex
+
 
 
 # Chutzpah Test files

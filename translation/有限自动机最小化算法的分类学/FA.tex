@@ -1,0 +1,160 @@
+\section*{B 有限自动机（$FA$）}
+\addcontentsline{toc}{section}{B 有限自动机（$FA$）}
+
+本节中我们定义有限自动机、其性质及其一些变化。大部分定义直接取自 \cite{Wats93}。
+\newline
+
+\noindent{\textbf{定义 B.1（有限自动机（$FA$））}: 一个自动机拥有6个元组$(Q,V,T,E,S,F)$，其中
+
+\begin{itemize}
+    \item[·] $Q$ 是有限状态集；
+    \item[·] $V$ 是一个字母表；
+    \item[·] $ T \in \mathcal{P}(P\times V \times Q) $是一个转换关系；
+    \item[·] $ E \in \mathcal{P}(Q\times Q)$ 是一个 $\epsilon$-转换关系；
+    \item[·] $ S \subseteq Q $是开始状态集；
+    \item[·] $ F \subseteq Q $是结束状态集；     
+\end{itemize}
+字母表和函数$\mathcal{P}$的定义分别在“定义 A.8” 和 “惯例 A.1”。
+\newline
+
+\noindent{\textbf{备注 B.2}: we will take some liberty in our interpretation of the signatures of the transition relations。例如，我们也使用signature $T\in V \longrightarrow \mathcal{P}(Q\times Q),T\in Q \times Q \longrightarrow \mathcal{P}(V),T\in Q \times V \longrightarrow \mathcal{P}(Q),T\in Q \longrightarrow \mathcal{P}(V\times Q),E\in Q \longrightarrow \mathcal{P}(Q)$。每种情况下，$Q$的从左到右的顺序会是“preserved”；例如，函数$T\in Q \longrightarrow \mathcal{P}(V \times Q)$ 定义为 $T(p)=\{ (a,q) : (p,a,q) \in T \}$。所使用的签名将从上下文中清除。详见备注 A.3。$\longrightarrow$ 出现在惯例 A.2。
+
+由于本文中我们只考虑有限自动机，所以我们将会频繁的使用简化词汇自动机。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{B.1 $FA$的性质}
+\addcontentsline{toc}{subsection}{B.1 有限自动机的性质}
+本小节将会定义一些有限自动机的性质。为了使定义更加简洁明了，我们引进三个特殊的$FA$: $M=(Q,V,T,E,S,F)$,$M_0=(Q_0,V_0,T_0,E_0,S_0,F_0)$,$ M_1=(Q_1,V_1,T_1,E_1,S_1,F_1) $。
+
+\noindent{\textbf{定义 B.3（FA的大小）}：定义一个FA的大小为$|M|=|Q|$}。
+\newline
+
+\noindent{\textbf{定义 B.4（FA的同构$\cong$）}：我们把同构定义为FA的等价关系}。当且仅当 $V_0=V_1$，并且存在双射$g\in Q_0 \longrightarrow Q_1$ 
+
+\begin{itemize}
+    \item[·] $T_1 = \{ (g(p,q),a,g(q)) : (p,a,q) \in T_0 \}$,
+    \item[·] $E_1 = \{ (g(p,q),a,g(q)) : (p,q) \in E_0\}$,
+    \item[·] $S_1 = \{ g(s):s\in S_0 \}$,and 
+    \item[·] $F_1 = \{ g(f):f\in F_0 \}$
+\end{itemize}
+时$M_0$和$M_1$是同构的（写作$M_0 \cong M_1$）。
+\newline
+
+\noindent{\textbf{定义 B.5（转换关系$T$的扩展）}： 我们把$T \in V \longrightarrow \mathcal{P} (Q \times Q) $ 到 $ T* \in V* \longrightarrow \mathcal{P} (Q \times Q)  $的转换关系以如下方式扩展： } \\
+\mbox{　　} $T*(\epsilon) = E*$ \\
+\mbox{and for } $(a\in V,w\in V*)$ \\
+\mbox{　　} $ T*(aw) = E* \circ T(a) \circ T*(w) $ \\
+操作符$\circ$在惯例 4.5 中定义。This definition could also have been presented symmetrically.
+\newline
+
+\noindent{\textbf{备注 B.6}：有时候我们也使用 signatures $T* \in Q \times Q \longrightarrow \mathcal{P}(V*)$}
+\newline
+
+\noindent{\textbf{定义 B.7（左语言和右语言）}：状态（M中）的做语言由函数$ \overleftarrow{\mathcal{L}} _M \in Q \longrightarrow \mathcal{P}(V*)$，其中} \\
+\mbox{　　}　$ \overleftarrow{\mathcal{L}}_M (q) = ( \cup s:s \in S : T*(s,q) ) $ \\
+状态（$M$中）的右语言由函数$ \overrightarrow{\mathcal{L}} _M \in Q \longrightarrow \mathcal{P}(V*)$给出，其中 \\
+\mbox{　　}　$ \overrightarrow{\mathcal{L}}_M (q) = ( \cup s:s \in S : T*(s,q) ) $ \\
+通常在没有歧义的时候移除下标$M$。
+\newline
+
+\noindent{\textbf{定义 B.8（FA的语言）}：有限自动机的语言由函数 $\mathcal{L}_{FA} \in FA \longrightarrow \mathcal{P}(V*) $给出，该函数的定义为：} \\
+\mbox{　　}　$ \mathcal{L}_{FA} (M) = (\cup s,f:s \in S \land f \in F : T* (s,f)) $ \\
+
+\noindent{\textbf{定义 B.9（$Complete$）}: 一个完全小化自动机满足 ： } \\
+\mbox{　　}　$ Complete(M) \equiv ( \forall q,a:q\in Q \land a \in V : T(q,a) \not= \emptyset )$ \\
+
+\noindent{\textbf{定义 B.10 （$\epsilon$-$free$）}: 当且仅当 $E=\emptyset$时，M 是 $\epsilon$-$free$ 的。
+\newline
+
+\noindent{\textbf{定义 B.11（初始可行自动机）}：一个 $Useful_s$ 有限自动机定义如下：} \\
+\mbox{　　}　$ Useful_s (M) \equiv ( \forall q:q \in Q : \overleftarrow{\mathcal{L}} (q) \not= \emptyset ) $ \\
+
+\noindent{\textbf{定义 B.12（最终可行自动机）}：一个 $Useful_f$ 有限自动机定义如下：} \\
+\mbox{　　}　$ Useful_f (M) \equiv ( \forall q:q \in Q : \overleftarrow{\mathcal{L}} (q) \not= \emptyset ) $ \\
+
+\noindent{\textbf{备注 B.13}： $Useful_s$和$Useful_f$与 $FA$ 的反转密切相关（见变换 B.22），对所有的 $M \in FA$，有 $Useful_f (M) \equiv Useful_s (M^R)$。 \\
+
+\noindent{\textbf{定义 B.14（Useful 自动机）}：$Useful$自动机是一个 with only reachable states:  }\\
+\mbox{　　}　$ Useful (M) \equiv Useful_s (M) \land Useful_f (M) $ \\
+
+\noindent{\textbf{性质 B.15（确定性有限自动机（$DFA$））}：当且仅当 }
+\begin{itemize}
+    \item [·] 无多重初始状态；
+    \item [·] 无$\epsilon$转移；
+    \item [·] 转移函数$T \in Q \times V \longrightarrow \mathcal{P} (Q) $ 不将 $Q \times V$ 中的“对”映射至多重状态。
+\end{itemize}
+时有限自动机$M$是确定性的。\\
+形式表达为：
+$$ Det(M) \equiv ( |S| \leq 1 \land \epsilon-free(E) \land ( \forall q,a:q \in Q \land a \in V : |T(q,a)| \leq 1 )) $$
+
+\noindent{\textbf{定义 B.16（$FA$的确定性）}:$DFA$代表所有确定性的有限自动机的集合。我们把$FA \setminus DFA$称为非确定性有限自动机的集合。} \\
+
+\noindent{\textbf{惯例 B.17（DFA的转换函数）}：对于$(Q,V,T,\emptyset,S,F)\in DFA$，我们考虑把转换函数记为$T\in Q \times V \not\rightarrow Q$（$\not\rightarrow$的定义可以查看惯例A.2）。当且仅当$DFA$是完全的时候，转换函数是全函数。} \\
+
+\noindent{\textbf{性质 B.18（弱确定性自动机）}：一些作者用比$Det$弱的确定性自动机的定义；使用左语言，定义如下：}
+$$ Det'(M) \equiv (\forall q_0,q_1 : q_0 \in Q \land q_1 \in Q \land q_0 \not= q_1 : \overleftarrow{\mathcal{L}}(q_0) \cap \overleftarrow{\mathcal{L}}(q_1) = \emptyset ) $$
+很容易证明$Det(M) \Rightarrow Det'(M)$。
+\newline
+
+\noindent{\textbf{定义 B.19（$DFA$的最小化）}:满足以下条件时，$M\in DFA$是最小化的：}
+$$ Min(M) \equiv (\forall M' : M' \in DFA \land \mathcal{L}(M) = \mathcal{L}_{FA}(M') : |M| \leq |M'| ) $$
+$Min$仅定义在$DFA$上。如果我们定义一个最小的但是仍然完全的$DFA$，那么一些定义将会更加简单。它的定义如下：
+$$ Min_{\mathcal{C}}(M) \equiv ( \forall M':M' \in DFA \land Complete(M') \land \mathcal{L}_{FA}(M) = \mathcal{L}_{FA}(M'): |M| \leq |M'| ) $$
+$Min_{\mathcal{C}}$仅定义在完全$DFA$上。 \\
+
+\noindent{\textbf{定义 B.20（$DFA$的最小化）}:根据 Myhill-Nerode 定理，\underline{An M, such that Min(M)}，是唯一的最小化$DFA$，定理的相关介绍在 \cite{Hu79,Wats93} } \\
+
+\noindent{\textbf{性质 B.21（一个$DFA$的最小化替代定义）}：为了最小化$DFA$，使用定义（仅定义在$DFA$上）：} \\
+\mbox{　　}$Minimal(Q,V,T,\emptyset,S,F) \equiv  ( \forall q_0,q_1:q_0 \in Q \land q_1 \in Q \land q_0 \not= q_1 : \overrightarrow{\mathcal{L}}(q_0) \not= \overrightarrow{\mathcal{L}}(q_1)  )$ \\
+\mbox{　　　　　　　　　　　　　　} $\land Useful(Q,V,T,\emptyset,S,F)$ \\
+有 $Minimal(M) \equiv Min(M)$的性质（对于所有的$M\in DFA$）。很容易证明$Min(M) \Rightarrow Minimal(M)$。\uline{The reverse direction follows from the Myhill-Nerode 定理}。
+
+与$Min_{\mathcal{C}}$相似的定义是（同样也只定义在$DFA$上）：\\
+\mbox{　　}$Minimal_{\mathcal{C}}(Q,V,T,\emptyset,S,F) \equiv  ( \forall q_0,q_1:q_0 \in Q \land q_1 \in Q \land q_0 \not= q_1 : \overrightarrow{\mathcal{L}}(q_0) \not= \overrightarrow{\mathcal{L}}(q_1)  )$ \\
+\mbox{　　　　　　　　　　　　　　} $\land Useful_s (Q,V,T,\emptyset,S,F)$ \\
+有 $Minimal_{\mathcal{C}}(M) \equiv Min_{\mathcal{C}}(M)$的性质（对于所有的$M\in DFA$）。很容易证明$Min_{\mathcal{C}}(M) \Rightarrow Minimal_{\mathcal{C}}(M)$。\uline{The reverse direction follows from the Myhill-Nerode 定理}。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{B.2 有限自动机的变换}
+\addcontentsline{toc}{subsection}{B.2 有限自动机的变换}
+
+\noindent{\textbf{变换 B.22（$FA$ 反转）}：$FA$反转由后缀（上标）函数$ R \in FA \longrightarrow FA $ 给出，它的定义如下：}
+$$ (Q,V,T,S,F)^R = (Q,V,T^R,e^R,f,S) $$ 
+函数 $R$ 满足
+$$(\forall M : M \in FA : ( \mathcal{L} (M) )^R = \mathcal{L}_{FA}(M^R)) $$
+\newline
+
+\noindent{\textbf{变换 B.23（移除初始状态不可达状态）}：变换$Useful_s \in FA \longrightarrow FA$移除那些初始不可达的状态： }\\
+\mbox{　　　}$Useful_s(Q,V,T,E,S,F) = $ \mbox{\textbf{let　　}} $u = SReachable(Q,V,T,E,S,F)$ \\
+\mbox{　　　　　　　　　　　　　　　}\mbox{\textbf{ in }} \\
+\mbox{　　　　　　　　　　　　　　　　　　　} $ (U,V,T \cap (U\times V \times U), E \cap (U \times U), S \cap U, F \cap U ) $ \\
+\mbox{　　　　　　　　　　　　　　　}\mbox{\textbf{ end }} \\
+函数 $ Useful_s $满足
+$$ (\forall M : M \in FA : Useful_s ( Useful_s(M) ) \land \mathcal{L}_{FA} (Useful_s(M)) = \mathcal{L}_{FA}(M)) $$
+
+\noindent{\textbf{变换 B.24（子集构造）}：函数$subset$把一个$\epsilon$-$free$ $FA$ 转换为一个 $DFA$ (in the \textbf{let} clause $T'\in \mathcal{P}(Q) \times V \longrightarrow \mathcal{P}(\mathcal{P} (Q) )$)}: \\
+\mbox{　　} $subset(Q,V,T,\emptyset,S,F) = \mbox{\textbf{let 　}} T'(U,a) = \{ (q:q\in U : T(q,a) ) \} $\\
+\mbox{　　　　　　　　　　　　　　　　}$F'= \{ U : U \in \mathcal{P}(Q) \land U \cap F \not= \emptyset \} $ \\
+\mbox{　　　　　　　　　　　　　\textbf{in}} \\
+\mbox{　　　　　　　　　　　　　　　　}$ ( \mathcal{P}(Q),V,T',\emptyset,\{ S \},F' ) $ \\
+\mbox{　　　　　　　　　　　　　\textbf{end}} \\
+除了明显的性质$\mathcal{L}_{FA}(subset(M)) = \mathcal{L}_{FA}(M)$之外（对所有的$M\in FA$），函数$subset$满足：
+$$ (\forall M:M \in FA \land \epsilon\mbox{-}free(M): Det(subset(M)) \land Complete( subset(M ))) $$
+它也被认为是“超集”构造。
+\newline
+
+\noindent{\textbf{变换 B.25（子集构造）}：设 $M_0=( Q_0,v,t_0,\emptyset,S_0,F_0 )$和 $M_1 = subset(M_0)$为有限自动机。通过子集构造，状态集$M_1$成为$\mathcal{P}(Q_0)$。有如下性质：  }
+$$ (\forall p:p \in \mathcal{P}(Q_0) : \overrightarrow{\mathcal{L}}_{M_1}(p) = ( q:q \in p : \overrightarrow{\mathcal{L}}_{M_1}(q) ) ) $$
+
+\noindent{\textbf{定义 B.26（优化子集构造）}：函数$subset$把一个$\epsilon$-$free$ $FA$ 转换为一个 $DFA$ 。此函数是$subset$的一个优化版本：  } \\
+\mbox{　　} $subsetopt(Q,V,T,\emptyset,S,F) = \mbox{\textbf{ let 　　}} T'(U,a) = \{ (q:q\in U : T(q,a) ) \} $\\
+\mbox{　　　　　　　　　　　　　　　　　　　}$ Q' = \mathcal{P} (Q) \setminus \{ \emptyset \} $ \\
+\mbox{　　　　　　　　　　　　　　　　　　　}$F'= \{ U : U \in \mathcal{P}(Q) \land U \cap F \not= \emptyset \} $ \\
+\mbox{　　　　　　　　　　　　　　　\textbf{in}} \\
+\mbox{　　　　　　　　　　　　　　　　　　　}$ ( \mathcal{P}(Q),V,T',\emptyset,\{ S \},F' ) $ \\
+\mbox{　　　　　　　　　　　　　　　\textbf{end}} \\
+除了性质$\mathcal{L}_{FA} (subsetopt(M)) = \mathcal{{L}} (M) $（对所有的$M\in FA$）之外，函数$subsetopt$还满足
+$$ ( \forall M : M \in FA \land \epsilon \mbox{-}free(M) : Det(subset(M)) )  $$
+
+\newpage
+
