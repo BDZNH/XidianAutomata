@@ -1,0 +1,91 @@
+\begin{thebibliography}{AHO92}
+
+\bibitem[AHO88]{ASU86}
+AND J.D.~Ullman AHO, A.V.
+\newblock {\em Compilers: Principles, Techniques and Tools}.
+\newblock Addison-Wesley Publishing Co.,Reading, M.A, 1988.
+
+\bibitem[AHO92]{AU92}
+AND J.D.~Ullman AHO, A.V.
+\newblock {\em Foundations of the Computer Science}.
+\newblock Computer Science Press, New York, N.Y, 1992.
+
+\bibitem[Bra88]{Brau88}
+Wilfried Brauer.
+\newblock On minimizing finite automata.
+\newblock {\em Bulletin of the EATCS}, 35:113--116, 1988.
+
+\bibitem[Brz62]{Brzo62}
+Janusz~A Brzozowski.
+\newblock Canonical regular expressions and minimal state graphs for definite
+  events.
+\newblock {\em Mathematical theory of Automata}, 12(6):529--561, 1962.
+
+\bibitem[Brz64]{Brzo64}
+Janusz~A Brzozowski.
+\newblock Derivatives of regular expressions.
+\newblock In {\em Journal of the ACM}. Citeseer, 1964.
+
+\bibitem[Gri73]{Grie73}
+David Gries.
+\newblock Describing an algorithm by hopcroft.
+\newblock {\em Acta Informatica}, 2(2):97--109, 1973.
+
+\bibitem[Hop71]{Hopc71}
+John Hopcroft.
+\newblock An n log n algorithm for minimizing states in a finite automaton.
+\newblock In {\em Theory of machines and computations}, pages 189--196.
+  Elsevier, 1971.
+
+\bibitem[Hop08]{Hu79}
+John~E Hopcroft.
+\newblock {\em Introduction to automata theory, languages, and computation}.
+\newblock Pearson Education India, 2008.
+
+\bibitem[Huf54]{Huff54}
+David~A Huffman.
+\newblock The synthesis of sequential switching circuits.
+\newblock {\em Journal of the franklin Institute}, 257(3):161--190, 1954.
+
+\bibitem[Mir66]{Mirk65}
+Boris~G Mirkin.
+\newblock On dual automata.
+\newblock {\em Cybernetics and Systems Analysis}, 2(1):6--9, 1966.
+
+\bibitem[Moo56]{Moor56}
+Edward~F Moore.
+\newblock Gedanken-experiments on sequential machines.
+\newblock {\em Automata studies}, 34:129--153, 1956.
+
+\bibitem[tE91]{t-Ei91}
+Hubertus Maria~Martinus ten Eikelder.
+\newblock {\em Some Alogrithms to Decide the Equivalence of Recursive Types}.
+\newblock Eindhoven University of Technology, Department of Mathematics and
+  Computing~…, 1991.
+
+\bibitem[Urb89]{Urba89}
+Friedrich~J. Urbanek.
+\newblock On minimizing finite automata.
+\newblock {\em Bulletin of the EATCS}, 39:205--206, 1989.
+
+\bibitem[VdS85]{vdSn85}
+Jan~LA Van~de Snepscheut.
+\newblock {\em Trace theory and VLSI design}.
+\newblock Number 200. Springer Science \& Business Media, 1985.
+
+\bibitem[VdS93]{VDSn93}
+Jan~LA Van~de Snepscheut.
+\newblock What is computing all about?
+\newblock In {\em What Computing Is All About}, pages 1--9. Springer, 1993.
+
+\bibitem[Wat93]{Wats93}
+Bruce~William Watson.
+\newblock A taxonomy of finite automata construction algorithms.
+\newblock 1993.
+
+\bibitem[WW87]{Wood87}
+Derick Wood and Derrick Wood.
+\newblock Theory of computation.
+\newblock 1987.
+
+\end{thebibliography}
