@@ -37,6 +37,7 @@ public:
 
 		// RE =  a | epsilon
 		left.symbol('a');
+		//left.RE::symbol();
 		right.epsilon();
 		left.Or(right);
 		//cout << left << endl;  // | 'a' 1(epsilon)
@@ -336,7 +337,7 @@ void reExample2_9StarRFATest()
 	 **/
 }
 
-void SA()
+void RFATest()
 {
 	cout << "=====RFATest=====\n" <<flush;
 	reExample315RFATest();

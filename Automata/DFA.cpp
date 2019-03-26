@@ -57,6 +57,8 @@ DFA& DFA::reverse()
 	// Make sure that *this is structurally sound.
 	assert(class_invariant());
 	// Now construct the DFA components from an abstract DFA state.
+	// function,File DFAseed.h: DFA_components construct_components(const T& abs_start)  
+	// DSDFARev.h class DSDFARev: DSDFARev::DSDFARev(const StateSet& rq, const DTransRel *rT, const StateSet *rS);
 	reconstruct(construct_components(DSDFARev(F, &T, &S)));
 	return(*this);
 }
@@ -131,6 +133,7 @@ DFA& DFA::usefulf()
 	return(*this);
 }
 
+// 给出最小化等价关系，缩小 DFA
 // Given a minimizing equivalence relation, shrink the DFA.
 DFA& DFA::compress(const StateEqRel& r)
 {

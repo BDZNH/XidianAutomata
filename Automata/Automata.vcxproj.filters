@@ -157,7 +157,7 @@
       <Filter>Test</Filter>
     </ClCompile>
     <ClCompile Include="DFATest.cpp">
-      <Filter>源文件</Filter>
+      <Filter>Test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -149,7 +149,9 @@ public:
 	// [O, domain()) can be contained in *this.
 	inline int domain() const;
 
+	// 设置当前集合能包含多少状态
 	// set How many States can this set contain.
+	// [0, r) 可被添加到当前集合内
 	// [O, r) can be contained in *this.
 	inline void set_domain(const int r);
 
