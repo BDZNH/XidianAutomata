@@ -28,7 +28,7 @@ The principal computation in most minimization algorithms is the determination o
 \begin{itemize}
     \item[·] Brzozowski's (possibly nondeterministic) finite automaton minimization algorithm as presented in [Brzo62]. This elegant algorithm (Section 2) was originally invented by Brzozowski, and has since been re-invented without credit to Brzozowski. Given a (possibly nondeterministic ) finite automaton without E-transitions, this algorithm produces the minimal deterministic finite automaton accepting the same language.
     
-    Brzozowski（可能是非确定性的）有限自动机最小化算法 在 \cite{Brzo62} 中提出。这个优雅的算法（第2节）最初是由Brzozowski提出，此后又在没有Brzozowski的“参与”的情况下被重新提出。在没有 $\epsilon$-跃迁的情况下，给出了一个（可能不确定的）有限自动机，\uline{该算法产生最小的确定性有限自动机接受相同的语言}。
+    Brzozowski（可能是非确定性的）有限自动机最小化算法 在 \cite{Brzo62} 中提出。这个优雅的算法（第2节）最初是由Brzozowski提出，此后又在没有Brzozowski的“参与”的情况下被重新提出。在没有 $\epsilon$-转移 的情况下，给出了一个（可能不确定的）有限自动机，该算法生成一个最小的接受相同的语言的确定性有限自动机。
 
     \item[·] Layerwise computation of equivalence as presented in [Wood87, \cite{Moor56} Brau88, Urba89]. This algorithm (Algorithm 4. 2) is a straightforward implementation suggested by the approximation sequence arising from the fixed-point definition of equivalence of states. 
 
@@ -44,7 +44,7 @@ The principal computation in most minimization algorithms is the determination o
 
 \end{itemize}
 
-\includegraphics[width =.9\textwidth]{Family_tree.eps}
+\includegraphics[width =.93\textwidth]{figure1.pdf}
 
 Figure 1: The family trees of finite automata minimization algorithms. Brzozowski's minimization algorithm is unrelated to the others, and appears as a separate(single vertex)tree. Each algorithm presented in this paper appears as a vertex in this tree. For each algorithm that appears explicitly in this paper, the construction number appears in parentheses(indicating where it appears in this paper). For algorithms that do not appear explicitly, a reference to the section or page number is given. Edges denote a refinement of the solution (and therefore explicit relationships between algorithms). They are labeled with the name of the refinement.
 

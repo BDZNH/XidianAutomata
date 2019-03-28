@@ -74,6 +74,8 @@ artifacts/
 *.out
 *.toc
 *.gz
+*.bbl
+*.blg
 
 
 

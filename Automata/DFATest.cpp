@@ -21,6 +21,9 @@ void DFATest()
 		dfa_com1.Q.allocate();
 	}
 	
+	dfa_com1.T.add_transition(0, 'a', 3);
+	dfa_com1.T.add_transition(3, 'b', 5);
+	dfa_com1.T.add_transition(5, 'c', 7);
 
 	dfa_com1.T.set_domain(10);
 	DFA dfa1(dfa_com1);
