@@ -5,11 +5,8 @@
 \usepackage{ctex}
 
 \usetikzlibrary{positioning}
-\tikzset{place/.style={circle,draw=blue!50,fill=blue!20,
-thick,inner sep=0pt,minimum size=6mm}}
-\tikzset{transition/.style={rectangle,draw=black!50,
-fill=black!20,thick,inner sep=0pt,minimum size=4mm}}
-\tikzset{every label/.style=red}
+
+\tikzset{every label/.style=black}
 
 \begin{document}
 
@@ -31,7 +28,7 @@ fill=black!20,thick,inner sep=0pt,minimum size=4mm}}
   \node at (-8,-22) [place,label=right:$(\text{4.6})$] (n12) {};
   \node at (-8,-26) [place,label=right:$(\text{pg. 14})$] (n13) {};
   \node at (-8,-30) [place,label=right:$(\text{Hopcroft(4.8)})$] (n14) {};
-  \node at (-18,-0) [place,label=right:$(\text{Brzozowski(2)})$] (n16) {};
+  \node at (-18,-0) [place,label=right:$\text{Brzozowski}(\S 2)$] (n16) {};
 
     % \node at ( 0, 0) [place,label=right:$\mbox{状态的等价 (}\S 3)$] (n0) {};
     % \node at ( 3,-2) [place,label=right:$(\S \text{4.6})$] (n1) {};
@@ -60,7 +57,7 @@ fill=black!20,thick,inner sep=0pt,minimum size=4mm}}
   \draw[-] (n2) to node {\mbox{从上面逼近}　　　　　　　} (n5);
   \draw[-] (n5) to node {　　　　\mbox{状态对}} (n6);
   \draw[-] (n5) to node {　　　　\mbox{分层}} (n7);
-  \draw[-] (n5) to node {　　　\mbox{无序的}} (n8);
+  \draw[-] (n5) to node {　　　\mbox{无序}} (n8);
   \draw[-] (n8) to node {　　　　\mbox{原生}} (n9);
   \draw[-] (n9) to node {　　　　\mbox{等价类}} (n10);
   \draw[-] (n8) to node {　　　\mbox{提升}} (n11);
