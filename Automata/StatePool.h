@@ -55,6 +55,9 @@ public:
 	// Clear all states that were allocated; start again at O.
 	inline StatePool& reincarnate();
 
+	// set how many state can be in the statepool
+	inline int set_domain(const int r);
+
 	// Does this State Pool contain State r. i.e it's in [0,next)
 	inline int contains(const State r) const;
 
@@ -83,6 +86,12 @@ inline StatePool::StatePool(const StatePool& r) :next(r.next)
 inline int StatePool::size() const
 {
 	return(next);
+}
+
+
+inline int StatePool::set_domain(const int r)
+{
+	return (next = r);
 }
 
 // Incorporate another StatePool by making it disjoint.Anything

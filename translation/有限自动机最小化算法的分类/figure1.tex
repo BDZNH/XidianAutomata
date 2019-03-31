@@ -12,41 +12,41 @@
 
 \begin{tikzpicture}
   [place/.style={circle,draw=black,fill=black,thick}]
-  \node at ( 0, 0) [place,label=right:$\text{Equivalence of states (}\S 3)$] (n0) {};
-  \node at ( 6,-4) [place,label=right:$(\S \text{4.6})$] (n1) {};
-  \node at (-6,-4) [place,label=right:$(\S \text{ 4.1-4.5,4.7})$] (n2) {};
-  \node at ( 6,-10) [place,label=right:$(\text{4.9})$] (n3) {};
-  \node at ( 6,-14) [place,label=right:$(\text{pg. 15})$] (n4) {};
-  \node at ( 0,-8) [place,label=right:$(\text{4.10})$] (n15) {};
-  \node at (-12,-8) [place,label=right:$(\S \text{4.1-4.5})$] (n5) {};
-  \node at (-6,-14) [place,label=right:$(\text{Hopcroft-Ullman(4.7)})$] (n6) {};
-  \node at (-18,-14) [place,label=right:$(\text{4.2})$] (n7) {};
-  \node at (-12,-14) [place] (n8) {};
-  \node at (-16,-18) [place,label=right:$(\text{4.3})$] (n9) {};
-  \node at (-16,-22) [place,label=right:$(\text{ASU(4.4)})$] (n10) {};
-  \node at (-8,-18) [place,label=right:$(\text{4.5})$] (n11) {};
-  \node at (-8,-22) [place,label=right:$(\text{4.6})$] (n12) {};
-  \node at (-8,-26) [place,label=right:$(\text{pg. 14})$] (n13) {};
-  \node at (-8,-30) [place,label=right:$(\text{Hopcroft(4.8)})$] (n14) {};
-  \node at (-18,-0) [place,label=right:$\text{Brzozowski}(\S 2)$] (n16) {};
+  % \node at ( 0, 0) [place,label=right:$\mbox{状态的等价 }(\S 3)$] (n0) {};
+  % \node at ( 6,-4) [place,label=right:$(\S \text{4.6})$] (n1) {};
+  % \node at (-6,-4) [place,label=right:$(\S \text{ 4.1-4.5,4.7})$] (n2) {};
+  % \node at ( 6,-10) [place,label=right:$(\text{4.9})$] (n3) {};
+  % \node at ( 6,-14) [place,label=right:$(\text{pg. 15})$] (n4) {};
+  % \node at ( 0,-8) [place,label=right:$(\text{4.10})$] (n15) {};
+  % \node at (-12,-8) [place,label=right:$(\S \text{4.1-4.5})$] (n5) {};
+  % \node at (-6,-14) [place,label=right:$(\text{Hopcroft-Ullman(4.7)})$] (n6) {};
+  % \node at (-18,-14) [place,label=right:$(\text{4.2})$] (n7) {};
+  % \node at (-12,-14) [place] (n8) {};
+  % \node at (-16,-18) [place,label=right:$(\text{4.3})$] (n9) {};
+  % \node at (-16,-22) [place,label=right:$(\text{ASU(4.4)})$] (n10) {};
+  % \node at (-8,-18) [place,label=right:$(\text{4.5})$] (n11) {};
+  % \node at (-8,-22) [place,label=right:$(\text{4.6})$] (n12) {};
+  % \node at (-8,-26) [place,label=right:$(\text{pg. 14})$] (n13) {};
+  % \node at (-8,-30) [place,label=right:$(\text{Hopcroft(4.8)})$] (n14) {};
+  % \node at (-18,-0) [place,label=right:$\text{Brzozowski}(\S 2)$] (n16) {};
 
-    % \node at ( 0, 0) [place,label=right:$\mbox{状态的等价 (}\S 3)$] (n0) {};
-    % \node at ( 3,-2) [place,label=right:$(\S \text{4.6})$] (n1) {};
-    % \node at (-3,-2) [place,label=right:$(\S \text{ 4.1-4.5,4.7})$] (n2) {};
-    % \node at ( 3,-5) [place,label=right:$(\text{4.9})$] (n3) {};
-    % \node at ( 3,-7) [place,label=right:$(\text{pg. 15})$] (n4) {};
-    % \node at ( 0,-4) [place,label=right:$(\text{4.10})$] (n15) {};
-    % \node at (-6,-4) [place,label=right:$(\S \text{4.1-4.5})$] (n5) {};
-    % \node at (-3,-7) [place,label=right:$(\text{Hopcroft-Ullman(4.7)})$] (n6) {};
-    % \node at (-9,-7) [place,label=right:$(\text{4.2})$] (n7) {};
-    % \node at (-6,-7) [place] (n8) {};
-    % \node at (-8,-9) [place,label=right:$(\text{4.3})$] (n9) {};
-    % \node at (-8,-11) [place,label=right:$(\text{ASU(4.4)})$] (n10) {};
-    % \node at (-4,-9) [place,label=right:$(\text{4.5})$] (n11) {};
-    % \node at (-4,-11) [place,label=right:$(\text{4.6})$] (n12) {};
-    % \node at (-4,-13) [place,label=right:$(\text{pg. 14})$] (n13) {};
-    % \node at (-4,-15) [place,label=right:$(\text{Hopcroft(4.8)})$] (n14) {};
-    % \node at (-9,-0) [place,label=right:$\text{Brzozowski}(\S 2)$] (n16) {};
+    \node at ( 0, 0) [place,label=right:$\mbox{状态的等价 (}\S 3)$] (n0) {};
+    \node at ( 3,-2) [place,label=right:$(\S \text{4.6})$] (n1) {};
+    \node at (-3,-2) [place,label=right:$(\S \text{ 4.1-4.5,4.7})$] (n2) {};
+    \node at ( 3,-5) [place,label=right:$(\text{4.9})$] (n3) {};
+    \node at ( 3,-7) [place,label=right:$(\text{pg. 15})$] (n4) {};
+    \node at ( 0,-4) [place,label=right:$(\text{4.10})$] (n15) {};
+    \node at (-6,-4) [place,label=right:$(\S \text{4.1-4.5})$] (n5) {};
+    \node at (-3,-7) [place,label=right:$(\text{Hopcroft-Ullman(4.7)})$] (n6) {};
+    \node at (-9,-7) [place,label=right:$(\text{4.2})$] (n7) {};
+    \node at (-6,-7) [place] (n8) {};
+    \node at (-8,-9) [place,label=right:$(\text{4.3})$] (n9) {};
+    \node at (-8,-11) [place,label=right:$(\text{ASU(4.4)})$] (n10) {};
+    \node at (-4,-9) [place,label=right:$(\text{4.5})$] (n11) {};
+    \node at (-4,-11) [place,label=right:$(\text{4.6})$] (n12) {};
+    \node at (-4,-13) [place,label=right:$(\text{pg. 14})$] (n13) {};
+    \node at (-4,-15) [place,label=right:$(\text{Hopcroft(4.8)})$] (n14) {};
+    \node at (-9,-0) [place,label=right:$\text{Brzozowski}(\S 2)$] (n16) {};
 
 
   \draw[-] (n0) to node {　　　　 \mbox{逐点}} (n1);
