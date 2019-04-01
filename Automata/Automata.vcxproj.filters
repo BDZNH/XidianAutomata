@@ -156,8 +156,17 @@
     <ClCompile Include="Automata.cpp">
       <Filter>Test</Filter>
     </ClCompile>
-    <ClCompile Include="DFATest.cpp">
+    <ClCompile Include="Test\DFATest.cpp">
       <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="min.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="min-asu.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="min-hu.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

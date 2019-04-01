@@ -135,7 +135,6 @@
     <ClCompile Include="Dconstrs.cpp" />
     <ClCompile Include="Deriv.cpp" />
     <ClCompile Include="DFA.cpp" />
-    <ClCompile Include="DFATest.cpp" />
     <ClCompile Include="DSDeRemer.cpp" />
     <ClCompile Include="DSDFARev.cpp" />
     <ClCompile Include="DSFA.cpp" />
@@ -153,6 +152,9 @@
     <ClCompile Include="Iconstrs.cpp" />
     <ClCompile Include="ISImpl.cpp" />
     <ClCompile Include="LBFA.cpp" />
+    <ClCompile Include="min-asu.cpp" />
+    <ClCompile Include="min-hu.cpp" />
+    <ClCompile Include="min.cpp" />
     <ClCompile Include="RBFA.cpp" />
     <ClCompile Include="RE.cpp" />
     <ClCompile Include="RFA.cpp" />
@@ -165,6 +167,7 @@
     <ClCompile Include="SymRel.cpp" />
     <ClCompile Include="Test\AutomataTest.cpp" />
     <ClCompile Include="Test\CRSetTest.cpp" />
+    <ClCompile Include="Test\DFATest.cpp" />
     <ClCompile Include="Test\RFATest.cpp" />
     <ClCompile Include="Test\StateRelTest.cpp" />
     <ClCompile Include="Test\StateSetTest.cpp" />
