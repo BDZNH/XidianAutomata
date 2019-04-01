@@ -284,7 +284,7 @@ The $\forall$ quantification can be implemented using a repetition.
 \mbox{　　　} $\mbox{\textbf{fi}}$; \\
 \mbox{　　　} $\mbox{\textbf{return }} eq$ \\
 \rule{\textwidth}{1pt}
-第三个参数 $S$ 是一个全局变量，在实际使用中提高算法的效率。作为结果，\underline{由于$equiv$使用了全局变量，它不再是一个函数式程序}。此变体的正确性已经在 \cite{t-Ei91} 中展示。假设 $S$ 被初始化为 $\emptyset$ 。当 $ S =\emptyset $ 时，调用 $equiv(p,q,\emptyset,k)$ ，$ (p,q) \in E_k $ 为返回值。\underline{after an invacation $S = \emptyset$}。
+第三个参数 $S$ 是一个全局变量，在实际使用中提高算法的效率。作为结果，\underline{由于$equiv$使用了全局变量，它不再是一个函数式程序}。此变体的正确性已经在 \cite{t-Ei91} 中展示。假设 $S$ 被初始化为 $\emptyset$ 。当 $ S =\emptyset $ 时，调用 $equiv(p,q,\emptyset,k)$ ，$ (p,q) \in E_k $ 为返回值。\underline{调用之后， $S = \emptyset$}。
 \newline
 \noindent{\textbf{算法 4.9}}
 \\
