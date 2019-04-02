@@ -171,6 +171,9 @@
     <ClCompile Include="min-hop.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="min-bww.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BitVec.h">
