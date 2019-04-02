@@ -47,8 +47,8 @@ void DFATest1()
 	dfa_com1.T.add_transition(1, '1', 0);
 	dfa_com1.T.add_transition(2, '1', 0);
 	dfa_com1.T.add_transition(3, '1', 0);
-	dfa_com1.T.add_transition(1, '1', 4);
-	dfa_com1.T.add_transition(2, '0', 5);
+	/*dfa_com1.T.add_transition(1, '1', 4);
+	dfa_com1.T.add_transition(2, '0', 5);*/
 
 
 	DFA dfa1(dfa_com1);
@@ -237,13 +237,14 @@ void DFATest3()
 	dfa_com1.T.add_transition(1, '1', 0);
 	dfa_com1.T.add_transition(2, '1', 4);
 	dfa_com1.T.add_transition(3, '1', 4);
-	dfa_com1.T.add_transition(1, '0', 5);
-	dfa_com1.T.add_transition(2, '0', 6);
-	dfa_com1.T.add_transition(4, '0', 2);
+	/*dfa_com1.T.add_transition(1, '0', 5);
+	dfa_com1.T.add_transition(2, '0', 6);*/
 	dfa_com1.T.add_transition(4, '0', 1);
+	dfa_com1.T.add_transition(4, '1', 0);
 
 	DFA dfa1(dfa_com1);
 	cout << dfa1 << endl;
+	cout << dfa1.Usefulf() << endl;
 	dfa1.min_dragon();
 	cout << dfa1 << endl;
 }

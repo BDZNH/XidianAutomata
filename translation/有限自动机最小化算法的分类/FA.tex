@@ -47,13 +47,13 @@
 操作符$\circ$在惯例 A.5 中定义。\uline{这个定义也可以对称的表示}。
 \newline
 
-\noindent{\textbf{备注 B.6}：有时候我们也使用 signatures $T^* \in Q \times Q \longrightarrow \mathcal{P}(V^*)$}
+\noindent{\textbf{备注 B.6}：有时候我们也使用把转移关系写成： $T^* \in Q \times Q \longrightarrow \mathcal{P}(V^*)$}
 \newline
 
 \noindent{\textbf{定义 B.7（左语言和右语言）}：状态（M中）的做语言由函数$ \overleftarrow{\mathcal{L}} _M \in Q \longrightarrow \mathcal{P}(V^*)$，其中} \\
 \mbox{　　}　$ \overleftarrow{\mathcal{L}}_M (q) = ( \cup s:s \in S : T^*(s,q) ) $ \\
 状态（$M$中）的右语言由函数$ \overrightarrow{\mathcal{L}} _M \in Q \longrightarrow \mathcal{P}(V^*)$给出，其中 \\
-\mbox{　　}　$ \overrightarrow{\mathcal{L}}_M (q) = ( \cup s:s \in S : T^*(s,q) ) $ \\
+\mbox{　　}　$ \overrightarrow{\mathcal{L}}_M (q) = ( \cup f:f \in F : T^*(q,f) ) $ \\
 通常在没有歧义的时候移除下标$M$。
 \newline
 
@@ -70,18 +70,18 @@
 \mbox{　　}　$ Useful_s (M) \equiv ( \forall q:q \in Q : \overleftarrow{\mathcal{L}} (q) \not= \emptyset ) $ \\
 
 \noindent{\textbf{定义 B.12（最终可行自动机）}：一个 $Useful_f$ 有限自动机定义如下：} \\
-\mbox{　　}　$ Useful_f (M) \equiv ( \forall q:q \in Q : \overleftarrow{\mathcal{L}} (q) \not= \emptyset ) $ \\
+\mbox{　　}　$ Useful_f (M) \equiv ( \forall q:q \in Q : \overrightarrow{\mathcal{L}} (q) \not= \emptyset ) $ \\
 
 \noindent{\textbf{备注 B.13}： $Useful_s$和$Useful_f$与 $FA$ 的反转密切相关（见变换 B.22），对所有的 $M \in FA$，有 $Useful_f (M) \equiv Useful_s (M^R)$。 \\
 
-\noindent{\textbf{定义 B.14（Useful 自动机）}：$Useful$自动机是一个 with only reachable states:  }\\
+\noindent{\textbf{定义 B.14（Useful 自动机）}：$Useful$自动机是一个只有可达状态的自动机：}\\
 \mbox{　　}　$ Useful (M) \equiv Useful_s (M) \land Useful_f (M) $ \\
 
 \noindent{\textbf{性质 B.15（确定性有限自动机（$DFA$））}：当且仅当 }
 \begin{itemize}
     \item [·] 无多重初始状态；
     \item [·] 无$\epsilon$转移；
-    \item [·] 转移函数$T \in Q \times V \longrightarrow \mathcal{P} (Q) $ 不将 $Q \times V$ 中的“对”映射至多重状态。
+    \item [·] 转移函数$T \in Q \times V \longrightarrow \mathcal{P} (Q) $ 不将 $Q \times V$ 映射至多重状态。
 \end{itemize}
 时有限自动机$M$是确定性的。\\
 形式表达为：
