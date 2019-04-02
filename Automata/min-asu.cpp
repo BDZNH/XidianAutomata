@@ -91,6 +91,6 @@ DFA& DFA::min_dragon()
 	}
 
 	compress(P);
-	assert(class_invariant());
+	assert (class_invariant());
 	return (*this);
 }
