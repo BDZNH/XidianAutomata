@@ -153,6 +153,7 @@
     <ClCompile Include="ISImpl.cpp" />
     <ClCompile Include="LBFA.cpp" />
     <ClCompile Include="min-asu.cpp" />
+    <ClCompile Include="min-hop.cpp" />
     <ClCompile Include="min-hu.cpp" />
     <ClCompile Include="min.cpp" />
     <ClCompile Include="RBFA.cpp" />

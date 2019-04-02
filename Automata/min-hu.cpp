@@ -14,6 +14,7 @@ Performance: This algorithm can be expected to run quite slowly, since it makes 
 	(TransRel and DTransRel) are optimized for forward transitions.
 
 *//****************************************************************************************/
+/*(c) Copyright 1994 by Bruce W. Watson */
 // $Revision 1.1 $
 // $Date: 1994/05/02 15:59:06 $
 
