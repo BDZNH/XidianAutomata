@@ -67,6 +67,7 @@ DFA& DFA::reverse()
 
 // Can all States reach a final State?
 // Implement Definition 2.23
+// pg 9
 int DFA::Usefulf() const
 {
 	assert(class_invariant());
