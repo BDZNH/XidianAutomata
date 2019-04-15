@@ -1,10 +1,10 @@
-/************************************************************************
+ï»¿/************************************************************************
 Implementation: All of the member functions are straight-forward implementations, with the
 exception of the minimization and reversal member functions. Those are further described
 later (the minimization member functions are discussed in Part IV). The constructor which
 takes a DFA_components object is only provided because most C++ compilers do not support
 template member functions yet. When these are fully supported, template function
-construcLcomponents will be inlined in the constructor.
+construct_components will be inlined in the constructor.
 
 Performance: Use-counting the classes used in the automata (such as DTransRel and StateSet)
 would improve performance on copy construction and assignment.
@@ -30,7 +30,7 @@ void DFA::restart()
 void DFA::advance(char a)
 {
 	assert(class_invariant());
-	assert(a != Invalid); //clang++ ±àÒë¾¯¸æ "comparison of constant -1 with expression of type 'char' is always true"£¬°´ÀíÀ´ËµcharÀàĞÍ²»»áÎª¸ºÖµ£¬ÁôÓĞÒÉÎÊ¡£
+	assert(a != Invalid); //clang++ ç¼–è¯‘è­¦å‘Š "comparison of constant -1 with expression of type 'char' is always true"ï¼ŒæŒ‰ç†æ¥è¯´charç±»å‹ä¸ä¼šä¸ºè´Ÿå€¼ï¼Œç•™æœ‰ç–‘é—®ã€‚
 	current = T.image(current, a);
 }
 int DFA::in_final() const
@@ -111,14 +111,15 @@ DFA& DFA::usefulf()
 			{
 				a = T.out_labels(st);
 				State stprime(newnames.lookup(st));
-
+				State stdest;
 				CharRange b;
 				int it;
 				// Construct the transitions.
 				for (it = 0; !a.iter_end(it); it++)
 				{
 					b = a.iterator(it);
-					ret.T.add_transition(stprime, b, newnames.lookup(T.transition_on_range(st, b)));
+					stdest = newnames.lookup(T.transition_on_range(st, b));
+					ret.T.add_transition(stprime, b, stdest);
 				}
 				// This may be a final State.
 				if (F.contains(st)) ret.F.add(stprime);
@@ -134,7 +135,7 @@ DFA& DFA::usefulf()
 	return(*this);
 }
 
-// ¸ø³ö×îĞ¡»¯µÈ¼Û¹ØÏµ£¬ËõĞ¡ DFA
+// ç»™å‡ºæœ€å°åŒ–ç­‰ä»·å…³ç³»ï¼Œç¼©å° DFA
 // Given a minimizing equivalence relation, shrink the DFA.
 DFA& DFA::compress(const StateEqRel& r)
 {
@@ -215,6 +216,7 @@ DFA& DFA::compress(const SymRel& r)
 	for (consider.iter_start(st); !consider.iter_end(st); consider.iter_next(st))
 	{
 		// st will always be the reprenstative of its class.
+		assert(st == r.image(st).smallest());  // 2019.04.13 æ–°å¢   [watok] Pg. 97
 		repr.add(st);
 
 		// give st the new name

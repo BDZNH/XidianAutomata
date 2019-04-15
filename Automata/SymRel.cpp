@@ -32,6 +32,7 @@ SymRel& SymRel::complement()
 	return(*this);
 }
 
+// flag 修改的地方
 // 修改为inline, 否则连接器找不到StateRel
 inline std::ostream& operator<<(std::ostream& os, const SymRel& r)
 {

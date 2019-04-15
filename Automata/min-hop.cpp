@@ -77,6 +77,7 @@ DFA& DFA::min_Hopcroft()
 		L[q] = C.size();
 	}
 
+	int count = 0;
 	// Use a break to get of this loop
 	while (1)
 	{
@@ -96,9 +97,12 @@ DFA& DFA::min_Hopcroft()
 			// Iterate over al eq. classes, and try to split them.
 			State p;
 			repr = P.representatives();
+			
+			//int count = 0;
 			for (repr.iter_start(p); !repr.iter_end(p); repr.iter_next(p))
 			{
 				// Now split [p] w.r.t (q.C_(L[q]))
+				count++;
 				State r(split(p, q, C.iterator(L[q]), P));
 				// r is the representative of the new split of the 
 				// eq. class that was represented by p.
