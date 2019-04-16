@@ -1,4 +1,4 @@
-/************************************************************************************
+ï»¿/************************************************************************************
 Implementation: A DSRFA contains a StateSet, representing the set of RFA States that make
 up a DFA state in the subset construction (under the right-biased interpretation of states).
 It also contains an integer indicating if the abstract state is a final one.
@@ -7,7 +7,7 @@ It also contains an integer indicating if the abstract state is a final one.
 #include "DSRFA.h"
 
 
-//// ³õÊ¼»¯ÁĞ±íµÄ³õÊ¼»¯Ë³ĞòÓ¦¸ÃÓë±äÁ¿ÉùÃ÷Ë³ĞòÏàÍ¬ "warning will be initialized after [-Wreorder]"
+//// åˆå§‹åŒ–åˆ—è¡¨çš„åˆå§‹åŒ–é¡ºåºåº”è¯¥ä¸å˜é‡å£°æ˜é¡ºåºç›¸åŒ "warning will be initialized after [-Wreorder]"
 // Use the RBFA interpretation of State's (Section 4.3 of the Taxonomy).
 // A special constructor:
 DSRFA::DSRFA(const StateSet& rq,
@@ -33,6 +33,7 @@ CRSet DSRFA::out_labels() const
 	return(Qmap_inverse->labels_into(which));
 }
 
+//// åˆå§‹åŒ–åˆ—è¡¨çš„åˆå§‹åŒ–é¡ºåºåº”è¯¥ä¸å˜é‡å£°æ˜é¡ºåºç›¸åŒ "warning will be initialized after [-Wreorder]"
 // Pretty much follow the stuff in rbfa.cpp
 DSRFA DSRFA::out_transition(const CharRange a) const
 {

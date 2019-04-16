@@ -37,8 +37,6 @@ functions are pure virtual; the acceptable member function is defined.
 // Just mention DFA here, since circularity would be a problem if we include DFA.h.
 class DFA;
 
-// 抽象FA，所有其他的自动机类都从这个类派生出去。
-// 支持基本的FA操作
 // Abstract finite automaton. All other automaton types are derived from this one.
 // Basic FA operations are supported.
 class FAabs

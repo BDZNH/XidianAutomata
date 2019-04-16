@@ -151,7 +151,7 @@ int RE::in_snf() const
 		break;
 	case CONCAT:
 		// A CONCAT is in SNF if the subexpressions are in SNF.
-		ret = left->in_snf() || right->in_snf();
+		ret = left->in_snf() && right->in_snf();
 		break;
 	case STAR:
 	case PLUS:
@@ -351,8 +351,9 @@ RE RE::derivative(const CharRange& r) const
 	case EPSILON:
 	case EMPTY:
 		assert(e.op == EMPTY);
+		break;
 	case SYMBOL:
-		if (r <= sym)
+		if (r <= sym) // if (a = b) then epsilon else 0 fi
 		{
 			e.op = EPSILON;
 			assert(e.class_invariant());
@@ -453,6 +454,8 @@ int RE::ordering(const RE& r) const
 }
 
 // Put *this into OR normal form(ONF) (used in the snf functions)
+// The ONF is used to provide the equivalent of a multi-ary OR operator, implementing the associativity,
+// commutativity and idempotence of the OR operator, as detailed in [Wat93a, Definition 5.26]
 RE& RE::onf()
 {
 	assert(class_invariant());

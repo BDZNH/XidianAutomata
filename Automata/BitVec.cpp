@@ -12,7 +12,7 @@
 
 #include "BitVec.h"
 
-// ¿½±´¹¹Ôìº¯Êý
+
 // Normal copy constructor.
 BitVec::BitVec(const BitVec& r):
 	bits_in_use(r.bits_in_use),

@@ -1,4 +1,4 @@
-/************************************************************************
+ï»¿/************************************************************************
 Implementation class: StateSet
 
 Files: StateSet.h, StateSet.cpp
@@ -26,9 +26,9 @@ with the disjointing_union member function.
 
 
 #include<iostream>
- // È¥ÏÂĞĞ×¢ÊÍÔò½ûÓÃ assert()
+ // å»ä¸‹è¡Œæ³¨é‡Šåˆ™ç¦ç”¨ assert()
  // #define NDEBUG
-#include <cassert>  // ±ØĞë°üº¬
+#include <cassert>  // å¿…é¡»åŒ…å«
 #include "State.h"
 #include "BitVec.h"
 
@@ -39,13 +39,13 @@ with the disjointing_union member function.
 	(to avoid a name clash). The capacity of a StateSet must be explicitly managed; many
 	set operations are not bounds-checked when assert() is turned off.
 	===================================================
-	set_domain(const int r)ÉèÖÃ×î´ó°üº¬µÄ×´Ì¬Êı£¬state of index = [0,r)
-	int domain()return ÉÏÊöº¯ÊıÉèÖÃµÄÈİÁ¿
-	int size() return ×´Ì¬Êı£¬this StateSetÖĞÒÑ¾­bit±»ÉèÖÃµÄ×´Ì¬×ÜºÍ¡£ states index = [0,size())
-	add(const int r), r = [0,domain()),Ìí¼Ó×´Ì¬r
-	smallest(),·µ»Ø×îĞ¡×´Ì¬µÄindex[0,domain())
-	int constins(const State r); r = [0,domain()),r×´Ì¬ÊÇ·ñ°üº¬ÔÚthisÖĞ¡£
-	int contains(const StateSet &r); rµÄ¡¾ËùÓĞ×´Ì¬¡¿ÊÇ·ñ°üº¬ÔÚthisÖĞ¡£precondition: this.domain() == r.domain
+	set_domain(const int r)è®¾ç½®æœ€å¤§åŒ…å«çš„çŠ¶æ€æ•°ï¼Œstate of index = [0,r)
+	int domain()return ä¸Šè¿°å‡½æ•°è®¾ç½®çš„å®¹é‡
+	int size() return çŠ¶æ€æ•°ï¼Œthis StateSetä¸­å·²ç»bitè¢«è®¾ç½®çš„çŠ¶æ€æ€»å’Œã€‚ states index = [0,size())
+	add(const int r), r = [0,domain()),æ·»åŠ çŠ¶æ€r
+	smallest(),è¿”å›æœ€å°çŠ¶æ€çš„index[0,domain())
+	int constins(const State r); r = [0,domain()),rçŠ¶æ€æ˜¯å¦åŒ…å«åœ¨thisä¸­ã€‚
+	int contains(const StateSet &r); rçš„ã€æ‰€æœ‰çŠ¶æ€ã€‘æ˜¯å¦åŒ…å«åœ¨thisä¸­ã€‚precondition: this.domain() == r.domain
 
 	// Does this set have something in common with r?
 	// precondition: this.domain() == r.domain().
@@ -54,12 +54,12 @@ with the disjointing_union member function.
 	// Set difference, precondition: this.domain() == r.domain(). this will be modified.
 	StateSet& remove(const StateSet& r); this = this - r
 
-	// complement() thisµÄ²¹¼¯£¬this½«±»ĞŞ¸ÄÎªËüµÄ²¹¼¯
+	// complement() thisçš„è¡¥é›†ï¼Œthiså°†è¢«ä¿®æ”¹ä¸ºå®ƒçš„è¡¥é›†
 	// Set intersection. precondition: this.domain() == r.domain(). this will be modified.
 
-	set_union()ºÍdisjointing_union()¶¼ÊÇ¼ÆËãÁ½¸öStateSet¼¯ºÏµÄ²¢¼¯
-	set_union(const State& r) Á½¸öStateSet¼¯ºÏµÄÈİÁ¿(domain)±ØĞë²»Í¬£¬×´Ì¬index½»¼¯²¿·Ö±»ºÏ²¢, ×´Ì¬index²»ÖØÃüÃû¡£
-	disjointing_union(const State& r) Á½¸öStateSet¼¯ºÏµÄÈİÁ¿(domain)¿ÉÒÔ²»Í¬£¬×´Ì¬index¿ÉÒÔÓĞ½»¼¯¡£½»¼¯²¿·Ö²»ºÏ²¢£¬²¢¼¯ºóµÄ×´Ì¬index±»ÖØÃüÃû£¬×´Ì¬ÊıÊÇ¶şÕßµÄºÍ¡£
+	set_union()å’Œdisjointing_union()éƒ½æ˜¯è®¡ç®—ä¸¤ä¸ªStateSeté›†åˆçš„å¹¶é›†
+	set_union(const State& r) ä¸¤ä¸ªStateSeté›†åˆçš„å®¹é‡(domain)å¿…é¡»ä¸åŒï¼ŒçŠ¶æ€indexäº¤é›†éƒ¨åˆ†è¢«åˆå¹¶, çŠ¶æ€indexä¸é‡å‘½åã€‚
+	disjointing_union(const State& r) ä¸¤ä¸ªStateSeté›†åˆçš„å®¹é‡(domain)å¯ä»¥ä¸åŒï¼ŒçŠ¶æ€indexå¯ä»¥æœ‰äº¤é›†ã€‚äº¤é›†éƒ¨åˆ†ä¸åˆå¹¶ï¼Œå¹¶é›†åçš„çŠ¶æ€indexè¢«é‡å‘½åï¼ŒçŠ¶æ€æ•°æ˜¯äºŒè€…çš„å’Œã€‚
 
 	// Rename the elements of this StateSet so that they don't fall within StatePool r.
 	// all states index in this ==> + r ==> left shift r
@@ -149,9 +149,7 @@ public:
 	// [O, domain()) can be contained in *this.
 	inline int domain() const;
 
-	// ÉèÖÃµ±Ç°¼¯ºÏÄÜ°üº¬¶àÉÙ×´Ì¬
 	// set How many States can this set contain.
-	// [0, r) ¿É±»Ìí¼Óµ½µ±Ç°¼¯ºÏÄÚ
 	// [O, r) can be contained in *this.
 	inline void set_domain(const int r);
 

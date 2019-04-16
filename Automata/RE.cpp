@@ -1,4 +1,4 @@
-/**********************************************************************************
+ï»¿/**********************************************************************************
 	Implementation: Regular expressions are implemented as expression trees. The comparison of
 regular expressions is defined recursively and uses a depth-first traversal.
 
@@ -18,7 +18,8 @@ RE::RE(const RE& e) :op(e.op),right(0) // Only the right on purpose.
 	{
 	case EPSILON:
 	case EMPTY:
-		left = 0; break;
+		left = 0;
+		break;
 	case SYMBOL:
 		left = 0;
 		// Now it's safe to copy the sym.
@@ -45,7 +46,7 @@ RE::~RE()
 	delete right;
 }
 
-const RE& RE::operator = (const RE& e)
+const RE& RE::operator=(const RE& e)
 {
 	assert(e.class_invariant());
 	op = e.op;
@@ -162,7 +163,7 @@ std::ostream& operator<<(std::ostream& os, const RE& r)
 		os << "+ " << r.left_subexpr();
 		break;
 	case QUESTION:
-		os << "? " << r.left_subexpr();  //convert "£¿"   to "?"
+		os << "? " << r.left_subexpr();  //convert "ï¼Ÿ"   to "?"
 		break;
 	default:
 		// Shold throw() something!
@@ -240,10 +241,44 @@ std::istream& operator>>(std::istream& is, RE& r)
 		case '\'':
 			is >> c;
 			r.sym = CharRange(c);
-		default:
-			// Shold throw() something!
+			r.op = SYMBOL;
+			is >> c;
+			if (c != '\'')
+			{
+				std::cerr << "Single character terminated incorrectly\n";
+				is.clear(std::ios::badbit | is.rdstate());
+			}
 			break;
+		case '|':
+			r.op = CONCAT;
+			r.left = new RE;
+			r.right = new RE;
+			is >> *r.left;
+			is >> *r.right;
+			break;
+		case '*':
+		case '+':
+		case '?':
+			if (c == '*')
+			{
+				r.op = STAR;
+			}
+			else if (c == '+')
+			{
+				r.op = PLUS;
+			}
+			else if (c == '?')
+			{
+				r.op = QUESTION;
+			}
+			r.left = new RE;
+			is >> *r.left;
+			break;
+		default:
+			std::cerr << "Something went wrong\n";
+			is.clear(std::ios::badbit | is.rdstate());
 		}
+		assert(r.class_invariant());
 	}
 	return(is);
 }

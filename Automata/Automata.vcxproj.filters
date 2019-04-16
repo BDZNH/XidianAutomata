@@ -165,14 +165,17 @@
     <ClCompile Include="min-asu.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="min-hu.cpp">
+    <ClCompile Include="min-bww.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="min-hop.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="min-bww.cpp">
+    <ClCompile Include="min-hu.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test\DFATest2.cpp">
+      <Filter>Test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -305,6 +308,5 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Makefile" />
-    <None Include="README.md" />
   </ItemGroup>
 </Project>

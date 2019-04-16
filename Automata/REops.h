@@ -30,7 +30,7 @@ enum REops
 	SYMBOL,  // constant, CharRange, a1,a2,...,an
 	OR,      // binary operator, |: or(union) operator,Reg x Reg --> Reg 
 	CONCAT,  // binary operator, dot operator, Reg x Reg --> Reg
-	STAR,    // unary operator, *: Reg --> Reg
+	STAR,    // unary operator, *: Reg --> Reg 
 	PLUS,    // unary operator, +: Reg --> Reg
 	QUESTION // unary operator, ?: Reg --> Reg
 };
