@@ -1,10 +1,10 @@
-﻿/************************************************************************
+/************************************************************************
 Implementation: All of the member functions are straight-forward implementations, with the
 exception of the minimization and reversal member functions. Those are further described
 later (the minimization member functions are discussed in Part IV). The constructor which
 takes a DFA_components object is only provided because most C++ compilers do not support
 template member functions yet. When these are fully supported, template function
-construct_components will be inlined in the constructor.
+construcLcomponents will be inlined in the constructor.
 
 Performance: Use-counting the classes used in the automata (such as DTransRel and StateSet)
 would improve performance on copy construction and assignment.
@@ -30,7 +30,7 @@ void DFA::restart()
 void DFA::advance(char a)
 {
 	assert(class_invariant());
-	assert(a != Invalid); //clang++ 编译警告 "comparison of constant -1 with expression of type 'char' is always true"，按理来说char类型不会为负值，留有疑问。
+	assert(a != Invalid);
 	current = T.image(current, a);
 }
 int DFA::in_final() const
@@ -57,8 +57,6 @@ DFA& DFA::reverse()
 	// Make sure that *this is structurally sound.
 	assert(class_invariant());
 	// Now construct the DFA components from an abstract DFA state.
-	// function,File DFAseed.h: DFA_components construct_components(const T& abs_start)  
-	// DSDFARev.h class DSDFARev: DSDFARev::DSDFARev(const StateSet& rq, const DTransRel *rT, const StateSet *rS);
 	reconstruct(construct_components(DSDFARev(F, &T, &S)));
 	return(*this);
 }
@@ -67,7 +65,6 @@ DFA& DFA::reverse()
 
 // Can all States reach a final State?
 // Implement Definition 2.23
-// pg 9
 int DFA::Usefulf() const
 {
 	assert(class_invariant());
@@ -85,6 +82,7 @@ DFA& DFA::usefulf()
 	StateSet freachable(T.reverse_closure(F));
 	StateTo<State> newnames;
 	newnames.set_domain(Q.size());
+
 	
 	// All components will be constructed into a special structure :
 	DFA_components ret;
@@ -93,11 +91,32 @@ DFA& DFA::usefulf()
 	{
 		// If this is a Usefulf State, carry it over by giving it a name
 		// in the new DFA.
-		if (freachable.contains(st)) newnames.map(st) = ret.Q.allocate();
+		if (freachable.contains(st))
+		{
+			newnames.map(st) = ret.Q.allocate();
+		}
 	}
+
+#ifdef FIX
+	for (st = 0; st < Q.size(); st++)
+	{
+		// If this is a Usefulf State, carry it over by giving it a name
+		// in the new DFA.
+		if (st >= ret.Q.size())
+		{
+			newnames.map(st) = Invalid;
+		}
+	}
+#endif // FIX
+
+
+	
+
+
 
 	// It is possible that nothing needs to be done(ie.the all States were
 	// already F useful).
+	int count = 0;
 	if (Q.size() != ret.Q.size())
 	{
 		ret.T.set_domain(ret.Q.size());
@@ -112,14 +131,25 @@ DFA& DFA::usefulf()
 				a = T.out_labels(st);
 				State stprime(newnames.lookup(st));
 				State stdest;
+
 				CharRange b;
 				int it;
 				// Construct the transitions.
 				for (it = 0; !a.iter_end(it); it++)
 				{
+					count++;
 					b = a.iterator(it);
-					stdest = newnames.lookup(T.transition_on_range(st, b));
-					ret.T.add_transition(stprime, b, stdest);
+					State temp = T.transition_on_range(st, b);
+					stdest = newnames.lookup(temp);
+#ifdef FIX
+					if (stprime != Invalid && stdest != Invalid)
+					{
+#endif // FIX
+						ret.T.add_transition(stprime, b, stdest);
+#ifdef FIX
+					}
+#endif // FIX
+
 				}
 				// This may be a final State.
 				if (F.contains(st)) ret.F.add(stprime);
@@ -135,7 +165,6 @@ DFA& DFA::usefulf()
 	return(*this);
 }
 
-// 给出最小化等价关系，缩小 DFA
 // Given a minimizing equivalence relation, shrink the DFA.
 DFA& DFA::compress(const StateEqRel& r)
 {
@@ -216,7 +245,7 @@ DFA& DFA::compress(const SymRel& r)
 	for (consider.iter_start(st); !consider.iter_end(st); consider.iter_next(st))
 	{
 		// st will always be the reprenstative of its class.
-		assert(st == r.image(st).smallest());  // 2019.04.13 新增   [watok] Pg. 97
+		assert(st == r.image(st).smallest());
 		repr.add(st);
 
 		// give st the new name

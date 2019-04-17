@@ -211,7 +211,6 @@ DFA_components DfaCom1(int n)
 		// StateSet S  开始状态集
 		dfa_com1.S.set_domain(10);
 		dfa_com1.S.add(0);
-		//dfa_com1.S.add(1);
 
 		// StateSet F  结束状态集
 		dfa_com1.F.set_domain(10);
@@ -230,8 +229,8 @@ DFA_components DfaCom1(int n)
 		dfa_com1.T.set_domain(10);
 		dfa_com1.T.add_transition(0, '0', 1);
 		dfa_com1.T.add_transition(0, '1', 2);
-		dfa_com1.T.add_transition(1, '1', 3);
 		dfa_com1.T.add_transition(1, '0', 0);
+		dfa_com1.T.add_transition(1, '1', 3);
 		dfa_com1.T.add_transition(2, '0', 4);
 		dfa_com1.T.add_transition(2, '1', 5);
 		dfa_com1.T.add_transition(3, '0', 4);
@@ -373,22 +372,24 @@ void MinimiAlgorithm(DFA_components dfa_com)
 	cout << "original FA:" << endl;
 	cout << dfa1 << endl;
 	string s = dfa1.Usefulf() ? "yes" : "no";
-	cout << "Is the FA Usefulf?:  " << s << "\n\n" << endl;
+	//cout << "Is the FA Usefulf?:  " << s << "\n\n" << endl;
 
-	cout << "*****************************" << endl;
-	cout << "Minimized by DFA::min_Brzozowski():" << endl;
-	cout << "Usefulf required ?: false" << endl;
-	DFA dfa2(dfa1);
-	dfa2.min_Brzozowski();
-	cout << dfa2 << endl;
-	s = dfa2.Usefulf() ? "yes" : "no";
-	cout << "Is the FA Usefulf?:  " << s << "\n\n" << endl;
+	//cout << "*****************************" << endl;
+	//cout << "Minimized by DFA::min_Brzozowski():" << endl;
+	//cout << "Usefulf required ?: false" << endl;
+	//DFA dfa2(dfa1);
+	//dfa2.min_Brzozowski();
+	//cout << dfa2 << endl;
+	//s = dfa2.Usefulf() ? "yes" : "no";
+	//cout << "Is the FA Usefulf?:  " << s << "\n\n" << endl;
 
-	cout << "*****************************" << endl;
-	cout << "Minimized by DFA::min_HopcroftUllman():" << endl;
-	cout << "Usefulf required ?: true" << endl;
+	//cout << "*****************************" << endl;
+	//cout << "Minimized by DFA::min_HopcroftUllman():" << endl;
+	//cout << "Usefulf required ?: true" << endl;
 	DFA dfa3(dfa1);
+	cout << dfa3 << endl;
 	dfa3.usefulf();
+	cout << dfa3 << endl;
 	dfa3.min_HopcroftUllman();
 	cout << dfa3 << endl;
 	s = dfa3.Usefulf() ? "yes" : "no";
