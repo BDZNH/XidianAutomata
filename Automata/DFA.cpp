@@ -76,6 +76,7 @@ int DFA::Usefulf() const
 // (This is a last step in minimization, since some of the min. algorithms may yield 
 // a DFA with a sink state.)
 // Implement Remark 2.39  removing states that are not final - reachable.
+#define FIX
 DFA& DFA::usefulf()
 {
 	assert(class_invariant());
@@ -95,28 +96,17 @@ DFA& DFA::usefulf()
 		{
 			newnames.map(st) = ret.Q.allocate();
 		}
-	}
-
 #ifdef FIX
-	for (st = 0; st < Q.size(); st++)
-	{
-		// If this is a Usefulf State, carry it over by giving it a name
-		// in the new DFA.
-		if (st >= ret.Q.size())
+		else
 		{
 			newnames.map(st) = Invalid;
 		}
-	}
 #endif // FIX
-
-
-	
-
+	}
 
 
 	// It is possible that nothing needs to be done(ie.the all States were
 	// already F useful).
-	int count = 0;
 	if (Q.size() != ret.Q.size())
 	{
 		ret.T.set_domain(ret.Q.size());
@@ -137,19 +127,15 @@ DFA& DFA::usefulf()
 				// Construct the transitions.
 				for (it = 0; !a.iter_end(it); it++)
 				{
-					count++;
 					b = a.iterator(it);
-					State temp = T.transition_on_range(st, b);
-					stdest = newnames.lookup(temp);
 #ifdef FIX
-					if (stprime != Invalid && stdest != Invalid)
+					if (stprime != Invalid && newnames.lookup(T.transition_on_range(st, b)) != Invalid)
 					{
 #endif // FIX
-						ret.T.add_transition(stprime, b, stdest);
+					ret.T.add_transition(stprime, b, newnames.lookup(T.transition_on_range(st, b)));
 #ifdef FIX
 					}
 #endif // FIX
-
 				}
 				// This may be a final State.
 				if (F.contains(st)) ret.F.add(stprime);

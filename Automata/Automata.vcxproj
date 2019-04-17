@@ -171,6 +171,7 @@
     <ClCompile Include="Test\CRSetTest.cpp" />
     <ClCompile Include="Test\DFATest.cpp" />
     <ClCompile Include="Test\DFATest2.cpp" />
+    <ClCompile Include="Test\DFAusefulTest.cpp" />
     <ClCompile Include="Test\RFATest.cpp" />
     <ClCompile Include="Test\StateRelTest.cpp" />
     <ClCompile Include="Test\StateSetTest.cpp" />

@@ -177,6 +177,9 @@
     <ClCompile Include="Test\DFATest2.cpp">
       <Filter>Test</Filter>
     </ClCompile>
+    <ClCompile Include="Test\DFAusefulTest.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BitVec.h">

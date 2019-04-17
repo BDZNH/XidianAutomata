@@ -6,6 +6,7 @@ void TransTest();
 void ThompsonTest();
 void RFATest();
 void DFATest();
+void DFA_usefulf();
 
 void AutomataTest()
 {
@@ -17,7 +18,8 @@ void AutomataTest()
 	ThompsonTest();
 	RFATest();*/
 
-	DFATest();
+	//DFATest();
+	DFA_usefulf();
 
 	//int double 
 	//CharRange
