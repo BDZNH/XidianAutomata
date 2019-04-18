@@ -9,7 +9,7 @@ void MinimiAlgorithm(DFA_components dfa_com);
 
 void DFATest()
 {
-	DFA_components dfa_com = DfaCom1(4);
+	DFA_components dfa_com = DfaCom1(8);
 	MinimiAlgorithm(dfa_com);
 
 }
@@ -298,8 +298,8 @@ DFA_components DfaCom1(int n)
 		dfa_com1.T.add_transition(7, '0', 6);
 		dfa_com1.T.add_transition(8, '1', 4);
 		dfa_com1.T.add_transition(8, '0', 5);
-		dfa_com1.T.add_transition(9, '0', 7);
-		dfa_com1.T.add_transition(9, '1', 5);
+		/*dfa_com1.T.add_transition(9, '0', 7);
+		dfa_com1.T.add_transition(9, '1', 5);*/
 	}
 	break;
 	case 6:
@@ -359,6 +359,128 @@ DFA_components DfaCom1(int n)
 		dfa_com1.T.add_transition(6, 'b', 5);
 	}
 		break;
+	case 7:
+	{
+		/*
+			初始化这样一个DFA (此表格的意义可以查看《形式语言与自动机理论》（ISBN 978-7-302-31802-6）pg. 73)
+			状态说明   状态    输入字符 (《形式语言与自动机理论》（ISBN 978-7-302-31802-6）pg. 154  fig. 5-7  去除状态9 )
+								0      1
+				start	q0      q1     q5
+						q1      q2     q5
+						q2      q3     q6
+						q3      q2     q4
+				accept  q4      q8     q1
+						q5      q1     q6
+						q6      q7     q2
+						q7      q6     q8
+				accept  q8      q5     q5
+
+
+			预期结果：q9为不可达状态，该自动机去除q9后为一个最小自动机
+		*/
+
+		// StateSet S  开始状态集
+		dfa_com1.S.set_domain(10);
+		dfa_com1.S.add(0);
+		//dfa_com1.S.add(1);
+
+		// StateSet F  结束状态集
+		dfa_com1.F.set_domain(10);
+		dfa_com1.F.add(4);
+		dfa_com1.F.add(8);
+
+		/*int i = 10;
+		while (i--)
+		{
+			dfa_com1.Q.allocate();
+		}*/
+
+		dfa_com1.Q.set_domain(10);
+
+		dfa_com1.T.set_domain(10);
+		dfa_com1.T.add_transition(0, '0', 1);
+		dfa_com1.T.add_transition(0, '1', 5);
+		dfa_com1.T.add_transition(1, '1', 2);
+		dfa_com1.T.add_transition(1, '0', 5);
+		dfa_com1.T.add_transition(2, '0', 3);
+		dfa_com1.T.add_transition(2, '1', 6);
+		dfa_com1.T.add_transition(3, '0', 2);
+		dfa_com1.T.add_transition(3, '1', 4);
+		dfa_com1.T.add_transition(4, '0', 8);
+		dfa_com1.T.add_transition(4, '1', 1);
+		dfa_com1.T.add_transition(5, '0', 1);
+		dfa_com1.T.add_transition(5, '1', 6);
+		dfa_com1.T.add_transition(6, '1', 2);
+		dfa_com1.T.add_transition(6, '0', 7);
+		dfa_com1.T.add_transition(7, '1', 8);
+		dfa_com1.T.add_transition(7, '0', 6);
+		dfa_com1.T.add_transition(8, '1', 4);
+		dfa_com1.T.add_transition(8, '0', 5);
+		/*dfa_com1.T.add_transition(9, '0', 7);
+		dfa_com1.T.add_transition(9, '1', 5);*/
+	}
+		break;
+	case 8:
+	{
+		/*
+			初始化这样一个DFA (此表格的意义可以查看《形式语言与自动机理论》（ISBN 978-7-302-31802-6）pg. 73)
+			状态说明   状态    输入字符 (《形式语言与自动机理论》（ISBN 978-7-302-31802-6）pg. 154  fig. 5-7  去除状态9 )
+								0      1
+				start	q0      q1     q5
+						q1      q2     q5
+						q2      q3     q6
+						q3      q2     q4
+				accept  q4      q8     q1
+						q5      q1     q6
+						q6      q7     q2
+						q7      q6     q8
+				accept  q8      q5     q5
+
+
+			预期结果：q9为不可达状态，该自动机去除q9后为一个最小自动机
+		*/
+
+		// StateSet S  开始状态集
+		dfa_com1.S.set_domain(10);
+		dfa_com1.S.add(0);
+		//dfa_com1.S.add(1);
+
+		// StateSet F  结束状态集
+		dfa_com1.F.set_domain(10);
+		dfa_com1.F.add(4);
+		dfa_com1.F.add(8);
+
+		/*int i = 10;
+		while (i--)
+		{
+			dfa_com1.Q.allocate();
+		}*/
+
+		dfa_com1.Q.set_domain(10);
+
+		dfa_com1.T.set_domain(10);
+		dfa_com1.T.add_transition(0, '0', 1);
+		dfa_com1.T.add_transition(0, '1', 5);
+		dfa_com1.T.add_transition(1, '1', 2);
+		//dfa_com1.T.add_transition(1, '0', 5);
+		dfa_com1.T.add_transition(2, '0', 3);
+		//dfa_com1.T.add_transition(2, '1', 6);
+		//dfa_com1.T.add_transition(3, '0', 2);
+		dfa_com1.T.add_transition(3, '1', 4);
+		dfa_com1.T.add_transition(4, '0', 8);
+		//dfa_com1.T.add_transition(4, '1', 1);
+		//dfa_com1.T.add_transition(5, '0', 1);
+		dfa_com1.T.add_transition(5, '1', 6);
+		//dfa_com1.T.add_transition(6, '1', 2);
+		dfa_com1.T.add_transition(6, '0', 7);
+		dfa_com1.T.add_transition(7, '1', 8);
+		//dfa_com1.T.add_transition(7, '0', 6);
+		dfa_com1.T.add_transition(8, '1', 4);
+		//dfa_com1.T.add_transition(8, '0', 5);
+		/*dfa_com1.T.add_transition(9, '0', 7);
+		dfa_com1.T.add_transition(9, '1', 5);*/
+	}
+		break;
 	default:
 		break;
 	}
@@ -372,24 +494,23 @@ void MinimiAlgorithm(DFA_components dfa_com)
 	cout << "original FA:" << endl;
 	cout << dfa1 << endl;
 	string s = dfa1.Usefulf() ? "yes" : "no";
-	//cout << "Is the FA Usefulf?:  " << s << "\n\n" << endl;
+	cout << "Is the FA Usefulf?:  " << s << "\n\n" << endl;
 
-	//cout << "*****************************" << endl;
-	//cout << "Minimized by DFA::min_Brzozowski():" << endl;
-	//cout << "Usefulf required ?: false" << endl;
-	//DFA dfa2(dfa1);
-	//dfa2.min_Brzozowski();
-	//cout << dfa2 << endl;
-	//s = dfa2.Usefulf() ? "yes" : "no";
-	//cout << "Is the FA Usefulf?:  " << s << "\n\n" << endl;
+	cout << "*****************************" << endl;
+	cout << "Minimized by DFA::min_Brzozowski():" << endl;
+	cout << "Usefulf required ?: false" << endl;
+	DFA dfa2(dfa1);
+	dfa2.min_Brzozowski();
+	cout << dfa2 << endl;
+	s = dfa2.Usefulf() ? "yes" : "no";
+	cout << "Is the FA Usefulf?:  " << s << "\n\n" << endl;
 
-	//cout << "*****************************" << endl;
-	//cout << "Minimized by DFA::min_HopcroftUllman():" << endl;
-	//cout << "Usefulf required ?: true" << endl;
+	cout << "*****************************" << endl;
+	cout << "Minimized by DFA::min_HopcroftUllman():" << endl;
+	cout << "Usefulf required ?: true" << endl;
 	DFA dfa3(dfa1);
 	cout << dfa3 << endl;
 	dfa3.usefulf();
-	cout << dfa3 << endl;
 	dfa3.min_HopcroftUllman();
 	cout << dfa3 << endl;
 	s = dfa3.Usefulf() ? "yes" : "no";

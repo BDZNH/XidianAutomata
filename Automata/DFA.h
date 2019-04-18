@@ -13,10 +13,6 @@ the subset construction (see (Wat93a, p. 12-13] for the subset construction).
  ************************************************************************/
 //#pragma once
 
-
-
-
-
 #ifndef AUTOMATA_DFA_H
 #define AUTOMATA_DFA_H
 
@@ -154,13 +150,11 @@ inline DFA& DFA::min_Brzozowski()
 
 inline int DFA::class_invariant() const
 {
-	int ans = ( Q.size() == S.domain()
+	return(Q.size() == S.domain()
 		&& Q.size() == F.domain()
 		&& Q.size() == T.domain()
 		&& current < Q.size()
-		&& S.size() <= 1 );
-
-	return(ans);
+		&& S.size() <= 1);
 }
 
 
