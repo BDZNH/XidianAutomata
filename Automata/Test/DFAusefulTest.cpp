@@ -44,9 +44,7 @@ void DFA_usefulf1()
 
 	// StateSet F  结束状态集
 	dfa_com1.F.set_domain(10);
-	dfa_com1.F.add(2);
 	dfa_com1.F.add(3);
-	dfa_com1.F.add(4);
 
 	int i = 10;
 	while (i--)
@@ -68,9 +66,9 @@ void DFA_usefulf1()
 
 	//实例化一个DFA对象
 	DFA dfa1(dfa_com1);
+	cout << "\n\n****************************************************\n\n" << std::flush;
 	cout << dfa1 << endl;
 	cout << " is the DFA Usefulf ?: " << dfa1.Usefulf() << endl;
-	cout << "\n\n****************************************************\n\n" << std::flush;
 	dfa1.usefulf();
 	cout << dfa1 << endl;
 	cout << " is the DFA Usefulf ?: " << dfa1.Usefulf() << endl;
@@ -135,9 +133,9 @@ void DFA_usefulf2()
 
 	//实例化一个DFA对象
 	DFA dfa1(dfa_com1);
+	cout << "\n\n****************************************************\n\n" << std::flush;
 	cout << dfa1 << endl;
 	cout << " is the DFA Usefulf ?: " << dfa1.Usefulf() << endl;
-	cout << "\n\n****************************************************\n\n" << std::flush;
 	dfa1.usefulf();
 	cout << dfa1 << endl;
 	cout << " is the DFA Usefulf ?: " << dfa1.Usefulf() << endl;
