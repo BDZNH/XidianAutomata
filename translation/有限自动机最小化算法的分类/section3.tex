@@ -3,13 +3,13 @@
 本节中，我们限定在完全DFA的最小化中。\uline{This is strictly a notational convenience, as the minimization algorithm can be modified to work for non-complete DFA.严格地说，这是一种标记的便利，因为可以对缩小算法进行修改，使其适用于不完全DFA。} 除非$DFA$的语言是$V^*$，否则完全最小化$DFA$比不完全最小化DFA多一个状态(下沉态)。令 $ M = (Q,V,T,\theta,S,F)$ 为完全$DFA$，这个特殊的$DFA$将会贯穿本节内容。我们也假设所有的 $M$ 的所有状态都是开始可达的，也就是$Useful_s(M)$。由于 $M$ 是确定且完全的$DFA$，也把转换关系 $T \in Q \times V \longrightarrow Q$ 称为全函数，而不是 $T \in Q \times V \longrightarrow \mathcal{P}(Q)$.
 
 为了最小化 $DFA$ $M$，我们计算等价关系 $E \subseteq Q \times Q$,将其定义为\\
-$\mbox{　　　} (p,q) \in E \equiv ( \overrightarrow{\mathcal{L}}(p) = \overrightarrow{\mathcal{L}}(p) )$ \\
-\uline{Since this is an equivalence relation, we are really interested in unordered pairs of states. 由于这是一个等价关系，我们确实对无序状态对有兴趣}，使用有序对比使用无需对更方便。
+$\mbox{　　　} (p,q) \in E \equiv ( \overrightarrow{\mathcal{L}}(p) = \overrightarrow{\mathcal{L}}(q) )$ \\
+\uline{Since this is an equivalence relation, we are really interested in unordered pairs of states. 由于这是一个等价关系，我们确实对无序状态对有兴趣}，使用有序对比使用无序对更方便。
 
 根据等价关系 $E$ ，使用 \textit{merge} 转换来对等价关系进行转换。
 \newline
 
-\noindent{\textbf{转换 3.1 (合并状态)} : 对于任何满足 $ H \in E $ 的等价关系 $H$, 函数 $merge$ 可以用来减少 ${DFA}$\footnote{当$H$是状态上的恒等关系时，函数$merge$不会减少状态的数量。} (\textit{当H是状态上的恒等关系时，函数$merge$ 不会减少状态数})的状态数，函数 $merge$ 定义为：}
+\noindent{\textbf{转换 3.1 (合并状态)} : 对于任何满足 $ H \in E $ 的等价关系 $H$, 函数 $merge$ 可以用来减少 ${DFA}$的状态数\footnote{当$H$是状态上的恒等关系时，函数$merge$不会减少状态的数量。} ，函数 $merge$ 定义为：}
 
 \begin{displaymath}
     \begin{split}
@@ -26,7 +26,7 @@ $merge$ 的定义依赖于等价类代表的选择。函数 $merge$ 拥有以下
 \begin{equation*}
     \mathcal{L}_{FA}(merge(M,H)) = \mathcal{L}_{FA}(M) \land | merge(M,H) | \leq |M| \land | merge(M,H)| = \sharp H
 \end{equation*}
-and it preserves $Complete,\epsilon$-$free,Useful,Det,and minimal$; indeed, $merge$ 仅定义在 $\epsilon$-$free$ 和 $DFA$ 上。
+它保持了 $Complete$, $\epsilon$-$free$, $Useful$, $Det$, 和 $minimal$ 等性质; 当然, $merge$ 仅定义在 $\epsilon$-$free$ 和 $DFA$ 上。
 
 为了计算关系$E$, 需要函数$\overrightarrow{\mathcal{L}}$的一个性质。
 \newline
@@ -83,13 +83,13 @@ $$ (p,q) \in D_{k+1} \equiv (p,q) \in D_k \land ( \exists a:a \in V : (T (p,a),T
 有 $D_0 = \neg E_0 = ( (Q \setminus F) \times F) \cup ( F \times ( Q \setminus F))$， 对于所有的 $k \ge 0$ ,有 $D_k = \neg E_k$， 同时 $D_{k+1} \subseteq D_k $。
 \newline
 
-\noindent{\textbf{备注3.12}： 对于 $E_k$，有一个直观的 $D_k$ 的说明是有用的。\uline{当且仅当没有字符串 $ w: |w| \leq k $ 满足 $ w \in \overrightarrow{\mathcal{L}}(p) \not\equiv w \in \overrightarrow{\mathcal{L}}(q) $一个状态对 $p,q$ 也可以说成 $k-\mbox{等价}$ (写作 $(p,q)\in E_k$) }。作为结果，当且仅当}
+\noindent{\textbf{备注3.12}： 对于 $E_k$，有一个直观的 $D_k$ 的说明是有用的。\uline{当且仅当没有字符串 $ w: |w| \leq k $ 满足 $ w \in \overrightarrow{\mathcal{L}}(p) \not\equiv w \in \overrightarrow{\mathcal{L}}(q) $一个状态对 $p,q$ 也可以说成 $k$-$distinguished$ (写作 $(p,q)\in E_k$) }。作为结果，当且仅当}
 
 \begin{itemize}
     \item [-] 其中一个是最终态而另外一个不是最终态；
-    \item [-] 存在 $a\in V$ such that $T(p,a)$ 和 $T(q,a)$ 是 在(k-1)-distinguished。
+    \item [-] 存在 $a\in V$ such that $T(p,a)$ 和 $T(q,a)$ 是 在 $(k-1)$-$distinguished$。
 \end{itemize}
-时 $p$ 和 $q$ 是 k-distinguished （一些作者也把它叫做 k-distinguishable）。
+时 $p$ 和 $q$ 是 k-distinguished （一些作者也把它叫做 $k$-$distinguishable$）。
 
 
 
@@ -102,12 +102,12 @@ $$ E_0 \subset E_1 \subset \cdots \subset E_j \in I_Q $$
 $$ \sharp E_0 < \sharp E_1 < \cdots < \sharp E_j \leq \sharp I_Q = |Q| $$
 $\sharp E_0=0$时，$E_0$是最大不动点。$\sharp E_1=1$时，要么所有状态都是终态，要么所有状态都不是终态。两种情况下$E_0$都是最大不动点。$\sharp E_0=2$时，$i+2 \leq \sharp E_i$，由 $ j+2 \leq \sharp E_j \leq \sharp I_Q = |Q| $ 可得 $j \leq |Q|-2 $ 。这给出了计算（从$E_0$开始）最大不动点$E_j$的步骤$(|Q|-2)$ 的上界，最大值0（使用性质3.6中的逼近序列）。
 
-上界为$E=E_{(|Q|-2)\textbf{max} 0}$。正如之后我们会见到的那样，它可以为算法带来效率上的提升。这个结果同样在 Wood [Wood87, Lemma 2.4.1] 中有所记录。This upperbound also holds for computing $D$ and $[Q]_E$ by approximation。
+上界为$E=E_{(|Q|-2)\textbf{max} 0}$。正如之后我们会见到的那样，它可以为算法带来效率上的提升。这个结果同样在 Wood \cite[引理  2.4.1]{Wood87} 中有所记录。This upperbound also holds for computing $D$ and $[Q]_E$ by approximation。
 
 
 \subsection{描述$E$的等价类}
 
-计算$[Q]_E$: $E$的等价类集合 同样是可行的。In order to partition $[Q]_E$我们由定义3.3出发，把$E$的最大等价关系的描述为：
+计算$[Q]_E$: $E$的等价类集合 同样是可行的。为了分割 $[Q]_E$我们由定义3.3出发，把$E$的最大等价关系的描述为：
 \begin{equation*}
     \begin{split}
         & \mbox{　　}(\forall p,q : (p,q) \in E : ( p \in F \equiv q \in F ) \land ( \forall a:a \in V : (T(p,a),T(q,a)) \in E )) \\
@@ -122,6 +122,6 @@ $\sharp E_0=0$时，$E_0$是最大不动点。$\sharp E_1=1$时，要么所有�
 
 \noindent{\textbf{定义 3.13（函数 $Splittable$）}: 为了使其更简洁，我们定义}
 $$ Splittable(Q_0,Q_1,a) \equiv (\exists p,q:p\in Q_0 \land q\in Q_0 : (T(p,a) \in Q_1 \not\equiv T(q,a) \in Q_1)) $$
-使用$Splittable,[Q]_E$is the largest partition (under $\sqsubseteq$ ) such that $[Q]_E \sqsubseteq [Q]_{E_0}$ and
+使用$Splittable,[Q]_E$ 最大的划分 (在 $\sqsubseteq$ 的情况下)，那么 $[Q]_E \sqsubseteq [Q]_{E_0}$，且有
 $$ (\forall Q_0,Q_1,a:Q_0 \in [Q]_E \land Q_1 \in [Q]_E \land a \in V : \neg Splittable(Q_0,Q_1,a)) $$
 可以用在$[Q]_E$的计算中。

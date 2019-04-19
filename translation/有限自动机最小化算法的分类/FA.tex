@@ -1,10 +1,10 @@
-\section*{B 有限自动机（$FA$）}
-\addcontentsline{toc}{section}{B 有限自动机（$FA$）}
+\section*{B 有限自动机（FA, Finite automata）}
+\addcontentsline{toc}{section}{B 有限自动机（FA, Finite automata）}
 
 本节中我们定义有限自动机、其性质及其一些变化。大部分定义直接取自 \cite{Wats93}。
 \newline
 
-\noindent{\textbf{定义 B.1（有限自动机（$FA$））}: 自动机是一个$6$-元组$(Q,V,T,E,S,F)$，其中
+\noindent{\textbf{定义 B.1（有限自动机（$FA$））}: 自动机是一个$6$元组$(Q,V,T,E,S,F)$，其中
 
 \begin{itemize}
     \item[·] $Q$ 是有限状态集；
@@ -50,7 +50,7 @@
 \noindent{\textbf{备注 B.6}：有时候我们也使用把转移关系写成： $T^* \in Q \times Q \longrightarrow \mathcal{P}(V^*)$}
 \newline
 
-\noindent{\textbf{定义 B.7（左语言和右语言）}：状态（M中）的做语言由函数$ \overleftarrow{\mathcal{L}} _M \in Q \longrightarrow \mathcal{P}(V^*)$，其中} \\
+\noindent{\textbf{定义 B.7（左语言和右语言）}：状态（M中）的左语言由函数$ \overleftarrow{\mathcal{L}} _M \in Q \longrightarrow \mathcal{P}(V^*)$，其中} \\
 \mbox{　　}　$ \overleftarrow{\mathcal{L}}_M (q) = ( \cup s:s \in S : T^*(s,q) ) $ \\
 状态（$M$中）的右语言由函数$ \overrightarrow{\mathcal{L}} _M \in Q \longrightarrow \mathcal{P}(V^*)$给出，其中 \\
 \mbox{　　}　$ \overrightarrow{\mathcal{L}}_M (q) = ( \cup f:f \in F : T^*(q,f) ) $ \\
@@ -60,21 +60,21 @@
 \noindent{\textbf{定义 B.8（FA的语言）}：有限自动机的语言由函数 $\mathcal{L}_{FA} \in FA \longrightarrow \mathcal{P}(V^*) $给出，该函数的定义为：} \\
 \mbox{　　}　$ \mathcal{L}_{FA} (M) = (\cup s,f:s \in S \land f \in F : T^* (s,f)) $ \\
 
-\noindent{\textbf{定义 B.9（$Complete$）}: 一个完全$DFA$满足 ： } \\
+\noindent{\textbf{定义 B.9（完全自动机（$Complete$））}: 一个完全有限自动机满足 ： } \\
 \mbox{　　}　$ Complete(M) \equiv ( \forall q,a:q\in Q \land a \in V : T(q,a) \not= \emptyset )$ \\
 
-\noindent{\textbf{定义 B.10 （$\epsilon$-$free$）}: 当且仅当 $E=\emptyset$时，M 是 $\epsilon$-$free$ 的。
+\noindent{\textbf{定义 B.10 （$\epsilon$-$free$）}: 当且仅当 $E=\emptyset$时，$M$ 是 $\epsilon$-$free$ 的。
 \newline
 
-\noindent{\textbf{定义 B.11（初始可行自动机）}：一个 $Useful_s$ 有限自动机定义如下：} \\
+\noindent{\textbf{定义 B.11（Start-useful 自动机）}：一个 $Useful_s$ 有限自动机定义如下：} \\
 \mbox{　　}　$ Useful_s (M) \equiv ( \forall q:q \in Q : \overleftarrow{\mathcal{L}} (q) \not= \emptyset ) $ \\
 
-\noindent{\textbf{定义 B.12（最终可行自动机）}：一个 $Useful_f$ 有限自动机定义如下：} \\
+\noindent{\textbf{定义 B.12（Final-useful 自动机）}：一个 $Useful_f$ 有限自动机定义如下：} \\
 \mbox{　　}　$ Useful_f (M) \equiv ( \forall q:q \in Q : \overrightarrow{\mathcal{L}} (q) \not= \emptyset ) $ \\
 
 \noindent{\textbf{备注 B.13}： $Useful_s$和$Useful_f$与 $FA$ 的反转密切相关（见变换 B.22），对所有的 $M \in FA$，有 $Useful_f (M) \equiv Useful_s (M^R)$。 \\
 
-\noindent{\textbf{定义 B.14（Useful 自动机）}：$Useful$自动机是一个只有可达状态的自动机：}\\
+\noindent{\textbf{定义 B.14（Useful 自动机）}：$Useful$ 有限自动机是一个只有可达状态的有限自动机：}\\
 \mbox{　　}　$ Useful (M) \equiv Useful_s (M) \land Useful_f (M) $ \\
 
 \noindent{\textbf{性质 B.15（确定性有限自动机（$DFA$））}：当且仅当 }
@@ -89,7 +89,7 @@ $$ Det(M) \equiv ( |S| \leq 1 \land \epsilon-free(E) \land ( \forall q,a:q \in Q
 
 \noindent{\textbf{定义 B.16（$FA$的确定性）}:$DFA$代表所有确定性的有限自动机的集合。我们把$FA \setminus DFA$称为非确定性有限自动机的集合。} \\
 
-\noindent{\textbf{惯例 B.17（DFA的转换函数）}：对于$(Q,V,T,\emptyset,S,F)\in DFA$，我们考虑把转换函数记为$T\in Q \times V \not\rightarrow Q$（$\not\rightarrow$的定义可以查看惯例A.2）。当且仅当$DFA$是完全的时候，转换函数是全函数。} \\
+\noindent{\textbf{惯例 B.17（DFA的转换函数）}：对于$(Q,V,T,\emptyset,S,F)\in DFA$，我们考虑把转换函数记为$T\in Q \times V \not\rightarrow Q$（$\not\rightarrow$的定义可以查看惯例A.2）。当且仅当 $DFA$ 是完全自动机的时候，转换函数是全函数。} \\
 
 \noindent{\textbf{性质 B.18（弱确定性自动机）}：一些作者用比$Det$弱的确定性自动机的定义；使用左语言，定义如下：}
 $$ Det'(M) \equiv (\forall q_0,q_1 : q_0 \in Q \land q_1 \in Q \land q_0 \not= q_1 : \overleftarrow{\mathcal{L}}(q_0) \cap \overleftarrow{\mathcal{L}}(q_1) = \emptyset ) $$
@@ -124,13 +124,13 @@ $$ (Q,V,T,S,F)^R = (Q,V,T^R,E^R,F,S) $$
 $$(\forall M : M \in FA : ( \mathcal{L} (M) )^R = \mathcal{L}_{FA}(M^R)) $$
 \newline
 
-\noindent{\textbf{变换 B.23（移除初始状态不可达状态）}：变换$Useful_s \in FA \longrightarrow FA$移除那些初始不可达的状态： }\\
-\mbox{　　　}$Useful_s(Q,V,T,E,S,F) = $ \mbox{\textbf{let　　}} $u = SReachable(Q,V,T,E,S,F)$ \\
+\noindent{\textbf{变换 B.23（移除开始状态不可达状态）}：变换$Useful_s \in FA \longrightarrow FA$移除开始状态不可达状态： }\\
+\mbox{　　　}$useful_s(Q,V,T,E,S,F) = $ \mbox{\textbf{let　　}} $U = SReachable(Q,V,T,E,S,F)$ \\
 \mbox{　　　　　　　　　　　　　　　}\mbox{\textbf{ in }} \\
 \mbox{　　　　　　　　　　　　　　　　　　　} $ (U,V,T \cap (U\times V \times U), E \cap (U \times U), S \cap U, F \cap U ) $ \\
 \mbox{　　　　　　　　　　　　　　　}\mbox{\textbf{ end }} \\
-函数 $ Useful_s $满足
-$$ (\forall M : M \in FA : Useful_s ( Useful_s(M) ) \land \mathcal{L}_{FA} (Useful_s(M)) = \mathcal{L}_{FA}(M)) $$
+函数 $ useful_s $满足
+$$ (\forall M : M \in FA : Useful_s ( useful_s(M) ) \land \mathcal{L}_{FA} (useful_s(M)) = \mathcal{L}_{FA}(M)) $$
 
 \noindent{\textbf{变换 B.24（子集构造）}：函数$subset$把一个$\epsilon$-$free$ $FA$ 转换为一个 $DFA$ (in the \textbf{let} clause $T'\in \mathcal{P}(Q) \times V \longrightarrow \mathcal{P}(\mathcal{P} (Q) )$)}: \\
 \mbox{　　} $subset(Q,V,T,\emptyset,S,F) = \mbox{\textbf{let 　}} T'(U,a) = \{ (q:q\in U : T(q,a) ) \} $\\
