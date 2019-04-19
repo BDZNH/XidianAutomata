@@ -50,7 +50,7 @@
 \noindent{\textbf{备注 B.6}：有时候我们也使用把转移关系写成： $T^* \in Q \times Q \longrightarrow \mathcal{P}(V^*)$}
 \newline
 
-\noindent{\textbf{定义 B.7（左语言和右语言）}：状态（M中）的左语言由函数$ \overleftarrow{\mathcal{L}} _M \in Q \longrightarrow \mathcal{P}(V^*)$，其中} \\
+\noindent{\textbf{定义 B.7（左语言和右语言）}：状态（$M$中）的左语言由函数$ \overleftarrow{\mathcal{L}} _M \in Q \longrightarrow \mathcal{P}(V^*)$ 给出，其中：} \\
 \mbox{　　}　$ \overleftarrow{\mathcal{L}}_M (q) = ( \cup s:s \in S : T^*(s,q) ) $ \\
 状态（$M$中）的右语言由函数$ \overrightarrow{\mathcal{L}} _M \in Q \longrightarrow \mathcal{P}(V^*)$给出，其中 \\
 \mbox{　　}　$ \overrightarrow{\mathcal{L}}_M (q) = ( \cup f:f \in F : T^*(q,f) ) $ \\
@@ -87,7 +87,7 @@
 形式表达为：
 $$ Det(M) \equiv ( |S| \leq 1 \land \epsilon-free(E) \land ( \forall q,a:q \in Q \land a \in V : |T(q,a)| \leq 1 )) $$
 
-\noindent{\textbf{定义 B.16（$FA$的确定性）}:$DFA$代表所有确定性的有限自动机的集合。我们把$FA \setminus DFA$称为非确定性有限自动机的集合。} \\
+\noindent{\textbf{定义 B.16（$FA$的确定性）}:$DFA$代表所有确定性的有限自动机的集合。我们把$FA \setminus DFA$称为非确定性有限自动机($NDFA$,$nondeterministic\ finite\ automata$)的集合。} \\
 
 \noindent{\textbf{惯例 B.17（DFA的转换函数）}：对于$(Q,V,T,\emptyset,S,F)\in DFA$，我们考虑把转换函数记为$T\in Q \times V \not\rightarrow Q$（$\not\rightarrow$的定义可以查看惯例A.2）。当且仅当 $DFA$ 是完全自动机的时候，转换函数是全函数。} \\
 
@@ -102,7 +102,7 @@ $Min$仅定义在$DFA$上。如果我们定义一个最小的但是仍然完全�
 $$ Min_{\mathcal{C}}(M) \equiv ( \forall M':M' \in DFA \land Complete(M') \land \mathcal{L}_{FA}(M) = \mathcal{L}_{FA}(M'): |M| \leq |M'| ) $$
 $Min_{\mathcal{C}}$仅定义在完全$DFA$上。 \\
 
-\noindent{\textbf{定义 B.20（$DFA$的最小化）}:根据 Myhill-Nerode 定理，\underline{An M, such that Min(M)}，是唯一的最小化$DFA$，定理的相关介绍在 \cite{Hu79,Wats93} } \\
+\noindent{\textbf{定义 B.20（$DFA$的最小化）}:根据 Myhill-Nerode 定理，\underline{An M, such that Min(M)}，是唯一的最小化$DFA$，定理的相关介绍在 \cite{Hu79,Wats93} }。 \\
 
 \noindent{\textbf{性质 B.21（一个$DFA$的最小化替代定义）}：为了最小化$DFA$，使用定义（仅定义在$DFA$上）：} \\
 \mbox{　　}$Minimal(Q,V,T,\emptyset,S,F) \equiv  ( \forall q_0,q_1:q_0 \in Q \land q_1 \in Q \land q_0 \not= q_1 : \overrightarrow{\mathcal{L}}(q_0) \not= \overrightarrow{\mathcal{L}}(q_1)  )$ \\

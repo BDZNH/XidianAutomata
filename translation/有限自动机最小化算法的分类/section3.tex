@@ -1,6 +1,6 @@
 
 \section{状态等价最小化}
-本节中，我们限定在完全DFA的最小化中。\uline{This is strictly a notational convenience, as the minimization algorithm can be modified to work for non-complete DFA.严格地说，这是一种标记的便利，因为可以对缩小算法进行修改，使其适用于不完全DFA。} 除非$DFA$的语言是$V^*$，否则完全最小化$DFA$比不完全最小化DFA多一个状态(下沉态)。令 $ M = (Q,V,T,\theta,S,F)$ 为完全$DFA$，这个特殊的$DFA$将会贯穿本节内容。我们也假设所有的 $M$ 的所有状态都是开始可达的，也就是$Useful_s(M)$。由于 $M$ 是确定且完全的$DFA$，也把转换关系 $T \in Q \times V \longrightarrow Q$ 称为全函数，而不是 $T \in Q \times V \longrightarrow \mathcal{P}(Q)$.
+本节中，我们限定在完全$DFA$的最小化中。\uline{This is strictly a notational convenience, as the minimization algorithm can be modified to work for non-complete DFA.严格地说，这是一种标记的便利，因为可以对缩小算法进行修改，使其适用于不完全DFA。} 除非$DFA$的语言是$V^*$，否则完全最小化$DFA$比不完全最小化DFA多一个状态(下沉态)。令 $ M = (Q,V,T,\theta,S,F)$ 为完全$DFA$，这个特殊的$DFA$将会贯穿本节内容。我们也假设所有的 $M$ 的所有状态都是开始可达的，也就是$Useful_s(M)$。由于 $M$ 是确定且完全的$DFA$，也把转换关系 $T \in Q \times V \longrightarrow Q$ 称为全函数，而不是 $T \in Q \times V \longrightarrow \mathcal{P}(Q)$.
 
 为了最小化 $DFA$ $M$，我们计算等价关系 $E \subseteq Q \times Q$,将其定义为\\
 $\mbox{　　　} (p,q) \in E \equiv ( \overrightarrow{\mathcal{L}}(p) = \overrightarrow{\mathcal{L}}(q) )$ \\
