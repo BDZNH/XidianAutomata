@@ -128,8 +128,9 @@ DFA& DFA::usefulf()
 				for (it = 0; !a.iter_end(it); it++)
 				{
 					b = a.iterator(it);
+					stdest = newnames.lookup(T.transition_on_range(st, b));
 #ifdef FIX
-					if (stprime != Invalid && newnames.lookup(T.transition_on_range(st, b)) != Invalid)
+					if (stprime != Invalid &&  stdest != Invalid)
 					{
 #endif // FIX
 					ret.T.add_transition(stprime, b, newnames.lookup(T.transition_on_range(st, b)));
