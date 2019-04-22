@@ -97,17 +97,17 @@ $$ Det'(M) \equiv (\forall q_0,q_1 : q_0 \in Q \land q_1 \in Q \land q_0 \not= q
 \newline
 
 \noindent{\textbf{定义 B.19（$DFA$的最小化）}:满足以下条件时，$M\in DFA$是最小化的：}
-$$ Min(M) \equiv (\forall M' : M' \in DFA \land \mathcal{L}(M) = \mathcal{L}_{FA}(M') : |M| \leq |M'| ) $$
+$$ Min(M) \equiv (\forall M' : M' \in DFA \land Complete(M') \land \mathcal{L}(M) = \mathcal{L}_{FA}(M') : |M| \leq |M'| ) $$
 $Min$仅定义在$DFA$上。如果我们定义一个最小的但是仍然完全的$DFA$，那么一些定义将会更加简单。它的定义如下：
 $$ Min_{\mathcal{C}}(M) \equiv ( \forall M':M' \in DFA \land Complete(M') \land \mathcal{L}_{FA}(M) = \mathcal{L}_{FA}(M'): |M| \leq |M'| ) $$
 $Min_{\mathcal{C}}$仅定义在完全$DFA$上。 \\
 
-\noindent{\textbf{定义 B.20（$DFA$的最小化）}:根据 Myhill-Nerode 定理，\underline{An M, such that Min(M)}，是唯一的最小化$DFA$，定理的相关介绍在 \cite{Hu79,Wats93} }。 \\
+\noindent{\textbf{性质 B.20（$DFA$的最小化）}:根据 Myhill-Nerode 定理，\underline{An M, such that Min(M)}，是唯一的最小化$DFA$，定理的相关介绍在 \cite{Hu79,Wats93} }。 \\
 
-\noindent{\textbf{性质 B.21（一个$DFA$的最小化替代定义）}：为了最小化$DFA$，使用定义（仅定义在$DFA$上）：} \\
+\noindent{\textbf{性质 B.21（$DFA$最小化的一个替代定义）}：为了最小化$DFA$，使用定义（仅定义在$DFA$上）：} \\
 \mbox{　　}$Minimal(Q,V,T,\emptyset,S,F) \equiv  ( \forall q_0,q_1:q_0 \in Q \land q_1 \in Q \land q_0 \not= q_1 : \overrightarrow{\mathcal{L}}(q_0) \not= \overrightarrow{\mathcal{L}}(q_1)  )$ \\
 \mbox{　　　　　　　　　　　　　　} $\land Useful(Q,V,T,\emptyset,S,F)$ \\
-有 $Minimal(M) \equiv Min(M)$的性质（对于所有的$M\in DFA$）。很容易证明$Min(M) \Rightarrow Minimal(M)$。\uline{The reverse direction follows from the Myhill-Nerode 定理}。
+有 $Minimal(M) \equiv Min(M)$（对所有$M\in DFA$）。很容易证明$Min(M) \Rightarrow Minimal(M)$。\uline{The reverse direction follows from the Myhill-Nerode 定理}。
 
 与$Min_{\mathcal{C}}$相似的定义是（同样也只定义在$DFA$上）：\\
 \mbox{　　}$Minimal_{\mathcal{C}}(Q,V,T,\emptyset,S,F) \equiv  ( \forall q_0,q_1:q_0 \in Q \land q_1 \in Q \land q_0 \not= q_1 : \overrightarrow{\mathcal{L}}(q_0) \not= \overrightarrow{\mathcal{L}}(q_1)  )$ \\
@@ -124,7 +124,7 @@ $$ (Q,V,T,S,F)^R = (Q,V,T^R,E^R,F,S) $$
 $$(\forall M : M \in FA : ( \mathcal{L} (M) )^R = \mathcal{L}_{FA}(M^R)) $$
 \newline
 
-\noindent{\textbf{变换 B.23（移除开始状态不可达状态）}：变换$Useful_s \in FA \longrightarrow FA$移除开始状态不可达状态： }\\
+\noindent{\textbf{变换 B.23（移除开始状态不可达状态）}：变换$useful_s \in FA \longrightarrow FA$移除开始状态不可达状态： }\\
 \mbox{　　　}$useful_s(Q,V,T,E,S,F) = $ \mbox{\textbf{let　　}} $U = SReachable(Q,V,T,E,S,F)$ \\
 \mbox{　　　　　　　　　　　　　　　}\mbox{\textbf{ in }} \\
 \mbox{　　　　　　　　　　　　　　　　　　　} $ (U,V,T \cap (U\times V \times U), E \cap (U \times U), S \cap U, F \cap U ) $ \\
@@ -143,10 +143,10 @@ $$ (\forall M:M \in FA \land \epsilon\mbox{-}free(M): Det(subset(M)) \land Compl
 它也被认为是“幂集”构造。
 \newline
 
-\noindent{\textbf{变换 B.25（子集构造）}：设 $M_0=( Q_0,v,t_0,\emptyset,S_0,F_0 )$和 $M_1 = subset(M_0)$为有限自动机。通过子集构造，状态集$M_1$成为$\mathcal{P}(Q_0)$。有如下性质：  }
+\noindent{\textbf{性质 B.25（子集构造）}：设 $M_0=( Q_0,v,t_0,\emptyset,S_0,F_0 )$和 $M_1 = subset(M_0)$为有限自动机。通过子集构造，状态集$M_1$成为$\mathcal{P}(Q_0)$。有如下性质：  }
 $$ (\forall p:p \in \mathcal{P}(Q_0) : \overrightarrow{\mathcal{L}}_{M_1}(p) = ( q:q \in p : \overrightarrow{\mathcal{L}}_{M_1}(q) ) ) $$
 
-\noindent{\textbf{定义 B.26（优化子集构造）}：函数$subset$把一个$\epsilon$-$free$ $FA$ 转换为一个 $DFA$ 。此函数是$subset$的一个优化版本：  } \\
+\noindent{\textbf{定义 B.26（优化子集构造）}：函数$subsetopt$把一个$\epsilon$-$free$ $FA$ 转换为一个 $DFA$ 。此函数是$subset$的一个优化版本：  } \\
 \mbox{　　} $subsetopt(Q,V,T,\emptyset,S,F) = \mbox{\textbf{ let 　　}} T'(U,a) = \{ (q:q\in U : T(q,a) ) \} $\\
 \mbox{　　　　　　　　　　　　　　　　　　　}$ Q' = \mathcal{P} (Q) \setminus \{ \emptyset \} $ \\
 \mbox{　　　　　　　　　　　　　　　　　　　}$F'= \{ U : U \in \mathcal{P}(Q) \land U \cap F \not= \emptyset \} $ \\
