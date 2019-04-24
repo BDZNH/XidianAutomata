@@ -77,7 +77,6 @@ DFA& DFA::min_Hopcroft()
 		L[q] = C.size();
 	}
 
-	int count = 0;
 	// Use a break to get of this loop
 	while (1)
 	{
@@ -100,7 +99,10 @@ DFA& DFA::min_Hopcroft()
 			
 			for (repr.iter_start(p); !repr.iter_end(p); repr.iter_next(p))
 			{
-				count++;
+				if (L[q] == C.size())
+				{
+					L[q]--;
+				}
 
 				// Now split [p] w.r.t (q.C_(L[q]))
 				State r(split(p, q, C.iterator(L[q]), P));  //abort with DFA 6 有初始不可达状态时
