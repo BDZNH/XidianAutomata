@@ -13,19 +13,18 @@
 \rule{\textwidth}{1pt}
 % |\xfilll{1pt}|\\
 \mbox{　　　}$G,H=D_0,E_0$;\\
-\mbox{　　　}$G_{old},H_{old},k=\emptyset ,Q \times Q,0$;\\
+\mbox{　　　}$G_{old},H_{old},k:=\emptyset ,Q \times Q,0$;\\
 \mbox{　　　\{invariant:} $G=D_k \land H =E_k \}$\\
-\mbox{　　　 do　} $G \not= G_{old} \longrightarrow$ \\
+\mbox{　　　 \textbf{do} } $G \not= G_{old} \longrightarrow$ \\
 \mbox{　　　　　}$\{G \not= G_{old} \land H \not= H_{old} \}$ \\
 \mbox{　　　　　}$G_{old},H_{old}:=G,H$;\\
-\mbox{　　　　　}$G:=(\cup p,q:(p,q)\in G_{old}\land (\exists a:a \in V : (T(p,a),T(q,a))\in G_{old} ) : \{(p,q)\})$; \\
-\mbox{　　　　　}$G:=(\cup p,q:(p,q)\in H_{old}\land (\forall a:a \in V : (T(p,a),T(q,a))\in H_{old} ) : \{(p,q)\})$ \\
+\mbox{　　　　　}$G:=(\cup  p,q:(p,q)\in G_{old}\land (\exists  a:a \in V : (T(p,a),T(q,a))\in G_{old} ) : \{(p,q)\})$; \\
+\mbox{　　　　　}$G:=(\cup  p,q:(p,q)\in H_{old}\land (\forall  a:a \in V : (T(p,a),T(q,a))\in H_{old} ) : \{(p,q)\})$ \\
 \mbox{　　　　　}$\{G=\neg H\}$ \\
 \mbox{　　　　　}$k:=k+1$ \\
-\mbox{　　　 od　}$ \{ G=D \land H=E \}$ \\
+\mbox{　　　 \textbf{od} }$ \{ G=D \land H=E \}$ \\
 \rule{\textwidth}{1pt}
-由于该算法计算序列 $D_K$ 和 $E_K$，该算法被称为分层计算$D$和$E$。循环中的G和H的更新可以由下面展示的程序中的另一个循环实现。
-\uline{This algorithm is said to compute D and E layerwise, since it computes the sequences $D_k$ and $E_k$.}
+\uline{This algorithm is said to compute D and E layerwise, since it computes the sequences $D_k$ and $E_k$.}由于该算法计算序列 $D_K$ 和 $E_K$，该算法被称为分层计算$D$和$E$。循环中的G和H的更新可以由下面展示的程序中的另一个循环实现。
 \\
 \\
 \noindent{\textbf{算法 4.2}}
