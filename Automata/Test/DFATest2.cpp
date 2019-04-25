@@ -9,7 +9,7 @@ void MinimiAlgorithm(DFA_components dfa_com);
 
 void DFATest()
 {
-	DFA_components dfa_com = DfaCom1(6);
+	DFA_components dfa_com = DfaCom1(4);
 	MinimiAlgorithm(dfa_com);
 
 }
@@ -118,6 +118,8 @@ DFA_components DfaCom1(int n)
 	case 3:
 	{
 		/*
+		本例为样例4的去除sink状态版本
+
 		初始化这样一个DFA (此表格的意义可以查看《形式语言与自动机理论》（ISBN 978-7-302-31802-6）pg. 73)
 		状态说明   状态    输入字符 (《形式语言与自动机理论》（ISBN 978-7-302-31802-6）pg. 141 fig. 5-4)
 							0      1
@@ -239,6 +241,9 @@ DFA_components DfaCom1(int n)
 		dfa_com1.T.add_transition(4, '1', 5);
 		dfa_com1.T.add_transition(5, '0', 5);
 		dfa_com1.T.add_transition(5, '1', 5);
+		dfa_com1.T.add_transition(6, '1', 3);
+		dfa_com1.T.add_transition(6, '0', 4);
+
 	}
 	break;
 	case 5:

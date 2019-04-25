@@ -18,8 +18,8 @@ void AutomataTest()
 	ThompsonTest();
 	RFATest();*/
 
-	//DFATest();
-	DFA_usefulf();
+	DFATest();
+	//DFA_usefulf();
 
 	//int double 
 	//CharRange

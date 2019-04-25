@@ -1,9 +1,9 @@
 
-\section{计算$E,D,[Q]_E$的算法}
+\chapter{计算$E,D,[Q]_E$的算法}
 本节中，对计算$E,D,[Q]_E$的算法进行叙述。一些算法以通用形式发表：计算$D$和$E$。由于只需要$D$和$E$之中的一个（不是两个都需要），在实际使用中，可以更改通用算法来只计算其中一个。
 
-%%%%%%%%%%%%%%%   subsection 
-\subsection{通过分层逼近来计算$D$和$E$}
+%%%%%%%%%%%%%%%   section 
+\section{通过分层逼近来计算$D$和$E$}
 
 根据$E_k$，$E_{k+1}$的定义（$D$也适用）很自然的引出下面计算$D$和$E$的算法（\uline{其中k是一个ghost变量，仅用于指定不变量}）。
 \\
@@ -12,19 +12,19 @@
 \\
 \rule{\textwidth}{1pt}
 % |\xfilll{1pt}|\\
-\mbox{　　　}$G,H=D_0,E_0$;\\
-\mbox{　　　}$G_{old},H_{old},k:=\emptyset ,Q \times Q,0$;\\
-\mbox{　　　\{invariant:} $G=D_k \land H =E_k \}$\\
-\mbox{　　　 \textbf{do} } $G \not= G_{old} \longrightarrow$ \\
-\mbox{　　　　　}$\{G \not= G_{old} \land H \not= H_{old} \}$ \\
-\mbox{　　　　　}$G_{old},H_{old}:=G,H$;\\
-\mbox{　　　　　}$G:=(\cup  p,q:(p,q)\in G_{old}\land (\exists  a:a \in V : (T(p,a),T(q,a))\in G_{old} ) : \{(p,q)\})$; \\
-\mbox{　　　　　}$G:=(\cup  p,q:(p,q)\in H_{old}\land (\forall  a:a \in V : (T(p,a),T(q,a))\in H_{old} ) : \{(p,q)\})$ \\
-\mbox{　　　　　}$\{G=\neg H\}$ \\
-\mbox{　　　　　}$k:=k+1$ \\
-\mbox{　　　 \textbf{od} }$ \{ G=D \land H=E \}$ \\
+\mbox{}$G,H=D_0,E_0$;\\
+\mbox{}$G_{old},H_{old},k:=\emptyset ,Q \times Q,0$;\\
+\mbox{\{invariant:} $G=D_k \land H =E_k \}$\\
+\mbox{ \textbf{do} } $G \not= G_{old} \longrightarrow$ \\
+\mbox{　　}$\{G \not= G_{old} \land H \not= H_{old} \}$ \\
+\mbox{　　}$G_{old},H_{old}:=G,H$;\\
+\mbox{　　}$G:=(\cup  p,q:(p,q)\in G_{old}\land (\exists  a:a \in V : (T(p,a),T(q,a))\in G_{old} ) : \{(p,q)\})$; \\
+\mbox{　　}$G:=(\cup  p,q:(p,q)\in H_{old}\land (\forall  a:a \in V : (T(p,a),T(q,a))\in H_{old} ) : \{(p,q)\})$; \\
+\mbox{　　}$\{G=\neg H\}$ \\
+\mbox{　　}$k:=k+1$ \\
+\mbox{ \textbf{od} }$ \{ G=D \land H=E \}$ \\
 \rule{\textwidth}{1pt}
-\uline{This algorithm is said to compute D and E layerwise, since it computes the sequences $D_k$ and $E_k$.}由于该算法计算序列 $D_K$ 和 $E_K$，该算法被称为分层计算$D$和$E$。循环中的G和H的更新可以由下面展示的程序中的另一个循环实现。
+\uline{This algorithm is said to compute D and E layerwise, since it computes the sequences $D_k$ and $E_k$.}由于该算法计算序列 $D_K$ 和 $E_K$，该算法被称为分层计算$D$和$E$。循环中的$G$和$H$的更新可以由下面展示的程序中的另一个循环实现。
 \\
 \\
 \noindent{\textbf{算法 4.2}}
@@ -49,8 +49,8 @@
 
 只要稍稍多做一点工作，这个算法就可更改用来计算 $[Q]_E$。
 
-%%%%%%%%%%%%%%%   subsection 
-\subsection{通过无序逼近来计算$D$，$E$ 和 $[Q]_E$}
+%%%%%%%%%%%%%%%   section 
+\section{通过无序逼近来计算$D$，$E$ 和 $[Q]_E$}
 
 我们可以用任意顺序的状态对来计算 $E$ ，而不是计算每一个 $E_k$ （按层计算 $E$）(如备注 3.9 所示)。使用下面的算法可以做到（也可以用来计算 $D$）:
 \\
@@ -89,8 +89,8 @@ assignment的添加使得算法可以计算细化序列 $E_k$ （详见备注 3.
 \rule{\textwidth}{1pt}
 此算法时间复杂度为$\mathcal{O}(|Q|^2)$。
 
-%%%%%%%%%%%%%%%   subsection 
-\subsection{通过无序逼近更高效的计算 $D$ 和 $E$}
+%%%%%%%%%%%%%%%   section 
+\section{通过无序逼近更高效的计算 $D$ 和 $E$}
 
 我们提出另外一种考虑任意顺序状态对的算法。该算法（也可以计算 $D$）由两个嵌套循环组成：
 \newline
@@ -133,8 +133,8 @@ assignment的添加使得算法可以计算细化序列 $E_k$ （详见备注 3.
 内部循环“分割”每一个符合条件的等价类 $Q_0$，实际上，如果有$\neg Splittable(Q_0,Q_1,a).)$，那么一些特殊的 $Q_0$ 不会被分割。
 \uline{The inner repetition “splits” each eligible equivalence class $Q_0$ with respect to pair ($Q_1,a$), (In actuality, some particular $Q_0$ will not be split by $(Q_1,a)$ if $\neg Splittable(Q_0,Q_1,a).)$}
 
-%%%%%%%%%%%%%%%   subsection 
-\subsection{Hopcroft 和 Ullman 的算法 }
+%%%%%%%%%%%%%%%   section 
+\section{Hopcroft 和 Ullman 的算法 }
 
 从 $D$ 的定义，可以知道，当且仅当 $p \in F \not\equiv q \in F$ 或有 $a\in V$ \uline{such that $(T(p,a),T(q,a)) \in D$ }。这构成了本小节中考虑的算法的基础。\uline{ with each pair of states $(p,q)$ we associate a set of pairs of states $L(p,q)$}. 
 \uline{ 对于每对状态 $(p,q)$ ，我们将一组状态对 $L(p,q)$ 关联起来 }:
@@ -177,8 +177,8 @@ $  \mbox{\textbf{rof}} \{ G=D \} $ \\
 
 更改上面的算法来计算 $E$ 是有可能的。但是本文中未提及。
 
-%%%%%%%%%%%%%%%   subsection 
-\subsection{Hopcroft 的计算 $[Q]_E$ 的高效算法}
+%%%%%%%%%%%%%%%   section 
+\section{Hopcroft 的计算 $[Q]_E$ 的高效算法}
 
 我们由 Hopcroft 推导出一个高效的算法。这个算法也已经由 Gries \cite{Grie73} 推导得到。这个算法也是目前所有 $DFA$ 最小化算法中著名的\uline{运行时间分析算法，running time analysis}。
 
@@ -243,8 +243,8 @@ Hopcroft 的另一个观察是对于$ (Q_0,b),(Q'_0,b) ,(Q_0 \setminus Q'_0,b) $
 不幸的是，这个算法的时间复杂度分析是非常复杂的，这里不做讨论。Hopcroft 和 Gries 在 \cite{Grie73,Hopc71} 中提及其时间复杂度为 $ \mathcal{O}(|Q|log|Q|) $。
 
 
-%%%%%%%%%%%%%%%   subsection 
-\subsection{计算 $ (p,q) \in E $}
+%%%%%%%%%%%%%%%   section 
+\section{计算 $ (p,q) \in E $}
 
 从确定两种类型的结构等价性问题出发，将$E$的不动点定义转化为函数式程序，可以递归地计算出两种状态的等价性。如果（未修改的）定义直接用于函数式程序，则有无法终止的可能性。为了使函数式程序工作，它需要有两个状态第三个参数。
 
@@ -308,8 +308,8 @@ The $\forall$ quantification 可以使用一个循环来实现
 本文未涉及此算法。
 
 
-%%%%%%%%%%%%%%%   subsection 
-\subsection{从下面的逼近计算 $E$ }
+%%%%%%%%%%%%%%%   section 
+\section{从下面的逼近计算 $E$ }
 
 函数 $equiv$ 的最后一个版本可以用来计算 $E$ 和 $D$ （假设 $I_Q $ 是状态上的恒等关系，$S$ 是算法 4.9 中使用的全局变量）：
 \newline

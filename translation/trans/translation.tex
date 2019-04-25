@@ -1,0 +1,168 @@
+%!TEX program = xelatex
+\documentclass[UTF8,zihao=-4]{ctexbook}
+\usepackage{cite}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\usepackage{stmaryrd}  % \talloblong
+
+\graphicspath{{image/}}
+
+%字体号设置
+% \setCJKmainfont{SimSun}
+% \setCJKmonofont{SimSun}
+% \setmainfont{Times New Roman}
+%%\normalsize{}
+
+\setCJKmainfont{SimSun}
+\setCJKmonofont{SimSun}
+\setmainfont{Times New Roman}
+
+\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}     %初号
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont} %小初号
+\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont}      %一号
+\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont}      %二号
+\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}  %小二号
+\newcommand{\sanhao}{\fontsize{15.75pt}{\baselineskip}\selectfont}  %三号
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}%     四号
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}  %小四号
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}    %五号
+\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}   %小五号
+\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}  %六号
+\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}    %七号
+
+
+\ctexset {
+    chapter = {
+        format = \linespread{1.0}\sanhao\bfseries\heiti\centering,
+        nameformat = {},
+        titleformat = {},
+        number = \arabic{chapter},
+        numberformat = \rmfamily,
+        aftername = \quad,
+        beforeskip = {7pt},
+        afterskip = {18pt},
+        pagestyle = plain,
+    }
+}
+%- section
+\ctexset {
+    section = {
+        format = \linespread{1.0}\sihao\bfseries\CJKfamily{song}\centering,
+        numberformat = \rmfamily,
+        aftername = \quad,
+        beforeskip = {24pt},
+        afterskip = {6pt},
+    }
+}
+%- subsection
+\ctexset {
+    subsection = {
+        format = \linespread{1.0}\zihao{-4}\bfseries\CJKfamily{song}\raggedright,
+        numberformat = \rmfamily,
+        aftername = \quad,
+        beforeskip = {12pt},
+        afterskip = {6pt},
+    }
+}
+%- subsubsection
+\ctexset {
+    subsubsection = {
+        format = \linespread{1.0}\zihao{-4}\CJKfamily{song}\raggedright,
+        numberformat = \rmfamily,
+        aftername = \quad,
+        beforeskip = {12pt},
+        afterskip = {6pt},
+    }
+}
+
+%% 页面设置
+\usepackage{geometry}
+\geometry{papersize={21.0cm,29.7cm}}
+\geometry{left=3.18cm,right=3.18cm,top=2.54cm,bottom=2.54cm}
+
+\title{有限自动机最小化算法的分类}
+\author{胡双朴}
+\date{2019.03}
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+%% 下划线
+\usepackage{ulem}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{　}
+\chead{　}
+\rhead{　}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headwidth}{\textwidth}
+\renewcommand{\footrulewidth}{0pt}
+
+\usepackage[colorlinks,linkcolor=black,anchorcolor=blue,citecolor=red]{hyperref}
+
+\usepackage{listings}
+\usepackage{xhfill}
+\usepackage{color}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.99,0.99,1.0}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{white},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize\ttfamily,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+
+\begin{document}
+
+
+
+%%目录页
+%\newpage
+% \section*{目录}
+\addcontentsline{toc}{section}{目录}
+\tableofcontents
+
+\thispagestyle{empty}
+
+\include{section1}
+\input{section2}
+\input{section3}
+\input{section4}
+\include{conlusion}
+\include{basic_definitions}
+\include{FA}
+
+% \section*{参考文献}
+
+\bibliographystyle{alpha}
+\bibliography{ref}
+\addcontentsline{toc}{chapter}{参考文献}    
+
+\end{document} 
+
+
+ 

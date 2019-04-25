@@ -1,5 +1,5 @@
 
-\section{状态等价最小化}
+\chapter{状态等价最小化}
 本节中，我们限定在完全$DFA$的最小化中。\uline{This is strictly a notational convenience, as the minimization algorithm can be modified to work for non-complete DFA.严格地说，这是一种标记的便利，因为可以对最小化算法进行修改，使其适用于不完全DFA。} 除非$DFA$的语言是$V^*$，否则完全最小化$DFA$比不完全最小化DFA多一个状态(sink)。令 $ M = (Q,V,T,\theta,S,F)$ 为完全$DFA$，这个特殊的$DFA$将会贯穿本节内容。我们也假设所有的 $M$ 的所有状态都是从开始状态可以到达的，也就是$Useful_s(M)$。由于 $M$ 是确定且完全的，我们也把转移关系 $T \in Q \times V \longrightarrow Q$ 称为全函数，而不是 $T \in Q \times V \longrightarrow \mathcal{P}(Q)$。
 
 为了最小化 $DFA$ $M$，我们计算等价关系 $E \subseteq Q \times Q$,将其定义为\\
@@ -36,10 +36,10 @@ $$ \overrightarrow{\mathcal{L}}(p) = (\cup a:a \in V : \{a\} \cdot \overrightarr
 \uline{This allow us to give an alternate characterization of equivalence of states. 这允许我们给出状态等价的另一种描述}。  
 \newline
 
-\noindent{\textbf{定义 3.3 (状态的等价):} \uline{等价关系 $E$ 是最大不动点}(在细化的情况下): }
-$$ (p,q) = E \equiv ( p \in F \equiv q \in F ) \land ( \forall a:a \in V : (T(p,a),T(q,a)) \in E )$$
+\noindent{\textbf{定义 3.3 (状态的等价):} \uline{等价关系 $E$ 是最大不动点}(在细化的情况下): } \\
+$\mbox{　　} (p,q) = E \equiv ( p \in F \equiv q \in F ) \land ( \forall a:a \in V : (T(p,a),T(q,a)) \in E )$
 \newline
-
+\\
 \noindent{\textbf{备注3.4：} \uline{the greatest fixed point has the least number of equivalence classes of any such fixed point. 最大不动点拥有最少的任何此类不动点的等价类数。} }
 \newline
 
@@ -72,7 +72,7 @@ $E_0$ 的一个等价定义是 $E_0 = (Q \setminus F)^2 \cup F^2$。 对于所�
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{可区分性}
+\section{可区分性}
 通过先计算 $E$ 的补集 $D=\neg E$ 来计算 $E$ 是有可能的。关系 $D$ (也叫做状态关系的可区分性)定义为 \\
 \mbox{　　　}$ (p,q) \in D \equiv (\overrightarrow{\mathcal{L}}(p) \not=\overrightarrow{\mathcal{L}}(q)) $\\
 %\newline
@@ -84,7 +84,7 @@ $E_0$ 的一个等价定义是 $E_0 = (Q \setminus F)^2 \cup F^2$。 对于所�
 \noindent{\textbf{性质3.11 (逼近D)}： 随等价关系E，关系D可以通过连续逼近来计算 ($k\ge 0$)}
 $$ (p,q) \in D_{k+1} \equiv (p,q) \in D_k \land ( \exists a:a \in V : (T (p,a),T(q,a))\in D_k)$$
 有 $D_0 = \neg E_0 = ( (Q \setminus F) \times F) \cup ( F \times ( Q \setminus F))$， 对于所有的 $k \ge 0$ ,有 $D_k = \neg E_k$， 同时 $D_{k+1} \subseteq D_k $。
-%\newline
+\newline
 
 \noindent{\textbf{备注3.12}： 对于 $E_k$，有一个直观的 $D_k$ 的说明是有用的。\uline{当且仅当没有字符串 $ w: |w| \leq k $ 满足 $ w \in \overrightarrow{\mathcal{L}}(p) \not\equiv w \in \overrightarrow{\mathcal{L}}(q) $一个状态对 $p,q$ 也可以说成 $k$-$distinguished$ (写作 $(p,q)\in E_k$) }。作为结果，当且仅当}
 
@@ -96,7 +96,7 @@ $$ (p,q) \in D_{k+1} \equiv (p,q) \in D_k \land ( \exists a:a \in V : (T (p,a),T
 
 
 
-\subsection{近似步骤数的上界}
+\section{近似步骤数的上界}
 我们可以很容易的把一个近似步骤数的上界放进$E$的计算当中。
 
 设$E_j$为定义$E$的方程的最大不动点，可以得到以下逼近步骤（where $I_Q$ 是状态上的恒等关系）:
@@ -108,9 +108,9 @@ $\sharp E_0=0$时，$E_0$是最大不动点。$\sharp E_1=1$时，要么所有�
 上界为$E=E_{(|Q|-2)\textbf{max} 0}$。正如之后我们会见到的那样，它可以为算法带来效率上的提升。这个结果同样在 Wood \cite[引理  2.4.1]{Wood87} 中有所记录。This upperbound also holds for computing $D$ and $[Q]_E$ by approximation。
 
 
-\subsection{描述$E$的等价类}
+\section{描述$E$的等价类}
 
-计算$[Q]_E$: $E$的等价类集合 同样是可行的。为了分割 $[Q]_E$我们由定义3.3出发，把$E$的最大等价关系的描述为：
+计算$[Q]_E$: $E$的等价类集合 同样是可行的。为了分割 $[Q]_E$，我们由定义3.3出发，把$E$的等价类描述为最大等价关系：
 \begin{equation*}
     \begin{split}
         & \mbox{　　}(\forall p,q : (p,q) \in E : ( p \in F \equiv q \in F ) \land ( \forall a:a \in V : (T(p,a),T(q,a)) \in E )) \\

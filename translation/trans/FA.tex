@@ -1,5 +1,5 @@
-\section*{B 有限自动机（FA, Finite automata）}
-\addcontentsline{toc}{section}{B 有限自动机（FA, Finite automata）}
+\chapter*{B 有限自动机（FA, Finite automata）}
+\addcontentsline{toc}{chapter}{B 有限自动机（FA, Finite automata）}
 
 本节中我们定义有限自动机、其性质及其一些变化。大部分定义直接取自 \cite{Wats93}。
 \newline
@@ -22,8 +22,8 @@
 由于本文中我们只考虑有限自动机，所以我们将会频繁的使用简化术语“自动机”。
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{B.1 $FA$的性质}
-\addcontentsline{toc}{subsection}{B.1 有限自动机的性质}
+\section*{B.1 $FA$的性质}
+\addcontentsline{toc}{section}{B.1 有限自动机的性质}
 本小节将会定义一些有限自动机的性质。为了使定义更加简洁明了，我们引进三个特殊的$FA$: $M=(Q,V,T,E,S,F)$,$M_0=(Q_0,V_0,T_0,E_0,S_0,F_0)$,$ M_1=(Q_1,V_1,T_1,E_1,S_1,F_1) $。
 
 \noindent{\textbf{定义 B.3（FA的大小）}：定义一个FA的大小为$|M|=|Q|$}。
@@ -99,7 +99,7 @@ $$ Det'(M) \equiv (\forall q_0,q_1 : q_0 \in Q \land q_1 \in Q \land q_0 \not= q
 \noindent{\textbf{定义 B.19（$DFA$的最小化）}:满足以下条件时，$M\in DFA$是最小化的：}
 $$ Min(M) \equiv (\forall M' : M' \in DFA \land Complete(M') \land \mathcal{L}(M) = \mathcal{L}_{FA}(M') : |M| \leq |M'| ) $$
 $Min$仅定义在$DFA$上。如果我们定义一个最小的但是仍然完全的$DFA$，那么一些定义将会更加简单。它的定义如下：
-$$ Min_{\mathcal{C}}(M) \equiv ( \forall M':M' \in DFA \land Complete(M') \land \mathcal{L}_{FA}(M) = \mathcal{L}_{FA}(M'): |M| \leq |M'| ) $$
+\small{ $$ Min_{\mathcal{C}}(M) \equiv ( \forall M':M' \in DFA \land Complete(M') \land \mathcal{L}_{FA}(M) = \mathcal{L}_{FA}(M'): |M| \leq |M'| ) $$ }
 $Min_{\mathcal{C}}$仅定义在完全$DFA$上。 \\
 
 \noindent{\textbf{性质 B.20（$DFA$的最小化）}:根据 Myhill-Nerode 定理，\underline{An M, such that Min(M)}，是唯一的最小化$DFA$，定理的相关介绍在 \cite{Hu79,Wats93} }。 \\
@@ -115,8 +115,8 @@ $Min_{\mathcal{C}}$仅定义在完全$DFA$上。 \\
 有 $Minimal_{\mathcal{C}}(M) \equiv Min_{\mathcal{C}}(M)$的性质（对于所有的$M\in DFA$）。很容易证明$Min_{\mathcal{C}}(M) \Rightarrow Minimal_{\mathcal{C}}(M)$。\uline{The reverse direction follows from the Myhill-Nerode 定理}。
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{B.2 有限自动机的变换}
-\addcontentsline{toc}{subsection}{B.2 有限自动机的变换}
+\section*{B.2 有限自动机的变换}
+\addcontentsline{toc}{section}{B.2 有限自动机的变换}
 
 \noindent{\textbf{变换 B.22（$FA$ 反转）}：$FA$反转由后缀（上标）函数$ R \in FA \longrightarrow FA $ 给出，它的定义如下：}
 $$ (Q,V,T,S,F)^R = (Q,V,T^R,E^R,F,S) $$ 
