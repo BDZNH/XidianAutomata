@@ -30,20 +30,20 @@
 \noindent{\textbf{算法 4.2}}
 \\
 \rule{\textwidth}{1pt}
-\mbox{　　　}$G,H=D_0,E_0$;\\
-\mbox{　　　}$G_{old},H_{old},k=\emptyset ,Q \times Q,0$;\\
-\mbox{　　　\{invariant:} $G=D_k \land H =E_k \}$\\
-\mbox{　　　 \textbf{do}} $G \not= G_{old} \longrightarrow$ \\
-\mbox{　　　　　}$\{G \not= G_{old} \land H \not= H_{old} \}$ \\
-\mbox{　　　　　}$G_{old},H_{old}:=G,H$;\\
-\mbox{　　　　　\textbf{for}　} $(p,q):(p,q)\in H_{old} \mbox{　\textbf{do}}$ \\
-\mbox{　　　　　　　\textbf{if}} $(\exists a:a \in V : (T(p,a),T(q,a))\in G_{old} ) \longrightarrow G,H:=G \cup {(p,q)},H \setminus {(p,q)}$ \\
-\mbox{　　　　　　　　　} $\talloblong (\exists a:a \in V : (T(p,a),T(q,a)) \in H_{old} ) \longrightarrow \mbox{\textbf{skip}} $\\
-\mbox{　　　　　　　\textbf{fi}}\\
-\mbox{　　　　　\textbf{rof}}\\
-\mbox{　　　　　}$\{G=\neg H\}$ \\
-\mbox{　　　　　}$k:=k+1$ \\
-\mbox{　　　 \textbf{od}}$ \{ G=D \land H=E \}$ \\
+\mbox{}$G,H=D_0,E_0$;\\
+\mbox{}$G_{old},H_{old},k=\emptyset ,Q \times Q,0$;\\
+\mbox{\{invariant:} $G=D_k \land H =E_k \}$\\
+\mbox{ \textbf{do}} $G \not= G_{old} \longrightarrow$ \\
+\mbox{　　}$\{G \not= G_{old} \land H \not= H_{old} \}$ \\
+\mbox{　　}$G_{old},H_{old}:=G,H$;\\
+\mbox{　　\textbf{for}} $(p,q):(p,q)\in H_{old} \mbox{ \textbf{do}}$ \\
+\mbox{　　　\textbf{if}} $(\exists a:a \in V : (T(p,a),T(q,a))\in G_{old} ) \longrightarrow G,H:=G \cup {(p,q)},H \setminus {(p,q)}$ \\
+\mbox{　　　} $\talloblong (\exists a:a \in V : (T(p,a),T(q,a)) \in H_{old} ) \longrightarrow \mbox{\textbf{skip}} $\\
+\mbox{　　　\textbf{fi}}\\
+\mbox{　　\textbf{rof}}\\
+\mbox{　　}$\{G=\neg H\}$ \\
+\mbox{　　}$k:=k+1$ \\
+\mbox{\textbf{od}}$ \{ G=D \land H=E \}$ \\
 \rule{\textwidth}{1pt}
 此算法可以分为两部分：一部分只计算$D$，另外一部分只计算$E$。只计算$E$的算法本质上是由 Wood 在 \cite[pg.132]{Wood87} 发表的。据 Wood 称， 此算法建立在 Moore \cite{Moor56} 的基础之上。其时间复杂度为 $\mathcal{O}(|Q|^3)$ 。在 \cite{Brau88} 中，Brauer 使用了一些编码技术提供了此算法的时间复杂度为$\mathcal{O}(|Q|^2)$ 的版本，而后 Urbanek 在 \cite{Urba89} 中提供了 Brauer 的空间优化版本。 这里没有给出任何一个它们的变体。仅计算 $D$ 的算法本文中没有提及。
 
@@ -77,7 +77,7 @@ assignment的添加使得算法可以计算细化序列 $E_k$ （详见备注 3.
 \\
 \rule{\textwidth}{1pt}
 \mbox{　　　} $P:[Q]_{E_0};$ \\
-\mbox{　　　}$\{ \mbox{不变量:} [Q]_E \sqsubseteq p \sqsubseteq [Q]_{E_0} \}$ \\
+\mbox{　　　}$\{ \mbox{不变量:} [Q]_E \sqsubseteq P \sqsubseteq [Q]_{E_0} \}$ \\
 \mbox{　　　\textbf{do}} $(\exists Q_0,Q_1,a : Q_0 \in P \land Q_1 \in P \land a \in V : Splittable (Q_0,Q_1,a)) \longrightarrow$ \\
 \mbox{　　　　　\textbf{let}} $Q_0,Q_1,a:Splittable(Q_0,Q_1,a);$ \\
 \mbox{　　　　　}$Q'_0 := \{ p:p\in Q_0 \land T(p,a) \in Q_1 \};$ \\
