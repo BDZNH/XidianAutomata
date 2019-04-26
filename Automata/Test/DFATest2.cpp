@@ -9,7 +9,7 @@ void MinimiAlgorithm(DFA_components dfa_com);
 
 void DFATest()
 {
-	DFA_components dfa_com = DfaCom1(4);
+	DFA_components dfa_com = DfaCom1(12);
 	MinimiAlgorithm(dfa_com);
 
 }
@@ -241,8 +241,8 @@ DFA_components DfaCom1(int n)
 		dfa_com1.T.add_transition(4, '1', 5);
 		dfa_com1.T.add_transition(5, '0', 5);
 		dfa_com1.T.add_transition(5, '1', 5);
-		dfa_com1.T.add_transition(6, '1', 3);
-		dfa_com1.T.add_transition(6, '0', 4);
+		//dfa_com1.T.add_transition(6, '1', 3);
+		//dfa_com1.T.add_transition(6, '0', 4);
 
 	}
 	break;
@@ -477,15 +477,15 @@ DFA_components DfaCom1(int n)
 		//dfa_com1.T.add_transition(3, '0', 2);
 		dfa_com1.T.add_transition(3, '1', 4);
 		dfa_com1.T.add_transition(4, '0', 8);
-		dfa_com1.T.add_transition(4, '1', 4);
+		//dfa_com1.T.add_transition(4, '1', 4);
 		//dfa_com1.T.add_transition(5, '0', 1);
 		dfa_com1.T.add_transition(5, '1', 6);
 		//dfa_com1.T.add_transition(6, '1', 2);
 		dfa_com1.T.add_transition(6, '0', 7);
 		dfa_com1.T.add_transition(7, '1', 8);
 		//dfa_com1.T.add_transition(7, '0', 6);
-		dfa_com1.T.add_transition(8, '0', 4);
-		dfa_com1.T.add_transition(8, '1', 8);
+		//dfa_com1.T.add_transition(8, '0', 4);
+		dfa_com1.T.add_transition(8, '1', 4);
 		
 		/*dfa_com1.T.add_transition(9, '0', 1);
 		dfa_com1.T.add_transition(9, '1', 5);*/
@@ -569,27 +569,16 @@ DFA_components DfaCom1(int n)
 	case 10:
 	{
 		/*
-		样例来自：  https://www.cnblogs.com/wendellyi/p/3695489.html
+		测试中
 		初始化这样一个DFA (此表格的意义可以查看《形式语言与自动机理论》（ISBN 978-7-302-31802-6）pg. 73)
 
 		状态说明    状态     输入字符
 							0      1
-			start	q0      q1     q2
-					q1      q4     q2
-			accept  q2      q1     q3
-			accept  q3      q6     q3
-			accept  q4      q4     q5
-			accept  q5      q6     q5
-			accept  q6      q4     q5
+
 
 		预期结果：
 
 		状态说明    状态     输入字符
-							a      b
-			start	q0      q1     q2
-					q1      q3     q2
-					q2      q1     q3
-			accept  q3      q3     q3
 
 		*/
 
@@ -614,6 +603,80 @@ DFA_components DfaCom1(int n)
 		//dfa_com1.T.add_transition(2, 'b', 1);
 		dfa_com1.T.add_transition(2, 'b', 3);
 		dfa_com1.T.add_transition(3, 'b', 4);
+
+	}
+		break;
+	case 11:
+	{
+		/*
+		测试中
+		初始化这样一个DFA (此表格的意义可以查看《形式语言与自动机理论》（ISBN 978-7-302-31802-6）pg. 73)
+
+		状态说明    状态     输入字符
+							0      1
+
+
+		预期结果：
+
+		状态说明    状态     输入字符
+
+		*/
+
+		// StateSet S  开始状态集
+		dfa_com1.S.set_domain(10);
+		dfa_com1.S.add(0);
+
+		// StateSet F  结束状态集
+		dfa_com1.F.set_domain(10);
+		dfa_com1.F.add(2);
+		dfa_com1.F.add(3);
+		//dfa_com1.F.add(4);
+		//dfa_com1.F.add(6);
+
+		dfa_com1.Q.set_domain(10);
+
+		dfa_com1.T.set_domain(10);
+		dfa_com1.T.add_transition(0, 'a', 1);
+		dfa_com1.T.add_transition(1, 'b', 2);
+		dfa_com1.T.add_transition(2, 'a', 3);
+		//dfa_com1.T.add_transition(3, 'b', 4);
+
+	}
+		break;
+	case 12:
+	{
+		/*
+		测试中
+		初始化这样一个DFA (此表格的意义可以查看《形式语言与自动机理论》（ISBN 978-7-302-31802-6）pg. 73)
+
+		状态说明    状态     输入字符
+							0      1
+
+
+		预期结果：
+
+		状态说明    状态     输入字符
+
+		*/
+
+		// StateSet S  开始状态集
+		dfa_com1.S.set_domain(10);
+		dfa_com1.S.add(0);
+
+		// StateSet F  结束状态集
+		dfa_com1.F.set_domain(10);
+		dfa_com1.F.add(1);
+		dfa_com1.F.add(2);
+		//dfa_com1.F.add(4);
+		//dfa_com1.F.add(6);
+
+		dfa_com1.Q.set_domain(10);
+
+		dfa_com1.T.set_domain(10);
+		dfa_com1.T.add_transition(0, 'a', 1);
+		dfa_com1.T.add_transition(0, 'b', 2);
+		dfa_com1.T.add_transition(1, 'a', 2);
+		dfa_com1.T.add_transition(2, 'b', 1);
 
 	}
 		break;
