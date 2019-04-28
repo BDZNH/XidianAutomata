@@ -311,6 +311,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Makefile" />
-    <None Include="ClassDiagram.cd" />
+    <None Include="FAabs.cd" />
+    <None Include="DFA.cd" />
   </ItemGroup>
 </Project>
