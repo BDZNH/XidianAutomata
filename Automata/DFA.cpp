@@ -120,7 +120,6 @@ DFA& DFA::usefulf()
 			{
 				a = T.out_labels(st);
 				State stprime(newnames.lookup(st));
-				State stdest;
 
 				CharRange b;
 				int it;
@@ -128,12 +127,13 @@ DFA& DFA::usefulf()
 				for (it = 0; !a.iter_end(it); it++)
 				{
 					b = a.iterator(it);
+					State stdest;
 					stdest = newnames.lookup(T.transition_on_range(st, b));
 #ifdef FIX
 					if (stprime != Invalid &&  stdest != Invalid)
 					{
 #endif // FIX
-					ret.T.add_transition(stprime, b, newnames.lookup(T.transition_on_range(st, b)));
+						ret.T.add_transition(stprime, b, stdest);
 #ifdef FIX
 					}
 #endif // FIX
