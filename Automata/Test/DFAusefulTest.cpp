@@ -1,4 +1,4 @@
-#include "DFA.h"
+ï»¿#include "DFA.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -16,8 +16,8 @@ void DFA_usefulf()
 void DFA_usefulf1()
 {
 	/*
-	³õÊ¼»¯ÕâÑùÒ»¸öDFA (´Ë±í¸ñµÄÒâÒå¿ÉÒÔ²é¿´¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 73)
-	×´Ì¬ËµÃ÷   ×´Ì¬    ÊäÈë×Ö·û (¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 141 fig. 5-4)
+	åˆå§‹åŒ–è¿™æ ·ä¸€ä¸ªDFA (æ­¤è¡¨æ ¼çš„æ„ä¹‰å¯ä»¥æŸ¥çœ‹ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 73)
+	çŠ¶æ€è¯´æ˜   çŠ¶æ€    è¾“å…¥å­—ç¬¦ 
 						0      1
 		start	q0      q2     q1
 		sink	q1      q1     q1
@@ -26,23 +26,23 @@ void DFA_usefulf1()
 
 
 
-	Ô¤ÆÚ½á¹û 
+	é¢„æœŸç»“æœ 
 
-	×´Ì¬ËµÃ÷   ×´Ì¬        ÊäÈë×Ö·û
+	çŠ¶æ€è¯´æ˜   çŠ¶æ€        è¾“å…¥å­—ç¬¦
 						  0         1
 		start	q0        q1        
 		accept  q1        q2      
 		accept  q2        q2
 
-	»òÕß£º
+	æˆ–è€…ï¼š
 */
 	DFA_components dfa_com1;
 
-	// StateSet S  ¿ªÊ¼×´Ì¬¼¯
+	// StateSet S  å¼€å§‹çŠ¶æ€é›†
 	dfa_com1.S.set_domain(10);
 	dfa_com1.S.add(0);
 
-	// StateSet F  ½áÊø×´Ì¬¼¯
+	// StateSet F  ç»“æŸçŠ¶æ€é›†
 	dfa_com1.F.set_domain(10);
 	dfa_com1.F.add(3);
 
@@ -64,7 +64,7 @@ void DFA_usefulf1()
 	dfa_com1.T.add_transition(3, '0', 3);
 	dfa_com1.T.add_transition(3, '1', 1);
 
-	//ÊµÀı»¯Ò»¸öDFA¶ÔÏó
+	//å®ä¾‹åŒ–ä¸€ä¸ªDFAå¯¹è±¡
 	DFA dfa1(dfa_com1);
 	cout << "\n\n****************************************************\n\n" << std::flush;
 	cout << dfa1 << endl;
@@ -77,8 +77,8 @@ void DFA_usefulf1()
 void DFA_usefulf2()
 {
 	/*
-		³õÊ¼»¯ÕâÑùÒ»¸öDFA (´Ë±í¸ñµÄÒâÒå¿ÉÒÔ²é¿´¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 73)
-		×´Ì¬ËµÃ÷   ×´Ì¬    ÊäÈë×Ö·û (¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 141 fig. 5-4)
+		åˆå§‹åŒ–è¿™æ ·ä¸€ä¸ªDFA (æ­¤è¡¨æ ¼çš„æ„ä¹‰å¯ä»¥æŸ¥çœ‹ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 73)
+		çŠ¶æ€è¯´æ˜   çŠ¶æ€    è¾“å…¥å­—ç¬¦ (ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 141 fig. 5-4)
 							0      1
 			start	q0      q1     q2
 					q1      q0     q3
@@ -88,9 +88,9 @@ void DFA_usefulf2()
 			sink	q5      q5     q5
 
 
-		Ô¤ÆÚ½á¹û ¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 153 fig. 5-6
+		é¢„æœŸç»“æœ ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 153 fig. 5-6
 
-		×´Ì¬ËµÃ÷   ×´Ì¬        ÊäÈë×Ö·û
+		çŠ¶æ€è¯´æ˜   çŠ¶æ€        è¾“å…¥å­—ç¬¦
 							  0         1
 			start	q0        q0        q1
 			accept  q1        q1        
@@ -99,11 +99,11 @@ void DFA_usefulf2()
 
 	DFA_components dfa_com1;
 
-	// StateSet S  ¿ªÊ¼×´Ì¬¼¯
+	// StateSet S  å¼€å§‹çŠ¶æ€é›†
 	dfa_com1.S.set_domain(10);
 	dfa_com1.S.add(0);
 
-	// StateSet F  ½áÊø×´Ì¬¼¯
+	// StateSet F  ç»“æŸçŠ¶æ€é›†
 	dfa_com1.F.set_domain(10);
 	dfa_com1.F.add(2);
 	dfa_com1.F.add(3);
@@ -131,7 +131,7 @@ void DFA_usefulf2()
 	dfa_com1.T.add_transition(5, '0', 5);
 	dfa_com1.T.add_transition(5, '1', 5);
 
-	//ÊµÀı»¯Ò»¸öDFA¶ÔÏó
+	//å®ä¾‹åŒ–ä¸€ä¸ªDFAå¯¹è±¡
 	DFA dfa1(dfa_com1);
 	cout << "\n\n****************************************************\n\n" << std::flush;
 	cout << dfa1 << endl;
