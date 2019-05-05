@@ -7,6 +7,8 @@ void ThompsonTest();
 void RFATest();
 void DFATest();
 void DFA_usefulf();
+void DFATestMinimalKeep();
+void DFATestMinimalFunction();
 
 void AutomataTest()
 {
@@ -18,8 +20,10 @@ void AutomataTest()
 	ThompsonTest();
 	RFATest();*/
 
-	DFATest();
+	//DFATest();
+	DFATestMinimalFunction();
 	//DFA_usefulf();
+	//DFATestMinimalKeep();
 
 	//int double 
 	//CharRange

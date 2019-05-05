@@ -1,20 +1,20 @@
-ï»¿#include "DFA.h"
-#include <iostream>
+#include "DFA.h"
 #include <string>
+#include <iostream>
+
 using namespace std;
 
-DFA_components DfaCom1(int n);
+void MinimiAlgorithmthis(DFA_components dfa_com);
+DFA_components DfaCom2(int);
 
-void MinimiAlgorithm(DFA_components dfa_com);
-
-void DFATest__()
+void DFATestMinimalKeep()
 {
-	DFA_components dfa_com = DfaCom1(6);
-	MinimiAlgorithm(dfa_com);
+	DFA_components dfa_com = DfaCom2(5);
+	MinimiAlgorithmthis(dfa_com);
 
 }
 
-DFA_components DfaCom1(int n)
+DFA_components DfaCom2(int n)
 {
 	DFA_components dfa_com1;
 	switch (n)
@@ -22,24 +22,24 @@ DFA_components DfaCom1(int n)
 	case 1:
 	{
 		/*
-		åˆå§‹åŒ–è¿™æ ·ä¸€ä¸ªDFA (æ­¤è¡¨æ ¼çš„æ„ä¹‰å¯ä»¥æŸ¥çœ‹ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 73)
-		ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰Fg. 3-3
-		çŠ¶æ€è¯´æ˜   çŠ¶æ€    è¾“å…¥å­—ç¬¦
+		³õÊ¼»¯ÕâÑùÒ»¸öDFA (´Ë±í¸ñµÄÒâÒå¿ÉÒÔ²é¿´¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 73)
+		¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©Fg. 3-3
+		×´Ì¬ËµÃ÷   ×´Ì¬    ÊäÈë×Ö·û
 							0   1
 			start	q0      q1  q0
 					q1      q2  q0
 					q2      q3  q0
 			accept 	q3      q3  q0
 
-		é¢„æœŸç»“æœï¼š è¯¥è‡ªåŠ¨æœºæœ¬èº«ä¾¿ä¸ºæœ€å°è‡ªåŠ¨æœº
+		Ô¤ÆÚ½á¹û£º ¸Ã×Ô¶¯»ú±¾Éí±ãÎª×îĞ¡×Ô¶¯»ú
 		*/
 
 
-		// StateSet S  å¼€å§‹çŠ¶æ€é›†
+		// StateSet S  ¿ªÊ¼×´Ì¬¼¯
 		dfa_com1.S.set_domain(10);
 		dfa_com1.S.add(0);
 
-		// StateSet F  ç»“æŸçŠ¶æ€é›†
+		// StateSet F  ½áÊø×´Ì¬¼¯
 		dfa_com1.F.set_domain(10);
 		dfa_com1.F.add(3);
 
@@ -57,202 +57,20 @@ DFA_components DfaCom1(int n)
 		//       --> StateTo<DTrans>::set_domain(r);
 		//                 
 		dfa_com1.T.set_domain(10);
-		dfa_com1.T.add_transition(0, '0', 1);
-		dfa_com1.T.add_transition(1, '0', 2);
+		dfa_com1.T.add_transition(0, '0', 2);
 		dfa_com1.T.add_transition(2, '0', 3);
 		dfa_com1.T.add_transition(3, '0', 3);
-		dfa_com1.T.add_transition(0, '1', 0);
-		dfa_com1.T.add_transition(1, '1', 0);
-		dfa_com1.T.add_transition(2, '1', 0);
-		dfa_com1.T.add_transition(3, '1', 0);
-		//dfa_com1.T.add_transition(4, '0', 0);
-		//dfa_com1.T.add_transition(4, '1', 2);
+		dfa_com1.T.add_transition(0, '1', 1);
+		dfa_com1.T.add_transition(2, '1', 1);
+		dfa_com1.T.add_transition(3, '1', 1);
+
 	}
-		break;
-	case 2:
-	{
-		/*
-		åˆå§‹åŒ–è¿™æ ·ä¸€ä¸ªDFA (æ­¤è¡¨æ ¼çš„æ„ä¹‰å¯ä»¥æŸ¥çœ‹ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 73)
-		ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 77   ,  fg. 3-5
-		çŠ¶æ€è¯´æ˜   çŠ¶æ€    è¾“å…¥å­—ç¬¦
-							0      1
-			start	q0      q1     q0
-					q1      q2,q5  q0
-					q2      q3,q6  q0
-			accept 	q3      q3     q4
-			accept  q4      q1     q0
-			{x000|x \in {0,1}*} or {x001|x \in {0,1}*}
-
-		é¢„æœŸç»“æœ: è¯¥è‡ªåŠ¨æœºæœ¬èº«ä¸ºæœ€å°è‡ªåŠ¨æœº     
-
-		*/
-
-		// StateSet S  å¼€å§‹çŠ¶æ€é›†
-		dfa_com1.S.set_domain(10);
-		dfa_com1.S.add(0);
-		//dfa_com1.S.add(1);
-
-		// StateSet F  ç»“æŸçŠ¶æ€é›†
-		dfa_com1.F.set_domain(10);
-		dfa_com1.F.add(3);
-		dfa_com1.F.add(4);
-
-		int i = 10;
-		while (i--)
-		{
-			dfa_com1.Q.allocate();
-		}
-
-
-		dfa_com1.T.set_domain(10);
-		dfa_com1.T.add_transition(0, '0', 1);
-		dfa_com1.T.add_transition(1, '0', 2);
-		dfa_com1.T.add_transition(2, '0', 3);
-		dfa_com1.T.add_transition(3, '0', 3);
-		dfa_com1.T.add_transition(0, '1', 0);
-		dfa_com1.T.add_transition(1, '1', 0);
-		dfa_com1.T.add_transition(2, '1', 4);
-		dfa_com1.T.add_transition(3, '1', 4);
-		dfa_com1.T.add_transition(4, '0', 1);
-		dfa_com1.T.add_transition(4, '1', 0);
-	}
-		break;
+	break;
 	case 3:
 	{
-		/*
-		æœ¬ä¾‹ä¸ºæ ·ä¾‹4çš„å»é™¤sinkçŠ¶æ€ç‰ˆæœ¬
-
-		åˆå§‹åŒ–è¿™æ ·ä¸€ä¸ªDFA (æ­¤è¡¨æ ¼çš„æ„ä¹‰å¯ä»¥æŸ¥çœ‹ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 73)
-		çŠ¶æ€è¯´æ˜   çŠ¶æ€    è¾“å…¥å­—ç¬¦ (ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 141 fig. 5-4)
-							0      1
-			start	q0      q1     q2
-					q1      q0     q3
-			accept  q2      q4     
-			accept  q3      q4     
-			accept  q4      q4     
-
-		é¢„æœŸç»“æœ ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 153 fig. 5-6
-
-		çŠ¶æ€è¯´æ˜   çŠ¶æ€        è¾“å…¥å­—ç¬¦
-							  0         1
-			start	q0,q1     q0,q1     q2,q3,q4
-			accept  q2,q3,q4  q2,q3,q4  q5
-
-
-		æˆ–è€…ï¼š
-
-		çŠ¶æ€è¯´æ˜   çŠ¶æ€        è¾“å…¥å­—ç¬¦
-							  0         1
-			start	q0        q0        q1
-			accept  q1        q1
-		*/
-
-		// StateSet S  å¼€å§‹çŠ¶æ€é›†
-		dfa_com1.S.set_domain(10);
-		dfa_com1.S.add(0);
-		//dfa_com1.S.add(1);
-
-		// StateSet F  ç»“æŸçŠ¶æ€é›†
-		dfa_com1.F.set_domain(10);
-		dfa_com1.F.add(2);
-		dfa_com1.F.add(3);
-		dfa_com1.F.add(4);
-
-		/*int i = 10;
-		while (i--)
-		{
-			dfa_com1.Q.allocate();
-		}*/
-
-		dfa_com1.Q.set_domain(10);
-
-		dfa_com1.T.set_domain(10);
-		dfa_com1.T.add_transition(0, '0', 1);
-		dfa_com1.T.add_transition(0, '1', 2);
-		dfa_com1.T.add_transition(1, '1', 3);
-		dfa_com1.T.add_transition(1, '0', 0);
-		dfa_com1.T.add_transition(2, '0', 4);
-		//dfa_com1.T.add_transition(2, '1', 5);
-		dfa_com1.T.add_transition(3, '0', 4);
-		//dfa_com1.T.add_transition(3, '1', 5);
-		dfa_com1.T.add_transition(4, '0', 4);
-		//dfa_com1.T.add_transition(4, '1', 5);
-		//dfa_com1.T.add_transition(5, '0', 5);
-		//dfa_com1.T.add_transition(5, '1', 5);
-	}
-		break;
-	case 4:
-	{
-		/*
-		åˆå§‹åŒ–è¿™æ ·ä¸€ä¸ªDFA (æ­¤è¡¨æ ¼çš„æ„ä¹‰å¯ä»¥æŸ¥çœ‹ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 73)
-		çŠ¶æ€è¯´æ˜   çŠ¶æ€    è¾“å…¥å­—ç¬¦ (ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 141 fig. 5-4)
-							0      1
-			start	q0      q1     q2
-					q1      q0     q3
-			accept  q2      q4     q5
-			accept  q3      q4     q5
-			accept  q4      q4     q5
-			sink	q5      q5     q5
-
-
-		é¢„æœŸç»“æœ ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 153 fig. 5-6
-
-		çŠ¶æ€è¯´æ˜   çŠ¶æ€        è¾“å…¥å­—ç¬¦
-							  0         1
-			start	q0,q1     q0,q1     q2,q3,q4
-			accept  q2,q3,q4  q2,q3,q4  q5
-			sink    q5        q5        q5
-
-		æˆ–è€…ï¼š
-
-		çŠ¶æ€è¯´æ˜   çŠ¶æ€        è¾“å…¥å­—ç¬¦
-							  0         1
-			start	q0        q0        q1
-			accept  q1        q1        q2
-			sink    q2        q5        q5
-		*/
-
-		// StateSet S  å¼€å§‹çŠ¶æ€é›†
-		dfa_com1.S.set_domain(10);
-		dfa_com1.S.add(0);
-
-		// StateSet F  ç»“æŸçŠ¶æ€é›†
-		dfa_com1.F.set_domain(10);
-		dfa_com1.F.add(2);
-		dfa_com1.F.add(3);
-		dfa_com1.F.add(4);
-
-		/*int i = 10;
-		while (i--)
-		{
-			dfa_com1.Q.allocate();
-		}*/
-
-		dfa_com1.Q.set_domain(10);
-
-		dfa_com1.T.set_domain(10);
-		dfa_com1.T.add_transition(0, '0', 1);
-		dfa_com1.T.add_transition(0, '1', 2);
-		dfa_com1.T.add_transition(1, '0', 0);
-		dfa_com1.T.add_transition(1, '1', 3);
-		dfa_com1.T.add_transition(2, '0', 4);
-		dfa_com1.T.add_transition(2, '1', 5);
-		dfa_com1.T.add_transition(3, '0', 4);
-		dfa_com1.T.add_transition(3, '1', 5);
-		dfa_com1.T.add_transition(4, '0', 4);
-		dfa_com1.T.add_transition(4, '1', 5);
-		dfa_com1.T.add_transition(5, '0', 5);
-		dfa_com1.T.add_transition(5, '1', 5);
-		//dfa_com1.T.add_transition(6, '1', 3);
-		//dfa_com1.T.add_transition(6, '0', 4);
-
-	}
-	break;
-	case 5:
-	{
-		/*       æœ‰é™·é˜±çŠ¶æ€è§æ ·ä¾‹ 7
-		åˆå§‹åŒ–è¿™æ ·ä¸€ä¸ªDFA (æ­¤è¡¨æ ¼çš„æ„ä¹‰å¯ä»¥æŸ¥çœ‹ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 73)
-		çŠ¶æ€è¯´æ˜   çŠ¶æ€    è¾“å…¥å­—ç¬¦ (ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 154  fig. 5-7   )
+		/*       ÎŞÏİÚå×´Ì¬¼ûÑùÀı 4
+		³õÊ¼»¯ÕâÑùÒ»¸öDFA (´Ë±í¸ñµÄÒâÒå¿ÉÒÔ²é¿´¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 73)
+		×´Ì¬ËµÃ÷   ×´Ì¬    ÊäÈë×Ö·û (¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 154  fig. 5-7   )
 							0      1
 			start	q0      q1     q5
 					q1      q2     q5
@@ -264,141 +82,18 @@ DFA_components DfaCom1(int n)
 					q7      q6     q8
 			accept  q8      q5     q4
 
-		é¢„æœŸç»“æœï¼šè¯¥è‡ªåŠ¨æœºä¸ºä¸€ä¸ªæœ€å°è‡ªåŠ¨æœº
+		Ô¤ÆÚ½á¹û£º¸Ã×Ô¶¯»úÎªÒ»¸ö×îĞ¡×Ô¶¯»ú
 
-		æµ‹è¯•ç»“æœ Brzozowskiç»“æœé”™è¯¯
+		²âÊÔ½á¹û Brzozowski½á¹û´íÎó
 
 		*/
 
-		// StateSet S  å¼€å§‹çŠ¶æ€é›†
+		// StateSet S  ¿ªÊ¼×´Ì¬¼¯
 		dfa_com1.S.set_domain(10);
 		dfa_com1.S.add(0);
 		//dfa_com1.S.add(1);
 
-		// StateSet F  ç»“æŸçŠ¶æ€é›†
-		dfa_com1.F.set_domain(10);
-		dfa_com1.F.add(4);
-		dfa_com1.F.add(8);
-
-		/*int i = 10;
-		while (i--)
-		{
-			dfa_com1.Q.allocate();
-		}*/
-
-		dfa_com1.Q.set_domain(10);
-
-		dfa_com1.T.set_domain(10);
-		dfa_com1.T.add_transition(0, '0', 1);
-		dfa_com1.T.add_transition(0, '1', 5);
-		dfa_com1.T.add_transition(1, '1', 2);
-		dfa_com1.T.add_transition(1, '0', 5);
-		dfa_com1.T.add_transition(2, '0', 3);
-		dfa_com1.T.add_transition(2, '1', 6);
-		dfa_com1.T.add_transition(3, '0', 2);
-		dfa_com1.T.add_transition(3, '1', 4);
-		dfa_com1.T.add_transition(4, '0', 8);
-		dfa_com1.T.add_transition(4, '1', 1);
-		dfa_com1.T.add_transition(5, '0', 1);
-		dfa_com1.T.add_transition(5, '1', 6);
-		dfa_com1.T.add_transition(6, '1', 2);
-		dfa_com1.T.add_transition(6, '0', 7);
-		dfa_com1.T.add_transition(7, '1', 8);
-		dfa_com1.T.add_transition(7, '0', 6);
-		dfa_com1.T.add_transition(8, '1', 4);
-		dfa_com1.T.add_transition(8, '0', 5);
-		/*dfa_com1.T.add_transition(9, '0', 7);
-		dfa_com1.T.add_transition(9, '1', 5);*/
-	}
-	break;
-	case 6:
-	{
-		/*
-		æ ·ä¾‹æ¥è‡ªï¼š  https://www.cnblogs.com/wendellyi/p/3695489.html
-		åˆå§‹åŒ–è¿™æ ·ä¸€ä¸ªDFA (æ­¤è¡¨æ ¼çš„æ„ä¹‰å¯ä»¥æŸ¥çœ‹ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 73)
-
-		çŠ¶æ€è¯´æ˜    çŠ¶æ€     è¾“å…¥å­—ç¬¦
-							a      b
-			start	q0      q1     q2
-					q1      q2     q4
-			accept  q2      qa     q3
-			accept  q3      q6     q5
-			accept  q4      q1     q5
-			accept  q5      q6     q5
-			accept  q6      q2     q6
-
-		é¢„æœŸç»“æœï¼š
-
-		çŠ¶æ€è¯´æ˜    çŠ¶æ€     è¾“å…¥å­—ç¬¦
-							a      b
-			start	q0      q1     q2
-					q1      q3     q2
-			        q2      q1     q3
-			accept  q3      q3     q3
-
-		*/
-
-		// StateSet S  å¼€å§‹çŠ¶æ€é›†
-		dfa_com1.S.set_domain(10);
-		dfa_com1.S.add(0);
-		//dfa_com1.S.add(1);
-
-		// StateSet F  ç»“æŸçŠ¶æ€é›†
-		dfa_com1.F.set_domain(10);
-		dfa_com1.F.add(3);
-		dfa_com1.F.add(2);
-		dfa_com1.F.add(5);
-		dfa_com1.F.add(6);
-
-		dfa_com1.Q.set_domain(10);
-
-		dfa_com1.T.set_domain(10);
-		dfa_com1.T.add_transition(0, 'a', 1);
-		dfa_com1.T.add_transition(0, 'b', 4);
-		dfa_com1.T.add_transition(1, 'a', 2);
-		dfa_com1.T.add_transition(1, 'b', 4);
-		dfa_com1.T.add_transition(2, 'a', 2);
-		dfa_com1.T.add_transition(2, 'b', 3);
-		dfa_com1.T.add_transition(3, 'a', 6);
-		//dfa_com1.T.add_transition(3, 'b', 3);
-		dfa_com1.T.add_transition(4, 'a', 1);
-		dfa_com1.T.add_transition(4, 'b', 5);
-		dfa_com1.T.add_transition(5, 'a', 6);
-		dfa_com1.T.add_transition(5, 'b', 5);
-		dfa_com1.T.add_transition(6, 'a', 2);
-		dfa_com1.T.add_transition(6, 'b', 5);
-		/*dfa_com1.T.add_transition(7, 'a', 2);
-		dfa_com1.T.add_transition(7, 'b', 5);*/
-	}
-		break;
-	case 7:
-	{
-		/*   å»é™¤é™·é˜±çŠ¶æ€è§æ ·ä¾‹ 5
-			åˆå§‹åŒ–è¿™æ ·ä¸€ä¸ªDFA (æ­¤è¡¨æ ¼çš„æ„ä¹‰å¯ä»¥æŸ¥çœ‹ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 73)
-			çŠ¶æ€è¯´æ˜   çŠ¶æ€    è¾“å…¥å­—ç¬¦ (ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 154  fig. 5-7   )
-							0      1
-			start	q0      q1     q5
-					q1      q2     q5
-					q2      q3     q6
-					q3      q2     q4
-			accept  q4      q8     q1
-					q5      q1     q6
-					q6      q7     q2
-					q7      q6     q8
-			accept  q8      q5     q4
-					q9      q7     q5
-
-
-			é¢„æœŸç»“æœï¼šå«æœ‰ä¸€ä¸ªå¼€å§‹çŠ¶æ€ä¸å¯è¾¾çŠ¶æ€ï¼ˆq9ï¼‰,
-			è¯¥è‡ªåŠ¨æœºä¸ºä¸€ä¸ªæœ€å°è‡ªåŠ¨æœº
-		*/
-
-		// StateSet S  å¼€å§‹çŠ¶æ€é›†
-		dfa_com1.S.set_domain(10);
-		dfa_com1.S.add(0);
-		//dfa_com1.S.add(1);
-
-		// StateSet F  ç»“æŸçŠ¶æ€é›†
+		// StateSet F  ½áÊø×´Ì¬¼¯
 		dfa_com1.F.set_domain(10);
 		dfa_com1.F.add(4);
 		dfa_com1.F.add(8);
@@ -433,12 +128,524 @@ DFA_components DfaCom1(int n)
 		dfa_com1.T.add_transition(9, '0', 7);
 		dfa_com1.T.add_transition(9, '1', 5);
 	}
-		break;
+	break;
+	case 4:
+	{
+		/*   È¥³ıÏİÚå×´Ì¬¼ûÑùÀı 5
+			³õÊ¼»¯ÕâÑùÒ»¸öDFA (´Ë±í¸ñµÄÒâÒå¿ÉÒÔ²é¿´¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 73)
+			×´Ì¬ËµÃ÷   ×´Ì¬    ÊäÈë×Ö·û (¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 154  fig. 5-7   )
+							0      1
+			start	q0      q1     q5
+					q1      q2     q5
+					q2      q3     q6
+					q3      q2     q4
+			accept  q4      q8     q1
+					q5      q1     q6
+					q6      q7     q2
+					q7      q6     q8
+			accept  q8      q5     q4
+					q9      q7     q5
+
+
+			Ô¤ÆÚ½á¹û£ºº¬ÓĞÒ»¸ö¿ªÊ¼×´Ì¬²»¿É´ï×´Ì¬£¨q9£©,
+			¸Ã×Ô¶¯»úÎªÒ»¸ö×îĞ¡×Ô¶¯»ú
+		*/
+
+		// StateSet S  ¿ªÊ¼×´Ì¬¼¯
+		dfa_com1.S.set_domain(10);
+		dfa_com1.S.add(0);
+		//dfa_com1.S.add(1);
+
+		// StateSet F  ½áÊø×´Ì¬¼¯
+		dfa_com1.F.set_domain(10);
+		dfa_com1.F.add(4);
+		dfa_com1.F.add(8);
+
+		/*int i = 10;
+		while (i--)
+		{
+			dfa_com1.Q.allocate();
+		}*/
+
+		dfa_com1.Q.set_domain(10);
+
+		dfa_com1.T.set_domain(10);
+		dfa_com1.T.add_transition(0, '0', 1);
+		dfa_com1.T.add_transition(0, '1', 5);
+		dfa_com1.T.add_transition(1, '1', 2);
+		dfa_com1.T.add_transition(1, '0', 5);
+		dfa_com1.T.add_transition(2, '0', 3);
+		dfa_com1.T.add_transition(2, '1', 6);
+		dfa_com1.T.add_transition(3, '0', 2);
+		dfa_com1.T.add_transition(3, '1', 4);
+		dfa_com1.T.add_transition(4, '0', 8);
+		dfa_com1.T.add_transition(4, '1', 1);
+		dfa_com1.T.add_transition(5, '0', 1);
+		dfa_com1.T.add_transition(5, '1', 6);
+		dfa_com1.T.add_transition(6, '1', 2);
+		dfa_com1.T.add_transition(6, '0', 7);
+		dfa_com1.T.add_transition(7, '1', 8);
+		dfa_com1.T.add_transition(7, '0', 6);
+		dfa_com1.T.add_transition(8, '1', 4);
+		dfa_com1.T.add_transition(8, '0', 5);
+		//dfa_com1.T.add_transition(9, '0', 7);
+		//dfa_com1.T.add_transition(9, '1', 5);
+	}
+	break;
+	case 5:
+	{
+		/*
+		³õÊ¼»¯ÕâÑùÒ»¸öDFA (´Ë±í¸ñµÄÒâÒå¿ÉÒÔ²é¿´¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 73)
+		¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©Fg. 3-3
+		×´Ì¬ËµÃ÷   ×´Ì¬    ÊäÈë×Ö·û
+							0   1
+			start	q0      q1  q0
+					q1      q2  q0
+					q2      q3  q0
+			accept 	q3      q3  q0
+
+		Ô¤ÆÚ½á¹û£º ¸Ã×Ô¶¯»ú±¾Éí±ãÎª×îĞ¡×Ô¶¯»ú
+		*/
+
+
+		// StateSet S  ¿ªÊ¼×´Ì¬¼¯
+		dfa_com1.S.set_domain(10);
+		dfa_com1.S.add(0);
+
+		// StateSet F  ½áÊø×´Ì¬¼¯
+		dfa_com1.F.set_domain(10);
+		dfa_com1.F.add(4);
+
+		/*int i = 10;
+		while (i--)
+		{
+			dfa_com1.Q.allocate();
+		}*/
+
+		dfa_com1.Q.set_domain(10);
+
+
+		// T.set_domain()
+		// DTransRel::set_domain(const int r) -->
+		//       --> StateTo<DTrans>::set_domain(r);
+		//                 
+		dfa_com1.T.set_domain(10);
+		dfa_com1.T.add_transition(0, '0', 2);
+		dfa_com1.T.add_transition(2, '0', 3);
+		dfa_com1.T.add_transition(3, '0', 4);
+		dfa_com1.T.add_transition(4, '0', 4);
+		dfa_com1.T.add_transition(0, '1', 0);
+		dfa_com1.T.add_transition(2, '1', 0);
+		dfa_com1.T.add_transition(3, '1', 0);
+		dfa_com1.T.add_transition(4, '1', 0);
+		dfa_com1.T.add_transition(1, '0', 0);
+		dfa_com1.T.add_transition(1, '1', 3);
+
+	}
+	break;
+	case 6:
+	{
+		/*
+		³õÊ¼»¯ÕâÑùÒ»¸öDFA (´Ë±í¸ñµÄÒâÒå¿ÉÒÔ²é¿´¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 73)
+		¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©Fg. 3-3
+		×´Ì¬ËµÃ÷   ×´Ì¬    ÊäÈë×Ö·û
+							0   1
+			start	q0      q1  q0
+					q1      q2  q0
+					q2      q3  q0
+			accept 	q3      q3  q0
+
+		Ô¤ÆÚ½á¹û£º ¸Ã×Ô¶¯»ú±¾Éí±ãÎª×îĞ¡×Ô¶¯»ú
+		*/
+
+
+		// StateSet S  ¿ªÊ¼×´Ì¬¼¯
+		dfa_com1.S.set_domain(10);
+		dfa_com1.S.add(0);
+
+		// StateSet F  ½áÊø×´Ì¬¼¯
+		dfa_com1.F.set_domain(10);
+		dfa_com1.F.add(3);
+
+		/*int i = 10;
+		while (i--)
+		{
+			dfa_com1.Q.allocate();
+		}*/
+
+		dfa_com1.Q.set_domain(10);
+
+
+		// T.set_domain()
+		// DTransRel::set_domain(const int r) -->
+		//       --> StateTo<DTrans>::set_domain(r);
+		//                 
+		dfa_com1.T.set_domain(10);
+		dfa_com1.T.add_transition(0, '0', 1);
+		dfa_com1.T.add_transition(1, '0', 2);
+		dfa_com1.T.add_transition(2, '0', 3);
+		dfa_com1.T.add_transition(3, '0', 3);
+		dfa_com1.T.add_transition(0, '1', 0);
+		dfa_com1.T.add_transition(1, '1', 0);
+		dfa_com1.T.add_transition(2, '1', 0);
+		dfa_com1.T.add_transition(3, '1', 0);
+
+	}
+	break;
+	case 7:
+	{
+		/*
+		³õÊ¼»¯ÕâÑùÒ»¸öDFA (´Ë±í¸ñµÄÒâÒå¿ÉÒÔ²é¿´¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 73)
+		¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©Fg. 3-3
+		×´Ì¬ËµÃ÷   ×´Ì¬    ÊäÈë×Ö·û
+							0   1
+			start	q0      q1  q0
+					q1      q2  q0
+					q2      q3  q0
+			accept 	q3      q3  q0
+
+		Ô¤ÆÚ½á¹û£º ¸Ã×Ô¶¯»ú±¾Éí±ãÎª×îĞ¡×Ô¶¯»ú
+		*/
+
+
+		// StateSet S  ¿ªÊ¼×´Ì¬¼¯
+		dfa_com1.S.set_domain(10);
+		dfa_com1.S.add(0);
+
+		// StateSet F  ½áÊø×´Ì¬¼¯
+		dfa_com1.F.set_domain(10);
+		dfa_com1.F.add(3);
+		dfa_com1.F.add(4);
+
+		/*int i = 10;
+		while (i--)
+		{
+			dfa_com1.Q.allocate();
+		}*/
+
+		dfa_com1.Q.set_domain(10);
+
+
+		// T.set_domain()
+		// DTransRel::set_domain(const int r) -->
+		//       --> StateTo<DTrans>::set_domain(r);
+		//                 
+		dfa_com1.T.set_domain(10);
+		dfa_com1.T.add_transition(0, '0', 1);
+		dfa_com1.T.add_transition(1, '0', 2);
+		dfa_com1.T.add_transition(2, '0', 3);
+		dfa_com1.T.add_transition(3, '0', 3);
+		dfa_com1.T.add_transition(0, '1', 0);
+		dfa_com1.T.add_transition(1, '1', 0);
+		dfa_com1.T.add_transition(2, '1', 4);
+		dfa_com1.T.add_transition(3, '1', 4);
+		dfa_com1.T.add_transition(4, '0', 1);
+		dfa_com1.T.add_transition(4, '1', 0);		
+		dfa_com1.T.add_transition(5, '0', 3);
+		dfa_com1.T.add_transition(5, '1', 1);
+
+	}
+	break;
 	case 8:
 	{
 		/*
-			åˆå§‹åŒ–è¿™æ ·ä¸€ä¸ªDFA (æ­¤è¡¨æ ¼çš„æ„ä¹‰å¯ä»¥æŸ¥çœ‹ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 73)
-			çŠ¶æ€è¯´æ˜   çŠ¶æ€    è¾“å…¥å­—ç¬¦ (ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 154  fig. 5-7  å»é™¤çŠ¶æ€9 )
+		³õÊ¼»¯ÕâÑùÒ»¸öDFA (´Ë±í¸ñµÄÒâÒå¿ÉÒÔ²é¿´¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 73)
+		¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©Fg. 3-3
+		×´Ì¬ËµÃ÷   ×´Ì¬    ÊäÈë×Ö·û
+							0   1
+			start	q0      q1  q0
+					q1      q2  q0
+					q2      q3  q0
+			accept 	q3      q3  q0
+
+		Ô¤ÆÚ½á¹û£º ¸Ã×Ô¶¯»ú±¾Éí±ãÎª×îĞ¡×Ô¶¯»ú
+		*/
+
+
+		// StateSet S  ¿ªÊ¼×´Ì¬¼¯
+		dfa_com1.S.set_domain(10);
+		dfa_com1.S.add(0);
+
+		// StateSet F  ½áÊø×´Ì¬¼¯
+		dfa_com1.F.set_domain(10);
+		dfa_com1.F.add(3);
+		dfa_com1.F.add(4);
+
+		/*int i = 10;
+		while (i--)
+		{
+			dfa_com1.Q.allocate();
+		}*/
+
+		dfa_com1.Q.set_domain(10);
+
+
+		// T.set_domain()
+		// DTransRel::set_domain(const int r) -->
+		//       --> StateTo<DTrans>::set_domain(r);
+		//                 
+		dfa_com1.T.set_domain(10);
+		dfa_com1.T.add_transition(0, '0', 1);
+		dfa_com1.T.add_transition(1, '0', 2);
+		dfa_com1.T.add_transition(2, '0', 3);
+		dfa_com1.T.add_transition(3, '0', 3);
+		dfa_com1.T.add_transition(0, '1', 0);
+		dfa_com1.T.add_transition(1, '1', 0);
+		dfa_com1.T.add_transition(2, '1', 4);
+		dfa_com1.T.add_transition(3, '1', 4);
+		dfa_com1.T.add_transition(4, '0', 1);
+		dfa_com1.T.add_transition(4, '1', 0);
+		//dfa_com1.T.add_transition(5, '0', 3);
+		//dfa_com1.T.add_transition(5, '1', 1);
+
+	}
+	break;
+	case 15:
+	{
+		/*
+		³õÊ¼»¯ÕâÑùÒ»¸öDFA (´Ë±í¸ñµÄÒâÒå¿ÉÒÔ²é¿´¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 73)
+		¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 77   ,  fg. 3-5
+		×´Ì¬ËµÃ÷   ×´Ì¬    ÊäÈë×Ö·û
+							0      1
+			start	q0      q1     q0
+					q1      q2,q5  q0
+					q2      q3,q6  q0
+			accept 	q3      q3     q4
+			accept  q4      q1     q0
+			{x000|x \in {0,1}*} or {x001|x \in {0,1}*}
+
+		Ô¤ÆÚ½á¹û: ¸Ã×Ô¶¯»ú±¾ÉíÎª×îĞ¡×Ô¶¯»ú
+
+		*/
+
+		// StateSet S  ¿ªÊ¼×´Ì¬¼¯
+		dfa_com1.S.set_domain(10);
+		dfa_com1.S.add(0);
+		//dfa_com1.S.add(1);
+
+		// StateSet F  ½áÊø×´Ì¬¼¯
+		dfa_com1.F.set_domain(10);
+		dfa_com1.F.add(3);
+		dfa_com1.F.add(4);
+
+		int i = 10;
+		while (i--)
+		{
+			dfa_com1.Q.allocate();
+		}
+
+
+		dfa_com1.T.set_domain(10);
+		dfa_com1.T.add_transition(0, '0', 1);
+		dfa_com1.T.add_transition(1, '0', 2);
+		dfa_com1.T.add_transition(2, '0', 3);
+		dfa_com1.T.add_transition(3, '0', 3);
+		dfa_com1.T.add_transition(0, '1', 0);
+		dfa_com1.T.add_transition(1, '1', 0);
+		dfa_com1.T.add_transition(2, '1', 4);
+		dfa_com1.T.add_transition(3, '1', 4);
+		dfa_com1.T.add_transition(4, '0', 1);
+		dfa_com1.T.add_transition(4, '1', 0);
+	}
+	break;
+	case 16:
+	{
+		/*
+		±¾ÀıÎªÑùÀı4µÄÈ¥³ısink×´Ì¬°æ±¾
+
+		³õÊ¼»¯ÕâÑùÒ»¸öDFA (´Ë±í¸ñµÄÒâÒå¿ÉÒÔ²é¿´¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 73)
+		×´Ì¬ËµÃ÷   ×´Ì¬    ÊäÈë×Ö·û (¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 141 fig. 5-4)
+							0      1
+			start	q0      q1     q2
+					q1      q0     q3
+			accept  q2      q4
+			accept  q3      q4
+			accept  q4      q4
+
+		Ô¤ÆÚ½á¹û ¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 153 fig. 5-6
+
+		×´Ì¬ËµÃ÷   ×´Ì¬        ÊäÈë×Ö·û
+							  0         1
+			start	q0,q1     q0,q1     q2,q3,q4
+			accept  q2,q3,q4  q2,q3,q4  q5
+
+
+		»òÕß£º
+
+		×´Ì¬ËµÃ÷   ×´Ì¬        ÊäÈë×Ö·û
+							  0         1
+			start	q0        q0        q1
+			accept  q1        q1
+		*/
+
+		// StateSet S  ¿ªÊ¼×´Ì¬¼¯
+		dfa_com1.S.set_domain(10);
+		dfa_com1.S.add(0);
+		//dfa_com1.S.add(1);
+
+		// StateSet F  ½áÊø×´Ì¬¼¯
+		dfa_com1.F.set_domain(10);
+		dfa_com1.F.add(2);
+		dfa_com1.F.add(3);
+		dfa_com1.F.add(4);
+
+		/*int i = 10;
+		while (i--)
+		{
+			dfa_com1.Q.allocate();
+		}*/
+
+		dfa_com1.Q.set_domain(10);
+
+		dfa_com1.T.set_domain(10);
+		dfa_com1.T.add_transition(0, '0', 1);
+		dfa_com1.T.add_transition(0, '1', 2);
+		dfa_com1.T.add_transition(1, '1', 3);
+		dfa_com1.T.add_transition(1, '0', 0);
+		dfa_com1.T.add_transition(2, '0', 4);
+		//dfa_com1.T.add_transition(2, '1', 5);
+		dfa_com1.T.add_transition(3, '0', 4);
+		//dfa_com1.T.add_transition(3, '1', 5);
+		dfa_com1.T.add_transition(4, '0', 4);
+		//dfa_com1.T.add_transition(4, '1', 5);
+		//dfa_com1.T.add_transition(5, '0', 5);
+		//dfa_com1.T.add_transition(5, '1', 5);
+	}
+	break;
+	case 17:
+	{
+		/*
+		³õÊ¼»¯ÕâÑùÒ»¸öDFA (´Ë±í¸ñµÄÒâÒå¿ÉÒÔ²é¿´¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 73)
+		×´Ì¬ËµÃ÷   ×´Ì¬    ÊäÈë×Ö·û (¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 141 fig. 5-4)
+							0      1
+			start	q0      q1     q2
+					q1      q0     q3
+			accept  q2      q4     q5
+			accept  q3      q4     q5
+			accept  q4      q4     q5
+			sink	q5      q5     q5
+
+
+		Ô¤ÆÚ½á¹û ¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 153 fig. 5-6
+
+		×´Ì¬ËµÃ÷   ×´Ì¬        ÊäÈë×Ö·û
+							  0         1
+			start	q0,q1     q0,q1     q2,q3,q4
+			accept  q2,q3,q4  q2,q3,q4  q5
+			sink    q5        q5        q5
+
+		»òÕß£º
+
+		×´Ì¬ËµÃ÷   ×´Ì¬        ÊäÈë×Ö·û
+							  0         1
+			start	q0        q0        q1
+			accept  q1        q1        q2
+			sink    q2        q5        q5
+		*/
+
+		// StateSet S  ¿ªÊ¼×´Ì¬¼¯
+		dfa_com1.S.set_domain(10);
+		dfa_com1.S.add(0);
+
+		// StateSet F  ½áÊø×´Ì¬¼¯
+		dfa_com1.F.set_domain(10);
+		dfa_com1.F.add(2);
+		dfa_com1.F.add(3);
+		dfa_com1.F.add(4);
+
+		/*int i = 10;
+		while (i--)
+		{
+			dfa_com1.Q.allocate();
+		}*/
+
+		dfa_com1.Q.set_domain(10);
+
+		dfa_com1.T.set_domain(10);
+		dfa_com1.T.add_transition(0, '0', 1);
+		dfa_com1.T.add_transition(0, '1', 2);
+		dfa_com1.T.add_transition(1, '0', 0);
+		dfa_com1.T.add_transition(1, '1', 3);
+		dfa_com1.T.add_transition(2, '0', 4);
+		dfa_com1.T.add_transition(2, '1', 5);
+		dfa_com1.T.add_transition(3, '0', 4);
+		dfa_com1.T.add_transition(3, '1', 5);
+		dfa_com1.T.add_transition(4, '0', 4);
+		dfa_com1.T.add_transition(4, '1', 5);
+		dfa_com1.T.add_transition(5, '0', 5);
+		dfa_com1.T.add_transition(5, '1', 5);
+		//dfa_com1.T.add_transition(6, '1', 3);
+		//dfa_com1.T.add_transition(6, '0', 4);
+
+	}
+	break;
+	
+	case 18:
+	{
+		/*
+		ÑùÀıÀ´×Ô£º  https://www.cnblogs.com/wendellyi/p/3695489.html
+		³õÊ¼»¯ÕâÑùÒ»¸öDFA (´Ë±í¸ñµÄÒâÒå¿ÉÒÔ²é¿´¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 73)
+
+		×´Ì¬ËµÃ÷    ×´Ì¬     ÊäÈë×Ö·û
+							a      b
+			start	q0      q1     q2
+					q1      q2     q4
+			accept  q2      qa     q3
+			accept  q3      q6     q5
+			accept  q4      q1     q5
+			accept  q5      q6     q5
+			accept  q6      q2     q6
+
+		Ô¤ÆÚ½á¹û£º
+
+		×´Ì¬ËµÃ÷    ×´Ì¬     ÊäÈë×Ö·û
+							a      b
+			start	q0      q1     q2
+					q1      q3     q2
+					q2      q1     q3
+			accept  q3      q3     q3
+
+		*/
+
+		// StateSet S  ¿ªÊ¼×´Ì¬¼¯
+		dfa_com1.S.set_domain(10);
+		dfa_com1.S.add(0);
+		//dfa_com1.S.add(1);
+
+		// StateSet F  ½áÊø×´Ì¬¼¯
+		dfa_com1.F.set_domain(10);
+		dfa_com1.F.add(3);
+		dfa_com1.F.add(2);
+		dfa_com1.F.add(5);
+		dfa_com1.F.add(6);
+
+		dfa_com1.Q.set_domain(10);
+
+		dfa_com1.T.set_domain(10);
+		dfa_com1.T.add_transition(0, 'a', 1);
+		dfa_com1.T.add_transition(0, 'b', 4);
+		dfa_com1.T.add_transition(1, 'a', 2);
+		dfa_com1.T.add_transition(1, 'b', 4);
+		dfa_com1.T.add_transition(2, 'a', 2);
+		dfa_com1.T.add_transition(2, 'b', 3);
+		dfa_com1.T.add_transition(3, 'a', 6);
+		//dfa_com1.T.add_transition(3, 'b', 3);
+		dfa_com1.T.add_transition(4, 'a', 1);
+		dfa_com1.T.add_transition(4, 'b', 5);
+		dfa_com1.T.add_transition(5, 'a', 6);
+		dfa_com1.T.add_transition(5, 'b', 5);
+		dfa_com1.T.add_transition(6, 'a', 2);
+		dfa_com1.T.add_transition(6, 'b', 5);
+		/*dfa_com1.T.add_transition(7, 'a', 2);
+		dfa_com1.T.add_transition(7, 'b', 5);*/
+	}
+	break;
+	
+	case 20:
+	{
+		/*
+			³õÊ¼»¯ÕâÑùÒ»¸öDFA (´Ë±í¸ñµÄÒâÒå¿ÉÒÔ²é¿´¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 73)
+			×´Ì¬ËµÃ÷   ×´Ì¬    ÊäÈë×Ö·û (¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 154  fig. 5-7  È¥³ı×´Ì¬9 )
 								0      1
 				start	q0      q1     q5
 						q1      q2     q5
@@ -450,15 +657,15 @@ DFA_components DfaCom1(int n)
 						q7      q6     q8
 				accept  q8      q5     q5
 
-				æµ‹è¯•ç»“æœï¼šé€šè¿‡ï¼Œæœªæ”¹åŠ¨min-hop
+				²âÊÔ½á¹û£ºÍ¨¹ı£¬Î´¸Ä¶¯min-hop
 		*/
 
-		// StateSet S  å¼€å§‹çŠ¶æ€é›†
+		// StateSet S  ¿ªÊ¼×´Ì¬¼¯
 		dfa_com1.S.set_domain(10);
 		dfa_com1.S.add(0);
 		//dfa_com1.S.add(1);
 
-		// StateSet F  ç»“æŸçŠ¶æ€é›†
+		// StateSet F  ½áÊø×´Ì¬¼¯
 		dfa_com1.F.set_domain(10);
 		dfa_com1.F.add(4);
 		dfa_com1.F.add(8);
@@ -490,7 +697,7 @@ DFA_components DfaCom1(int n)
 		//dfa_com1.T.add_transition(7, '0', 6);
 		//dfa_com1.T.add_transition(8, '0', 4);
 		dfa_com1.T.add_transition(8, '1', 4);
-		
+
 		/*dfa_com1.T.add_transition(9, '0', 1);
 		dfa_com1.T.add_transition(9, '1', 5);*/
 
@@ -500,13 +707,13 @@ DFA_components DfaCom1(int n)
 		/*dfa_com1.T.add_transition(9, '0', 7);
 		dfa_com1.T.add_transition(9, '1', 5);*/
 	}
-		break;
+	break;
 	case 9:
 	{
 		/*
-		
-			åˆå§‹åŒ–è¿™æ ·ä¸€ä¸ªDFA (æ­¤è¡¨æ ¼çš„æ„ä¹‰å¯ä»¥æŸ¥çœ‹ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 73)
-			çŠ¶æ€è¯´æ˜   çŠ¶æ€    è¾“å…¥å­—ç¬¦ (ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 154  fig. 5-7  å»é™¤çŠ¶æ€9 )
+
+			³õÊ¼»¯ÕâÑùÒ»¸öDFA (´Ë±í¸ñµÄÒâÒå¿ÉÒÔ²é¿´¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 73)
+			×´Ì¬ËµÃ÷   ×´Ì¬    ÊäÈë×Ö·û (¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 154  fig. 5-7  È¥³ı×´Ì¬9 )
 								0      1
 				start	q0      q1     q5
 						q1      q2     q5
@@ -519,16 +726,16 @@ DFA_components DfaCom1(int n)
 				accept  q8      q5     q5
 
 
-			é¢„æœŸç»“æœï¼šq9ä¸ºä¸å¯è¾¾çŠ¶æ€ï¼Œè¯¥è‡ªåŠ¨æœºå»é™¤q9åä¸ºä¸€ä¸ªæœ€å°è‡ªåŠ¨æœº
-			æµ‹è¯•ç»“æœï¼šé€šè¿‡ æœªæ”¹åŠ¨min-hop
+			Ô¤ÆÚ½á¹û£ºq9Îª²»¿É´ï×´Ì¬£¬¸Ã×Ô¶¯»úÈ¥³ıq9ºóÎªÒ»¸ö×îĞ¡×Ô¶¯»ú
+			²âÊÔ½á¹û£ºÍ¨¹ı Î´¸Ä¶¯min-hop
 		*/
 
-		// StateSet S  å¼€å§‹çŠ¶æ€é›†
+		// StateSet S  ¿ªÊ¼×´Ì¬¼¯
 		dfa_com1.S.set_domain(10);
 		dfa_com1.S.add(0);
 		//dfa_com1.S.add(1);
 
-		// StateSet F  ç»“æŸçŠ¶æ€é›†
+		// StateSet F  ½áÊø×´Ì¬¼¯
 		dfa_com1.F.set_domain(10);
 		dfa_com1.F.add(4);
 		dfa_com1.F.add(8);
@@ -570,28 +777,28 @@ DFA_components DfaCom1(int n)
 		/*dfa_com1.T.add_transition(9, '0', 7);
 		dfa_com1.T.add_transition(9, '1', 5);*/
 	}
-		break;
+	break;
 	case 10:
 	{
 		/*
-		æµ‹è¯•ä¸­
-		åˆå§‹åŒ–è¿™æ ·ä¸€ä¸ªDFA (æ­¤è¡¨æ ¼çš„æ„ä¹‰å¯ä»¥æŸ¥çœ‹ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 73)
+		²âÊÔÖĞ
+		³õÊ¼»¯ÕâÑùÒ»¸öDFA (´Ë±í¸ñµÄÒâÒå¿ÉÒÔ²é¿´¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 73)
 
-		çŠ¶æ€è¯´æ˜    çŠ¶æ€     è¾“å…¥å­—ç¬¦
+		×´Ì¬ËµÃ÷    ×´Ì¬     ÊäÈë×Ö·û
 							0      1
 
 
-		é¢„æœŸç»“æœï¼š
+		Ô¤ÆÚ½á¹û£º
 
-		çŠ¶æ€è¯´æ˜    çŠ¶æ€     è¾“å…¥å­—ç¬¦
+		×´Ì¬ËµÃ÷    ×´Ì¬     ÊäÈë×Ö·û
 
 		*/
 
-		// StateSet S  å¼€å§‹çŠ¶æ€é›†
+		// StateSet S  ¿ªÊ¼×´Ì¬¼¯
 		dfa_com1.S.set_domain(10);
 		dfa_com1.S.add(0);
 
-		// StateSet F  ç»“æŸçŠ¶æ€é›†
+		// StateSet F  ½áÊø×´Ì¬¼¯
 		dfa_com1.F.set_domain(10);
 		dfa_com1.F.add(2);
 		dfa_com1.F.add(3);
@@ -610,28 +817,28 @@ DFA_components DfaCom1(int n)
 		dfa_com1.T.add_transition(3, 'b', 4);
 
 	}
-		break;
+	break;
 	case 11:
 	{
 		/*
-		æµ‹è¯•ä¸­
-		åˆå§‹åŒ–è¿™æ ·ä¸€ä¸ªDFA (æ­¤è¡¨æ ¼çš„æ„ä¹‰å¯ä»¥æŸ¥çœ‹ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 73)
+		²âÊÔÖĞ
+		³õÊ¼»¯ÕâÑùÒ»¸öDFA (´Ë±í¸ñµÄÒâÒå¿ÉÒÔ²é¿´¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 73)
 
-		çŠ¶æ€è¯´æ˜    çŠ¶æ€     è¾“å…¥å­—ç¬¦
+		×´Ì¬ËµÃ÷    ×´Ì¬     ÊäÈë×Ö·û
 							0      1
 
 
-		é¢„æœŸç»“æœï¼š
+		Ô¤ÆÚ½á¹û£º
 
-		çŠ¶æ€è¯´æ˜    çŠ¶æ€     è¾“å…¥å­—ç¬¦
+		×´Ì¬ËµÃ÷    ×´Ì¬     ÊäÈë×Ö·û
 
 		*/
 
-		// StateSet S  å¼€å§‹çŠ¶æ€é›†
+		// StateSet S  ¿ªÊ¼×´Ì¬¼¯
 		dfa_com1.S.set_domain(10);
 		dfa_com1.S.add(0);
 
-		// StateSet F  ç»“æŸçŠ¶æ€é›†
+		// StateSet F  ½áÊø×´Ì¬¼¯
 		dfa_com1.F.set_domain(10);
 		//dfa_com1.F.add(2);
 		dfa_com1.F.add(3);
@@ -647,28 +854,28 @@ DFA_components DfaCom1(int n)
 		dfa_com1.T.add_transition(3, 'b', 4);
 
 	}
-		break;
+	break;
 	case 12:
 	{
 		/*
-		æµ‹è¯•ä¸­
-		åˆå§‹åŒ–è¿™æ ·ä¸€ä¸ªDFA (æ­¤è¡¨æ ¼çš„æ„ä¹‰å¯ä»¥æŸ¥çœ‹ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 73)
+		²âÊÔÖĞ
+		³õÊ¼»¯ÕâÑùÒ»¸öDFA (´Ë±í¸ñµÄÒâÒå¿ÉÒÔ²é¿´¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 73)
 
-		çŠ¶æ€è¯´æ˜    çŠ¶æ€     è¾“å…¥å­—ç¬¦
+		×´Ì¬ËµÃ÷    ×´Ì¬     ÊäÈë×Ö·û
 							0      1
 
 
-		é¢„æœŸç»“æœï¼š
+		Ô¤ÆÚ½á¹û£º
 
-		çŠ¶æ€è¯´æ˜    çŠ¶æ€     è¾“å…¥å­—ç¬¦
+		×´Ì¬ËµÃ÷    ×´Ì¬     ÊäÈë×Ö·û
 
 		*/
 
-		// StateSet S  å¼€å§‹çŠ¶æ€é›†
+		// StateSet S  ¿ªÊ¼×´Ì¬¼¯
 		dfa_com1.S.set_domain(10);
 		dfa_com1.S.add(0);
 
-		// StateSet F  ç»“æŸçŠ¶æ€é›†
+		// StateSet F  ½áÊø×´Ì¬¼¯
 		dfa_com1.F.set_domain(10);
 		dfa_com1.F.add(1);
 		dfa_com1.F.add(2);
@@ -686,28 +893,28 @@ DFA_components DfaCom1(int n)
 		//dfa_com1.T.add_transition(1, 'b', 1);
 
 	}
-		break;
+	break;
 	case 13:
 	{
 		/*
-		æµ‹è¯•ä¸­   å«æœ‰åˆå§‹ä¸å¯è¾¾çŠ¶æ€
-		åˆå§‹åŒ–è¿™æ ·ä¸€ä¸ªDFA (æ­¤è¡¨æ ¼çš„æ„ä¹‰å¯ä»¥æŸ¥çœ‹ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 73)
+		²âÊÔÖĞ   º¬ÓĞ³õÊ¼²»¿É´ï×´Ì¬
+		³õÊ¼»¯ÕâÑùÒ»¸öDFA (´Ë±í¸ñµÄÒâÒå¿ÉÒÔ²é¿´¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 73)
 
-		çŠ¶æ€è¯´æ˜    çŠ¶æ€     è¾“å…¥å­—ç¬¦
+		×´Ì¬ËµÃ÷    ×´Ì¬     ÊäÈë×Ö·û
 							0      1
 
 
-		é¢„æœŸç»“æœï¼š
+		Ô¤ÆÚ½á¹û£º
 
-		çŠ¶æ€è¯´æ˜    çŠ¶æ€     è¾“å…¥å­—ç¬¦
+		×´Ì¬ËµÃ÷    ×´Ì¬     ÊäÈë×Ö·û
 
 		*/
 
-		// StateSet S  å¼€å§‹çŠ¶æ€é›†
+		// StateSet S  ¿ªÊ¼×´Ì¬¼¯
 		dfa_com1.S.set_domain(10);
 		dfa_com1.S.add(0);
 
-		// StateSet F  ç»“æŸçŠ¶æ€é›†
+		// StateSet F  ½áÊø×´Ì¬¼¯
 		dfa_com1.F.set_domain(10);
 		dfa_com1.F.add(1);
 		dfa_com1.F.add(2);
@@ -725,13 +932,13 @@ DFA_components DfaCom1(int n)
 		dfa_com1.T.add_transition(3, 'b', 2);
 
 	}
-		break;
+	break;
 	case 14:
 	{
 		/*
-		ä¸ºæ ·ä¾‹5 ï¼Œå»é™¤ 4x1x1 , 8x0x5 3x0x2 , 7x0x6 ä¹‹åçš„ç‰ˆæœ¬
-		åˆå§‹åŒ–è¿™æ ·ä¸€ä¸ªDFA (æ­¤è¡¨æ ¼çš„æ„ä¹‰å¯ä»¥æŸ¥çœ‹ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 73)
-		çŠ¶æ€è¯´æ˜   çŠ¶æ€    è¾“å…¥å­—ç¬¦ (ã€Šå½¢å¼è¯­è¨€ä¸è‡ªåŠ¨æœºç†è®ºã€‹ï¼ˆISBN 978-7-302-31802-6ï¼‰pg. 154  fig. 5-7   )
+		ÎªÑùÀı5 £¬È¥³ı 4x1x1 , 8x0x5 3x0x2 , 7x0x6 Ö®ºóµÄ°æ±¾
+		³õÊ¼»¯ÕâÑùÒ»¸öDFA (´Ë±í¸ñµÄÒâÒå¿ÉÒÔ²é¿´¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 73)
+		×´Ì¬ËµÃ÷   ×´Ì¬    ÊäÈë×Ö·û (¡¶ĞÎÊ½ÓïÑÔÓë×Ô¶¯»úÀíÂÛ¡·£¨ISBN 978-7-302-31802-6£©pg. 154  fig. 5-7   )
 							0      1
 			start	q0      q1     q5
 					q1      q2     q5
@@ -744,18 +951,18 @@ DFA_components DfaCom1(int n)
 			accept  q8      --     q4
 					q9      q7     q5
 
-		é¢„æœŸç»“æœï¼šq9ä¸ºä¸å¯è¾¾çŠ¶æ€ï¼Œè¯¥è‡ªåŠ¨æœºå»é™¤q9åä¸ºä¸€ä¸ªæœ€å°è‡ªåŠ¨æœº
+		Ô¤ÆÚ½á¹û£ºq9Îª²»¿É´ï×´Ì¬£¬¸Ã×Ô¶¯»úÈ¥³ıq9ºóÎªÒ»¸ö×îĞ¡×Ô¶¯»ú
 
-		æµ‹è¯•ç»“æœ Brzozowskiç»“æœé”™è¯¯
+		²âÊÔ½á¹û Brzozowski½á¹û´íÎó
 
 		*/
 
-		// StateSet S  å¼€å§‹çŠ¶æ€é›†
+		// StateSet S  ¿ªÊ¼×´Ì¬¼¯
 		dfa_com1.S.set_domain(10);
 		dfa_com1.S.add(0);
 		//dfa_com1.S.add(1);
 
-		// StateSet F  ç»“æŸçŠ¶æ€é›†
+		// StateSet F  ½áÊø×´Ì¬¼¯
 		dfa_com1.F.set_domain(10);
 		dfa_com1.F.add(4);
 		dfa_com1.F.add(8);
@@ -797,7 +1004,7 @@ DFA_components DfaCom1(int n)
 	return dfa_com1;
 }
 
-void MinimiAlgorithm(DFA_components dfa_com)
+void MinimiAlgorithmthis(DFA_components dfa_com)
 {
 	DFA dfa1(dfa_com);
 	cout << "*************************************\n\n" << endl;
