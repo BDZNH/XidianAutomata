@@ -26,7 +26,7 @@ Implementation: The member function uses some encoding tricks to effectively imp
 #include "DFA.h"
 
 // Implemeta Algorithm 4.8 (Hopcroft O(n log n) algorithm)
-//#define FINDEBUG
+#define FINDEBUG
 //#define FIX
 DFA& DFA::min_Hopcroft()
 {
@@ -137,6 +137,7 @@ DFA& DFA::min_Hopcroft()
 		{
 			// mark this element of L as processed.
 			L[q]--;
+			CharRange c = C.iterator(L[q]);
 
 			// Iterate over al eq. classes, and try to split them.
 			State p;
@@ -173,7 +174,7 @@ DFA& DFA::min_Hopcroft()
 
 
 				// Now split [p] w.r.t (q,C_(L[q]))
-				State r(split(p, q, C.iterator(L[q]), P));  //abort with DFA 6 有初始不可达状态时
+				State r(split(p, q, c, P));  //abort with DFA 6 有初始不可达状态时
 				// r is the representative of the new split of the 
 				// eq. class that was represented by p.
 

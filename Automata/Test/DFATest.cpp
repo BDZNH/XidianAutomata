@@ -1,6 +1,4 @@
-﻿
-
-#include "DFA.h"
+﻿#include "DFA.h"
 #include <string>
 #include <iostream>
 
@@ -11,7 +9,7 @@ DFA_components DfaCom3(int);
 
 void DFATestMinimalFunction()
 {
-	DFA_components dfa_com = DfaCom3(8);
+	DFA_components dfa_com = DfaCom3(12);
 	MinimiAlgorithmFunction(dfa_com);
 
 }
@@ -127,7 +125,7 @@ DFA_components DfaCom3(int n)
 	case 3:
 	{
 		/*
-		测试中
+		测试中    Hopcroft 错误
 		初始化这样一个DFA (此表格的意义可以查看《形式语言与自动机理论》（ISBN 978-7-302-31802-6）pg. 73)
 
 		状态说明    状态     输入字符
@@ -156,14 +154,100 @@ DFA_components DfaCom3(int n)
 		dfa_com1.T.set_domain(10);
 		dfa_com1.T.add_transition(0, 'a', 1);
 		dfa_com1.T.add_transition(0, 'b', 2);
-		dfa_com1.T.add_transition(1, 'a', 2);
-		dfa_com1.T.add_transition(2, 'b', 1);
+		dfa_com1.T.add_transition(1, 'b', 2);
+		dfa_com1.T.add_transition(2, 'a', 1);
 		//dfa_com1.T.add_transition(2, 'a', 2);
 		//dfa_com1.T.add_transition(1, 'b', 1);
 
 	}
 	break;
 	case 4:
+	{
+		/*
+		测试中
+		初始化这样一个DFA (此表格的意义可以查看《形式语言与自动机理论》（ISBN 978-7-302-31802-6）pg. 73)
+
+		状态说明    状态     输入字符
+							0      1
+
+
+		预期结果：
+
+		状态说明    状态     输入字符
+
+		*/
+
+		// StateSet S  开始状态集
+		dfa_com1.S.set_domain(10);
+		dfa_com1.S.add(0);
+
+		// StateSet F  结束状态集
+		dfa_com1.F.set_domain(10);
+		dfa_com1.F.add(4);
+		dfa_com1.F.add(8);
+
+		dfa_com1.Q.set_domain(10);
+
+		dfa_com1.T.set_domain(10);
+		dfa_com1.T.add_transition(0, '0', 1);
+		dfa_com1.T.add_transition(0, '1', 5);
+		dfa_com1.T.add_transition(1, '1', 2);
+		dfa_com1.T.add_transition(2, '0', 3);
+		dfa_com1.T.add_transition(3, '1', 4);
+		dfa_com1.T.add_transition(4, '1', 4);
+		dfa_com1.T.add_transition(4, '0', 8);
+		dfa_com1.T.add_transition(5, '1', 6);
+		dfa_com1.T.add_transition(6, '0', 7);
+		dfa_com1.T.add_transition(7, '1', 4);
+		dfa_com1.T.add_transition(8, '1', 4);
+		dfa_com1.T.add_transition(8, '0', 8);
+
+	}
+	break;
+	case 5:
+	{
+		/*
+		测试中
+		初始化这样一个DFA (此表格的意义可以查看《形式语言与自动机理论》（ISBN 978-7-302-31802-6）pg. 73)
+
+		状态说明    状态     输入字符
+							0      1
+
+
+		预期结果：
+
+		状态说明    状态     输入字符
+
+		*/
+
+		// StateSet S  开始状态集
+		dfa_com1.S.set_domain(10);
+		dfa_com1.S.add(0);
+
+		// StateSet F  结束状态集
+		dfa_com1.F.set_domain(10);
+		dfa_com1.F.add(4);
+		dfa_com1.F.add(8);
+
+		dfa_com1.Q.set_domain(10);
+
+		dfa_com1.T.set_domain(10);
+		dfa_com1.T.add_transition(0, '0', 1);
+		dfa_com1.T.add_transition(0, '1', 5);
+		dfa_com1.T.add_transition(1, '1', 2);
+		dfa_com1.T.add_transition(2, '0', 3);
+		dfa_com1.T.add_transition(3, '1', 4);
+		//dfa_com1.T.add_transition(4, '1', 4);
+		dfa_com1.T.add_transition(4, '0', 8);
+		dfa_com1.T.add_transition(5, '1', 6);
+		dfa_com1.T.add_transition(6, '0', 7);
+		dfa_com1.T.add_transition(7, '1', 8);
+		dfa_com1.T.add_transition(8, '1', 4);
+		//dfa_com1.T.add_transition(8, '0', 8);
+
+	}
+	break;
+	case 6:
 	{
 		/*
 		样例来自：  https://www.cnblogs.com/wendellyi/p/3695489.html
@@ -223,7 +307,7 @@ DFA_components DfaCom3(int n)
 		dfa_com1.T.add_transition(7, 'b', 5);*/
 	}
 	break;
-	case 5:
+	case 7:
 	{
 		/*
 		样例来自：  https://www.cnblogs.com/wendellyi/p/3695489.html
@@ -283,7 +367,7 @@ DFA_components DfaCom3(int n)
 		dfa_com1.T.add_transition(7, 'b', 5);*/
 	}
 	break;
-	case 6:
+	case 10:
 	{
 		/// 此例子 Hopcroft 中止
 		// StateSet S  开始状态集
@@ -307,7 +391,27 @@ DFA_components DfaCom3(int n)
 		dfa_com1.T.add_transition(3, 'b', 4);
 	}
 		break;
-	case 7:
+	case 11:
+	{
+		/// 此例Hopcroft正确 
+		// StateSet S  开始状态集
+		dfa_com1.S.set_domain(10);
+		dfa_com1.S.add(0);
+
+		// StateSet F  结束状态集
+		dfa_com1.F.set_domain(10);
+		dfa_com1.F.add(2);
+		dfa_com1.F.add(3);
+
+		dfa_com1.Q.set_domain(10);
+
+		dfa_com1.T.set_domain(10);
+		dfa_com1.T.add_transition(0, 'a', 1);
+		dfa_com1.T.add_transition(1, 'b', 2);
+		dfa_com1.T.add_transition(2, 'a', 3);
+	}
+	break;
+	case 12:
 	{
 		/// 此例子 Hopcroft 中止
 		// StateSet S  开始状态集
@@ -330,9 +434,9 @@ DFA_components DfaCom3(int n)
 		dfa_com1.T.add_transition(3, 'b', 4);
 	}
 	break;
-	case 8:
+	case 13:
 	{
-		/// 此例子作为例 6 例 7 的对照组
+		/// 此例子作为例 10 例 11 的对照组
 		// StateSet S  开始状态集
 		dfa_com1.S.set_domain(10);
 		dfa_com1.S.add(0);

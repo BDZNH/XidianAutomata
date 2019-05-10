@@ -9,7 +9,7 @@ DFA_components DfaCom2(int);
 
 void DFATestMinimalKeep()
 {
-	DFA_components dfa_com = DfaCom2(5);
+	DFA_components dfa_com = DfaCom2(3);
 	MinimiAlgorithmthis(dfa_com);
 
 }

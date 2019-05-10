@@ -9,11 +9,11 @@ DFA_components DfaCom(int);
 
 void DFAHopcroftTest()
 {
-	int n = 1;
-	while (n<6)
-	{
-		std::cout << "Now test No:  " << n << std::endl << std::endl;
-		DFA_components dfa_com = DfaCom(n);
+	int n = 3;
+	//while (n<6)
+	//{
+	//	std::cout << "Now test No:  " << n << std::endl << std::endl;
+		DFA_components dfa_com = DfaCom(2);
 		DFA dfa1(dfa_com);
 		std::cout << "Original DFA:" << std::endl;
 		std::cout << dfa1 << std::endl;
@@ -25,7 +25,7 @@ void DFAHopcroftTest()
 		std::cout << dfa1 << std::endl;
 		std::cout << "################################################" << std::endl;
 		n++;
-	}
+	//}
 }
 
 
@@ -255,6 +255,35 @@ DFA_components DfaCom(int n)
 		dfa_com1.T.add_transition(3, 'b', 4);
 	}
 	break;
+	case 6:
+	{
+		i = 5;
+		while (i--)
+		{
+			dfa_com1.Q.allocate();
+		}
+
+		dfa_com1.S.set_domain(dfa_com1.Q.size());
+		dfa_com1.S.add(0);
+
+		dfa_com1.F.set_domain(dfa_com1.Q.size());
+		dfa_com1.F.add(3);
+		dfa_com1.F.add(4);
+
+		dfa_com1.T.set_domain(dfa_com1.Q.size());
+		dfa_com1.T.add_transition(0, 'a', 1);
+		dfa_com1.T.add_transition(0, 'b', 2);
+		dfa_com1.T.add_transition(1, 'a', 2);
+		dfa_com1.T.add_transition(1, 'b', 3);
+		dfa_com1.T.add_transition(2, 'b', 4);
+		dfa_com1.T.add_transition(2, 'a', 1);
+		dfa_com1.T.add_transition(3, 'a', 3);
+		dfa_com1.T.add_transition(3, 'b', 4);
+		dfa_com1.T.add_transition(4, 'b', 4);
+		dfa_com1.T.add_transition(4, 'a', 3);
+
+	}
+		break;
 	default:
 		break;
 	}

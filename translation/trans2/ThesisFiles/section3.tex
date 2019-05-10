@@ -11,14 +11,14 @@ $\mbox{　　　} (p,q) \in E \equiv ( \overrightarrow{\mathcal{L}}(p) = \overri
 
 \noindent{\textbf{转换 3.1 (合并状态)} : 对于任何满足 $ H \in E $ 的等价关系 $H$, 函数 $merge$ 可以用来减少 ${DFA}$的状态数\footnote{当$H$是状态上的恒等关系时，函数$merge$不会减少状态的数量。} ，函数 $merge$ 定义为：}
 
-\begin{displaymath}
-    \begin{split}
-    & merge((Q,V,T,\emptyset,\{s\},F),H)  = \mbox{\textbf{let}　}  T' = \{([p]_H,a,[q]_H):(p,a,q)\in T\} \\
-    & \mbox{　　　　　　　　　　　　　　\textbf{in}}\\
-    & \mbox{　　　　　　　　　　　　　　　　　} ([Q]_H,V,T',\emptyset,\{[s]_H\},[F]_H) \\
-    & \mbox{　　　　　　　　　　　　　　\textbf{end}}
-    \end{split}
-\end{displaymath}
+% \begin{displaymath}
+%     \begin{split}
+%     & merge((Q,V,T,\emptyset,\{s\},F),H)  = \mbox{\textbf{let}　}  T' = \{([p]_H,a,[q]_H):(p,a,q)\in T\} \\
+%     & \mbox{　　　　　　　　　　　　　　\textbf{in}}\\
+%     & \mbox{　　　　　　　　　　　　　　　　　} ([Q]_H,V,T',\emptyset,\{[s]_H\},[F]_H) \\
+%     & \mbox{　　　　　　　　　　　　　　\textbf{end}}
+%     \end{split}
+% \end{displaymath}
 
 % \includegraphics[width =.9\textwidth]{figure2.jpg}
 

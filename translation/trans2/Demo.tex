@@ -1,0 +1,84 @@
+%!TEX program = xelatex
+\documentclass[WordOneHalf,adobe]{XDUthesis}   %%启用默认字体设置，word 1.5 倍行距，打印样式
+% 参数设置：
+%     功能设置：
+%         <nologo>: 封面页去除logo（默认有logo）
+%         <WordOneHalf>: Word 1.5 倍行距（近似）（默认关闭）
+%         <contentsnd>: 目录去除点的连接
+%         <print>:  打印样式，保留装订线，默认为预览样式
+%     以下为字体设置，仅在XeLaTeX和LuaLaTeX下有效；不设置由系统自动检测【Windows:windowsn, mac:mac】
+%         <windowsn>: 由工作手册指定的字体设置，xelatex 下复制会乱码（不影响打印）
+%         <windowsf>: 宋体的粗体版本由华文中宋替代，PDF复制不会有乱码；粗体黑体会有乱码
+%         <adobe>: 采用对应的Adobe宋体和黑体作为中易宋体和黑体的替代；PDF复制无乱码
+%         <mac>: Mac系统下的字体
+% 
+
+\title{有限自动机最小化算法}
+\author{Bruce W. Watson}
+\date{2015年12月02日}
+%题目拆分：用于封面
+\septitleA{有限自动机最小化算法}%如果论文题目长度<=11中文字符只需填此项即可B项空着
+\septitleB{的分类}%如果论文题目长度>11中文字符, 建议拆分为10+x or 11+x 将剩余x个字符填在此处。
+\class{\phantom{22}1504012\quad}%班级号
+\schoolnumber{15040120169}%学号
+\major{统计学}%专业
+\school{数学与统计学院}%学院
+\supervisor{崔元顺}%指导老师
+
+%\usepackage[BoldFont]{xeCJK}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\tikzset{every label/.style=black}
+
+\usepackage{stmaryrd} % talloblong
+
+%%% 自动换行设置
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+
+\begin{document}
+
+% 摘要
+\input{ThesisFiles/Abstract}
+
+% 往PDF属性里面写下关键词信息
+\makeatletter
+\XDU@setpdf@keywords
+%\make@abstract%
+%
+%\frontmatter
+%\tableofcontents%
+%\mainmatter
+\makeatother
+
+\maketitle
+
+% 文章主要部分
+% \input{ThesisFiles/Chapters}
+\input{ThesisFiles/section1.tex}
+\input{ThesisFiles/section2.tex}
+\input{ThesisFiles/section3.tex}
+\input{ThesisFiles/section4.tex}
+\input{ThesisFiles/conlusion.tex}
+
+
+% 致谢
+% \input{ThesisFiles/Thanks}
+
+%参考文献
+\phantomsection%生成该页的链接
+\addcontentsline{toc}{chapter}{\bibname}
+\bibliographystyle{alpha}%不对参考文献排序% gbt7714-plain%对参考文献排序 
+\bibliography{ThesisFiles/RefFile}%在正文中必须引用，才能显示对应的参考文献
+
+% 附录部分
+\appendix
+% \input{ThesisFiles/Appendix}
+\input{ThesisFiles/basic_definition.tex}
+\input{ThesisFiles/FA.tex}
+
+\end{document}
+

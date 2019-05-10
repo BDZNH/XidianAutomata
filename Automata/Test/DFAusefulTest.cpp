@@ -141,3 +141,49 @@ void DFA_usefulf2()
 	cout << " is the DFA Usefulf ?: " << dfa1.Usefulf() << endl;
 
 }
+
+
+void minDFATest3()
+{
+	DFA_components dfa_com1;
+
+	// StateSet S  开始状态集
+	dfa_com1.S.set_domain(5);
+	dfa_com1.S.add(0);
+
+	// StateSet F  结束状态集
+	dfa_com1.F.set_domain(5);
+	dfa_com1.F.add(3);
+	dfa_com1.F.add(4);
+
+	int i = 5;
+	while (i--)
+	{
+		dfa_com1.Q.allocate();
+	}
+
+	dfa_com1.T.set_domain(5);
+	dfa_com1.T.add_transition(0, '0', 4);
+	dfa_com1.T.add_transition(0, '1', 2);
+	dfa_com1.T.add_transition(1, '0', 2);
+	dfa_com1.T.add_transition(1, '1', 2);
+	dfa_com1.T.add_transition(2, '0', 4);
+	dfa_com1.T.add_transition(2, '1', 2);
+	dfa_com1.T.add_transition(3, '0', 2);
+	dfa_com1.T.add_transition(3, '1', 3);
+	dfa_com1.T.add_transition(4, '0', 4);
+	dfa_com1.T.add_transition(4, '1', 4);
+
+	//实例化一个DFA对象
+	DFA dfa1(dfa_com1);
+	cout << "\n************ DFA\n" << std::flush;
+	cout << dfa1 << endl;
+
+	dfa1.usefulf();  // 没有删除1,3 ？
+	cout << dfa1 << endl;
+	cout << " is the DFA Usefulf ?: " << dfa1.Usefulf() << endl;
+
+	dfa1.min_Hopcroft();
+	cout << "\n************ minDFA\n" << std::flush;
+	cout << dfa1 << endl;
+}

@@ -9,6 +9,7 @@ void DFATest();
 void DFA_usefulf();
 void DFATestMinimalKeep();
 void DFATestMinimalFunction();
+void DFAHopcroftTest();
 
 void AutomataTest()
 {
@@ -21,9 +22,10 @@ void AutomataTest()
 	RFATest();*/
 
 	//DFATest();
-	DFATestMinimalFunction();
+	//DFATestMinimalFunction();
 	//DFA_usefulf();
 	//DFATestMinimalKeep();
+	DFAHopcroftTest();
 
 	//int double 
 	//CharRange
