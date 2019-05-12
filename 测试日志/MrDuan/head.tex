@@ -1,0 +1,305 @@
+%!TEX program = xelatex
+\documentclass[UTF8,zihao=-4,fontset=adobe]{ctexbook}
+% \documentclass[UTF8,zihao=-4]{ctexbook}
+\usepackage[superscript]{cite}
+\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{
+\citeleft}\cite{#1}\textsuperscript{\citeright}}}					% 设置参考文献序号格式
+%\renewcommand{\cite}[1]{\textsuperscript{\textsuperscript{
+%\citeleft}\cite{#1}\textsuperscript{\citeright}}}					% 设置参考文献序号格式
+% \usepackage{natbib}
+% \citestyle{nature} % Superscript citation style (Nature style)
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{amsthm}
+
+\usetikzlibrary{shapes,backgrounds}
+\usetikzlibrary{arrows, decorations.pathmorphing, backgrounds, positioning, fit, petri, automata} %自动机
+
+\usetikzlibrary{matrix,arrows}
+
+
+\usepackage{multirow} % 合并表格
+
+
+% \usepackage{tocloft}
+\usepackage{titletoc}
+
+%%% 一些环境重定义
+
+% \newcommand*{\artxifcnt}[1]{% check if counter exists
+%     \ifcsname c@#1\endcsname%
+%         \expandafter\@firstoftwo%
+%     \else%
+%         \expandafter\@secondoftwo%
+%     \fi
+% }
+
+% \artxifcnt{chapter}{\def\artxmaincnt{chapter}}{\def\artxmaincnt{section}}%
+
+\newtheorem{definition}{定义}[chapter]
+
+\newtheorem{example}{例}[chapter]
+
+\newtheorem{proposition}{惯例}[chapter]
+
+\newtheorem{remark}{注}[chapter]
+
+\usepackage{bicaption}
+% \bicaptionsetup{font={\small}}
+\usepackage{caption}
+\captionsetup{font={small}}   %% 设置图标标题为 宋体五号字
+
+\usepackage{stmaryrd}  % \talloblong
+
+\graphicspath{{image/}}
+
+
+
+%中英文字体设置
+% \setCJKmainfont{SimSun}
+% \setCJKmonofont{SimSun}
+% \setmainfont{Times New Roman}
+%%\normalsize{}
+
+% \setCJKmainfont{SimSun}
+% \setCJKmonofont{SimSun}
+% \setmainfont{Times New Roman}
+% \setCJKfamilyfont{zhsong}{SimSun}
+% \renewcommand*{\songti}{\CJKfamily{zhsong}}
+
+\setCJKmainfont{AdobeSongStd-Light}[AutoFakeBold,ItalicFont=AdobeKaitiStd-Regular]%
+\setCJKsansfont{AdobeHeitiStd-Regular}[AutoFakeBold]%
+\setCJKmonofont{AdobeFangsongStd-Regular}%
+\setmainfont[NFSSFamily=entextrm]{Times New Roman}% 
+\setsansfont[NFSSFamily=entextsf]{Times New Roman}% 
+
+\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}     %初号
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont} %小初号
+\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont}      %一号
+\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont}      %二号
+\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}  %小二号
+\newcommand{\sanhao}{\fontsize{15.75pt}{\baselineskip}\selectfont}  %三号
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}%     四号
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}  %小四号
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}    %五号
+\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}   %小五号
+\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}  %六号
+\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}    %七号
+
+
+\ctexset {
+    chapter = {
+        % format = \linespread{1.0}\zihao{3}\bfseries\heiti\centering,
+        format = \linespread{1.0}\zihao{3}\heiti\centering,
+        nameformat = {},
+        titleformat = {},
+        number = \chinese{chapter},
+        numberformat = \heiti,
+        aftername = \quad,
+        beforeskip = {7pt},
+        afterskip = {18pt},
+        pagestyle = plain,
+    }
+}
+%- section
+\ctexset {
+    section = {
+        % format = \linespread{1.0}\zihao{4}\bfseries\centering,
+        format = \linespread{1.0}\zihao{4}\centering,
+        numberformat = \rmfamily,
+        aftername = \quad,
+        beforeskip = {24pt},
+        afterskip = {6pt},
+    }
+}
+%- subsection
+\ctexset {
+    subsection = {
+        % format = \linespread{1.0}\zihao{-4}\bfseries\raggedright,
+        format = \linespread{1.0}\zihao{-4}\raggedright,
+        numberformat = \rmfamily,
+        aftername = \quad,
+        beforeskip = {12pt},
+        afterskip = {6pt},
+    }
+}
+%- subsubsection
+% \ctexset {
+%     subsubsection = {
+%         format = \linespread{1.0}\zihao{-4}\CJKfamily{song}\raggedright,
+%         numberformat = \rmfamily,
+%         aftername = \quad,
+%         beforeskip = {12pt},
+%         afterskip = {6pt},
+%     }
+% }
+
+%- appendix
+\ctexset {
+    appendix = {
+        numbering = true, %true|false,
+        number = \rmfamily\Alph{chapter},
+    }
+}
+
+%% 页面设置
+\usepackage{geometry}
+\geometry{papersize={21.0cm,29.7cm}}
+\geometry{left=3.18cm,right=3.18cm,top=2.54cm,bottom=2.54cm}
+
+\title{有限自动机C++工具箱\\等价性和最小化类软件测试}
+\author{胡双朴}
+\date{2019.06}
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+%% 下划线
+\usepackage{ulem}
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%% 页眉页脚格式
+\usepackage{fancyhdr}
+% \pagestyle{headings}
+\pagestyle{fancy}
+\fancyhead{}%清除页眉格式
+\fancyfoot{}%清除页脚格式
+\fancyhead[RO,LE]{\songti\zihao{-5}\thepage}%在奇数页右侧、偶数页左侧（也就是页面的外侧）设置页码 宋体小五。
+\fancyhead[CO]{\songti\zihao{5}{\leftmark}}%奇数页页眉中心设置章次和章标题 宋体五号
+\fancyhead[CE]{\songti\zihao{5}有限自动机C++工具箱等价性和最小化类软件测试}%偶数页页眉中心设置论文的题目
+\renewcommand{\headrulewidth}{0.75pt} % 页眉与正文之间的水平线粗细
+\renewcommand{\headwidth}{\textwidth} % 页眉与正文之间水平线的宽度
+% \renewcommand{\footrulewidth}{0pt} %    
+% \renewcommand{\chaptermark}[1]{\markboth{~第~\chinese{chapter}~章~~~#1~}{}}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \ #1}{}}
+% \renewcommand{\chaptermark}[1]{\markboth{\if@mainmatter\chaptername\ \thechapter~~\fi#1}{}}
+\fancypagestyle{plain}{  % 章节标题页页眉
+    \pagestyle{fancy}
+}
+%\thispagestyle{plain}   
+%\fancyhf{}
+
+
+
+
+
+
+% %%%%%%%  公式编号   from https://tex.stackexchange.com/questions/61756/how-to-change-equation-numbering-style
+\makeatletter
+\long\def\theequation{\ifnum \c@chapter > \z@ \thechapter --\fi \@arabic \c@equation}
+\makeatother
+% \usepackage{etoolbox}
+% \patchcmd{\theequation}{.}{--}{}{}
+
+%%%%% 超链接
+\usepackage[colorlinks,linkcolor=black,anchorcolor=blue,citecolor=red]{hyperref}
+
+
+%%%%%%% 代码样式
+\usepackage{listings}
+\usepackage{lipsum}
+%\usepackage{courier}
+\usepackage{xhfill}
+\usepackage{color}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.99,0.99,1.0}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{white},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    %basicstyle=\footnotesize\sffamily,
+    basicstyle=\footnotesize\ttfamily,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+\renewcommand\lstlistingname{代码}
+
+\begin{document}
+
+\input{Mrduan.tex}
+
+% \thispagestyle{empty}
+% \maketitle
+% \thispagestyle{empty}
+
+% %%%%%%%%%%%%% 目录开始  %%%%%%%%%%%%%
+% \cleardoublepage
+% \pagenumbering{Roman}  %-- 设置罗马数字
+% \setcounter{page}{1}
+% \pdfbookmark[1]{\contentsname}{toc}
+% \tableofcontents
+% \titlecontents{chapter}[4em]{\bfseries \zihao{-4} \vspace{10pt}}{\contentslabel{4em}}{\hspace*{-4em}}{~\titlerule*[1pc]{$.$}~\contentspage}
+% % \tableofcontents{section}[4em]{\bfseries \zihao{5} \vspace{10pt}}{\contentslabel{4em}}{\hspace*{-4em}}{~\titlerule*[0.6pc]{$.$}~\contentspage}
+
+% %%%%%%%%%%%%%%   为目录添加一页空白页  %%%%%%%%%%%%%%%%
+
+% %\newpage
+% % \thispagestyle{empty}
+% % \clearpage
+% % \phantom{s}
+% % % \newpage
+% % \thispagestyle{empty}
+
+% %%%%%%%%%%%%% 目录结束  %%%%%%%%%%%%%
+
+% %\newpage
+
+ % %-- 重新开始目录编号
+
+% \cleardoublepage
+% \renewcommand\chaptername{~第~\chinese{chapter}~章~}
+% \input{yinyan.tex}
+% \pagenumbering{arabic}
+% \setcounter{page}{1}
+% \input{preliminaries.tex}
+% \input{equivalent_relation.tex}
+% \input{construct_DFA.tex}
+% \input{realwork.tex}
+
+% % -- 参考文献
+% % % \bibliographystyle{gbt7714-2005}
+% % \bibliographystyle{ieeetr}
+% \bibliographystyle{XDUbib}
+% {\zihao{5}  %%% 修改参考文献页面字体大小为 5 号字体
+
+% \bibliography{ref}
+
+% }
+
+% \addcontentsline{toc}{chapter}{参考文献}
+
+% % -- 附录
+% %\appendix
+% \begin{appendix}
+% \renewcommand\chaptername{附录~\thechapter{}~}
+% \input{basic_definition.tex}
+% \input{FA.tex}
+% \end{appendix}
+
+\end{document}

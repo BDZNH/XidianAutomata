@@ -5,12 +5,15 @@ using namespace std;
 
 void DFA_usefulf1();
 void DFA_usefulf2();
+void minDFATest3();
 
 void DFA_usefulf()
 {
-	DFA_usefulf1();
-	DFA_usefulf2();
+	//DFA_usefulf1();
+	//DFA_usefulf2();
+	minDFATest3();
 }
+
 
 
 void DFA_usefulf1()
@@ -179,11 +182,37 @@ void minDFATest3()
 	cout << "\n************ DFA\n" << std::flush;
 	cout << dfa1 << endl;
 
+	cout << " is the DFA Usefulf ?: " << dfa1.Usefulf() << endl;
 	dfa1.usefulf();  // 没有删除1,3 ？
 	cout << dfa1 << endl;
 	cout << " is the DFA Usefulf ?: " << dfa1.Usefulf() << endl;
 
 	dfa1.min_Hopcroft();
-	cout << "\n************ minDFA\n" << std::flush;
+	cout << "\n************ minDFA (Hopcroft) \n" << std::flush;
 	cout << dfa1 << endl;
+
+
+	//增加对其他最小化算法的测试
+	DFA dfa2(dfa_com1);
+	dfa2.min_Brzozowski();
+	cout << "\n************ minDFA (Brzozowski)\n" << std::flush;
+	cout << dfa2 << endl;
+
+	DFA dfa3(dfa_com1);
+	dfa3.usefulf();
+	dfa3.min_dragon();
+	cout << "\n************ minDFA (dragon) \n" << std::flush;
+	cout << dfa3 << endl;
+
+	DFA dfa4(dfa_com1);
+	dfa4.usefulf();
+	dfa4.min_HopcroftUllman();
+	cout << "\n************ minDFA (HopcroftUllman) \n" << std::flush;
+	cout << dfa4 << endl;
+
+	DFA dfa5(dfa_com1);
+	dfa5.usefulf();
+	dfa5.min_Watson();
+	cout << "\n************ minDFA (Watson)\n" << std::flush;
+	cout << dfa5 << endl;
 }
