@@ -19,7 +19,7 @@
 %题目拆分：用于封面
 \septitleA{有限自动机最小化算法}%如果论文题目长度<=11中文字符只需填此项即可B项空着
 \septitleB{的分类}%如果论文题目长度>11中文字符, 建议拆分为10+x or 11+x 将剩余x个字符填在此处。
-\class{\phantom{22}1504012\quad}%班级号
+\class{1504012}%班级号
 \schoolnumber{15040120169}%学号
 \major{统计学}%专业
 \school{数学与统计学院}%学院
@@ -74,17 +74,20 @@
 % 致谢
 % \input{ThesisFiles/Thanks}
 
-%参考文献
-\phantomsection%生成该页的链接
-\addcontentsline{toc}{chapter}{\bibname}
-\bibliographystyle{alpha}%不对参考文献排序% gbt7714-plain%对参考文献排序 
-\bibliography{ThesisFiles/RefFile}%在正文中必须引用，才能显示对应的参考文献
+
 
 % 附录部分
 \appendix
 % \input{ThesisFiles/Appendix}
 \input{ThesisFiles/basic_definition.tex}
 \input{ThesisFiles/FA.tex}
+
+%参考文献
+\nocite{*}
+\phantomsection%生成该页的链接
+\addcontentsline{toc}{chapter}{\bibname}
+\bibliographystyle{alpha}%不对参考文献排序% gbt7714-plain%对参考文献排序 
+\bibliography{ThesisFiles/RefFile}%在正文中必须引用，才能显示对应的参考文献
 
 \end{document}
 

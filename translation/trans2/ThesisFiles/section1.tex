@@ -17,67 +17,61 @@
 
 有限自动机构造算法的相关分类在\cite{Wats93}中。
 
-除了一个算法之外，其他所有算法依赖于确定等价\footnote{状态的等价稍后定义。}的自动机状态的集合。在第2节中讨论了不使用等价状态的算法。在第3节中给出了状态等价的定义和一些性质。计算等效状态的算法在第4节中给出。分类的主要结果被总结在结论部分5中。附录A和附录B给出了阅读本文所需的基本定义。与有限自动机相关的定义取自\cite{Wats93}。图1中的“Family tree”展示了最小化算法之间的关系。
+除了一个算法之外，其他所有算法依赖于确定等价\footnote{状态的等价稍后定义。}的自动机状态的集合。在第2节中讨论了不使用等价状态的算法。在第3节中给出了状态等价的定义和一些性质。计算等效状态的算法在第4节中给出。分类的主要结果被总结在结论部分5中。附录A和附录B给出了阅读本文所需的基本定义。与有限自动机相关的定义取自\cite{Wats93}。图 \ref{fig:1} 展示了最小化算法之间的关系。
 
 大多数最小化算法的主要计算在于确定等价的（或不等价的）状态，从而在状态上产生等价关系。在本文中，我们考虑以下最小化算法：
 
 \begin{itemize}
     \item Brzozowski（可能是非确定性的）有限自动机最小化算法 在 \cite{Brzo62} 中提出。这个优雅的算法（第2节）最初是由Brzozowski提出，此后又在没有Brzozowski的“参与”的情况下被重新提出。给出了一个不含$\epsilon$-转移的有限自动机（可能不确定的），该算法生成一个最小的接受相同的语言的确定性有限自动机。
 
-    \item This algorithm (Algorithm 4. 2) is a straightforward implementation suggested by the approximation sequence arising from the fixed-point definition of equivalence of states. 
+    \item 分层等价计算等价于 \cite{Wood87, Moor56, Brau88, Urba89} 中提出。算法（算法 4.2）是由状态等价的定点定义产生的近似序列所建议的直接实现。
 
-    分层等价计算等价于 \cite{Wood87, Moor56, Brau88, Urba89} 中提出。算法（算法 4.2）是由状态等价的定点定义产生的近似序列所建议的直接实现。
+    \item 等价性的无序计算。该算法（算法4.3，未出现在文献中）计算等价关系；以任意顺序选择状态对（考虑等价性）。
 
-    \item Unordered computation of equivalence. This algorithm (Algorithm 4.3, not appearing in the literature) computes the equivalence relation; pairs of states (for consideration of equivalence) are chosen in an arbitrary order.
-
-    等价性的无序计算。该算法（算法4.3，未出现在文献中）计算等价关系；以任意顺序选择状态对（考虑等价性）。
-
-    \item Unordered computation of equivalence classes as presented in [ASU86]. This algorithm (Algorithm 4.4)is a modification of the above algorithm computing equivalence of states.
-
-    等价类的无序计算发表在\cite{ASU86}。该算法（算法4.4）是上述计算状态等价性的算法的一种更改。
+    \item 等价类的无序计算发表在\cite{ASU86}。该算法（算法4.4）是上述计算状态等价性的算法的一种更改。
 
 \end{itemize}
 
 \begin{figure}[tbp]
     \centering
-    \resizebox {0.9\textwidth} {!} {
+    \resizebox {0.8\textwidth} {!} {
         \begin{tikzpicture}
             [place/.style={circle,draw=black,fill=black,thick}]
-            \node at ( 0, 0) [place,label=right:$\text{状态的等价 (}\S 3)$] (n0) {};
-            \node at ( 6,-4) [place,label=right:$(\S \text{4.6})$] (n1) {};
-            \node at (-6,-4) [place,label=right:$(\S \text{ 4.1-4.5,4.7})$] (n2) {};
-            \node at ( 6,-10) [place,label=right:$(\text{4.9})$] (n3) {};
-            \node at ( 6,-14) [place,label=right:$(\text{pg. 15})$] (n4) {};
-            \node at ( 0,-8) [place,label=right:$(\text{4.10})$] (n15) {};
-            \node at (-12,-8) [place,label=right:$(\S \text{4.1-4.5})$] (n5) {};
-            \node at (-6,-14) [place,label=right:$(\text{Hopcroft-Ullman(4.7)})$] (n6) {};
-            \node at (-18,-14) [place,label=right:$(\text{4.2})$] (n7) {};
-            \node at (-12,-14) [place] (n8) {};
-            \node at (-16,-18) [place,label=right:$(\text{4.3})$] (n9) {};
-            \node at (-16,-22) [place,label=right:$(\text{ASU(4.4)})$] (n10) {};
-            \node at (-8,-18) [place,label=right:$(\text{4.5})$] (n11) {};
-            \node at (-8,-22) [place,label=right:$(\text{4.6})$] (n12) {};
-            \node at (-8,-26) [place,label=right:$(\text{pg. 14})$] (n13) {};
-            \node at (-8,-30) [place,label=right:$(\text{Hopcroft(4.8)})$] (n14) {};
-            \node at (-18,-0) [place,label=right:$\text{Brzozowski}(\S 2)$] (n16) {};
-
             % \node at ( 0, 0) [place,label=right:$\text{状态的等价 (}\S 3)$] (n0) {};
-            % \node at ( 6,-3) [place,label=right:$(\S \text{4.6})$] (n1) {};
-            % \node at (-6,-3) [place,label=right:$(\S \text{ 4.1-4.5,4.7})$] (n2) {};
-            % \node at ( 6,-7.5) [place,label=right:$(\text{4.9})$] (n3) {};
-            % \node at ( 6,-10.5) [place,label=right:$(\text{pg. 15})$] (n4) {};
-            % \node at ( 0,-6) [place,label=right:$(\text{4.10})$] (n15) {};
-            % \node at (-12,-6) [place,label=right:$(\S \text{4.1-4.5})$] (n5) {};
-            % \node at (-6,-10.5) [place,label=right:$(\text{Hopcroft-Ullman(4.7)})$] (n6) {};
-            % \node at (-18,-10.5) [place,label=right:$(\text{4.2})$] (n7) {};
-            % \node at (-12,-10.5) [place] (n8) {};
-            % \node at (-16,-13.5) [place,label=right:$(\text{4.3})$] (n9) {};
-            % \node at (-16,-16.5) [place,label=right:$(\text{ASU(4.4)})$] (n10) {};
-            % \node at (-8,-13.5) [place,label=right:$(\text{4.5})$] (n11) {};
-            % \node at (-8,-16.5) [place,label=right:$(\text{4.6})$] (n12) {};
-            % \node at (-8,-19.5) [place,label=right:$(\text{pg. 14})$] (n13) {};
-            % \node at (-8,-22.5) [place,label=right:$(\text{Hopcroft(4.8)})$] (n14) {};
+            % \node at ( 6,-4) [place,label=right:$(\S \text{4.6})$] (n1) {};
+            % \node at (-6,-4) [place,label=right:$(\S \text{ 4.1-4.5,4.7})$] (n2) {};
+            % \node at ( 6,-10) [place,label=right:$(\text{4.9})$] (n3) {};
+            % \node at ( 6,-14) [place,label=right:$(\text{pg. 15})$] (n4) {};
+            % \node at ( 0,-8) [place,label=right:$(\text{4.10})$] (n15) {};
+            % \node at (-12,-8) [place,label=right:$(\S \text{4.1-4.5})$] (n5) {};
+            % \node at (-6,-14) [place,label=right:$(\text{Hopcroft-Ullman(4.7)})$] (n6) {};
+            % \node at (-18,-14) [place,label=right:$(\text{4.2})$] (n7) {};
+            % \node at (-12,-14) [place] (n8) {};
+            % \node at (-16,-18) [place,label=right:$(\text{4.3})$] (n9) {};
+            % \node at (-16,-22) [place,label=right:$(\text{ASU(4.4)})$] (n10) {};
+            % \node at (-8,-18) [place,label=right:$(\text{4.5})$] (n11) {};
+            % \node at (-8,-22) [place,label=right:$(\text{4.6})$] (n12) {};
+            % \node at (-8,-26) [place,label=right:$(\text{pg. 14})$] (n13) {};
+            % \node at (-8,-30) [place,label=right:$(\text{Hopcroft(4.8)})$] (n14) {};
             % \node at (-18,-0) [place,label=right:$\text{Brzozowski}(\S 2)$] (n16) {};
+
+            \node at ( 0, 0) [place,label=right:$\text{状态的等价 (}\S 3)$] (n0) {};
+            \node at ( 6,-3) [place,label=right:$(\S \text{4.6})$] (n1) {};
+            \node at (-6,-3) [place,label=right:$(\S \text{ 4.1-4.5,4.7})$] (n2) {};
+            \node at ( 6,-8) [place,label=right:$(\text{4.9})$] (n3) {};
+            \node at ( 6,-12) [place,label=right:$(\text{pg. 15})$] (n4) {};
+            \node at ( 0,-7) [place,label=right:$(\text{4.10})$] (n15) {};
+            \node at (-12,-7) [place,label=right:$(\S \text{4.1-4.5})$] (n5) {};
+            \node at (-6,-12) [place,label=right:$(\text{Hopcroft-Ullman(4.7)})$] (n6) {};
+            \node at (-18,-12) [place,label=right:$(\text{4.2})$] (n7) {};
+            \node at (-12,-12) [place] (n8) {};
+            \node at (-16,-15) [place,label=right:$(\text{4.3})$] (n9) {};
+            \node at (-16,-18) [place,label=right:$(\text{ASU(4.4)})$] (n10) {};
+            \node at (-8,-15) [place,label=right:$(\text{4.5})$] (n11) {};
+            \node at (-8,-18) [place,label=right:$(\text{4.6})$] (n12) {};
+            \node at (-8,-21) [place,label=right:$(\text{pg. 14})$] (n13) {};
+            \node at (-8,-25) [place,label=right:$(\text{Hopcroft(4.8)})$] (n14) {};
+            \node at (-18,-0) [place,label=right:$\text{Brzozowski}(\S 2)$] (n16) {};
           
             \draw[-] (n0) to [right] node {逐点} (n1);
             \draw[-] (n1) to [right] node {命令式程序} (n3);
@@ -100,7 +94,7 @@
     \caption{}
     \label{fig:1}
 \end{figure}
-\clearpage
+% \clearpage
 图 \ref{fig:1} ：有限自动机最小化算法之间的关系。Brzozowski的最小化算法与其他算法无关，并作为一个单独的（单顶点）树出现。本文提出的每一个算法都作为树的顶点出现。对于本文中明确出现的每个算法，则在在括号中标示出它在本文中出现的位置。对于未显式显示的算法，给出了相应的页码。边表示解的细化（也即算法之间的显式关系）。它们被标记为细化的名称。
 
 \begin{itemize}
@@ -115,8 +109,7 @@
 
     \item 等价的点态计算。该算法（算法4.9，不在文献中）计算给定状态对的等价性。它借鉴了一些非自动机相关的技术，例如：类型的结构等价和函数式程序的记忆化。
 
-    \item \uline{Computation of equivalence from below (with respect to refinement). This algorithm (Algorithm 4.10, not appearing in the literature) computes the equivalence relation from below. } Unlike any of the other known algorithms, the intermediate result of this algorithm can be used to construct a smaller (although not minimal) deterministic finite automaton.
-　　\newline
-    \uline{由下面的内容（关于细化）计算等价性。该算法（算法4.10，不在文献中）计算从下面的等价关系。}与任何其他已知算法不同，该算法的中间结果可用于构造较小的（虽然不是最小的）确定性有限自动机。
+    \item \uline{Computation of equivalence from below (with respect to refinement). }
+    \uline{从下面（相对于细化）计算等价性。该算法（算法4.10，不在文献中）计算从下面的等价关系。}与任何其他已知算法不同，该算法的中间结果可用于构造较小的（虽然不是最小的）确定性有限自动机。
 
 \end{itemize}
