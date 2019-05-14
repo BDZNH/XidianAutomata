@@ -1,16 +1,16 @@
 \chapter{Brzozowski提出的算法}
 
-Most minimization algorithms are applied to a DFA. \uline{In the case of a nondeterministic FA, the subset construction is applied first, followed by the minimization algorithm.} In this section, we consider the possibility of applying the subset construction (with useless state removal) after an (as yet unknown) algorithm to yield a minimal DFA. We now construct such an algorithm. (The algorithm described in this section can also be used to construct the minimal Complete DFA, by replacing function subsetopt with subset.)
+\uline{In the case of a nondeterministic FA, the subset construction is applied first, followed by the minimization algorithm.} In this section, we consider the possibility of applying the subset construction (with useless state removal) after an (as yet unknown) algorithm to yield a minimal DFA. We now construct such an algorithm.
 
-大多数最小化算法应用于确定性有限自动机($DFA$)。\uline{对于不确定性有限自动机，首先应用子集构造，然后应用最小化算法}。在本节中，我们将考虑在(未知的)算法之后应用子集构造(带无用状态删除)以生成最小$DFA$的可能性。我们现在构造这样的算法。（在本节中描述的算法也可用于通过用 \textit{subset} 替换函数 \textit{subsetopt} 来构造最小完全$DFA$）。
+大多数最小化算法应用于 $DFA$ 。\uline{对于不确定性有限自动机，首先应用子集构造，然后应用最小化算法}。在本节中，我们将考虑在(未知的)算法之后应用子集构造(带无用状态删除)以生成最小$DFA$的可能性。我们现在构造这样的算法。（在本节中描述的算法也可用于通过用 $subset$ 替换函数 $subsetopt$ 来构造最小完全$DFA$）。
 
-令$M_0 = (Q_0,V,T_0,\emptyset ,S_0,F_0)$ 为一个 $\epsilon$-$free$ $FA$，对其进行最小化，令 $M_2 = ( Q_2,V,T_2,\emptyset,S_2,F_2 ) $ 为最小化的 $DFA$，那么 $ \mathcal{L} (M_0) = \mathcal{L}(M_2) $ ( $Min(M_2)$ 当然也是，详见定义 B.19)。（对本节中剩下的部分我们使用 $Minimal$（性质 B.21））。由于最后构造子集，有一些中间$FA$ $M_1 = ( Q_1,V,T_1,\emptyset,S_1,F_1 )$，于是$M_2 = useful \circ subsetopt(M_1)$。我们要求 $M_1$ 是由 $M_0$ 得到的,那么 $ \mathcal{L}_{FA}(M_2) = \mathcal{L}_{FA}(M_1) = \mathcal{L}_{FA}(M_0)$。
+令$M_0 = (Q_0,V,T_0,\emptyset ,S_0,F_0)$ 为一个 $\epsilon$-$free$ $FA$，对其进行最小化，令 $M_2 = ( Q_2,V,T_2,\emptyset,S_2,F_2 ) $ 为最小的 $DFA$，那么 $ \mathcal{L} (M_0) = \mathcal{L}(M_2) $ ( $Min(M_2)$ 当然也是，详见定义 B.19)。（对本节中剩下的部分我们使用 $Minimal$（性质 B.21））。由于最后构造子集，有一些中间$FA$ $M_1 = ( Q_1,V,T_1,\emptyset,S_1,F_1 )$，于是$M_2 = useful \circ subsetopt(M_1)$。我们要求 $M_1$ 是由 $M_0$ 得到的,那么 $ \mathcal{L}_{FA}(M_2) = \mathcal{L}_{FA}(M_1) = \mathcal{L}_{FA}(M_0)$。
 
 从 $Minimal(M_2)$  （性质 B.21）开始，我们需要：
 $$ (\forall p,q,:p\in Q_2 \land q \in Q_2 \land p \not= q : \overrightarrow{\mathcal{L}}(p) \not= \overrightarrow{\mathcal{L}}(q)) \land useful(M_2)   $$ 
-对所有的状态$q\in Q_2$，我们有 $q\in P(Q_1$ since $M_2 = useful_s \circ subsetopt(M_1)$。性质 B.25 的子集构造给出： 
+对与所有的状态$q\in Q_2$，由于 $M_2 = useful_s \circ subsetopt(M_1)$ ，所以有 $q\in P(Q_1$ 。性质 B.25 的子集构造给出： 
 $$ (\forall p:p\in Q_2 : \overrightarrow{\mathcal{L}}(p) = (\cup q:q \in Q_1 \land q \in p:\overrightarrow{\mathcal{L}}(q)) ) $$ 
-需要充足的条件 on $M_1$ 来确保 $Minimal(M_2)$。相应的条件由下面的推导给出: \\
+我们需要 $M_1$ 上充足的条件来确保 $Minimal(M_2)$。相应条件的推导如下: \\
 \mbox{　　　} $Minimal(M_2)$ \\
 \mbox{　} $\equiv$ \mbox{　　} {$Minimal$的定义(性质 B.21)} \\
 \mbox{　　　} $ (\forall p,q,:p\in Q_2 \land q \in Q_2 \land p \not= q : \overrightarrow{\mathcal{L}}(p) \not= \overrightarrow{\mathcal{L}}(q)) \land useful(M_2)$ \\
@@ -20,9 +20,9 @@ $$ (\forall p:p\in Q_2 : \overrightarrow{\mathcal{L}}(p) = (\cup q:q \in Q_1 \la
 \mbox{　　　} $Det'(M^R_1) \land Useful(M^R_1)$ \\
 \mbox{　} $\Leftarrow $ \mbox{　　} {$Det'(M) \Leftarrow Det(M)$} \\
 \mbox{　　　} $Det(M^R_1) \land Useful(M^R_1)$ \\
-$M_1$需要的条件可以通过（反转前缀）$M_1=R \circ useful_s \circ subsetopt \circ R(M_0)$建立。
+$M_1$需要的条件可以通过 $M_1=R \circ useful_s \circ subsetopt \circ R(M_0)$ （反转前缀）建立。
 
 完全最小化算法（对于任何 $\epsilon$-$free$ $M_0\in FA$ ）如下：
 $$  M_2 = useful_s \circ subsetopt \circ R \circ useful_s \circ subsetopt \circ R(M_0) $$
 
-该算法最初由 Brzozowski 在 \cite{Brzo62} 中提出。最初在 Jan van de Snepscheut 在他的博士论文 \cite{vdSn85}中提出该算法时是\uline{模糊的}。本文中，算法的起因是一个教授的私人通讯——埃因霍芬理工大学的Pereman, Mirkin \cite{Mirk65} 的文章中找到了该算法。虽然 Mirkin 引用了 Brzozowki \cite{Brzo64} 的论文，但 Mirkin 的作品是否受 Brzozowki 的最小化工作的影响尚不清楚。Jan van de Snepscheut 的新书\cite{VDSn93}描述了该算法，但既不提供该算法历史，也不提供该算法的引文（除他的论文外）。
+该算法最初由 Brzozowski 在 \cite{Brzo62} 中提出。最初 Jan van de Snepscheut 在他的博士论文 \cite{vdSn85}中提出该算法时是\uline{模糊的}。在该论文中，算法来源于一个教授的私人通讯——埃因霍芬理工大学的 Pereman, Pereman 最初在 Mirkin 的文章 \cite{Mirk65} 中找到该算法。虽然 Mirkin 引用了 Brzozowki \cite{Brzo64} 的论文，但 Mirkin 的作品是否受 Brzozowki 的最小化工作的影响尚不清楚。Jan van de Snepscheut 的新书\cite{VDSn93} 描述了该算法，但既不提供该算法历史，也不提供该算法的引文（除他的论文外）。

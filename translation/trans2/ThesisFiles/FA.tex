@@ -142,7 +142,7 @@ $Min_{\mathcal{C}}$仅定义在完全$DFA$上。
     根据 Myhill-Nerode 定理，\CJKunderline{An M, such that Min(M)}，是唯一的最小化$DFA$，定理的相关介绍在 \cite{Wats93}。
 \end{definition}
 
-\begin{property}[$DFA$最小化的一个替代定义]
+\begin{property}[$DFA$最小化的一个替代定义]\label{pro:aldef}
     为了最小化$DFA$，使用定义（仅定义在$DFA$上）：
     \begin{align*}
         Minimal(Q,V,T,\emptyset,S,F)  \equiv & ( \forall q_0,q_1:q_0 \in Q \land q_1 \in Q \land q_0 \not= q_1 : \overrightarrow{\mathcal{L}}(q_0) \not= \overrightarrow{\mathcal{L}}(q_1)  ) \\

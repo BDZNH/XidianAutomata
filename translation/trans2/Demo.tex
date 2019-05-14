@@ -13,7 +13,7 @@
 %         <mac>: Mac系统下的字体
 % 
 
-\title{有限自动机最小化算法}
+\title{有限自动机最小化算法的分类}
 \author{Bruce W. Watson}
 \date{2015年12月02日}
 %题目拆分：用于封面
@@ -38,6 +38,10 @@
 \hyphenpenalty=10000
 \hbadness=10000
 
+\renewcommand{\thealgorithm}{\arabic{chapter}.\arabic{algorithm}} %% 算法编号
+\algrenewcommand\algorithmicrepeat{\textbf{do~}}
+\algrenewcommand\algorithmicuntil{\textbf{od}}
+\algrenewcommand\algorithmicthen{$\longrightarrow$}
 
 \begin{document}
 
@@ -55,6 +59,8 @@
 \makeatother
 
 \maketitle
+
+% \tableofcontents
 
 % 文章主要部分
 % \input{ThesisFiles/Chapters}
