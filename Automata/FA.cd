@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DTransRel" Collapsed="true">
+    <Position X="8.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAIAAAAAAAAAAAACAAAAEACOAAAABAAgAACQAAA=</HashCode>
+      <FileName>DTransRel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StateEqRel" Collapsed="true">
+    <Position X="3.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAQACCAAAAABCIAAAAAABgAABAEAA=</HashCode>
+      <FileName>StateEqRel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StateRel" Collapsed="true">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAEEAAAAAACAACgBAACEAAAEACIAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>StateRel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StateTo&lt;T&gt;" Collapsed="true">
+    <Position X="5.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAEACAAgAAAAGAAAACAAAAACCIAAAAAAAwAAAAAAA=</HashCode>
+      <FileName>StateTo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SymRel" Collapsed="true">
+    <Position X="3.25" Y="2.25" Width="1.5" />
+    <InheritanceLine Type="StateRel" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.25" Y="3.5" />
+        <Point X="5.25" Y="2.562" />
+        <Point X="4.75" Y="2.562" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAEEAAAAAAEAAAAAgACAAAAEAAIAAAAAAAgAABAAIg=</HashCode>
+      <FileName>SymRel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TransRel" Collapsed="true">
+    <Position X="6.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAIAAAAAAACAAAACAAAAEACMAAAAAAAgAAAAAEA=</HashCode>
+      <FileName>TransRel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StateSet" Collapsed="true">
+    <Position X="8.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AFAAEAAAAEAEAICEBIACAQQCAACIQIACAAAgAgECAAA=</HashCode>
+      <FileName>StateSet.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BitVec" Collapsed="true">
+    <Position X="8.5" Y="2.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="BitVec::__unnamed_enum_0003_1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>BitVec.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AlAAEAACAAAUAMAAUAAAgYUAAACACIAAAKEyCgACEBA=</HashCode>
+      <FileName>BitVec.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatePool" Collapsed="true">
+    <Position X="3.25" Y="1.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ABQAAAAAAAAAAAAAAIAAAAAAAECIAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>StatePool.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FA">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="E" Type="StateRel" FixedToPoint="true">
+      <Path>
+        <Point X="6.188" Y="2.515" />
+        <Point X="6.188" Y="3.5" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="F" Type="StateSet">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.155" Y="-0.275" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="S" Type="StateSet">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.142" Y="0.098" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Transitions" Type="TransRel" FixedToPoint="true">
+      <Path>
+        <Point X="7.125" Y="2.515" />
+        <Point X="7.125" Y="3.5" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="current" Type="StateSet">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.346" Y="-0.088" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIgIEBACAAIAAAAAAAAAAAAEgACAAIAAAAAAGgCgQAA=</HashCode>
+      <FileName>FA.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="E" />
+      <Field Name="F" />
+      <Field Name="Q" />
+      <Field Name="S" />
+      <Field Name="Transitions" />
+      <Field Name="current" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

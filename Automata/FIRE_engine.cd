@@ -1,0 +1,518 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BitVec" Collapsed="true">
+    <Position X="6.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AlAAEAACAAAUAMAAUAAAgYUAAACACIAAAKEyCgACEBA=</HashCode>
+      <FileName>BitVec.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DFA">
+    <Position X="5.25" Y="4.5" Width="1.5" />
+    <Members>
+      <Method Name="advance" Hidden="true" />
+      <Method Name="are_eq" Hidden="true" />
+      <Method Name="class_invariant" Hidden="true" />
+      <Method Name="compress" Hidden="true" />
+      <Field Name="current" Hidden="true" />
+      <Method Name="determinism" Hidden="true" />
+      <Method Name="DFA" Hidden="true" />
+      <Method Name="in_final" Hidden="true" />
+      <Method Name="min_Brzozowski" Hidden="true" />
+      <Method Name="min_dragon" Hidden="true" />
+      <Method Name="min_Hopcroft" Hidden="true" />
+      <Method Name="min_HopcroftUllman" Hidden="true" />
+      <Method Name="min_Watson" Hidden="true" />
+      <Method Name="num_states" Hidden="true" />
+      <Method Name="reconstruct" Hidden="true" />
+      <Method Name="restart" Hidden="true" />
+      <Method Name="reverse" Hidden="true" />
+      <Method Name="split" Hidden="true" />
+      <Method Name="stuck" Hidden="true" />
+      <Method Name="usefulf" Hidden="true" />
+      <Method Name="Usefulf" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="F" Type="StateSet" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.938" Y="5.476" />
+        <Point X="5.938" Y="7.089" />
+        <Point X="6.75" Y="7.089" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="S" Type="StateSet" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.188" Y="5.476" />
+        <Point X="6.188" Y="6.888" />
+        <Point X="6.75" Y="6.888" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="T" Type="DTransRel" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.438" Y="5.476" />
+        <Point X="6.606" Y="5.476" />
+        <Point X="6.606" Y="6.23" />
+        <Point X="7.792" Y="6.23" Type="JumpStart" />
+        <Point X="7.958" Y="6.23" Type="JumpEnd" />
+        <Point X="8.042" Y="6.23" Type="JumpStart" />
+        <Point X="8.208" Y="6.23" Type="JumpEnd" />
+        <Point X="8.417" Y="6.23" Type="JumpStart" />
+        <Point X="8.583" Y="6.23" Type="JumpEnd" />
+        <Point X="8.698" Y="6.23" Type="JumpStart" />
+        <Point X="8.865" Y="6.23" Type="JumpEnd" />
+        <Point X="9.145" Y="6.23" />
+        <Point X="9.145" Y="10.812" />
+        <Point X="9" Y="10.812" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIgIEBACAAIAAAAQABABAAAAgJAAAIKAAAgAEAikCAA=</HashCode>
+      <FileName>DFA.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="F" />
+      <Field Name="S" />
+      <Field Name="T" />
+      <Field Name="Q" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DSDeRemer" Collapsed="true">
+    <Position X="10.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEUAIAAAAAAABAAAAAQQAAAAAAAAAAAAAoAAAAAAA=</HashCode>
+      <FileName>DSDeRemer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DSIS" Collapsed="true">
+    <Position X="5.75" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAUAIAAAAAAAAAAQAAQQAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>DSIS.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DSISopt" Collapsed="true">
+    <Position X="8" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAUAIAAAAAAABAAAAAYQAAAAAAAAAAAAAoAAAAAAA=</HashCode>
+      <FileName>DSISopt.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DSRE" Collapsed="true">
+    <Position X="1" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAUAIAAAAAAAQAAAAAQQAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>DSRE.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DSREopt" Collapsed="true">
+    <Position X="3.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAUAIAAAAAAAAAAAAAQQAAAAAAAAgAAAAgAAAAAAA=</HashCode>
+      <FileName>DSREopt.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTrans" Collapsed="true">
+    <Position X="7.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAEAoIAAAAIAAAAAAAACAAAAGAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>DTrans.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTransRel" Collapsed="true">
+    <Position X="7.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAIAAAAAAAAAAAACAAAAEACOAAAABAAgAACQAAA=</HashCode>
+      <FileName>DTransRel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FA">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <Members>
+      <Field Name="current" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="Q" Type="StatePool" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.5" Y="5.515" />
+        <Point X="8.5" Y="9.423" />
+        <Point X="6" Y="9.423" />
+        <Point X="6" Y="8.548" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="E" Type="StateRel" ManuallyRouted="true">
+      <Path>
+        <Point X="8.781" Y="5.515" />
+        <Point X="8.781" Y="9.793" />
+        <Point X="6.75" Y="9.793" />
+        <Point X="6.75" Y="10.839" />
+        <Point X="5.75" Y="10.839" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Transitions" Type="TransRel" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="9" Y="5.404" />
+        <Point X="9.367" Y="5.404" />
+        <Point X="9.367" Y="10.415" />
+        <Point X="10.375" Y="10.415" />
+        <Point X="10.375" Y="10.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIgIEBACAAIAAAAAAAAAAAAEgACAAIAAAAAAGgCgQAA=</HashCode>
+      <FileName>FA.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="E" />
+      <Field Name="F" />
+      <Field Name="Q" />
+      <Field Name="S" />
+      <Field Name="Transitions" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="FAabs" Collapsed="true">
+    <Position X="5.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIgIABAAAAIAAAAAAAAAAAAAAAAAAIAAAAAAAAACAAA=</HashCode>
+      <FileName>FAabs.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISImpl" Collapsed="true">
+    <Position X="8" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BABAUAIAAAAAQACAAAAAAQAAAAAAAAACAAAgBAIAAAI=</HashCode>
+      <FileName>ISImpl.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LBFA">
+    <Position X="0.75" Y="4.5" Width="1.5" />
+    <Members>
+      <Field Name="current" Hidden="true" />
+      <Field Name="s" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <InheritanceLine Type="FAabs" FixedToPoint="true">
+      <Path>
+        <Point X="6" Y="3.798" />
+        <Point X="6" Y="4.125" />
+        <Point X="2.783" Y="4.125" Type="JumpStart" />
+        <Point X="2.617" Y="4.125" Type="JumpEnd" />
+        <Point X="2.062" Y="4.125" />
+        <Point X="2.062" Y="4.5" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="Qmap_inverse" Type="Trans" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="0.875" Y="4.5" />
+        <Point X="0.875" Y="2.339" />
+        <Point X="5" Y="2.339" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="follow" Type="StateRel" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2.25" Y="4.966" />
+        <Point X="2.5" Y="4.966" />
+        <Point X="2.5" Y="11.062" />
+        <Point X="4.25" Y="11.062" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIgIEBAAAAIAgAAAAAAAAAAAoAAAAIRAAIAAEQAgAAA=</HashCode>
+      <FileName>LBFA.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="F" />
+      <Field Name="Q" />
+      <Field Name="Qmap_inverse" />
+      <Field Name="s" />
+      <Field Name="follow" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RBFA">
+    <Position X="3" Y="4.5" Width="1.5" />
+    <Members>
+      <Field Name="current" Hidden="true" />
+      <Field Name="f" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="follow" Type="StateRel" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.801" Y="5.515" />
+        <Point X="3.801" Y="10.625" />
+        <Point X="4.25" Y="10.625" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Qmap_inverse" Type="Trans" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3" Y="5.433" />
+        <Point X="2.7" Y="5.433" />
+        <Point X="2.7" Y="2.977" />
+        <Point X="5.188" Y="2.977" />
+        <Point X="5.188" Y="2.677" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIgIEBAAAAKAgAAAAAAAAAAAgAAAAIRQAAAAAQCgAAA=</HashCode>
+      <FileName>RBFA.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="f" />
+      <Field Name="follow" />
+      <Field Name="Q" />
+      <Field Name="Qmap_inverse" />
+      <Field Name="S" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RE" Collapsed="true">
+    <Position X="2.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GAAIkAAAAAABgZBAAAAAAQAAAACIAAQAAAIpAACIgAA=</HashCode>
+      <FileName>RE.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RFA">
+    <Position X="9.75" Y="4.5" Width="1.5" />
+    <Members>
+      <Field Name="current" Hidden="true" />
+      <Field Name="final" Hidden="true" />
+      <Field Name="Nullable" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <InheritanceLine Type="FAabs" FixedToPoint="true">
+      <Path>
+        <Point X="6" Y="3.798" />
+        <Point X="6" Y="4.125" />
+        <Point X="10" Y="4.125" />
+        <Point X="10" Y="4.5" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="first" Type="StateSet" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="10.188" Y="5.515" />
+        <Point X="10.188" Y="7.188" />
+        <Point X="9.45" Y="7.187" Type="JumpStart" />
+        <Point X="9.284" Y="7.188" Type="JumpEnd" />
+        <Point X="9.229" Y="7.187" Type="JumpStart" />
+        <Point X="9.062" Y="7.188" Type="JumpEnd" />
+        <Point X="8.865" Y="7.187" Type="JumpStart" />
+        <Point X="8.698" Y="7.188" Type="JumpEnd" />
+        <Point X="8.583" Y="7.187" Type="JumpStart" />
+        <Point X="8.417" Y="7.188" Type="JumpEnd" />
+        <Point X="8.25" Y="7.188" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="follow" Type="StateRel" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="10.812" Y="5.515" />
+        <Point X="10.812" Y="10.125" />
+        <Point X="9.45" Y="10.125" Type="JumpStart" />
+        <Point X="9.284" Y="10.125" Type="JumpEnd" />
+        <Point X="9.229" Y="10.125" Type="JumpStart" />
+        <Point X="9.062" Y="10.125" Type="JumpEnd" />
+        <Point X="6.834" Y="10.125" Type="JumpStart" />
+        <Point X="6.667" Y="10.125" Type="JumpEnd" />
+        <Point X="5.5" Y="10.125" />
+        <Point X="5.5" Y="10.5" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Qmap_inverse" Type="Trans" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.062" Y="4.5" />
+        <Point X="11.062" Y="2.977" />
+        <Point X="6.375" Y="2.977" />
+        <Point X="6.375" Y="2.677" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIgIUBAAAAIAAAAAAIEAAEAAgACAAIQAAAAAAQAgIgA=</HashCode>
+      <FileName>RFA.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="first" />
+      <Field Name="follow" />
+      <Field Name="last" />
+      <Field Name="Q" />
+      <Field Name="Qmap_inverse" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="StateEqRel" Collapsed="true">
+    <Position X="0.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAQACCAAAAABCIAAAAAABgAABAEAA=</HashCode>
+      <FileName>StateEqRel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatePool" Collapsed="true">
+    <Position X="4.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAAAAAAAAAAAAAAIAAAAAAAECIAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>StatePool.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StateRel" Collapsed="true">
+    <Position X="4.25" Y="10.5" Width="1.5" />
+    <InheritanceLine Type="StateTo&lt;T&gt;" ManuallyRouted="true">
+      <Path>
+        <Point X="5.75" Y="12.25" />
+        <Point X="5.75" Y="11.561" />
+        <Point X="5" Y="11.561" />
+        <Point X="5" Y="11.177" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AEAEEAAAAAACAACgBAACEAAAEACIAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>StateRel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StateSet" Collapsed="true">
+    <Position X="6.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AFAAEAAAAEAEAICEBIACAQQCAACIQIACAAAgAgECAAA=</HashCode>
+      <FileName>StateSet.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StateTo&lt;T&gt;" Collapsed="true">
+    <Position X="5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAEACAAgAAAAGAAAACAAAAACCIAAAAAAAwAAAAAAA=</HashCode>
+      <FileName>StateTo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SymRel" Collapsed="true">
+    <Position X="4.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEEAAAAAAEAAAAAgACAAAAEAAIAAAAAAAgAABAAIg=</HashCode>
+      <FileName>SymRel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trans" Collapsed="true">
+    <Position X="5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAooAEAAIAGABAAAAAAAAAGAAACAAAAgAAAAAAA=</HashCode>
+      <FileName>Trans.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TransImpl" Collapsed="true">
+    <Position X="6" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAEgIAAAAAIAEAAAAAAAAAAACAAEAABAAwAAAAAAg=</HashCode>
+      <FileName>TransImpl.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TransRel" Collapsed="true">
+    <Position X="10.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAIAAAAAAACAAAACAAAAEACMAAAAAAAgAAAAAEA=</HashCode>
+      <FileName>TransRel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CharRange" Collapsed="true">
+    <Position X="1" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAEgEAAAAAAgAAAEAACQIAAEAAQAAAAAEAAAMIAAA=</HashCode>
+      <FileName>CharRange.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRSet" Collapsed="true">
+    <Position X="3.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAEEAAAAAAgAAEAIIAAAAYAAAAAAgAABAE0AAACAQA=</HashCode>
+      <FileName>CRSet.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DSDFARev" Collapsed="true">
+    <Position X="5.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAUAIAAAIAAAAAAAAAQQAAQAAAAAAAAAAgAACEAAA=</HashCode>
+      <FileName>DSDFARev.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DSFA" Collapsed="true">
+    <Position X="8" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAUAIAAAAAQAAAAAAAQQAAQAAAAAAAAAAgEgAEAAA=</HashCode>
+      <FileName>DSFA.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DSLBFA" Collapsed="true">
+    <Position X="10.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAUAIAAAAAAAAAAAAAQQAAQAAAAAQAAAAgEQAACAA=</HashCode>
+      <FileName>DSLBFA.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DSRBFA" Collapsed="true">
+    <Position X="1" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAUAIAAAAAAAAAAAAAQQAAQAAAAAQQAAAgAQAACAA=</HashCode>
+      <FileName>DSRBFA.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DSRFA" Collapsed="true">
+    <Position X="3.25" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAUAIAAABAAAAEAAEAQQAAQAAAAAQAAAAgAQAAAgA=</HashCode>
+      <FileName>DSRFA.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DSRFA2" Collapsed="true">
+    <Position X="5.75" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAUAIAAABAAAAEAAEAQQAAQAAAAAQAAAAgAQAAAgA=</HashCode>
+      <FileName>DSRFA2.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Reg&lt;T&gt;" Collapsed="true">
+    <Position X="10.25" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAIAgAAAAAAABACAASAIAAgAAAgABAAAAA=</HashCode>
+      <FileName>Sigma.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RFATestClass" Collapsed="true">
+    <Position X="8" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAEAAAMAAhABAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Test\RFATest.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="DFA_components" Collapsed="true">
+    <Position X="0.75" Y="16.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEACkAAA=</HashCode>
+      <FileName>DFA_components.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="TransPair" Collapsed="true">
+    <Position X="3.25" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TransPair.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Typedef Name="State" Collapsed="true">
+    <Position X="8" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>State.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Enum Name="REops" Collapsed="true">
+    <Position X="5.75" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAEAAAAAAAIAAAAAAAAAACAAAIAAAAAAAAEEAgAAA=</HashCode>
+      <FileName>REops.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

@@ -1,113 +1,73 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="DFA">
-    <Position X="6" Y="1" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Methods" Collapsed="true" />
-    </Compartments>
-    <AssociationLine Name="F" Type="StateSet" FixedFromPoint="true">
-      <Path>
-        <Point X="7.5" Y="1.57" />
-        <Point X="8.5" Y="1.57" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="Q" Type="StatePool" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="6" Y="1.812" />
-        <Point X="4" Y="1.812" />
-        <Point X="4" Y="2" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="S" Type="StateSet" FixedToPoint="true">
-      <Path>
-        <Point X="7.5" Y="1.25" />
-        <Point X="8.5" Y="1.25" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
-        <Position X="0.02" Y="0.053" Height="0.174" Width="0.5" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <AssociationLine Name="T" Type="DTransRel" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="7.125" Y="2.015" />
-        <Point X="7.125" Y="2.875" />
-        <Point X="8.969" Y="2.875" />
-        <Point X="8.969" Y="3.25" />
-      </Path>
-    </AssociationLine>
-    <TypeIdentifier>
-      <HashCode>AIgIEBACAAIAAAAQABABAAAAgJAAAIKAAAgAEAikCAA=</HashCode>
-      <FileName>DFA.h</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="F" />
-      <Field Name="Q" />
-      <Field Name="S" />
-      <Field Name="T" />
-      <Field Name="current" />
-    </ShowAsAssociation>
-  </Class>
   <Class Name="DTransRel" Collapsed="true">
-    <Position X="8.5" Y="3.25" Width="1.5" />
+    <Position X="8.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAIAAAAAAAAAAAACAAAAEACOAAAABAAgAACQAAA=</HashCode>
       <FileName>DTransRel.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StateEqRel" Collapsed="true">
-    <Position X="3.25" Y="3.25" Width="1.5" />
+    <Position X="3.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAAAAAAAAAAAQACCAAAAABCIAAAAAABgAABAEAA=</HashCode>
       <FileName>StateEqRel.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StateRel" Collapsed="true">
-    <Position X="5" Y="3.25" Width="1.5" />
+    <Position X="5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAEEAAAAAACAACgBAACEAAAEACIAAAAAAAgAAAAAAA=</HashCode>
       <FileName>StateRel.h</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="StateTo&lt;T&gt;" Collapsed="true">
+    <Position X="5.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAEACAAgAAAAGAAAACAAAAACCIAAAAAAAwAAAAAAA=</HashCode>
+      <FileName>StateTo.h</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="SymRel" Collapsed="true">
-    <Position X="5" Y="2.25" Width="1.5" />
+    <Position X="3.25" Y="4.5" Width="1.5" />
+    <InheritanceLine Type="StateRel" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.25" Y="5.5" />
+        <Point X="5.25" Y="4.875" />
+        <Point X="4.75" Y="4.875" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAEEAAAAAAEAAAAAgACAAAAEAAIAAAAAAAgAABAAIg=</HashCode>
       <FileName>SymRel.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TransRel" Collapsed="true">
-    <Position X="6.75" Y="3.25" Width="1.5" />
+    <Position X="6.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAIAAAAAAACAAAACAAAAEACMAAAAAAAgAAAAAEA=</HashCode>
       <FileName>TransRel.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StateSet" Collapsed="true">
-    <Position X="8.5" Y="1" Width="1.5" />
+    <Position X="8.5" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AFAAEAAAAEAEAICEBIACAQQCAACIQIACAAAgAgECAAA=</HashCode>
       <FileName>StateSet.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BitVec" Collapsed="true">
-    <Position X="8.5" Y="2" Width="1.5" />
+    <Position X="8.5" Y="4" Width="1.5" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
-    <NestedTypes>
-      <Enum Name="BitVec::__unnamed_enum_0003_1" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>BitVec.h</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AlAAEAACAAAUAMAAUAAAgYUAAACACIAAAKEyCgACEBA=</HashCode>
       <FileName>BitVec.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StatePool" Collapsed="true">
-    <Position X="3.25" Y="2" Width="1.5" />
+    <Position X="3.25" Y="3.75" Width="1.5" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
@@ -117,35 +77,46 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DTrans" Collapsed="true">
-    <Position X="8.5" Y="4.5" Width="1.5" />
+    <Position X="3.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABAEAoIAAAAIAAAAAAAACAAAAGAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>DTrans.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Trans" Collapsed="true">
-    <Position X="6.5" Y="4.5" Width="1.5" />
+    <Position X="5.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAooAEAAIAGABAAAAAAAAAGAAACAAAAgAAAAAAA=</HashCode>
       <FileName>Trans.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TransImpl" Collapsed="true">
-    <Position X="7.5" Y="6" Width="1.5" />
+    <Position X="4.5" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAEgIAAAAAIAEAAAAAAAAAAACAAEAABAAwAAAAAAg=</HashCode>
       <FileName>TransImpl.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="StateTo&lt;T&gt;" Collapsed="true">
-    <Position X="4.5" Y="6" Width="1.5" />
+  <Class Name="LBFA">
+    <Position X="5.75" Y="3.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AIAAEACAAgAAAAGAAAACAAAAACCIAAAAAAAwAAAAAAA=</HashCode>
-      <FileName>StateTo.h</FileName>
+      <HashCode>AIgIEBAAAAIAgAAAAAAAAAAAoAAAAIRAAIAAEQAgAAA=</HashCode>
+      <FileName>LBFA.h</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="current" />
+      <Field Name="F" />
+      <Field Name="follow" />
+      <Field Name="Q" />
+      <Field Name="Qmap_inverse" />
+      <Field Name="s" />
+    </ShowAsAssociation>
   </Class>
   <Typedef Name="State" Collapsed="true">
-    <Position X="3.25" Y="1" Width="1.5" />
+    <Position X="8.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>State.h</FileName>

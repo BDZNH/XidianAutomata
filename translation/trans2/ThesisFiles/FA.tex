@@ -104,7 +104,7 @@
     \mbox{　　}　$ Useful (M) \equiv Useful_s (M) \land Useful_f (M) $ 
 \end{definition}
 
-\begin{property}[确定性有限自动机($DFA$)]
+\begin{property}[确定性有限自动机( DFA )]
     当且仅当
     \begin{itemize}
     \item  无多重初始状态；
@@ -116,11 +116,11 @@ $$ Det(M) \equiv ( |S| \leq 1 \land \epsilon-free(E) \land ( \forall q,a:q \in Q
 \end{property}
 
 \begin{definition}[$FA$的确定性]
-    $DFA$代表所有确定性的有限自动机的集合。我们把$FA \setminus DFA$称为非确定性有限自动机($NDFA$,$nondeterministic\ finite\ automata$)的集合。
+     DFA 代表所有确定性的有限自动机的集合。我们把$FA \setminus DFA$称为非确定性有限自动机($NDFA$,$nondeterministic\ finite\ automata$)的集合。
 \end{definition}
 
 \begin{convention}[DFA的转换函数]
-    对于$(Q,V,T,\emptyset,S,F)\in DFA$，我们考虑把转换函数记为$T\in Q \times V \not\rightarrow Q$（$\not\rightarrow$的定义可以查看惯例A.2）。当且仅当 $DFA$ 是完全自动机的时候，转换函数是全函数。
+    对于$(Q,V,T,\emptyset,S,F)\in DFA$，我们考虑把转换函数记为$T\in Q \times V \not\rightarrow Q$（$\not\rightarrow$的定义可以查看惯例A.2）。当且仅当  DFA  是完全自动机的时候，转换函数是全函数。
 \end{convention}
 
 
@@ -130,20 +130,20 @@ $$ Det(M) \equiv ( |S| \leq 1 \land \epsilon-free(E) \land ( \forall q,a:q \in Q
 很容易证明$Det(M) \Rightarrow Det'(M)$。
 \end{property}
 
-\begin{definition}[$DFA$的最小化]
-    满足以下条件时，$M\in DFA$是最小化的：
+\begin{definition}[ DFA 的最小]
+    满足以下条件时，$M\in DFA$是最小的：
     $$ Min(M) \equiv (\forall M' : M' \in DFA \land Complete(M') \land \mathcal{L}(M) = \mathcal{L}_{FA}(M') : |M| \leq |M'| ) $$
-$Min$仅定义在$DFA$上。如果我们定义一个最小的但是仍然完全的$DFA$，那么一些定义将会更加简单。它的定义如下：
+$Min$仅定义在 DFA 上。如果我们定义一个最小的但是仍然完全的 DFA ，那么一些定义将会更加简单。它的定义如下：
 \small{ $$ Min_{\mathcal{C}}(M) \equiv ( \forall M':M' \in DFA \land Complete(M') \land \mathcal{L}_{FA}(M) = \mathcal{L}_{FA}(M'): |M| \leq |M'| ) $$ }
-$Min_{\mathcal{C}}$仅定义在完全$DFA$上。
+$Min_{\mathcal{C}}$仅定义在完全 DFA 上。
 \end{definition}
 
-\begin{definition}[$DFA$的最小化]
-    根据 Myhill-Nerode 定理，\CJKunderline{An M, such that Min(M)}，是唯一的最小化$DFA$，定理的相关介绍在 \cite{Wats93}。
+\begin{definition}[ DFA 的最小化]
+    根据 Myhill-Nerode 定理，\CJKunderline{An M, such that Min(M)}，是唯一的最小化 DFA ，定理的相关介绍在 \cite{Wats93}。
 \end{definition}
 
-\begin{property}[$DFA$最小化的一个替代定义]\label{pro:aldef}
-    为了最小化$DFA$，使用定义（仅定义在$DFA$上）：
+\begin{property}[ DFA 最小化的一个替代定义]\label{pro:aldef}
+    为了最小化 DFA ，使用定义（仅定义在 DFA 上）：
     \begin{align*}
         Minimal(Q,V,T,\emptyset,S,F)  \equiv & ( \forall q_0,q_1:q_0 \in Q \land q_1 \in Q \land q_0 \not= q_1 : \overrightarrow{\mathcal{L}}(q_0) \not= \overrightarrow{\mathcal{L}}(q_1)  ) \\
                                      & \land Useful(Q,V,T,\emptyset,S,F)
@@ -152,7 +152,7 @@ $Min_{\mathcal{C}}$仅定义在完全$DFA$上。
 % \mbox{　　　　　　　　　　　　　　} $\land Useful(Q,V,T,\emptyset,S,F)$ \\
 有 $Minimal(M) \equiv Min(M)$（对所有$M\in DFA$）。很容易证明$Min(M)$ $\Rightarrow$ $Minimal(M)$。\uline{The reverse direction follows from the Myhill-Nerode 定理}。
 
-与$Min_{\mathcal{C}}$相似的定义是（同样也只定义在$DFA$上）：
+与$Min_{\mathcal{C}}$相似的定义是（同样也只定义在 DFA 上）：
     \begin{align*}
         Minimal_{\mathcal{C}}(Q,V,T,\emptyset,S,F)  \equiv & ( \forall q_0,q_1:q_0 \in Q \land q_1 \in Q \land q_0 \not= q_1 : \overrightarrow{\mathcal{L}}(q_0) \not= \overrightarrow{\mathcal{L}}(q_1)  ) \\
                                  & \land Useful(Q,V,T,\emptyset,S,F)
@@ -195,7 +195,7 @@ $$ (\forall M : M \in FA : Useful_s ( useful_s(M) ) \land \mathcal{L}_{FA} (usef
 \end{transformation}
 
 \begin{transformation}[子集构造]
-    函数$subset$把一个$\epsilon$-$free$ $FA$ 转换为一个 $DFA$ (in the \textbf{let} clause $T'\in \mathcal{P}(Q) \times V \longrightarrow \mathcal{P}(\mathcal{P} (Q) )$): 
+    函数$subset$把一个$\epsilon$-$free$ $FA$ 转换为一个  DFA  (in the \textbf{let} clause $T'\in \mathcal{P}(Q) \times V \longrightarrow \mathcal{P}(\mathcal{P} (Q) )$): 
     \begin{table}[!htbp]
         \centering
         %\small% fontsize
@@ -220,7 +220,7 @@ $$ (\forall M : M \in FA : Useful_s ( useful_s(M) ) \land \mathcal{L}_{FA} (usef
 
 
 \begin{definition}[优化子集构造]
-    函数$subsetopt$把一个$\epsilon$-$free$ $FA$ 转换为一个 $DFA$ 。此函数是$subset$的一个优化版本：
+    函数$subsetopt$把一个$\epsilon$-$free$ $FA$ 转换为一个 DFA 。此函数是$subset$的一个优化版本：
     \begin{table}[!htbp]
         \centering
         %\small% fontsize
