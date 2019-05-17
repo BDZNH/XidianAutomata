@@ -57,7 +57,7 @@ public:
 	std::string FA();
 	bool perform();
 	bool perform(std::string filepath);
-	bool clear();
+	FiniteAutomata& clear();
 	friend std::istream& operator>>(std::istream& input, FiniteAutomata& D);  //重载输入运算符
 	friend std::ostream& operator<<(std::ostream& output, FiniteAutomata& D); //重载输出运算符
 	bool operator==(FiniteAutomata& D);                                       //重载等于运算符

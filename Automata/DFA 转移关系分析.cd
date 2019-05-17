@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DFA">
+    <Position X="3.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIgIEBACAAIAAAAQABABAAAAkJAAAIKAAAgAEAikCAA=</HashCode>
+      <FileName>DFA.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="T" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DTransRel">
+    <Position X="6.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAIAAAAAAAAAAAACAAAAEACOAAAABAAgAACQAAA=</HashCode>
+      <FileName>DTransRel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StateTo&lt;T&gt;">
+    <Position X="6.5" Y="1" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="StateTo&lt;T&gt;::__unnamed_enum_0047_1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>StateTo.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AIAAEACAAgAAAAGAAAACAAAAACCIAAAAAAAwAAAAAAA=</HashCode>
+      <FileName>StateTo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTrans" Collapsed="true">
+    <Position X="9.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAEAoIAAAAIAAAAAAAACAAAAGAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>DTrans.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TransImpl" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAEgIAAAAAIAEAAAAAAAAAAACAAEAABAAwAAAAAAg=</HashCode>
+      <FileName>TransImpl.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

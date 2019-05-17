@@ -9,16 +9,50 @@ using namespace std;
 
 
 //  A.1(a)与 A.1(b)
+//  最小化功能测试
 void DFATest1();
 
 void DFATest()
 {
-	DFATest1();
+	//DFATest1();
+	DFA_components dfa_com1;
+	// StateSet S  开始状态集
+	dfa_com1.S.set_domain(5);
+	dfa_com1.S.add(0);
+
+	// StateSet F  结束状态集
+	dfa_com1.F.set_domain(5);
+	dfa_com1.F.add(3);
+	dfa_com1.F.add(4);
+
+	int i = 5;
+	while (i--)
+	{
+		dfa_com1.Q.allocate();
+	}
+
+	dfa_com1.T.set_domain(5);
+	dfa_com1.T.add_transition(0, '0', 4);
+	dfa_com1.T.add_transition(0, '1', 2);
+	dfa_com1.T.add_transition(1, '0', 2);
+	dfa_com1.T.add_transition(1, '1', 2);
+	dfa_com1.T.add_transition(2, '0', 4);
+	dfa_com1.T.add_transition(2, '1', 2);
+	dfa_com1.T.add_transition(3, '0', 2);
+	dfa_com1.T.add_transition(3, '1', 3);
+	dfa_com1.T.add_transition(4, '0', 4);
+	dfa_com1.T.add_transition(4, '1', 4);
+
+	DFA dfa1(dfa_com1);
+	cout << dfa1 << endl;
+	dfa1.usefuls();
+	cout << dfa1 << endl;
 }
 
 //  A.1(a)与 A.1(b)
 void DFATest1()
 {
+	/************************************************************/
 	// 预期输出结果1： A.1(c)
 	DFA_components dfa_comresult1;
 
@@ -131,7 +165,9 @@ void DFATest1()
 		dfa1.reconstruct(dfa_com1);
 		ss << dfa1;
 		temp.reconstruct(ss.str());
-		temp.perform("A-1-a.ADS");
+		ss.str("");
+		//cout << temp << endl;
+		//temp.perform("A-1-a.ADS");
 		
 		//////////////////////////////////////////////////////////////////////////////
 		dfa1.reconstruct(dfa_com1);
@@ -142,7 +178,7 @@ void DFATest1()
 		temp.reconstruct(ss.str());
 		cout << temp.FA() << endl;
 		cout << "anwser is right?:  " << (temp == result1 || temp==result2) << endl;
-		temp.perform("A-1-a-Brzozowski.ADS");
+		//temp.perform("A-1-a-Brzozowski.ADS");
 		ss.str("");
 		temp.clear();
 
@@ -166,7 +202,7 @@ void DFATest1()
 		temp.reconstruct(ss.str());
 		cout << temp.FA() << endl;
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
-		temp.perform("A-1-a-HopcroftUllman.ADS");
+		//temp.perform("A-1-a-HopcroftUllman.ADS");
 		ss.str("");
 		temp.clear();
 
@@ -179,7 +215,7 @@ void DFATest1()
 		temp.reconstruct(ss.str());
 		cout << temp.FA() << endl;
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
-		temp.perform("A-1-a-dragon.ADS");
+		//temp.perform("A-1-a-dragon.ADS");
 		ss.str("");
 		temp.clear();
 
@@ -191,11 +227,128 @@ void DFATest1()
 		temp.reconstruct(ss.str());
 		cout << temp.FA() << endl;
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
-		temp.perform("A-1-a-Watson.ADS");
+		//temp.perform("A-1-a-Watson.ADS");
 		ss.str("");
 		temp.clear();
 	}
 
+	cout << "\n---------------------------------------------------------\n" << std::flush;
+
+	// 测试数据
+	// A.1(b)  
+	{
+	DFA_components dfa_com1;
+
+	int i = 5;
+	while (i--)
+	{
+		dfa_com1.Q.allocate();
+	}
+
+	// StateSet S  开始状态集
+	dfa_com1.S.set_domain(dfa_com1.Q.size());
+	dfa_com1.S.add(0);
+
+	// StateSet F  结束状态集
+	dfa_com1.F.set_domain(dfa_com1.Q.size());
+	dfa_com1.F.add(2);
+	dfa_com1.F.add(3);
+	dfa_com1.F.add(4);
+
+	dfa_com1.T.set_domain(dfa_com1.Q.size());
+	dfa_com1.T.add_transition(0, '0', 1);
+	dfa_com1.T.add_transition(0, '1', 2);
+	dfa_com1.T.add_transition(1, '1', 3);
+	dfa_com1.T.add_transition(1, '0', 0);
+	dfa_com1.T.add_transition(2, '0', 4);
+	//dfa_com1.T.add_transition(2, '1', 5);
+	dfa_com1.T.add_transition(3, '0', 4);
+	//dfa_com1.T.add_transition(3, '1', 5);
+	dfa_com1.T.add_transition(4, '0', 4);
+	//dfa_com1.T.add_transition(4, '1', 5);
+	//dfa_com1.T.add_transition(5, '0', 5);
+	//dfa_com1.T.add_transition(5, '1', 5);
+
+
+
+	stringstream ss;
+	/*string temp;*/
+	FiniteAutomata temp;
+
+	DFA dfa1;
+
+	cout << "Now Test A.1(b) " << endl;
+	dfa1.reconstruct(dfa_com1);
+	ss << dfa1;
+	temp.reconstruct(ss.str());
+	ss.str("");
+	//temp.perform("A-1-b.ADS");
+
+	//////////////////////////////////////////////////////////////////////////////
+	dfa1.reconstruct(dfa_com1);
+	cout << "original DFA" << dfa1;
+	cout << "minimized by Brzozowski" << endl;
+	dfa1.min_Brzozowski();
+	ss << dfa1;
+	temp.reconstruct(ss.str());
+	cout << temp.FA() << endl;
+	cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
+	//temp.perform("A-1-b-Brzozowski.ADS");
+	ss.str("");
+	temp.clear();
+
+
+	//////////////////////////////////////////////////////////////////////////////
+	dfa1.reconstruct(dfa_com1);
+	cout << "---------------minimized by Hopcroft" << endl;
+	dfa1.min_Hopcroft();
+	ss << dfa1;
+	temp.reconstruct(ss.str());
+	cout << temp.FA() << endl;
+	cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
+	//temp.perform("A-1-b-Hopcroft.ADS");
+	ss.str("");
+	temp.clear();
+
+	//////////////////////////////////////////////////////////////////////////////
+	dfa1.reconstruct(dfa_com1);
+	cout << "---------------minimized by HopcroftUllman" << endl;
+	dfa1.min_HopcroftUllman();
+	ss << dfa1;
+	temp.reconstruct(ss.str());
+	cout << temp.FA() << endl;
+	cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
+	//temp.perform("A-1-b-HopcroftUllman.ADS");
+	ss.str("");
+	temp.clear();
+
+
+	//////////////////////////////////////////////////////////////////////////////
+	dfa1.reconstruct(dfa_com1);
+	cout << "---------------minimized by dragon" << endl;
+	dfa1.min_dragon();
+	ss << dfa1;
+	temp.reconstruct(ss.str());
+	cout << temp.FA() << endl;
+	cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
+	//temp.perform("A-1-b-dragon.ADS");
+	ss.str("");
+	temp.clear();
+
+	//////////////////////////////////////////////////////////////////////////////
+	dfa1.reconstruct(dfa_com1);
+	cout << "---------------minimized by Watson" << endl;
+	dfa1.min_Watson();
+	ss << dfa1;
+	temp.reconstruct(ss.str());
+	cout << temp.FA() << endl;
+	cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
+	//temp.perform("A-1-b-Watson.ADS");
+	ss.str("");
+	temp.clear();
+	}
+
+	cout << "\n---------------------------------------------------------\n" << std::flush;
 }
 
 

@@ -82,6 +82,8 @@ public:
 	// Implement Remark 2.39  removing states that are not final - reachable.
 	DFA& usefulf();
 
+	DFA& usefuls();
+
 	// Special member functions :
 
 	friend std::ostream& operator<<(std::ostream& os, const DFA& r);

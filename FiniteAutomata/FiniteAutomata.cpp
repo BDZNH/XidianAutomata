@@ -92,7 +92,7 @@ bool FiniteAutomata::analyze(std::string& str)
 	i = i + 14;
 	Transition T1;
 	//std::string lable;
-	bool flag = false;// 标记是否是目标状态
+	bool flag = false;// 标记是否是目标状态，用来区分是 label 还是 deststate
 
 	bool special = false;
 	std::vector<label> la;
@@ -104,7 +104,7 @@ bool FiniteAutomata::analyze(std::string& str)
 		{
 			special = true;
 		}
-		if (special)
+		if (special)  // 针对类似 2->{ ['0','1']->2 }  的 label 在一起的情况
 		{
 			if (str.at(i) == ']')
 			{
@@ -147,7 +147,7 @@ bool FiniteAutomata::analyze(std::string& str)
 				temp.push_back(str.at(i));
 			}
 		}
-		else
+		else  //  针对类似 1->{ '0'->1  '1'->2 }  的 label 不在一起的情况
 		{
 			if (str.at(i) == '-' && str.at(i + 1) == '>' && !flag)
 			{
@@ -230,15 +230,15 @@ bool FiniteAutomata::perform(std::string filepath)
 	return true;
 }
 
-bool FiniteAutomata::clear()
+FiniteAutomata& FiniteAutomata::clear()
 {
-	Trans.clear();
-	F.clear();
-	Q.clear();
-	V.clear();
-	theFA = "";
-	num_state = 0;
-	return false;
+	this->Trans.clear();
+	this->F.clear();
+	this->Q.clear();
+	this->V.clear();
+	this->theFA = "";
+	this->num_state = 0;
+	return (*this);
 }
 
 bool FiniteAutomata::operator==(FiniteAutomata & D)
@@ -362,17 +362,23 @@ std::ostream & operator<<(std::ostream & output, FiniteAutomata & D)
 	output << "State size (State set will be (0,1....,size-1)):\n# <-- Enter state size, in range 0 to 2000000, on line below." << std::endl;
 	output << D.num_state << std::endl;
 	output << "\nMarker states:\n# <-- Enter marker states, one per line.\n# To mark all states, enter *.\n# If no marker states, leave line blank.\n# End marker list with blank line." << std::endl;
-	auto it = D.F.begin();
-	for (; it != D.F.end(); ++it)
+	
+	for (auto it = D.F.begin(); it != D.F.end(); ++it)
 	{
 		output << *it << std::endl;
 	}
 	output << "\nVocal states:\n# <-- Enter vocal output states, one per line.\n# Format: State  Vocal_Output.Vocal_Output in range 10 to 99.\n# Example : 0 10\n# If no vocal states, leave line blank.\n# End vocal list with blank line.\n" << std::endl;
 	output << "Transitions:\n# <-- Enter transition triple, one per line.\n# Format: Exit_(Source)_State  Transition_Label  Entrance_(Target)_State.\n# Transition_Label in range 0 to 999.\n# Example: 2 0 1 (for transition labeled 0 from state 2 to state 1)." << std::endl;
-	//auto itt = Trans.begin();
-	for (size_t i = 0; i < D.Trans.size(); ++i)
+	////auto itt = Trans.begin();
+	//for (size_t i = 0; i < D.Trans.size(); ++i)
+	//{
+	//	output << D.Trans[i].Q0 << " " << D.Trans[i].T << " " << D.Trans[i].Q1 << std::endl;
+	//}
+
+	for (auto iter = D.Trans.begin(); iter != D.Trans.end(); iter++)
 	{
-		output << D.Trans[i].Q0 << " " << D.Trans[i].T << " " << D.Trans[i].Q1 << std::endl;
+		output << iter->Q0 << " " << iter->T << " " << iter->Q1 << std::endl;
 	}
+	
 	return output;
 }

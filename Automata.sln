@@ -8,6 +8,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FiniteAutomata", "FiniteAutomata\FiniteAutomata.vcxproj", "{9DF208BC-760A-47EC-A515-D92B219892F2}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj", "{E9407961-7B3C-415F-BE48-026C0483F936}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3E999D09-EDF1-4E93-A6C5-007095B65EEA} = {3E999D09-EDF1-4E93-A6C5-007095B65EEA}
+		{9DF208BC-760A-47EC-A515-D92B219892F2} = {9DF208BC-760A-47EC-A515-D92B219892F2}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -152,6 +152,82 @@ DFA& DFA::usefulf()
 	return(*this);
 }
 
+DFA & DFA::usefuls()
+{
+	assert(class_invariant());
+	StateSet freachable(T.reverse_closure(S));
+	StateTo<State> newnames;
+	newnames.set_domain(Q.size());
+
+
+	// All components will be constructed into a special structure :
+	DFA_components ret;
+	State st;
+	for (st = 0; st < Q.size(); st++)
+	{
+		// If this is a Usefulf State, carry it over by giving it a name
+		// in the new DFA.
+		if (freachable.contains(st))
+		{
+			newnames.map(st) = ret.Q.allocate();
+		}
+#ifdef FIX
+		else
+		{
+			newnames.map(st) = Invalid;
+		}
+#endif // FIX
+	}
+
+
+	// It is possible that nothing needs to be done(ie.the all States were
+	// already F useful).
+	if (Q.size() != ret.Q.size())
+	{
+		ret.T.set_domain(ret.Q.size());
+		ret.F.set_domain(ret.Q.size());
+
+		CRSet a;
+		for (st = 0; st < Q.size(); st++)
+		{
+			// Only construct the transitions if st is final reachable.
+			if (freachable.contains(st))
+			{
+				a = T.out_labels(st);
+				State stprime(newnames.lookup(st));
+
+				CharRange b;
+				int it;
+				// Construct the transitions.
+				for (it = 0; !a.iter_end(it); it++)
+				{
+					b = a.iterator(it);
+					State stdest;
+					stdest = newnames.lookup(T.transition_on_range(st, b));
+#ifdef FIX
+					if (stprime != Invalid && stdest != Invalid)
+					{
+#endif // FIX
+						ret.T.add_transition(stprime, b, stdest);
+#ifdef FIX
+					}
+#endif // FIX
+				}
+				// This may be a final State.
+				if (F.contains(st)) ret.F.add(stprime);
+			}
+		}
+		ret.S.set_domain(ret.Q.size());
+
+		// Add a start State only if the original one was final reachable.
+		if (S.not_disjoint(freachable)) ret.S.add(newnames.lookup(S.smallest()));
+		reconstruct(ret);
+	}
+	assert(class_invariant());
+	return(*this);
+	// TODO: 在此处插入 return 语句
+}
+
 // Given a minimizing equivalence relation, shrink the DFA.
 DFA& DFA::compress(const StateEqRel& r)
 {
