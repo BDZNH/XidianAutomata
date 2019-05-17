@@ -76,6 +76,8 @@ artifacts/
 *.gz
 *.bbl
 *.blg
+*.ads
+*.ADS
 
 
 
