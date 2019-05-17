@@ -51,13 +51,12 @@ void DFATest()
 
 	DFA dfa1(dfa_com1);
 	cout << dfa1 << endl;
-	cout << "The size : " << dfa1.size() << endl;
 	dfa1.usefuls();
 	cout << dfa1 << endl;
-	cout << "The size : " << dfa1.size() << endl;
 	dfa1.usefulf();
 	cout << dfa1 << endl;
-	cout << "The size : " << dfa1.size() << endl;
+	dfa1.complete();
+	cout << dfa1 << endl;
 }
 
 //  A.1(a)与 A.1(b)

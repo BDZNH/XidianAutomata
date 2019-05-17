@@ -223,6 +223,69 @@ DFA & DFA::usefuls()
 	return(*this);
 }
 
+
+// construct a Complete DFA
+DFA & DFA::complete()
+{
+	/*usefulf();
+	usefuls();*/
+
+	DFA_components ret;
+
+	State q;
+
+	for (q = 0; q <= Q.size(); q++)
+	{
+		ret.Q.allocate();
+	}
+
+	State sink = ret.Q.size()-1;
+
+	CRSet C;
+	for (q = 0; q < Q.size(); q++)
+	{
+		C.combine(T.out_labels(q));
+	}
+
+	ret.S.set_domain(Q.size());
+	ret.F.set_domain(Q.size());
+
+	ret.S.set_union(S);
+	ret.F.set_union(F);
+
+	ret.S.set_domain(ret.Q.size());
+	ret.T.set_domain(ret.Q.size());
+	ret.F.set_domain(ret.Q.size());
+
+	for (q = 0; q < ret.Q.size(); q++)
+	{
+		CharRange c;
+		for (int i = 0; i < C.size(); i++)
+		{
+			c = C.iterator(i);
+			State stprime = q;
+			if (stprime == sink)
+			{
+				ret.T.add_transition(stprime, c, sink);
+				continue;
+			}
+			State stdest = T.transition_on_range(stprime, c);
+			if (stdest != Invalid)
+			{
+				ret.T.add_transition(stprime, c, stdest);
+			}
+			else
+			{
+				ret.T.add_transition(stprime, c, sink);
+			}
+		}
+	}
+
+	reconstruct(ret);
+	// TODO: 在此处插入 return 语句
+	return (*this);
+}
+
 // Given a minimizing equivalence relation, shrink the DFA.
 DFA& DFA::compress(const StateEqRel& r)
 {

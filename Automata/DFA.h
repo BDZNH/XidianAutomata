@@ -94,10 +94,6 @@ public:
 	friend std::ostream& operator<<(std::ostream& os, const DFA& r);
 
 	inline int class_invariant() const;
-	inline int size() const
-	{
-		return Q.size();
-	}
 
 protected:
 	// Given a minimizing equivalence relation, shrink the DFA.
