@@ -26,7 +26,7 @@ Implementation: The algorithm begins with the approximation E_0 to the State equ
 DFA& DFA::min_dragon()
 {
 	assert(class_invariant());
-	assert(Usefulf());
+	//assert(Usefulf());
 
 	// We'll need the combination of all of the out-transition of all of the
 	// States, when splitting equivalence classes.

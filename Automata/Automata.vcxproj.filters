@@ -129,36 +129,6 @@
     <ClCompile Include="TransRel.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Test\AutomataTest.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
-    <ClCompile Include="Test\CRSetTest.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
-    <ClCompile Include="Test\StateSetTest.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
-    <ClCompile Include="Test\StateTo(StateSet)Test.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
-    <ClCompile Include="Test\StateRelTest.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
-    <ClCompile Include="Test\TransTest.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
-    <ClCompile Include="Test\RFATest.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
-    <ClCompile Include="Test\ThompsonTest.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
-    <ClCompile Include="Automata.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
-    <ClCompile Include="Test\DFATest.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
     <ClCompile Include="min.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -173,18 +143,6 @@
     </ClCompile>
     <ClCompile Include="min-hu.cpp">
       <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Test\DFATest2.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
-    <ClCompile Include="Test\DFAusefulTest.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
-    <ClCompile Include="Test\DFAMinimalKeepTest.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
-    <ClCompile Include="Test\DFAHopcroftTest.cpp">
-      <Filter>Test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -319,5 +277,15 @@
     <None Include="..\Makefile" />
     <None Include="FAabs.cd" />
     <None Include="DFA.cd" />
+    <None Include="总关系图.cd" />
+    <None Include="FA.cd" />
+    <None Include="RFA.cd">
+      <Filter>头文件</Filter>
+    </None>
+    <None Include="RBFA.cd">
+      <Filter>头文件</Filter>
+    </None>
+    <None Include="LBFA.cd" />
+    <None Include="FIRE_engine.cd" />
   </ItemGroup>
 </Project>

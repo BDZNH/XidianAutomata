@@ -26,7 +26,7 @@ Implementation: The member function uses some encoding tricks to effectively imp
 #include "DFA.h"
 
 // Implemeta Algorithm 4.8 (Hopcroft O(n log n) algorithm)
-#define FINDEBUG
+//#define FINDEBUG
 //#define FIX
 DFA& DFA::min_Hopcroft()
 {

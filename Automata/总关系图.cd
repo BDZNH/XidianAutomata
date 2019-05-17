@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="BitVec" Collapsed="true">
-    <Position X="1.75" Y="9.25" Width="1.5" />
+    <Position X="0.5" Y="10.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AlAAEAACAAAUAMAAUAAAgYUAAACACIAAAKEyCgACEBA=</HashCode>
       <FileName>BitVec.h</FileName>
@@ -29,7 +29,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DSDeRemer" Collapsed="true">
-    <Position X="9.75" Y="8.25" Width="1.5" />
+    <Position X="10.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEUAIAAAAAAABAAAAAQQAAAAAAAAAAAAAoAAAAAAA=</HashCode>
       <FileName>DSDeRemer.h</FileName>
@@ -50,70 +50,70 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DSIS" Collapsed="true">
-    <Position X="5.25" Y="8.25" Width="1.5" />
+    <Position X="5.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAUAIAAAAAAAAAAQAAQQAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>DSIS.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DSISopt" Collapsed="true">
-    <Position X="7.5" Y="8.25" Width="1.5" />
+    <Position X="8" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAUAIAAAAAAABAAAAAYQAAAAAAAAAAAAAoAAAAAAA=</HashCode>
       <FileName>DSISopt.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DSLBFA" Collapsed="true">
-    <Position X="19.75" Y="0.5" Width="1.5" />
+    <Position X="12.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAUAIAAAAAAAAAAAAAQQAAQAAAAAQAAAAgEQAACAA=</HashCode>
       <FileName>DSLBFA.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DSRBFA" Collapsed="true">
-    <Position X="12.75" Y="1.5" Width="1.5" />
+    <Position X="14.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAUAIAAAAAAAAAAAAAQQAAQAAAAAQQAAAgAQAACAA=</HashCode>
       <FileName>DSRBFA.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DSRE" Collapsed="true">
-    <Position X="6.25" Y="10.5" Width="1.5" />
+    <Position X="5.5" Y="10.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAUAIAAAAAAAQAAAAAQQAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>DSRE.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DSREopt" Collapsed="true">
-    <Position X="8.5" Y="10.5" Width="1.5" />
+    <Position X="7.75" Y="10.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAUAIAAAAAAAAAAAAAQQAAAAAAAAgAAAAgAAAAAAA=</HashCode>
       <FileName>DSREopt.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DSRFA" Collapsed="true">
-    <Position X="14.5" Y="1.5" Width="1.5" />
+    <Position X="16.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAUAIAAABAAAAEAAEAQQAAQAAAAAQAAAAgAQAAAgA=</HashCode>
       <FileName>DSRFA.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DSRFA2" Collapsed="true">
-    <Position X="16.25" Y="1.5" Width="1.5" />
+    <Position X="18" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAUAIAAABAAAAEAAEAQQAAQAAAAAQAAAAgAQAAAgA=</HashCode>
       <FileName>DSRFA2.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DTrans" Collapsed="true">
-    <Position X="0.5" Y="8.25" Width="1.5" />
+    <Position X="0.5" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABAEAoIAAAAIAAAAAAAACAAAAGAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>DTrans.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DTransRel" Collapsed="true">
-    <Position X="8.75" Y="4.25" Width="1.5" />
+    <Position X="7.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAIAAAAAAAAAAAACAAAAEACOAAAABAAgAACQAAA=</HashCode>
       <FileName>DTransRel.h</FileName>
@@ -134,7 +134,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ISImpl" Collapsed="true">
-    <Position X="7.5" Y="7" Width="1.5" />
+    <Position X="8" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BABAUAIAAAAAQACAAAAAAQAAAAAAAAACAAAgBAIAAAI=</HashCode>
       <FileName>ISImpl.h</FileName>
@@ -155,7 +155,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="RE" Collapsed="true">
-    <Position X="7.5" Y="9.25" Width="1.5" />
+    <Position X="6.75" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>GAAIkAAAAAABgZBAAAAAAQAAAACIAAQAAAIpAACIgAA=</HashCode>
       <FileName>RE.h</FileName>
@@ -169,105 +169,98 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Reg&lt;T&gt;" Collapsed="true">
-    <Position X="19.75" Y="1.5" Width="1.5" />
+    <Position X="12.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAIAAAAAAAIAgAAAAAAABACAASAIAAgAAAgABAAAAA=</HashCode>
       <FileName>Sigma.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StateEqRel" Collapsed="true">
-    <Position X="2" Y="4.25" Width="1.5" />
+    <Position X="0.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAAAAAAAAAAAQACCAAAAABCIAAAAAABgAABAEAA=</HashCode>
       <FileName>StateEqRel.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StatePool" Collapsed="true">
-    <Position X="12.75" Y="2.5" Width="1.5" />
+    <Position X="14.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABQAAAAAAAAAAAAAAIAAAAAAAECIAAAAAAAAAAIAAAA=</HashCode>
       <FileName>StatePool.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StateRel" Collapsed="true">
-    <Position X="4.25" Y="4.25" Width="1.5" />
+    <Position X="3" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAEEAAAAAACAACgBAACEAAAEACIAAAAAAAgAAAAAAA=</HashCode>
       <FileName>StateRel.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StateSet" Collapsed="true">
-    <Position X="1.75" Y="10.5" Width="1.5" />
+    <Position X="0.5" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AFAAEAAAAEAEAICEBIACAQQCAACIQIACAAAgAgECAAA=</HashCode>
       <FileName>StateSet.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StateTo&lt;T&gt;" Collapsed="true">
-    <Position X="5.25" Y="3" Width="1.5" />
+    <Position X="4" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAEACAAgAAAAGAAAACAAAAACCIAAAAAAAwAAAAAAA=</HashCode>
       <FileName>StateTo.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SymRel" Collapsed="true">
-    <Position X="4.25" Y="5.75" Width="1.5" />
+    <Position X="3" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEEAAAAAAEAAAAAgACAAAAEAAIAAAAAAAgAABAAIg=</HashCode>
       <FileName>SymRel.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Trans" Collapsed="true">
-    <Position X="2.75" Y="8.25" Width="1.5" />
+    <Position X="2.75" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAooAEAAIAGABAAAAAAAAAGAAACAAAAgAAAAAAA=</HashCode>
       <FileName>Trans.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TransImpl" Collapsed="true">
-    <Position X="1.75" Y="7" Width="1.5" />
+    <Position X="1.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAEgIAAAAAIAEAAAAAAAAAAACAAEAABAAwAAAAAAg=</HashCode>
       <FileName>TransImpl.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TransRel" Collapsed="true">
-    <Position X="6.5" Y="4.25" Width="1.5" />
+    <Position X="5.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAIAAAAAAACAAAACAAAAEACMAAAAAAAgAAAAAEA=</HashCode>
       <FileName>TransRel.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="RFATestClass" Collapsed="true">
-    <Position X="18" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAABAEAAAMAAhABAAAAAAAAAAAAAAAAACA=</HashCode>
-      <FileName>Test\RFATest.cpp</FileName>
-    </TypeIdentifier>
-  </Class>
   <Struct Name="DFA_components" Collapsed="true">
-    <Position X="12.75" Y="3.75" Width="1.75" />
+    <Position X="12.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEACkAAA=</HashCode>
       <FileName>DFA_components.h</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="TransPair" Collapsed="true">
-    <Position X="15" Y="3.75" Width="1.5" />
+    <Position X="14.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>TransPair.h</FileName>
     </TypeIdentifier>
   </Struct>
   <Typedef Name="State" Collapsed="true">
-    <Position X="12.75" Y="6.5" Width="1.5" />
+    <Position X="12.75" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>State.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Enum Name="REops" Collapsed="true">
-    <Position X="12.75" Y="5.25" Width="1.5" />
+    <Position X="12.75" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAEAAAAAAAIAAAAAAAAAACAAAIAAAAAAAAEEAgAAA=</HashCode>
       <FileName>REops.h</FileName>

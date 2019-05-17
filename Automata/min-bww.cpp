@@ -85,7 +85,7 @@ int DFA::are_eq(State p, State q, SymRel& S, const StateEqRel& H, const SymRel& 
 DFA& DFA::min_Watson()
 {
 	assert(class_invariant());
-	assert(Usefulf());
+	//assert(Usefulf());
 	
 	// (Symmetrical) State relation S is from p.14 of the min. taxonomy.
 	SymRel S;
