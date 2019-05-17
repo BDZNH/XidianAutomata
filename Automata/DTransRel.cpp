@@ -42,6 +42,30 @@ StateSet DTransRel::reverse_closure(const StateSet& r) const
 	return(result);
 }
 
+StateSet DTransRel::closure(const StateSet& r) const
+{
+	StateSet result(r);
+	StateSet intermediate;
+	StateSet temp;
+	intermediate.set_domain(domain());
+	temp.set_domain(domain());
+
+	while (result != intermediate)
+	{
+		result.set_union(intermediate);
+		intermediate.clear();
+		State st;
+		for (result.iter_start(st); !result.iter_end(st); result.iter_next(st))
+		{
+			StateSet temp = lookup(st).range(domain());
+			intermediate.set_union(temp);
+			temp.clear();
+		}
+	}
+	//std::cout << result << std::endl;
+	return(result);
+}
+
 // Recycle this entire structure.
 void DTransRel::reincarnate()
 {

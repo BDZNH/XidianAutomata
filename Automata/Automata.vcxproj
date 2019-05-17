@@ -228,6 +228,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Makefile" />
+    <None Include="DFA 转移关系分析.cd" />
     <None Include="DFA.cd" />
     <None Include="FA.cd" />
     <None Include="FAabs.cd" />

@@ -82,13 +82,22 @@ public:
 	// Implement Remark 2.39  removing states that are not final - reachable.
 	DFA& usefulf();
 
+	// remove any States that cannot reach from a start State
 	DFA& usefuls();
+
+	// construct a complete DFA.
+	// see details Definition 2.15
+	DFA& complete();
 
 	// Special member functions :
 
 	friend std::ostream& operator<<(std::ostream& os, const DFA& r);
 
 	inline int class_invariant() const;
+	inline int size() const
+	{
+		return Q.size();
+	}
 
 protected:
 	// Given a minimizing equivalence relation, shrink the DFA.

@@ -1,4 +1,4 @@
-/************************************************************************
+ï»¿/************************************************************************
 Implementation: All of the member functions are straight-forward implementations, with the
 exception of the minimization and reversal member functions. Those are further described
 later (the minimization member functions are discussed in Part IV). The constructor which
@@ -155,7 +155,7 @@ DFA& DFA::usefulf()
 DFA & DFA::usefuls()
 {
 	assert(class_invariant());
-	StateSet freachable(T.reverse_closure(S));
+	StateSet sreachable(T.closure(S));
 	StateTo<State> newnames;
 	newnames.set_domain(Q.size());
 
@@ -167,16 +167,14 @@ DFA & DFA::usefuls()
 	{
 		// If this is a Usefulf State, carry it over by giving it a name
 		// in the new DFA.
-		if (freachable.contains(st))
+		if (sreachable.contains(st))
 		{
 			newnames.map(st) = ret.Q.allocate();
 		}
-#ifdef FIX
 		else
 		{
 			newnames.map(st) = Invalid;
 		}
-#endif // FIX
 	}
 
 
@@ -191,7 +189,7 @@ DFA & DFA::usefuls()
 		for (st = 0; st < Q.size(); st++)
 		{
 			// Only construct the transitions if st is final reachable.
-			if (freachable.contains(st))
+			if (sreachable.contains(st))
 			{
 				a = T.out_labels(st);
 				State stprime(newnames.lookup(st));
@@ -204,14 +202,10 @@ DFA & DFA::usefuls()
 					b = a.iterator(it);
 					State stdest;
 					stdest = newnames.lookup(T.transition_on_range(st, b));
-#ifdef FIX
 					if (stprime != Invalid && stdest != Invalid)
 					{
-#endif // FIX
 						ret.T.add_transition(stprime, b, stdest);
-#ifdef FIX
 					}
-#endif // FIX
 				}
 				// This may be a final State.
 				if (F.contains(st)) ret.F.add(stprime);
@@ -220,12 +214,13 @@ DFA & DFA::usefuls()
 		ret.S.set_domain(ret.Q.size());
 
 		// Add a start State only if the original one was final reachable.
-		if (S.not_disjoint(freachable)) ret.S.add(newnames.lookup(S.smallest()));
+		if (S.not_disjoint(sreachable)) ret.S.add(newnames.lookup(S.smallest()));
 		reconstruct(ret);
 	}
 	assert(class_invariant());
 	return(*this);
-	// TODO: ÔÚ´Ë´¦²åÈë return Óï¾ä
+	// TODO: åœ¨æ­¤å¤„æ’å…¥ return è¯­å¥
+	return(*this);
 }
 
 // Given a minimizing equivalence relation, shrink the DFA.
