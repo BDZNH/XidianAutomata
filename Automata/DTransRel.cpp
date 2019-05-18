@@ -1,4 +1,4 @@
-/**********************************************************************************
+﻿/**********************************************************************************
 	Implementation: DTransRel inherits for implementation from StateTo<DTrans>. Many of the
 member functions are simply calls to the members of State To or DTrans.
  **********************************************************************************/
@@ -42,6 +42,9 @@ StateSet DTransRel::reverse_closure(const StateSet& r) const
 	return(result);
 }
 
+
+// add by hushuangpu
+// What are all States reachable from r?
 StateSet DTransRel::closure(const StateSet& r) const
 {
 	StateSet result(r);

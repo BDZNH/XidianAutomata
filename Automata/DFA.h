@@ -82,9 +82,11 @@ public:
 	// Implement Remark 2.39  removing states that are not final - reachable.
 	DFA& usefulf();
 
+	// add by hushuangpu
 	// remove any States that cannot reach from a start State
 	DFA& usefuls();
 
+	// add by hushuangpu
 	// construct a complete DFA.
 	// see details Definition 2.15
 	DFA& complete();

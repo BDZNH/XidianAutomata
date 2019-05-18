@@ -11,6 +11,15 @@ FiniteAutomata::FiniteAutomata(std::string str)
 	analyze(str);
 }
 
+FiniteAutomata::FiniteAutomata(DFA & dfa)
+{
+	std::stringstream ss;
+	ss << dfa;
+	std::string temp = ss.str();
+	analyze(temp);
+	ss.str("");
+}
+
 
 FiniteAutomata::~FiniteAutomata()
 {
@@ -123,7 +132,7 @@ bool FiniteAutomata::analyze(std::string& str)
 			}
 			else if (str.at(i) == '\'' && secondsymbol && flag) //第二次遇到字符 '
 			{
-				T1.Q1 = atoi(temp.c_str());
+				T1.stdest = atoi(temp.c_str());
 				temp = "";
 				secondsymbol = false;
 			}
@@ -151,7 +160,7 @@ bool FiniteAutomata::analyze(std::string& str)
 		{
 			if (str.at(i) == '-' && str.at(i + 1) == '>' && !flag)
 			{
-				T1.Q0 = atoi(temp.c_str());
+				T1.stprime = atoi(temp.c_str());
 				temp = "";
 				
 			}
@@ -170,7 +179,7 @@ bool FiniteAutomata::analyze(std::string& str)
 			}
 			else if (str.at(i) == ' ' && str.at(i - 1) >= '0' && str.at(i - 1) <= '9')
 			{
-				T1.Q1 = atoi(temp.c_str());
+				T1.stdest = atoi(temp.c_str());
 				ss.str("");
 				temp = "";
 				Trans.push_back(T1);
@@ -202,6 +211,7 @@ std::string FiniteAutomata::FA()
 bool FiniteAutomata::perform()
 {
 	// 输出数据到默认的文件“FA.ADS”
+	assert(num_state > 0);
 	std::ofstream ofile;
 	ofile.open("FA.ADS");
 	if (!ofile.is_open())
@@ -218,6 +228,7 @@ bool FiniteAutomata::perform()
 
 bool FiniteAutomata::perform(std::string filepath)
 {
+	assert(num_state > 0);
 	std::ofstream ofile;
 	ofile.open(filepath.c_str());
 	if (!ofile.is_open())
@@ -227,6 +238,18 @@ bool FiniteAutomata::perform(std::string filepath)
 	}
 	ofile << (*this);
 	ofile.close();
+	return true;
+}
+
+bool FiniteAutomata::perform(DFA & dfa, std::string filepath)
+{
+	clear();
+	std::string temp;
+	std::stringstream ss;
+	ss << dfa;
+	temp = ss.str();
+	analyze(temp);
+	perform(filepath);
 	return true;
 }
 
@@ -317,24 +340,24 @@ std::istream& operator>>(std::istream& input, FiniteAutomata& D)
 	Transition trans;
 	
 	// 输入转移关系
-	while (input >> trans.Q0)
+	while (input >> trans.stprime)
 	{
-		if (trans.Q0 == -1)
+		if (trans.stprime == -1)
 			break;
-		input >> trans.T >> trans.Q1;
-		if (D.check(trans.Q0) && D.check(trans.T) && D.check(trans.Q1)) //如果输入的转移关系有效
+		input >> trans.T >> trans.stdest;
+		if (D.check(trans.stprime) && D.check(trans.T) && D.check(trans.stdest)) //如果输入的转移关系有效
 		{
 			// 将状态存入状态集
 			D.Trans.push_back(trans);
-			result = std::find(D.Q.begin(), D.Q.end(), trans.Q0);
+			result = std::find(D.Q.begin(), D.Q.end(), trans.stprime);
 			if (result == D.Q.end())
 			{
-				D.Q.push_back(trans.Q0);
+				D.Q.push_back(trans.stprime);
 			}
-			result = std::find(D.Q.begin(), D.Q.end(), trans.Q1);
+			result = std::find(D.Q.begin(), D.Q.end(), trans.stdest);
 			if (result == D.Q.end())
 			{
-				D.Q.push_back(trans.Q1);
+				D.Q.push_back(trans.stdest);
 			}
 
 			// 将“输入字符”保存
@@ -346,11 +369,11 @@ std::istream& operator>>(std::istream& input, FiniteAutomata& D)
 		}
 		else
 		{
-			std::cout << "Invalid argument: " << trans.Q0 << " " << trans.T << " " << trans.Q1 << std::endl;
+			std::cout << "Invalid argument: " << trans.stprime << " " << trans.T << " " << trans.stdest << std::endl;
 		}
-		trans.Q0 = 0;
+		trans.stprime = 0;
 		trans.T = 0;
-		trans.Q1 = 0;
+		trans.stdest = 0;
 	}
 	return input;
 }
@@ -372,12 +395,12 @@ std::ostream & operator<<(std::ostream & output, FiniteAutomata & D)
 	////auto itt = Trans.begin();
 	//for (size_t i = 0; i < D.Trans.size(); ++i)
 	//{
-	//	output << D.Trans[i].Q0 << " " << D.Trans[i].T << " " << D.Trans[i].Q1 << std::endl;
+	//	output << D.Trans[i].Q0 << " " << D.Trans[i].T << " " << D.Trans[i].stdest << std::endl;
 	//}
 
 	for (auto iter = D.Trans.begin(); iter != D.Trans.end(); iter++)
 	{
-		output << iter->Q0 << " " << iter->T << " " << iter->Q1 << std::endl;
+		output << iter->stprime << " " << iter->T << " " << iter->stdest << std::endl;
 	}
 	
 	return output;
