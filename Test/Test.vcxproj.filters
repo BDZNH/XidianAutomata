@@ -33,12 +33,6 @@
     <ClCompile Include="DFAMinimalKeepTest.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="DFATest2.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="DFAusefulTest.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="RFATest.cpp">
       <Filter>源文件</Filter>
     </ClCompile>

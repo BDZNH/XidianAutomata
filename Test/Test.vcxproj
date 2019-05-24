@@ -148,8 +148,6 @@
     <ClCompile Include="DFAHopcroftTest.cpp" />
     <ClCompile Include="DFAMinimalKeepTest.cpp" />
     <ClCompile Include="DFATest.cpp" />
-    <ClCompile Include="DFATest2.cpp" />
-    <ClCompile Include="DFAusefulTest.cpp" />
     <ClCompile Include="RFATest.cpp" />
     <ClCompile Include="StateEqRelTest.cpp" />
     <ClCompile Include="StateRelTest.cpp" />
