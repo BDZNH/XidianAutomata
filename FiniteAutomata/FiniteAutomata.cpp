@@ -58,6 +58,7 @@ bool FiniteAutomata::analyze(std::string& str)
 	{
 		i++;
 	}
+	i++;
 	while (str.at(i) != ')' && i < len)
 	{
 		temp.push_back(str.at(i));
@@ -119,24 +120,24 @@ bool FiniteAutomata::analyze(std::string& str)
 			{
 				flag = true;
 			}
-			else if (str.at(i) == '\'' && secondsymbol && !flag) //第二次遇到字符 '
+			else if (str.at(i) == '\'' && secondsymbol && !flag) //第二次遇到字符中括号内的 ' 
 			{
 				label n = atoi(temp.c_str());
 				la.push_back(n);
 				temp = "";
 				secondsymbol = false;
 			}
-			else if (str.at(i) == '\'' && !secondsymbol && !flag) // 第一次遇到字符 '
+			else if (str.at(i) == '\'' && !secondsymbol && !flag) // 第一次遇到字符中括号内的 '
 			{
 				secondsymbol = true;
 			}
-			else if (str.at(i) == '\'' && secondsymbol && flag) //第二次遇到字符 '
+			else if (str.at(i) == ' ' && (str.at(i-1) >= '0' && str.at(i-1) <= '9') && secondsymbol && flag) //提取目标状态
 			{
 				T1.stdest = atoi(temp.c_str());
 				temp = "";
 				secondsymbol = false;
 			}
-			else if (str.at(i) == '\'' && !secondsymbol && flag) // 第一次遇到字符 '
+			else if (str.at(i) == '-' && str.at(i+1) == '>' && !secondsymbol && flag) // 第一次遇到字符 '
 			{
 				secondsymbol = true;
 			}
@@ -150,6 +151,8 @@ bool FiniteAutomata::analyze(std::string& str)
 					T1.T = *iter;
 					Trans.push_back(T1);
 				}
+				temp = "";
+				la.clear();
 			}
 			else if (str.at(i) >= '0' && str.at(i) <= '9')
 			{
@@ -187,6 +190,7 @@ bool FiniteAutomata::analyze(std::string& str)
 			else if (str.at(i) == '}')
 			{
 				flag = false;
+				temp = "";
 			}
 			else if (str.at(i) >= '0' && str.at(i) <= '9')
 			{
