@@ -151,6 +151,7 @@
     <ClCompile Include="DFATest2.cpp" />
     <ClCompile Include="DFAusefulTest.cpp" />
     <ClCompile Include="RFATest.cpp" />
+    <ClCompile Include="StateEqRelTest.cpp" />
     <ClCompile Include="StateRelTest.cpp" />
     <ClCompile Include="StateSetTest.cpp" />
     <ClCompile Include="StateTo(StateSet)Test.cpp" />

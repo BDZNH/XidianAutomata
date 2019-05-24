@@ -61,7 +61,6 @@ State DFA::split(const State p, const State q, const CharRange a, StateEqRel & P
 		StateSet otherpiece(P.equiv_class(p));
 		otherpiece.remove(part);
 		assert(!otherpiece.empty());
-
 		P.split(part);
 		assert(class_invariant());
 

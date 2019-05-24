@@ -179,7 +179,7 @@ DFA & DFA::usefuls()
 
 
 	// It is possible that nothing needs to be done(ie.the all States were
-	// already F useful).
+	// already S useful).
 	if (Q.size() != ret.Q.size())
 	{
 		ret.T.set_domain(ret.Q.size());
@@ -188,7 +188,7 @@ DFA & DFA::usefuls()
 		CRSet a;
 		for (st = 0; st < Q.size(); st++)
 		{
-			// Only construct the transitions if st is final reachable.
+			// Only construct the transitions if st is start reachable.
 			if (sreachable.contains(st))
 			{
 				a = T.out_labels(st);
@@ -218,7 +218,7 @@ DFA & DFA::usefuls()
 		reconstruct(ret);
 	}
 	assert(class_invariant());
-	return(*this);
+	
 	// TODO: 在此处插入 return 语句
 	return(*this);
 }
@@ -227,8 +227,14 @@ DFA & DFA::usefuls()
 // construct a Complete DFA
 DFA & DFA::complete()
 {
-	/*usefulf();
-	usefuls();*/
+	
+	if (Complete())
+	{
+		return (*this);
+	}
+
+	usefulf();
+	usefuls();
 
 	DFA_components ret;
 
@@ -284,6 +290,32 @@ DFA & DFA::complete()
 	reconstruct(ret);
 	// TODO: 在此处插入 return 语句
 	return (*this);
+}
+
+int DFA::Complete() const
+{
+	State q;
+	
+	CRSet C;
+	for (q = 0; q < Q.size(); q++)
+	{
+		C.combine(T.out_labels(q));
+	}
+
+	for (q = 0; q < Q.size(); q++)
+	{
+		CharRange c;
+		for (int i = 0; i < C.size(); i++)
+		{
+			c = C.iterator(i);
+			if (T.transition_on_range(q, c) == Invalid)
+			{
+				return 0;
+			}
+		}
+	}
+
+	return 1;
 }
 
 // Given a minimizing equivalence relation, shrink the DFA.

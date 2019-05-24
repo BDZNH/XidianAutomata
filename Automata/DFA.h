@@ -91,6 +91,10 @@ public:
 	// see details Definition 2.15
 	DFA& complete();
 
+	// add by hushuangpu
+	// is *this a Complete DFA?
+	int Complete()const;
+
 	// Special member functions :
 
 	friend std::ostream& operator<<(std::ostream& os, const DFA& r);

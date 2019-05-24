@@ -25,9 +25,135 @@ Implementation: The member function uses some encoding tricks to effectively imp
 #include "StateEqRel.h"
 #include "DFA.h"
 
+//#define BBB
+
+#ifndef BBB
+
+
+
+
 // Implemeta Algorithm 4.8 (Hopcroft O(n log n) algorithm)
-//#define FINDEBUG
-//#define FIX
+DFA& DFA::min_Hopcroft()
+{
+	assert(class_invariant());
+
+	// This algorithm requires that the DFA not have any final unreachable
+	// State.
+	// assert(Usefulf()); // 此条将在 Release 模式下禁用
+
+	State q;
+
+	// Keep track of the combination fo all the out labels of State's.
+	CRSet C;
+	for (q = 0; q < Q.size(); q++)
+	{
+		C.combine(T.out_labels(q));
+	}
+
+	// Encode set L as a mapping from State to [0,|C|] where:
+	//            if q is a representative of a class in the partition P, then
+	//            L(the abstract list) contains
+	//                     ([q],C_0),([q],C_1),...,([q],C_(L(q)_1))
+	//            but not
+	//                     ([q],C_(L(q))),...,([q],C_(|C|_1))
+	int *const L(new int[Q.size()]);
+	for (q = 0; q < Q.size(); q++)
+	{
+		L[q] = 0;
+	}
+
+	// Initialize P to be total equivalence relation.
+	StateEqRel P(Q.size());
+
+	// Now set P to be E_0.
+	P.split(F);
+
+	// Now, build the set of equivalentatives and initialize L.
+	StateSet repr(P.representatives());
+
+	if (F.size() <= (Q.size() - F.size()))
+	{
+		repr.intersection(F);
+	}
+	else
+	{
+		repr.remove(F);
+	}
+
+	// Do the final set up of L
+	for (repr.iter_start(q); !repr.iter_end(q); repr.iter_next(q))
+	{
+		L[q] = C.size();
+	}
+
+	// Use a break to get of this loop
+	while (1)
+	{
+		// Find the first pair in L that still needs processing.
+		for (q = 0; q < Q.size() && !L[q]; q++);
+
+		// It may be that we're at the end of the processing.
+		if (q == Q.size())
+		{
+			break;
+		}
+		else
+		{
+			// mark this element of L as processed.
+			L[q]--;
+			CharRange c = C.iterator(L[q]);                      // 增加
+
+			// Iterate over al eq. classes, and try to split them.
+			State p;
+			repr = P.representatives();
+
+			for (repr.iter_start(p); !repr.iter_end(p); repr.iter_next(p))
+			{
+
+				// Now split [p] w.r.t (q,C_(L[q]))
+				State r(split(p, q, c, P));                     // 修改
+				// r is the representative of the new split of the 
+				// eq. class that was represented by p.
+
+				if (r != Invalid)
+				{
+					// p and r are the new representatives.
+					// Now update L with the smallest of
+					// [p] and [r]
+
+					if (P.equiv_class(p).size() <= P.equiv_class(r).size())
+					{
+						L[r] = L[p];
+						L[p] = C.size();
+					}
+					else
+					{
+						L[r] = C.size();
+					} // if
+				}  // if
+			} // for
+		} // if
+	} // while
+
+	// L is no longer needed.
+	delete L;
+
+	// we can now use P to compress the DFA.
+	compress(P);
+
+	assert(class_invariant());
+	return (*this);
+}
+
+
+#endif // !BBB
+
+#ifdef BBB
+
+
+
+#define FINDEBUG
+#define FIX
 DFA& DFA::min_Hopcroft()
 {
 	assert(class_invariant());
@@ -89,16 +215,17 @@ DFA& DFA::min_Hopcroft()
 #endif // FINDEBUG
 
 	//repr.intersection(F);
-	//repr.intersection(F);
+	repr.intersection(F);
+	//repr.remove(F);
 
-	if (F.size() <= (Q.size() - F.size()))
-	{
-		repr.intersection(F);
-	}
-	else
-	{
-		repr.remove(F);
-	}
+	//if (F.size() <= (Q.size() - F.size()))
+	//{
+	//	repr.intersection(F);
+	//}
+	//else
+	//{
+	//	repr.remove(F);
+	//}
 
 #ifdef FINDEBUG
 	std::cout << "repr= " << repr << std::endl;
@@ -137,7 +264,7 @@ DFA& DFA::min_Hopcroft()
 		{
 			// mark this element of L as processed.
 			L[q]--;
-			CharRange c = C.iterator(L[q]);
+			//CharRange c = C.iterator(L[q]);
 
 			// Iterate over al eq. classes, and try to split them.
 			State p;
@@ -154,6 +281,7 @@ DFA& DFA::min_Hopcroft()
 				{
 					L[q]--;
 				}
+				CharRange c = C.iterator(L[q]);
 #endif // FIX
 
 
@@ -242,3 +370,5 @@ DFA& DFA::min_Hopcroft()
 	assert(class_invariant());
 	return (*this);
 }
+
+#endif // BBB

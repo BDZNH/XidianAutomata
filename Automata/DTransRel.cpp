@@ -53,10 +53,13 @@ StateSet DTransRel::closure(const StateSet& r) const
 	intermediate.set_domain(domain());
 	temp.set_domain(domain());
 
-	while (result != intermediate)
+	int n = 0;
+
+	do
 	{
 		result.set_union(intermediate);
-		intermediate.clear();
+		intermediate.set_union(result);
+		//intermediate.clear();
 		State st;
 		for (result.iter_start(st); !result.iter_end(st); result.iter_next(st))
 		{
@@ -64,7 +67,10 @@ StateSet DTransRel::closure(const StateSet& r) const
 			intermediate.set_union(temp);
 			temp.clear();
 		}
-	}
+		/*std::cout << "result: " << result << std::endl;
+		std::cout << "interm: " << intermediate << std::endl;*/
+		n++;
+	} while (result != intermediate);
 	//std::cout << result << std::endl;
 	return(result);
 }
