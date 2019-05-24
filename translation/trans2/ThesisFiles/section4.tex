@@ -332,8 +332,8 @@ $$ (r,s) \in L(p,q) \Rightarrow ((p,q) \in D \Rightarrow (r,s) \in D) $$
                 \For {$b:b \in V$}
                     \If{$(Q_0,b) \in L$}
                        $ L := L \setminus \{ (Q_0,b) \} \cup \{ (Q'_0,b),(Q_0, \setminus Q'_0,b ) \} $
-                    \ElsIf($(Q_0,b) \not\in L$)
-                        $L \rightarrow L := L \cup \{ (Q'_0,b),(Q_0, \setminus Q'_0,b ) \}$
+                    \ElsIf{$(Q_0,b) \not\in L$}
+                        $L := L \cup \{ (Q'_0,b),(Q_0, \setminus Q'_0,b ) \}$
                     \EndIf
                 \EndFor
             \EndFor
@@ -367,11 +367,11 @@ $$ (r,s) \in L(p,q) \Rightarrow ((p,q) \in D \Rightarrow (r,s) \in D) $$
 % \mbox{　} $ \mbox{\textbf{od }} \{ P = [Q]_E \} $ \\
 % \rule{\textwidth}{1pt}
 
-\uline{The innermost update of L is intentionally clumsy and will be used to arrive at the algorithm given by Hopcroft and Gries}。在集合 $L$ 的更新中，如果 $ (Q_0,b) \in L (\mbox{某些}b \in V) $ 且 $Q_0$ 已经被分割成 $ Q_0 \setminus Q'_0 $ 和 $ Q'_0 $ ，那么$L$中 $(Q_0,b)$ 会被 $ Q_0 \setminus Q'_0 $ 和 $ Q'_0 $ 替换。
+\uline{The innermost update of L is intentionally clumsy and will be used to arrive at the algorithm given by Hopcroft and Gries}。在集合 $L$ 的更新中，如果 $ (Q_0,b) \in L (\mbox{某些}b \in V) $ 且 $Q_0$ 已经被分割成 $ Q_0 \setminus Q'_0 $ 和 $ Q'_0 $ ，那么$L$中 $(Q_0,b)$ 会被 $ (Q_0 \setminus Q'_0 ,b) $ 和 $ (Q'_0 ,b) $ 替换。
 
 对于 Hopcroft 的另一个观察是 $ (Q_0,b),(Q'_0,b) ,(Q_0 \setminus Q'_0,b) $ 中任何两个的等价类的拆分与对于所有三个等价类的拆分相同 \cite[pp. 190-191]{Hopc71},\cite[引理 6]{Grie73}。出于效率的考虑，我们在集合 $L$ 的更新中选择三个($ (Q_0,b),(Q'_0,b) ,(Q_0 \setminus Q'_0,b) $)中最小的两个。如果 $(Q_0,b) \not\in L$，那么对 $(Q_0,b)$ 的分割就已经完成，我们把 $ (Q'_0,b) $ 或者  $ (Q_0 \setminus Q'_0,b) $ (较小者) 添加到 $L$。另一方面，如果  $(Q_0,b) \in L$，那么分割还未完成，从$L$中移除$(Q_0,b)$，然后添加 $ (Q'_0,b) $ 或者  $ (Q_0 \setminus Q'_0,b) $ 。
 
-最后，我们观察到，从 $ P= [Q]_{E_0} = \{ Q \setminus F,F \} $ 开始，就已经完成了对$Q$的分割。也就是说，我们只需要对 $ \{ Q \setminus F,b \} $ 或者 $ (F,b) $ 进行分割 (对所有的 $b\in V$)。\cite[pp. 190-191]{Hopc71},\cite[引理 6]{Grie73}
+最后，我们观察到，从 $ P= [Q]_{E_0} = \{ Q \setminus F,F \} $ 开始，就已经完成了对$Q$的分割。也就是说，我们只需要对 $ ( Q \setminus F,b ) $ 或者 $ (F,b) $ 进行分割即可 (对所有的 $b\in V$)\cite[pp. 190-191]{Hopc71},\cite[引理 6]{Grie73}。
 
 这给出了算法\footnote{Part of the invariant has been omitted, being rather complicated to derive.}：
 

@@ -383,7 +383,7 @@
 \pagenumbering{roman}
 \pagestyle{myheadings}
 \phantomsection
-% \pdfbookmark[1]{\XDU@abstractnameheader}{toc}  %% 添加摘要页到书签
+\pdfbookmark[1]{\XDU@abstractnameheader}{abscn}  %% 添加摘要页到书签
 \vspace*{2em}
 \centerline{\heiti\chaptersize\XDU@abstractname}\vskip5pt\par%
 \vspace*{2em}
@@ -393,7 +393,7 @@
 \cleardoublepage%
 \pagestyle{headings}
 \phantomsection
-% \pdfbookmark[1]{\XDU@enabstractname}{toc}  %% 添加Abstract页到书签
+\pdfbookmark[1]{\XDU@enabstractname}{absen}  %% 添加Abstract页到书签
 \vspace*{2em}
 \centerline{\textbf{\chaptersize\XDU@enabstractname}}\vskip5pt\par%
 \vspace*{2em}
@@ -404,6 +404,7 @@
 \cleardoublepage
 }
 \def\maketitle{
+\pdfbookmark[1]{{封面}}{cover}  %% 添加封面到书签
 \begin{titlepage}
 %%  封面右上角班级学号格式
 \begin{table}
@@ -497,6 +498,7 @@
 
 \XDU@supervisorhasread\CJKunderline{\phantom{\qquad\qquad\quad}}%
 \XDU@signedname\quad\XDU@timename\@date}
+
 
 \make@abstract%
 
