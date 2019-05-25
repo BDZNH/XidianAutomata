@@ -42,16 +42,19 @@ void aspecialDFA();
 
 void DFATest()
 {
-	//DFATest1();
-	//DFATest2();
-	//DFATest3();
-	//DFATest4();
-	//DFATest5();
-	//DFATest6();
-	//DFATest7();
-	//DFATest8();
+	cout << "##################################################################" << endl;
+	cout << "###    Now Test the minimization algorithms in the class DFA   ###" << endl; 
+	cout << "##################################################################" << endl;
+	DFATest1();
+	DFATest2();
+	DFATest3();
+	DFATest4();
+	DFATest5();
+	DFATest6();
+	DFATest7();
+	DFATest8();
 	DFATest9();
-	//aspecialDFA();
+	aspecialDFA();
 }
 
 //  A.1(a)与 A.1(b)

@@ -30,7 +30,7 @@
 \hyphenation{XDU-Thesis}
 \def\XDUthesis{X\kern -.1667em\lower .5ex\hbox {D}\kern -.125emU\textit{thesis}{}}
 \def\version{0.1.9}
-\LoadClass[a4paper,UTF8,zihao=-4,fontset=adobe]{ctexbook}
+\LoadClass[a4paper,UTF8,zihao=-4,openany]{ctexbook}
 \RequirePackage{expl3}% LaTeX3 programming environment
 \ExplSyntaxOn%
 \providecommand{\g__ctex_fontset_tl}{}% platform fontset state variable
@@ -217,7 +217,7 @@
 \renewcommand\frontmatter{%
   \if@openright\cleardoublepage\else\clearpage\fi
   \@mainmatterfalse
-  \pagenumbering{Roman}
+  \pagenumbering{roman}
   \pagestyle{XDU@mulu}}
 
 \def\ps@XDU@main{%
@@ -404,107 +404,110 @@
 \cleardoublepage
 }
 \def\maketitle{
-\pdfbookmark[1]{{封面}}{cover}  %% 添加封面到书签
-\begin{titlepage}
-%%  封面右上角班级学号格式
-\begin{table}
-  \raggedleft
-  \renewcommand{\arraystretch}{1.3}
-  \begin{tabular}{c c}
-    \textbf{\zihao{-4}\XDU@classname}        & \uline{~~~~~ \textbf{\zihao{-4}\XDU@class}          ~~~~~}\\
-    \textbf{\zihao{-4}\XDU@schoolnumbername} & \uline{~     \textbf{\zihao{-4}{\XDU@schoolnumber}}     ~}\\
-  \end{tabular}
-\end{table}
-\if@WordOneHalf
-\if@nologo
-  \vspace*{\stretch{11}}
-\else
-  \centering\includegraphics[width=0.5\textwidth]{./Figure/xidian.pdf}
 
-  \vspace*{\stretch{2}}
+% %%%%%%%%%%%%%%%%%%%%%%  仅仅针对翻译，
+% \pdfbookmark[1]{{封面}}{cover}  %% 添加封面到书签
+% \begin{titlepage}
+% %%  封面右上角班级学号格式
+% \begin{table}
+%   \raggedleft
+%   \renewcommand{\arraystretch}{1.3}
+%   \begin{tabular}{c c}
+%     \textbf{\zihao{-4}\XDU@classname}        & \uline{~~~~~ \textbf{\zihao{-4}\XDU@class}          ~~~~~}\\
+%     \textbf{\zihao{-4}\XDU@schoolnumbername} & \uline{~     \textbf{\zihao{-4}{\XDU@schoolnumber}}     ~}\\
+%   \end{tabular}
+% \end{table}
+% \if@WordOneHalf
+% \if@nologo
+%   \vspace*{\stretch{11}}
+% \else
+%   \centering\includegraphics[width=0.5\textwidth]{./Figure/xidian.pdf}
 
-  \begin{center}
-  {\centering\heiti{\zihao{0}\XDU@subject}}
-  \end{center}
+%   \vspace*{\stretch{2}}
 
-  \vspace*{\stretch{3}}
+%   \begin{center}
+%   {\centering\heiti{\zihao{0}\XDU@subject}}
+%   \end{center}
 
-  \begin{center}
-  \includegraphics[width=0.25\textwidth]{./Figure/logo.pdf}
-  \end{center}
-\fi
-\else
-\if@nologo
-  \vspace*{\stretch{15}}
-\else
-  \centering\includegraphics[width=0.5\textwidth]{./Figure/xidian.pdf}
+%   \vspace*{\stretch{3}}
 
-  \vspace*{\stretch{4}}
+%   \begin{center}
+%   \includegraphics[width=0.25\textwidth]{./Figure/logo.pdf}
+%   \end{center}
+% \fi
+% \else
+% \if@nologo
+%   \vspace*{\stretch{15}}
+% \else
+%   \centering\includegraphics[width=0.5\textwidth]{./Figure/xidian.pdf}
 
-  \begin{center}
-  {\centering\heiti{\zihao{0}\XDU@subject}}
-  \end{center}
+%   \vspace*{\stretch{4}}
 
-  \vspace*{\stretch{5}}
+%   \begin{center}
+%   {\centering\heiti{\zihao{0}\XDU@subject}}
+%   \end{center}
 
-  \begin{center}
-  \includegraphics[width=0.25\textwidth]{./Figure/logo.pdf}
-  \end{center}
-\fi
-\fi
+%   \vspace*{\stretch{5}}
 
-\vspace*{\stretch{4}}
+%   \begin{center}
+%   \includegraphics[width=0.25\textwidth]{./Figure/logo.pdf}
+%   \end{center}
+% \fi
+% \fi
 
-\begin{center}
-\begin{tabular}{c C{7cm}}
-\textbf{\zihao{3}\XDU@titlename} & {\heiti\enheiti\zihao{3}\XDU@septitleA}\\
-\cline{2-2}
- & \\
- & {\heiti\enheiti\zihao{3}\XDU@septitleB}\\
-\cline{2-2}
- & \\
-\textbf{\zihao{3}\XDU@schoolname} & {\zihao{-3}\XDU@school}\\
-\cline{2-2}
- & \\
-\textbf{\zihao{3}\XDU@majorname} & {\zihao{-3}\XDU@major}\\
-\cline{2-2}
- &\\
-\textbf{\zihao{3}\XDU@authorname} & {\zihao{-3}\XDU@author}\\
-\cline{2-2}
- &\\
-\textbf{\zihao{3}\XDU@supervisorname} & {\zihao{-3}\XDU@supervisor}\\
-\cline{2-2}
-\cline{2-2}
-\end{tabular}
-\end{center}
+% \vspace*{\stretch{4}}
 
-\end{titlepage}
+% \begin{center}
+% \begin{tabular}{c C{7cm}}
+% \textbf{\zihao{3}\XDU@titlename} & {\heiti\enheiti\zihao{3}\XDU@septitleA}\\
+% \cline{2-2}
+%  & \\
+%  & {\heiti\enheiti\zihao{3}\XDU@septitleB}\\
+% \cline{2-2}
+%  & \\
+% \textbf{\zihao{3}\XDU@schoolname} & {\zihao{-3}\XDU@school}\\
+% \cline{2-2}
+%  & \\
+% \textbf{\zihao{3}\XDU@majorname} & {\zihao{-3}\XDU@major}\\
+% \cline{2-2}
+%  &\\
+% \textbf{\zihao{3}\XDU@authorname} & {\zihao{-3}\XDU@author}\\
+% \cline{2-2}
+%  &\\
+% \textbf{\zihao{3}\XDU@supervisorname} & {\zihao{-3}\XDU@supervisor}\\
+% \cline{2-2}
+% \cline{2-2}
+% \end{tabular}
+% \end{center}
 
-\pagestyle{empty}
-\cleardoublepage
+% \end{titlepage}
 
-\begin{center}
-{\textbf{\zihao{1}\XDU@declarename}}
-\end{center}
+% \pagestyle{empty}
+% \cleardoublepage
 
-\vspace*{3em}
+% \begin{center}
+% {\textbf{\zihao{1}\XDU@declarename}}
+% \end{center}
 
-{\songti{\zihao{4}\XDU@declaretext}}
+% \vspace*{3em}
 
-\vspace*{8em}
+% {\songti{\zihao{4}\XDU@declaretext}}
 
-{\songti\zihao{4}\XDU@authornametitle\CJKunderline{\phantom{\qquad\qquad\qquad\quad}}%
-\XDU@signedname\quad\XDU@timename\@date
+% \vspace*{8em}
 
-\XDU@supervisorhasread\CJKunderline{\phantom{\qquad\qquad\quad}}%
-\XDU@signedname\quad\XDU@timename\@date}
+% {\songti\zihao{4}\XDU@authornametitle\CJKunderline{\phantom{\qquad\qquad\qquad\quad}}%
+% \XDU@signedname\quad\XDU@timename\@date
+
+% \XDU@supervisorhasread\CJKunderline{\phantom{\qquad\qquad\quad}}%
+% \XDU@signedname\quad\XDU@timename\@date}
 
 
-\make@abstract%
+% \make@abstract%
 
 \frontmatter
 \pdfbookmark[1]{\XDU@contentsnameheader}{toc}  %% 添加目录页到书签
 \tableofcontents%
+\cleardoublepage
 \mainmatter
 }
 \ifxetex

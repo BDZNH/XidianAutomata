@@ -1,5 +1,5 @@
 %!TEX program = xelatex
-\documentclass[WordOneHalf,adobe,print]{XDUthesis}   %%启用默认字体设置，word 1.5 倍行距，打印样式
+\documentclass[WordOneHalf]{XDUthesis}   %%启用默认字体设置，word 1.5 倍行距，打印样式
 % 参数设置：
 %     功能设置：
 %         <nologo>: 封面页去除logo（默认有logo）
@@ -64,6 +64,8 @@
 
 % 文章主要部分
 % \input{ThesisFiles/Chapters}
+% \cleardoublepage
+\newpage
 \input{ThesisFiles/section1.tex}
 \input{ThesisFiles/section2.tex}
 \input{ThesisFiles/section3.tex}
@@ -84,6 +86,7 @@
 
 %参考文献
 \nocite{*}
+\clearpage
 \phantomsection%生成该页的链接
 \addcontentsline{toc}{chapter}{\bibname}
 \bibliographystyle{alpha}%不对参考文献排序% gbt7714-plain%对参考文献排序 
