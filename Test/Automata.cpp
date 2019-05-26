@@ -221,9 +221,9 @@ bool generatedata(std::string filename)
 {
 	// 重定向 cout 的数据到文件
 	std::ofstream fs;
-	fs.open(filename.c_str(), ios::out | ios::trunc);
+	fs.open(filename.c_str(), ios::out | ios::trunc); // 删除并新建文件
 
-	if (!fs)
+	if (!fs)  // 如果没能打开成功
 	{
 		return false;
 	}
@@ -238,7 +238,7 @@ bool generatedata(std::string filename)
 	fs.close();
 	std::cout.rdbuf(stream_buffer_cout);
 
-	return true;
+	return true;  
 
 }
 

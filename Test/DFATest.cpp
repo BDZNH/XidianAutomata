@@ -34,6 +34,7 @@ void DFATest7();
 // 此测试专门针对 Hopcroft 算法，验证构造完全自动机(数据为A.8 五个 DFA)
 void DFATest8();
 
+// A.9(a) 和 A.9(b)
 void DFATest9();
 
 // 老师给的一个含有开始不可达，并且是结束状态的例子

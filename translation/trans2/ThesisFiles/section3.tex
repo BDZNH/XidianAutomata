@@ -1,10 +1,12 @@
 
 \chapter{状态等价最小化}
-本节中，我们限定在完全的 DFA 的最小化中。\uline{This is strictly a notational convenience, as the minimization algorithm can be modified to work for non-complete DFA.严格地说，这是一种标记的便利，因为可以对最小化算法进行修改，使其适用于不完全DFA。} 除非$DFA$的语言是$V^*$，否则完全最小化$DFA$比不完全最小化DFA多一个状态(sink)。令 $ M = (Q,V,T,\emptyset,S,F)$ 为完全$DFA$，这个特殊的$DFA$将会贯穿本节内容。我们也假设所有的 $M$ 的所有状态都是开始状态可达的，也就是$Useful_s(M)$。由于 $M$ 是确定且完全的，我们也把转移关系 $T \in Q \times V \to Q$ 称为全函数，而不是 $T \in Q \times V \to \mathcal{P}(Q)$。
+% 本节中，我们限定在完全的 DFA 的最小化中。\uline{This is strictly a notational convenience, as the minimization algorithm can be modified to work for non-complete DFA.严格地说，这是一种标记的便利，因为可以对最小化算法进行修改，使其适用于不完全DFA。} 除非$DFA$的语言是$V^*$，否则完全最小化$DFA$比不完全最小化DFA多一个状态(sink)。令 $ M = (Q,V,T,\emptyset,S,F)$ 为完全$DFA$，这个特殊的$DFA$将会贯穿本节内容。我们也假设所有的 $M$ 的所有状态都是开始状态可达的，也就是$Useful_s(M)$。由于 $M$ 是确定且完全的，我们也把转移关系 $T \in Q \times V \to Q$ 称为全函数，而不是 $T \in Q \times V \to \mathcal{P}(Q)$。
+节中，我们限定在完全的 DFA 的最小化中。严格地说，这是一种书写方式上的便利，可以对最小化算法进行修改，使其适用于不完全DFA。 除非$DFA$的语言是$V^*$，否则完全最小化$DFA$比不完全最小化DFA多一个状态(sink)。令 $ M = (Q,V,T,\emptyset,S,F)$ 为完全$DFA$，这个特殊的$DFA$将会贯穿本节内容。我们也假设所有的 $M$ 的所有状态都是开始状态可达的，也就是$Useful_s(M)$。由于 $M$ 是确定且完全的，我们也把转移关系 $T \in Q \times V \to Q$ 称为全函数，而不是 $T \in Q \times V \to \mathcal{P}(Q)$。
 
 为了最小化 $DFA$ $M$，我们计算等价关系 $E \subseteq Q \times Q$,将其定义为\\
 $\mbox{　　　} (p,q) \in E \equiv ( \overrightarrow{\mathcal{L}}(p) = \overrightarrow{\mathcal{L}}(q) )$ \\
-\uline{Since this is an equivalence relation, we are really interested in unordered pairs of states. 由于这是一个等价关系，我们确实对无序状态对有兴趣}，使用有序状态对比使用无序状态对更方便。
+% \uline{Since this is an equivalence relation, we are really interested in unordered pairs of states. 由于这是一个等价关系，我们确实对无序状态对有兴趣}，使用有序状态对比使用无序状态对更方便。
+由于这是一个等价关系，我们对无序状态对有兴趣。使用有序状态对比使用无序状态对更方便。
 
 根据等价关系 $E$ ，使用 \textit{merge} 转换来对等价关系进行合并。
 \newline
@@ -59,7 +61,8 @@ $merge$ 的定义独立于等价类的代表的选择。函数 $merge$ 拥有以
 % \newline
 
 \begin{definition}[状态的等价]\label{def:eqstate}
-    \uline{等价关系 $E$ 是最大不动点}(在细化的情况下):
+    % \uline{等价关系 $E$ 是最大不动点}(在细化的情况下):
+    等价关系 $E$ 是最大细化条件下的划分关系：
     \[ (p,q) = E \equiv ( p \in F \equiv q \in F ) \land ( \forall a:a \in V : (T(p,a),T(q,a)) \in E ) \]
     
 \end{definition}
@@ -70,7 +73,8 @@ $merge$ 的定义独立于等价类的代表的选择。函数 $merge$ 拥有以
 % \\
 
 \begin{remark}
-    \uline{the greatest fixed point has the least number of equivalence classes of any such fixed point. 最大不动点拥有最少的任何此类不动点的等价类数。}
+    % \uline{the greatest fixed point has the least number of equivalence classes of any such fixed point. 最大不动点拥有最少的任何此类不动点的等价类数。}
+    最大划分关系拥有最多的等价类数目。
 \end{remark}
 
 % \noindent{\textbf{备注3.4：} \uline{the greatest fixed point has the least number of equivalence classes of any such fixed point. 最大不动点拥有最少的任何此类不动点的等价类数。} }
@@ -106,7 +110,8 @@ $E_0$ 的一个等价定义是 $E_0 = (Q \setminus F)^2 \cup F^2$。 对于所�
 % \newline
 
 \begin{remark}
-    有一个直观的 $E_k$ 的说明是有用的。\uline{当且仅当没有字符串 $ w: |w| \leq k $ 满足 $ w \in \overrightarrow{\mathcal{L}}(p) \not\equiv w \in \overrightarrow{\mathcal{L}}(q) $一个状态对 $p,q$ 也可以说成 $k$-等价 (写作 $(p,q)\in E_k$) }。作为结果，当且仅当
+    % 有一个直观的 $E_k$ 的说明是有用的。\uline{当且仅当没有字符串 $ w: |w| \leq k $ 满足 $ w \in \overrightarrow{\mathcal{L}}(p) \not\equiv w \in \overrightarrow{\mathcal{L}}(q) $一个状态对 $p,q$ 也可以说成 $k$-等价 (写作 $(p,q)\in E_k$) }。作为结果，当且仅当
+    有一个直观的 $E_k$ 的说明是有用的。当且仅当没有字符串 $ w: |w| \leq k $ 满足 $ w \in \overrightarrow{\mathcal{L}}(p) \not\equiv w \in \overrightarrow{\mathcal{L}}(q) $时，一个状态对 $p,q$ 也可以说成 $k$-等价 (写作 $(p,q)\in E_k$) 。作为结果，当且仅当
     \begin{itemize}
         \item 两者都是最终态或者都不是最终态；
         \item  $\forall a\in V,T(p,a) \mbox{和} T(q,a)$ 都是 ($k$-1)-等价(根据 $\overrightarrow{\mathcal{L}}$ 和 $T^*$ 的定义  )；
@@ -124,12 +129,13 @@ $E_0$ 的一个等价定义是 $E_0 = (Q \setminus F)^2 \cup F^2$。 对于所�
 % \newline
 
 \begin{remark}
-    E的一个重要性质是，它也是包含于（set containment instead of refinement）定义3.3中等价性的最大的固定点。作为最大的不动点，E可以用$\subseteq$-descending 关系序列来计算，从 $Q\times Q$ 开始，这样的序列不必只包含等价关系。在这样的近似序列中可能有比在上面给出的$E_k$序列有更多的步骤。幸运的是，每个这样的步骤通常都比从$E_k$计算$E_{k+1}$更容易计算。较容易计算这些（但较长）序列的一些算法在第4.2-4.5和第4.7节中给出。
+    E的一个重要性质是，它也是包含于（集合包含而不是细化）定义3.3中等价性的最大的固定点。作为最大的不动点，E可以用$\subseteq$-下降关系序列来计算，从 $Q\times Q$ 开始，这样的序列不必只包含等价关系。在这样的近似序列中可能有比在上面给出的$E_k$序列有更多的步骤。幸运的是，每个这样的步骤通常都比从$E_k$计算$E_{k+1}$更容易计算。较容易计算这些（但较长）序列的一些算法在第4.2-4.5和第4.7节中给出。
 \end{remark}
 
 % \noindent{\textbf{备注3.9}： E的一个重要性质是，它也是包含于（set containment instead of refinement）定义3.3中等价性的最大的固定点。作为最大的不动点，E可以用$\subseteq$-descending 关系序列来计算，从 $Q\times Q$ 开始，这样的序列不必只包含等价关系。在这样的近似序列中可能有比在上面给出的$E_k$序列有更多的步骤。幸运的是，每个这样的步骤通常都比从$E_k$计算$E_{k+1}$更容易计算。较容易计算这些（但较长）序列的一些算法在第4.2-4.5和第4.7节中给出。}
 
-所有先前已知的算法都是通过上面的连续逼近法（相对于 $\subseteq$）计算E。\uline{第4.7节中的新算法通过以下逐次逼近来计算 $E$ }。在这一节中，解释了这一点的实际重要性。
+所有先前已知的算法都是通过上面的连续逼近法（相对于 $\subseteq$）计算E。第4.7节中的新算法通过逐次逼近来计算 $E$ 。%\uline{第4.7节中的新算法通过以下逐次逼近来计算 $E$ }。
+在这一节中，解释了这一点的实际重要性。
 
 
 
@@ -139,7 +145,7 @@ $E_0$ 的一个等价定义是 $E_0 = (Q \setminus F)^2 \cup F^2$。 对于所�
 \mbox{　　　}$ (p,q) \in D \equiv (\overrightarrow{\mathcal{L}}(p) \not=\overrightarrow{\mathcal{L}}(q)) $\\
 %\newline
 
-\noindent{\textbf{定义3.10(状态的可区分性)}：$D$ 是一个方程中的最小(under $\subseteq$, set containment\footnote{这里，$\subseteq$代表设置标准容量；因为$D$不一定是等价关系，所以refinnement并不适用。})不动点} \\
+\noindent{\textbf{定义3.10(状态的可区分性)}：$D$ 是一个方程中的最小(在 $\subseteq$ 的条件下, 集合包含\footnote{这里，$\subseteq$代表设置标准容量；因为$D$不一定是等价关系，所以细化并不适用。})划分关系} \\
 \mbox{　　　}$ (p,q)\in D \equiv (p \in F \not\equiv q \in F) \land (\exists a:a \in V : (T(p,a)) \in D) $\\
 %\newline
 
@@ -148,7 +154,8 @@ $$ (p,q) \in D_{k+1} \equiv (p,q) \in D_k \land ( \exists a:a \in V : (T (p,a),T
 有 $D_0 = \neg E_0 = ( (Q \setminus F) \times F) \cup ( F \times ( Q \setminus F))$， 对于所有的 $k \ge 0$ ,有 $D_k = \neg E_k$， 同时 $D_{k+1} \subseteq D_k $。
 \newline
 
-\noindent{\textbf{备注3.12}： 对于 $E_k$，有一个直观的 $D_k$ 的说明是有用的。\uline{当且仅当没有字符串 $ w: |w| \leq k $ 满足 $ w \in \overrightarrow{\mathcal{L}}(p) \not\equiv w \in \overrightarrow{\mathcal{L}}(q) $一个状态对 $p,q$ 也可以说成 $k$-$distinguished$ (写作 $(p,q)\in E_k$) }。作为结果，当且仅当}
+\noindent{\textbf{注释3.12}： 对于 $E_k$，有一个直观的 $D_k$ 的说明是有用的。%\uline{当且仅当没有字符串 $ w: |w| \leq k $ 满足 $ w \in \overrightarrow{\mathcal{L}}(p) \not\equiv w \in \overrightarrow{\mathcal{L}}(q) $一个状态对 $p,q$ 也可以说成 $k$-$distinguished$ (写作 $(p,q)\in E_k$) }。作为结果，当且仅当}
+当且仅当没有字符串 $ w: |w| \leq k $ 满足 $ w \in \overrightarrow{\mathcal{L}}(p) \not\equiv w \in \overrightarrow{\mathcal{L}}(q) $一个状态对 $p,q$ 也可以说成 $k$-$distinguished$ (写作 $(p,q)\in E_k$) 。作为结果，当且仅当}
 
 \begin{itemize}
     \item [-] 其中一个是最终态而另外一个不是最终态；
@@ -165,11 +172,11 @@ $$ (p,q) \in D_{k+1} \equiv (p,q) \in D_k \land ( \exists a:a \in V : (T (p,a),T
 \[ \sharp E_0 < \sharp E_1 < \cdots < \sharp E_j \leq \sharp I_Q = |Q| \]
 $\sharp E_0=0$时，$E_0$是最大不动点。$\sharp E_1=1$时，要么所有状态都是终态，要么所有状态都不是终态。两种情况下$E_0$都是最大不动点。$\sharp E_0=2$时，$i+2 \leq \sharp E_i$，由 $ j+2 \leq \sharp E_j \leq \sharp I_Q = |Q| $ 可得 $j \leq |Q|-2 $ 。这给出了计算（从$E_0$开始）最大不动点$E_j$的步骤$(|Q|-2)$ 的上界，最大值0（使用性质3.6中的逼近序列）。
 
-上界为$E=E_{(|Q|-2)\textbf{max} 0}$。正如之后我们会见到的那样，它可以为算法带来效率上的提升。这个结果同样在 Wood \cite[引理  2.4.1]{Wood87} 中有所记录。This upperbound also holds for computing $D$ and $[Q]_E$ by approximation。
+上界为$E=E_{(|Q|-2)\textbf{max} 0}$。正如之后我们会见到的那样，它可以为算法带来效率上的提升。这个结果同样在 Wood \cite[引理  2.4.1]{Wood87} 中有所记录。此上界也通过逼近来计算 $D$ 和 $[Q]_E$。%This upperbound also holds for computing $D$ and $[Q]_E$ by approximation。
 
 % \newpage
 
-\section{描述$E$的等价类}
+\section{$E$的等价类}
 
 计算$[Q]_E$: $E$的等价类集合 同样是可行的。为了分割 $[Q]_E$，我们由定义3.3出发，把$E$的等价类描述为最大等价关系：
 
@@ -192,13 +199,15 @@ $\sharp E_0=0$时，$E_0$是最大不动点。$\sharp E_1=1$时，要么所有�
     \renewcommand{\arraystretch}{1.62}%row space 
     \begin{tabular}{ll} 
                  & $(\forall p,q : (p,q) \in E : ( p \in F \equiv q \in F ) \land ( \forall a:a \in V : (T(p,a),T(q,a)) \in E ))$ \\
-        $\equiv$ & $E$ 中的成员关系定义; more a to outer quantification \\
+        $\equiv$ & $E$ 中的成员关系定义; \\ %more a to outer quantification \\
                  & $(\forall p,q,a:(p,q)\in E \land a\in V : (p \in F \equiv q \in F) \land [T(p,a)]_E = [T(q,a)_E])$ \\
-        $\equiv$ & \{ 介绍等价类 $Q_0,Q_1$ \} \\
+        $\equiv$ & \{ 说明等价类 $Q_0,Q_1$ \} \\
                  & $(\forall Q_0,Q_1,a:Q_0\in [Q]_E \land Q_1 \in [Q]_E \land a \in V$ : \\
                  & $(\forall p,q:p\in Q_0 \land q\in Q_0 : (p \in F \equiv q \in F) \land T(p,a) \in Q_1 \equiv T(q,a) \in Q_1))$\\
     \end{tabular}
 \end{table}
+
+\newpage
 
 \begin{definition}[函数 $Splittable$]
     为了使其更简洁，我们定义

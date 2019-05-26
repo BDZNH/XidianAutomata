@@ -53,7 +53,7 @@
     \mbox{　　} $T^*(\epsilon) = E^*$ \\
     \mbox{且对于 } $(a\in V,w\in V^*)$ \mbox{ 有 }\\
     \mbox{　　} $ T^*(aw) = E^* \circ T(a) \circ T^*(w) $ \\
-    操作符$\circ$在惯例 A.5 中定义。\uline{这个定义也可以对称的表示}。
+    操作符$\circ$在惯例 A.5 中定义。%\uline{这个定义也可以对称的表示}。
 \end{definition}
 
 
@@ -104,19 +104,19 @@
     \mbox{　　}　$ Useful (M) \equiv Useful_s (M) \land Useful_f (M) $ 
 \end{definition}
 
-\begin{property}[确定性有限自动机( DFA )]
+\begin{property}[确定的有限自动机( DFA )]
     当且仅当
     \begin{itemize}
     \item  无多重初始状态；
     \item  无$\epsilon$转移；
     \item  转移函数$T \in Q \times V \longrightarrow \mathcal{P} (Q) $ 不将 $Q \times V$ 映射至多重状态。
 \end{itemize}
-时有限自动机$M$是确定性的。形式表达为：
+时有限自动机$M$是确定的。形式表达为：
 $$ Det(M) \equiv ( |S| \leq 1 \land \epsilon-free(E) \land ( \forall q,a:q \in Q \land a \in V : |T(q,a)| \leq 1 )) $$
 \end{property}
 
 \begin{definition}[$FA$的确定性]
-     DFA 代表所有确定性的有限自动机的集合。我们把$FA \setminus DFA$称为非确定性有限自动机($NDFA$,$nondeterministic\ finite\ automata$)的集合。
+     DFA 代表所有确定的有限自动机的集合。我们把$FA \setminus DFA$称为不确定的有限自动机($NDFA$,$nondeterministic~~finite~~automata$)的集合。
 \end{definition}
 
 \begin{convention}[DFA的转换函数]
@@ -139,7 +139,8 @@ $Min_{\mathcal{C}}$仅定义在完全 DFA 上。
 \end{definition}
 
 \begin{definition}[ DFA 的最小化]
-    根据 Myhill-Nerode 定理，\CJKunderline{An M, such that Min(M)}，是唯一的最小化 DFA ，定理的相关介绍在 \cite{Wats93}。
+    根据 Myhill-Nerode 定理，一个DFA $M$,$Min(M)$是唯一的最小的 DFA ，定理的相关介绍在 \cite{Wats93}。
+    %\CJKunderline{An M, such that Min(M)}，是唯一的最小化 DFA ，定理的相关介绍在 \cite{Wats93}。
 \end{definition}
 
 \begin{property}[ DFA 最小化的一个替代定义]\label{pro:aldef}
@@ -150,7 +151,7 @@ $Min_{\mathcal{C}}$仅定义在完全 DFA 上。
         \end{align*}
 % \mbox{　　}$Minimal(Q,V,T,\emptyset,S,F) \equiv  ( \forall q_0,q_1:q_0 \in Q \land q_1 \in Q \land q_0 \not= q_1 : \overrightarrow{\mathcal{L}}(q_0) \not= \overrightarrow{\mathcal{L}}(q_1)  )$ \\
 % \mbox{　　　　　　　　　　　　　　} $\land Useful(Q,V,T,\emptyset,S,F)$ \\
-有 $Minimal(M) \equiv Min(M)$（对所有$M\in DFA$）。很容易证明$Min(M)$ $\Rightarrow$ $Minimal(M)$。\uline{The reverse direction follows from the Myhill-Nerode 定理}。
+有 $Minimal(M) \equiv Min(M)$（对所有$M\in DFA$）。很容易证明$Min(M)$ $\Rightarrow$ $Minimal(M)$。%\uline{The reverse direction follows from the Myhill-Nerode 定理}。
 
 与$Min_{\mathcal{C}}$相似的定义是（同样也只定义在 DFA 上）：
     \begin{align*}
@@ -159,7 +160,7 @@ $Min_{\mathcal{C}}$仅定义在完全 DFA 上。
     \end{align*}
 % \mbox{　　}$Minimal_{\mathcal{C}}(Q,V,T,\emptyset,S,F) \equiv  ( \forall q_0,q_1:q_0 \in Q \land q_1 \in Q \land q_0 \not= q_1 : \overrightarrow{\mathcal{L}}(q_0) \not= \overrightarrow{\mathcal{L}}(q_1)  )$ \\
 % \mbox{　　　　　　　　　　　　　　} $\land Useful_s (Q,V,T,\emptyset,S,F)$ \\
-有 $Minimal_{\mathcal{C}}(M) \equiv Min_{\mathcal{C}}(M)$的性质（对于所有的$M\in DFA$）。很容易证明$Min_{\mathcal{C}}(M)$ $\Rightarrow$ $Minimal_{\mathcal{C}}(M)$。\uline{The reverse direction follows from the Myhill-Nerode 定理}。
+有 $Minimal_{\mathcal{C}}(M) \equiv Min_{\mathcal{C}}(M)$的性质（对于所有的$M\in DFA$）。很容易证明$Min_{\mathcal{C}}(M)$ $\Rightarrow$ $Minimal_{\mathcal{C}}(M)$。%\uline{The reverse direction follows from the Myhill-Nerode 定理}。
 \end{property}
 
 

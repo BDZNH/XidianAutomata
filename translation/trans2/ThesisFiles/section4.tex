@@ -5,7 +5,8 @@
 %%%%%%%%%%%%%%%   section 
 \section{通过分层逼近来计算$D$和$E$}
 
-根据$E_k$，$E_{k+1}$的定义（$D$也适用）很自然的引出下面计算$D$和$E$的算法（\uline{其中k是一个ghost变量，仅用于指定不变量}）。
+根据$E_k$，$E_{k+1}$的定义（$D$也适用）很自然的引出下面计算$D$和$E$的算法（其中k是一个ghost变量，仅用于指定不变量）。
+%（\uline{其中k是一个ghost变量，仅用于指定不变量}）。
 
 \begin{algorithm}
     \caption{}\label{euclid}
@@ -42,7 +43,8 @@
 % \mbox{　　}$k:=k+1$ \\
 % \mbox{ \textbf{od} }$ \{ G=D \land H=E \}$ \\
 % \rule{\textwidth}{1pt}
-\uline{This algorithm is said to compute D and E layerwise, since it computes the sequences $D_k$ and $E_k$.}由于该算法计算序列 $D_K$ 和 $E_K$，该算法被称为分层计算$D$和$E$。循环中的$G$和$H$的更新可以由下面展示的程序中的另一个循环实现。
+%\uline{This algorithm is said to compute D and E layerwise, since it computes the sequences $D_k$ and $E_k$.}
+由于该算法计算序列 $D_K$ 和 $E_K$，该算法被称为分层计算$D$和$E$。循环中的$G$和$H$的更新可以由下面展示的程序中的另一个循环实现。
 \begin{algorithm}
     \caption{}\label{al:ttt}
     \begin{algorithmic}[1]
@@ -119,9 +121,9 @@
 % \mbox{　　　　　　} $ G,H:= G \cup {(p,q)},H \setminus {(p,q) } $ \\
 % \mbox{　　　 \textbf{od}}$ \{ G=D \land H=E \}$ \\
 % \rule{\textwidth}{1pt}
-此算法可以分解为一个只计算 $D$ 和一个只计算$E$的算法。在每个迭代步骤的最后，$H$可能不是一个等价状态（也就是 $ H \not= H^* $）——详见备注 3.9。可以通过在\textbf{od}前面添加一个 assignment 来对这个算法稍作修改:
+此算法可以分解为一个只计算 $D$ 和一个只计算$E$的算法。在每个迭代步骤的最后，$H$可能不是一个等价状态（也就是 $ H \not= H^* $）——详见注释 3.9。可以通过在\textbf{od}前面添加一个等式来对这个算法稍作修改:
 $$ H := (\mbox{\textbf{MAX}}_{\subseteq } J : J \subseteq H \land J = J ^* : J); G := \neg H $$
-assignment的添加使得算法可以计算细化序列 $E_k$ （详见备注 3.9）. 如果使用计算量化 \textbf{MAX} 的简便方法，那么这个assignment可以提升这个算法的时间复杂度。本文中未提及此算法。
+等式的添加使得算法可以计算细化序列 $E_k$ （详见备注 3.9）. 如果使用计算量化 \textbf{MAX} 的简便方法，那么这个等式可以提升这个算法的时间复杂度。本文中未提及此算法。
 
 当我们把上面的这个算法转化来计算 $[Q]_E$，最终的算法如下，由 Aho, Sethi 和 Ullman 在 \cite[Alg.3.6]{ASU86} 中提出：
 %\newline
@@ -154,7 +156,7 @@ assignment的添加使得算法可以计算细化序列 $E_k$ （详见备注 3.
 % \mbox{　　　} $ \{ (\forall Q_0,Q_1,a : Q_0 \in P \land Q_1 \in P \land a \in V : \neg Splittable (Q_0,Q_1,a))  \} $ \\
 % \mbox{　　　} $\{  P = [Q]_E \}$ \\
 % \rule{\textwidth}{1pt}
-此算法时间复杂度为$\mathcal{O}(|Q|^2)$。
+\\ 此算法时间复杂度为$\mathcal{O}(|Q|^2)$。
 
 %%%%%%%%%%%%%%%   section 
 \section{通过无序逼近更高效的计算 $D$ 和 $E$}
@@ -229,20 +231,26 @@ assignment的添加使得算法可以计算细化序列 $E_k$ （详见备注 3.
 % \mbox{　　　} $ \{ (\forall Q_0,Q_1,a : Q_0 \in P \land Q_1 \in P \land a \in V : \neg Splittable (Q_0,Q_1,a))  \} $              \\
 % \mbox{　　　} $\{  P = [Q]_E \}$              \\
 % \rule{\textwidth}{1pt}
+\newpage
 内部循环“分割”每一个符合条件的等价类 $Q_0$，实际上，如果有$\neg Splittable(Q_0,Q_1,a).)$，那么一些特殊的 $Q_0$ 不会被分割。
-\uline{The inner repetition “splits” each eligible equivalence class $Q_0$ with respect to pair ($Q_1,a$), (In actuality, some particular $Q_0$ will not be split by $(Q_1,a)$ if $\neg Splittable(Q_0,Q_1,a).)$}
+%\uline{The inner repetition “splits” each eligible equivalence class $Q_0$ with respect to pair ($Q_1,a$), (In actuality, some particular $Q_0$ will not be split by $(Q_1,a)$ if $\neg Splittable(Q_0,Q_1,a).)$}
 
 %%%%%%%%%%%%%%%   section 
 \section{Hopcroft 和 Ullman 的算法 }
 
-从 $D$ 的定义，可以知道，当且仅当 $p \in F \not\equiv q \in F$ 或有 $a\in V$ \uline{such that $(T(p,a),T(q,a)) \in D$ }。这构成了本小节中考虑的算法的基础。\uline{ with each pair of states $(p,q)$ we associate a set of pairs of states $L(p,q)$}. 
-\uline{ 对于每对状态 $(p,q)$ ，我们将一组状态对 $L(p,q)$ 关联起来 }:
+从 $D$ 的定义，可以知道，当且仅当 $p \in F \not\equiv q \in F$ 或有 $a\in V$ ，也就是$(T(p,a),T(q,a)) \in D$ 。%\uline{such that $(T(p,a),T(q,a)) \in D$ }。
+这构成了本小节中考虑的算法的基础。%\uline{ with each pair of states $(p,q)$ we associate a set of pairs of states $L(p,q)$}. 
+对于每对状态 $(p,q)$ ，我们将一组状态对 $L(p,q)$ 关联起来 :
+% \uline{ 对于每对状态 $(p,q)$ ，我们将一组状态对 $L(p,q)$ 关联起来 }:
 $$ (r,s) \in L(p,q) \Rightarrow ((p,q) \in D \Rightarrow (r,s) \in D) $$
-对每一对$(p,q)$ ( \uline{such that $ (p,q) \not\in D_0 $ ——已知 $P$ 和 $Q$ 不被区分} )，进行以下操作：
+对每一对$(p,q)$ ( $ (p,q) \not\in D_0 $ ——已知 $P$ 和 $Q$ 不可区分 )，进行以下操作：
+% 对每一对$(p,q)$ ( \uline{such that $ (p,q) \not\in D_0 $ ——已知 $P$ 和 $Q$ 不被区分} )，进行以下操作：
 
 \begin{itemize}
-    \item 如果存在 $a\in V$ ，那么可以知道 $ ( T(p,a), T(q,a) )  \in D $ ，于是 $ (p,q) \in D $。把 $( p,q )$ 添加到 $D$ 的近似中，\uline{ along with $ L(p,q) $ }, 对于每个 $ (r,s) \in L(p,q) $，添加 $ L(r,s) $, 对于每个 $ (t,u) \in L(r,s) $ , 添加 $ L(t,u) $ 等等；
-    \item If there is no $a \in V$ such that $ T((p,a),T(q,a)) \in D $ is known to be true. then for all $ b\in V$ ，we put $ (p,q) $ in the set $ L( T(p,b),T (q,b) ) $ since $ L( T(p,b),T (q,b) ) \in D \Rightarrow (p,q) \in D $. If later it turn out that for some $ b \in V , L( T(p,b),T (q,b) ) \in D$,then we will also put $ L( T(p,b),T (q,b) ) $ (including $ (p,q) $) in $D$.
+    \item 如果存在 $a\in V$ ，那么可以知道 $ ( T(p,a), T(q,a) )  \in D $ ，于是 $ (p,q) \in D $。把 $( p,q )$ 添加到 $D$ 的近似中， 伴随着$ L(p,q) $, %\uline{ along with $ L(p,q) $ }
+    , 对于每个 $ (r,s) \in L(p,q) $，添加 $ L(r,s) $, 对于每个 $ (t,u) \in L(r,s) $ , 添加 $ L(t,u) $ 等等；
+    % \item If there is no $a \in V$ such that $ T((p,a),T(q,a)) \in D $ is known to be true. then for all $ b\in V$ ，we put $ (p,q) $ in the set $ L( T(p,b),T (q,b) ) $ since $ L( T(p,b),T (q,b) ) \in D \Rightarrow (p,q) \in D $. If later it turn out that for some $ b \in V , L( T(p,b),T (q,b) ) \in D$,then we will also put $ L( T(p,b),T (q,b) ) $ (including $ (p,q) $) in $D$.
+    \item 如果没有 $a \in V$ 使得 $ T((p,a),T(q,a)) \in D $ 。 因为$ L( T(p,b),T (q,b) ) \in D \Rightarrow (p,q) \in D $，那么对于所有的 $ b\in V$ ，我们把状态对 $ (p,q) $ 放进集合 $ L( T(p,b),T (q,b) ) $ 。 如果有一部分 $ b \in V , L( T(p,b),T (q,b) ) \in D$,那么我们就把 $ L( T(p,b),T (q,b) )$ 放进关系 $D$ 中(包括 $ (p,q) $) 。%$  in $D$.
 \end{itemize}
 在我们的算法展示中，给出的不变量不足证明算法的正确性，而是用于证明算法的工作原理。 该算法是：
 
@@ -308,7 +316,7 @@ $$ (r,s) \in L(p,q) \Rightarrow ((p,q) \in D \Rightarrow (r,s) \in D) $$
 %%%%%%%%%%%%%%%   section 
 \section{Hopcroft 的计算 $[Q]_E$ 的高效算法}
 
-我们由 Hopcroft 推导出一个高效的算法。这个算法也已经由 Gries \cite{Grie73} 推导得到。这个算法也是目前所有 $DFA$ 最小化算法中著名的\uline{运行时间分析算法，running time analysis}。
+我们由 Hopcroft 推导出一个高效的算法。这个算法也已经由 Gries \cite{Grie73} 推导得到。这个算法也是目前所有 $DFA$ 最小化算法中时间复杂度最低的算法。 %\uline{运行时间分析算法，running time analysis}。
 
 从算法 4.6 开始。回想一下，内部循环将每个等价类$Q_0$相对于$(Q_1, a)$进行“splits”。观察结果（来自 Hopcroft ）是，一旦所有等价类都对一个特定的 $(Q1,a)$ 进行了分割，那么在外部重复的后续迭代步骤中就不需要对相同的$(Q1,a)$ 进行任何等价类的分割 \cite[pp.190-191]{Hopc71}, \cite[引理 5]{Grie73}。我们可以使用这个事实来维护这样一组(等价类，字母符号)对$L$。然后我们将对等价类进行相对于 $L$ 的元素的分割。在这个算法的最初表示 \cite{Hopc71, Grie73} 中， $L$ 是一个列表。由于没有必要这样做，我们将$L$的类型保留为一个集合。
 
@@ -367,13 +375,14 @@ $$ (r,s) \in L(p,q) \Rightarrow ((p,q) \in D \Rightarrow (r,s) \in D) $$
 % \mbox{　} $ \mbox{\textbf{od }} \{ P = [Q]_E \} $ \\
 % \rule{\textwidth}{1pt}
 
-\uline{The innermost update of L is intentionally clumsy and will be used to arrive at the algorithm given by Hopcroft and Gries}。在集合 $L$ 的更新中，如果 $ (Q_0,b) \in L (\mbox{某些}b \in V) $ 且 $Q_0$ 已经被分割成 $ Q_0 \setminus Q'_0 $ 和 $ Q'_0 $ ，那么$L$中 $(Q_0,b)$ 会被 $ (Q_0 \setminus Q'_0 ,b) $ 和 $ (Q'_0 ,b) $ 替换。
+%\uline{The innermost update of L is intentionally clumsy and will be used to arrive at the algorithm given by Hopcroft and Gries}。
+最内部的 L 的更新是很繁琐的，将会用来推导 Hopcroft 和 Gries 的算法。 在集合 $L$ 的更新中，如果 $ (Q_0,b) \in L (\mbox{某些}b \in V) $ 且 $Q_0$ 已经被分割成 $ Q_0 \setminus Q'_0 $ 和 $ Q'_0 $ ，那么$L$中 $(Q_0,b)$ 会被 $ (Q_0 \setminus Q'_0 ,b) $ 和 $ (Q'_0 ,b) $ 替换。
 
 对于 Hopcroft 的另一个观察是 $ (Q_0,b),(Q'_0,b) ,(Q_0 \setminus Q'_0,b) $ 中任何两个的等价类的拆分与对于所有三个等价类的拆分相同 \cite[pp. 190-191]{Hopc71},\cite[引理 6]{Grie73}。出于效率的考虑，我们在集合 $L$ 的更新中选择三个($ (Q_0,b),(Q'_0,b) ,(Q_0 \setminus Q'_0,b) $)中最小的两个。如果 $(Q_0,b) \not\in L$，那么对 $(Q_0,b)$ 的分割就已经完成，我们把 $ (Q'_0,b) $ 或者  $ (Q_0 \setminus Q'_0,b) $ (较小者) 添加到 $L$。另一方面，如果  $(Q_0,b) \in L$，那么分割还未完成，从$L$中移除$(Q_0,b)$，然后添加 $ (Q'_0,b) $ 或者  $ (Q_0 \setminus Q'_0,b) $ 。
 
 最后，我们观察到，从 $ P= [Q]_{E_0} = \{ Q \setminus F,F \} $ 开始，就已经完成了对$Q$的分割。也就是说，我们只需要对 $ ( Q \setminus F,b ) $ 或者 $ (F,b) $ 进行分割即可 (对所有的 $b\in V$)\cite[pp. 190-191]{Hopc71},\cite[引理 6]{Grie73}。
 
-这给出了算法\footnote{Part of the invariant has been omitted, being rather complicated to derive.}：
+这给出了算法:%\footnote{Part of the invariant has been omitted, being rather complicated to derive.}：
 
 \begin{algorithm}
     \caption{Hopcroft}\label{al:4-8}
@@ -429,13 +438,14 @@ $$ (r,s) \in L(p,q) \Rightarrow ((p,q) \in D \Rightarrow (r,s) \in D) $$
 % \mbox{　　　} $ \{ (\forall Q_0,Q_0 \in P : \neg Splittable(Q_0,Q_1,a)) \} $ \\
 % \mbox{　} $ \mbox{\textbf{od }} \{ P = [Q]_E \} $ \\
 % \rule{\textwidth}{1pt}
+\newpage
 不幸的是，这个算法的时间复杂度分析是非常复杂的，这里不做讨论。Hopcroft 和 Gries 在 \cite{Grie73,Hopc71} 中提及其时间复杂度为 $ \mathcal{O}(|Q|log|Q|) $。
 
 
 %%%%%%%%%%%%%%%   section 
 \section{计算 $ (p,q) \in E $}
 
-从确定两种类型的结构等价性问题出发，将$E$的不动点定义转化为函数式程序，可以递归地计算出两种状态的等价性。如果将未修改的定义直接用于函数式程序，则有可能程序无法正常结束。为了使函数式程序工作，它需要有两个状态和第三个参数。
+从确定两种类型的结构等价性问题出发，将$E$的定义转化为函数式程序，可以递归地计算出两种状态的等价性。如果将未修改的定义直接用于函数式程序，则有可能程序无法正常结束。为了使函数式程序工作，它需要有两个状态和第三个参数。
 
 下面的程序与 \cite{t-Ei91} 中的类似，逐点计算$E$；调用 $equiv(p,q,\emptyset)$ 确定状态 $p$ 和状态 $q$ 是否等价。它假设两个状态是等价的(通过将这对状态放在$S$中，即第三个参数中)，直到出现其他情况。
 
@@ -467,7 +477,8 @@ $$ (r,s) \in L(p,q) \Rightarrow ((p,q) \in D \Rightarrow (r,s) \in D) $$
 % \mbox{　　　} $\mbox{\textbf{return }} eq$ \\
 % \rule{\textwidth}{1pt}
 \newpage
-The $\forall$ quantification 可以使用一个循环来实现
+%The $\forall$ quantification 可以使用一个循环来实现
+可以使用一个循环来实现
 
 \begin{algorithm}
     %\caption{}\label{al:4-7}
@@ -496,7 +507,7 @@ The $\forall$ quantification 可以使用一个循环来实现
 % \mbox{　　　} $\mbox{\textbf{fi}}$; \\
 % \mbox{　　　} $\mbox{\textbf{return }} eq$ \\
 % \rule{\textwidth}{1pt}
-这个程序的正确性在 \cite{t-Ei91} 中已经展示。当然，在实际实现中，guard $eq$可以用于该循环 (当 $eq \equiv false$ 时打断循环)。为了更加清楚明了，这里略去了优化。
+这个程序的正确性在 \cite{t-Ei91} 中已经展示。当然，在实际实现中，$eq$可以用于该循环 (当 $eq \equiv false$ 时打断循环)。为了更加清楚明了，这里略去了优化。
 
 有很多方法可以使这个程序更加有效率。 回顾 3.2 节中的 $ E = E_{ |Q|-2 \mbox{\textbf{max}} 0 } $。添加参数 $k$ 到函数 $equiv$ ,调用 $equiv(p,q,\emptyset,k)$ ，$ (p,q) \in E_k $ 作为返回值。递归深度由 $ (|q|-2) \mbox{\textbf{max}} 0 $ 决定。新函数是：
 
@@ -532,7 +543,8 @@ The $\forall$ quantification 可以使用一个循环来实现
 % \mbox{　　　} $\mbox{\textbf{fi}}$; \\
 % \mbox{　　　} $\mbox{\textbf{return }} eq$ \\
 % \rule{\textwidth}{1pt}
-第三个参数 $S$ 是一个全局变量，在实际使用中提高算法的效率。作为结果，\underline{由于$equiv$使用了全局变量，它不再是一个函数式程序}。此变体的正确性已经在 \cite{t-Ei91} 中展示。假设 $S$ 被初始化为 $\emptyset$ 。当 $ S =\emptyset $ 时，调用 $equiv(p,q,\emptyset,k)$ ，$ (p,q) \in E_k $ 为返回值。\underline{调用之后， $S = \emptyset$}。
+第三个参数 $S$ 是一个全局变量，在实际使用中提高算法的效率。作为结果，由于$equiv$使用了全局变量，它不再是一个函数式程序。%\underline{由于$equiv$使用了全局变量，它不再是一个函数式程序}。
+此变体的正确性已经在 \cite{t-Ei91} 中展示。假设 $S$ 被初始化为 $\emptyset$ 。当 $ S =\emptyset $ 时，调用 $equiv(p,q,\emptyset,k)$ ，$ (p,q) \in E_k $ 为返回值。调用之后， $S = \emptyset$。%\underline{调用之后， $S = \emptyset$}。
 \begin{algorithm}
     \caption{$E$ 的逐点计算}\label{al:4-9}
     \small
@@ -571,13 +583,15 @@ The $\forall$ quantification 可以使用一个循环来实现
 % \mbox{　　　} $\mbox{\textbf{fi}}$; \\
 % \mbox{　　　} $\mbox{\textbf{return }} eq$ \\
 % \rule{\textwidth}{1pt}
-实际使用中，$equiv$ 可以被 memoized 来进一步提升时间复杂度。
+\newpage
+实际使用中，$equiv$ 可以被记忆化来进一步降低时间复杂度。
 
 本文未涉及此算法。
 
 
 %%%%%%%%%%%%%%%   section 
-\section{从下面的逼近计算 $E$ }
+% \section{从下面的逼近计算 $E$ }
+\section{逼近计算 $E$ }
 
 函数 $equiv$ 的最后一个版本可以用来计算 $E$ 和 $D$ （假设 $I_Q $ 是状态上的恒等关系，$S$ 是算法 4.9 中使用的全局变量）：
 
@@ -614,7 +628,7 @@ The $\forall$ quantification 可以使用一个循环来实现
 可以根据下面的做法来获得更进一步的效率提升：
 \begin{itemize}
     \item 把 $G$ 初始化为 $ G := ( (Q\setminus F) \times F ) \cup ( F \times ( Q \setminus F ) ) $；
-    \item 利用 $E=E^*$，显然 $E$ 是对称的，可以将所需的计算量减半。$H$可以在每个迭代步骤中由 $H := H^*$ 更新（\underline{实现的数据结构是易于实现$*$-$closure$的} ）。
+    \item 利用 $E=E^*$，显然 $E$ 是对称的，可以将所需的计算量减半。$H$可以在每个迭代步骤中由 $H := H^*$ 更新 （实现的数据结构是易于实现$*$-闭包的）%（\underline{实现的数据结构是易于实现$*$-$closure$的} ）。
     \item 利用 
     \begin{table}[!htbp]
         \centering
@@ -630,7 +644,8 @@ The $\forall$ quantification 可以使用一个循环来实现
     % \qquad \qquad $ (p,q) \notin E  \Rightarrow ( \forall r,s:r\in Q \land s \in Q $\\
     % \qquad \qquad \qquad $\land (\exists w:w\in V^* (r,w) = p \land T^* (s,w) = q): ((r,s) \not\in E )$ \\
     % \qquad \qquad $ (p,q) \in E (\forall w:w\in V^* : (T^*(p,w),T^*(q,w))\in E)$ \\
-    \\ The first (respectively second) implication states that if $p,q$ are two distinguished (respectively equivalent) states, and $r,s$ are two states such that there is $w \in V^*  $ and $ T(r,w) = p \land T(s,w) = q $ (respectively $T(p,w) = r \land T (q,w) = s  $), then $r,s$ are also distinguished (respectively equivalent).
+   % \\ The first (respectively second) implication states that if $p,q$ are two distinguished (respectively equivalent) states, and $r,s$ are two states such that there is $w \in V^*  $ and $ T(r,w) = p \land T(s,w) = q $ (respectively $T(p,w) = r \land T (q,w) = s  $), then $r,s$ are also distinguished (respectively equivalent).
+   \newpage 如果 $p,q$ 是可区分的，那么当$w \in V^*  $ and $ T(r,w) = p \land T(s,w) = q $时，$r,s$ 也是可区分的。
 \end{itemize}
 % $ \talloblong $
 
