@@ -1,5 +1,13 @@
 ﻿/******************************************************************
-一个用来生成TCT自动工具箱所用的ADS文件的小工具。
+一个用来生成 TCT 工具所用的 ADS 文件的小工具。
+
+这里还提供一个生成 FIRE engine 中的类 DFA 的方法，也即成员函数 getDFA()。
+
+不过在执行这个函数之前，得先确保已经有了一个 FiniteAutomata 对象，无论是通过键盘键入，还是通过另外一个DFA对象进行解析。
+
+因为类 DFA 要求label 为一个 char 变量，而 TCT tools 要求label 为正整数，所以使用这个类的要求是，label为[0,9]，算是一点妥协。
+
+
 ******************************************************************/
 
 
@@ -14,6 +22,7 @@
 #include <algorithm>
 #include <assert.h>
 #include "DFA.h"
+#include "DFA_components.h"
 
 
 typedef int state;
@@ -55,7 +64,7 @@ public:
 	~FiniteAutomata();
 	FiniteAutomata& reconstruct(std::string str);
 	size_t size();
-	std::string FA();
+	DFA getDFA();
 	bool perform();
 	bool perform(std::string filepath);
 	bool perform(DFA &dfa, std::string filepath);
@@ -63,7 +72,7 @@ public:
 	friend std::istream& operator>>(std::istream& input, FiniteAutomata& D);  
 	friend std::ostream& operator<<(std::ostream& output, FiniteAutomata& D); 
 	bool operator==(FiniteAutomata& D);                                       
-	bool quite;
+	bool quite;  // 这里是为命令参数设置的一个选项。
 private:
 	bool analyze(std::string& str);
 	bool check(const state& t);

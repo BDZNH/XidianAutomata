@@ -182,7 +182,7 @@ void DFATest1()
 		dfa1.min_Brzozowski();
 		ss << dfa1;
 		temp.reconstruct(ss.str());
-		cout << temp.FA() << endl;
+		cout << temp.getDFA() << endl;
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
 		//temp.perform("A-1-a-Brzozowski.ADS");
 		ss.str("");
@@ -195,7 +195,7 @@ void DFATest1()
 		dfa1.min_Hopcroft();
 		ss << dfa1;
 		temp.reconstruct(ss.str());
-		cout << temp.FA() << endl;
+		cout << temp.getDFA() << endl;
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
 		ss.str("");
 		temp.clear();
@@ -206,7 +206,7 @@ void DFATest1()
 		dfa1.min_HopcroftUllman();
 		ss << dfa1;
 		temp.reconstruct(ss.str());
-		cout << temp.FA() << endl;
+		cout << temp.getDFA() << endl;
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
 		//temp.perform("A-1-a-HopcroftUllman.ADS");
 		ss.str("");
@@ -219,7 +219,7 @@ void DFATest1()
 		dfa1.min_dragon();
 		ss << dfa1;
 		temp.reconstruct(ss.str());
-		cout << temp.FA() << endl;
+		cout << temp.getDFA() << endl;
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
 		//temp.perform("A-1-a-dragon.ADS");
 		ss.str("");
@@ -231,7 +231,7 @@ void DFATest1()
 		dfa1.min_Watson();
 		ss << dfa1;
 		temp.reconstruct(ss.str());
-		cout << temp.FA() << endl;
+		cout << temp.getDFA() << endl;
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
 		//temp.perform("A-1-a-Watson.ADS");
 		ss.str("");
@@ -297,7 +297,7 @@ void DFATest1()
 		dfa1.min_Brzozowski();
 		ss << dfa1;
 		temp.reconstruct(ss.str());
-		cout << temp.FA() << endl;
+		cout << temp.getDFA() << endl;
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
 		//temp.perform("A-1-b-Brzozowski.ADS");
 		ss.str("");
@@ -310,7 +310,7 @@ void DFATest1()
 		dfa1.min_Hopcroft();
 		ss << dfa1;
 		temp.reconstruct(ss.str());
-		cout << temp.FA() << endl;
+		cout << temp.getDFA() << endl;
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
 		//temp.perform("A-1-b-Hopcroft.ADS");
 		ss.str("");
@@ -322,7 +322,7 @@ void DFATest1()
 		dfa1.min_HopcroftUllman();
 		ss << dfa1;
 		temp.reconstruct(ss.str());
-		cout << temp.FA() << endl;
+		cout << temp.getDFA() << endl;
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
 		//temp.perform("A-1-b-HopcroftUllman.ADS");
 		ss.str("");
@@ -335,7 +335,7 @@ void DFATest1()
 		dfa1.min_dragon();
 		ss << dfa1;
 		temp.reconstruct(ss.str());
-		cout << temp.FA() << endl;
+		cout << temp.getDFA() << endl;
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
 		//temp.perform("A-1-b-dragon.ADS");
 		ss.str("");
@@ -347,7 +347,7 @@ void DFATest1()
 		dfa1.min_Watson();
 		ss << dfa1;
 		temp.reconstruct(ss.str());
-		cout << temp.FA() << endl;
+		cout << temp.getDFA() << endl;
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
 		//temp.perform("A-1-b-Watson.ADS");
 		ss.str("");
@@ -388,7 +388,7 @@ void DFATest2()
 
 	DFA dfares1(dfa_comresult1);
 	FiniteAutomata result1(dfares1);
-	cout << result1.FA() << endl;
+	cout << result1.getDFA() << endl;
 	result1.perform("A-2-c.ADS");
 
 
@@ -421,7 +421,7 @@ void DFATest2()
 
 	DFA dfares2(dfa_comresult2);
 	FiniteAutomata result2(dfares2);
-	cout << result2.FA() << endl;
+	cout << result2.getDFA() << endl;
 	result2.perform("A-2-b.ADS");
 
 
@@ -475,7 +475,7 @@ void DFATest2()
 		dfa1.min_Brzozowski();
 		ss << dfa1;
 		temp.reconstruct(ss.str());
-		cout << temp.FA() << endl;
+		cout << temp.getDFA() << endl;
 		cout << "anwser is right?:  " << (temp == result1) << endl;
 		//temp.perform("A-1-a-Brzozowski.ADS");
 		ss.str("");
@@ -488,7 +488,7 @@ void DFATest2()
 		dfa1.min_Hopcroft();
 		ss << dfa1;
 		temp.reconstruct(ss.str());
-		cout << temp.FA() << endl;
+		cout << temp.getDFA() << endl;
 		cout << "anwser is right?:  " << (temp == result1) << endl;
 		ss.str("");
 		temp.clear();
@@ -499,7 +499,7 @@ void DFATest2()
 		dfa1.min_HopcroftUllman();
 		ss << dfa1;
 		temp.reconstruct(ss.str());
-		cout << temp.FA() << endl;
+		cout << temp.getDFA() << endl;
 		cout << "anwser is right?:  " << (temp == result1) << endl;
 		//temp.perform("A-1-a-HopcroftUllman.ADS");
 		ss.str("");
@@ -512,7 +512,7 @@ void DFATest2()
 		dfa1.min_dragon();
 		ss << dfa1;
 		temp.reconstruct(ss.str());
-		cout << temp.FA() << endl;
+		cout << temp.getDFA() << endl;
 		cout << "anwser is right?:  " << (temp == result1) << endl;
 		//temp.perform("A-1-a-dragon.ADS");
 		ss.str("");
@@ -524,7 +524,7 @@ void DFATest2()
 		dfa1.min_Watson();
 		ss << dfa1;
 		temp.reconstruct(ss.str());
-		cout << temp.FA() << endl;
+		cout << temp.getDFA() << endl;
 		cout << "anwser is right?:  " << (temp == result1) << endl;
 		//temp.perform("A-1-a-Watson.ADS");
 		ss.str("");
@@ -578,7 +578,7 @@ void DFATest2()
 		dfa1.min_Brzozowski();
 		ss << dfa1;
 		temp.reconstruct(ss.str());
-		cout << temp.FA() << endl;
+		cout << temp.getDFA() << endl;
 		cout << "anwser is right?:  " << (temp == result2) << endl;
 		//temp.perform("A-2-a-Brzozowski.ADS");
 		ss.str("");
@@ -593,7 +593,7 @@ void DFATest2()
 		dfa1.usefulf();
 		ss << dfa1;
 		temp.reconstruct(ss.str());
-		cout << temp.FA() << endl;
+		cout << temp.getDFA() << endl;
 		cout << "anwser is right?:  " << (temp == result2) << endl;
 		//temp.perform("A-2-a-Hopcroft.ADS");
 		ss.str("");
@@ -605,7 +605,7 @@ void DFATest2()
 		dfa1.min_HopcroftUllman();
 		ss << dfa1;
 		temp.reconstruct(ss.str());
-		cout << temp.FA() << endl;
+		cout << temp.getDFA() << endl;
 		cout << "anwser is right?:  " << (temp == result2) << endl;
 		//temp.perform("A-2-a-HopcroftUllman.ADS");
 		ss.str("");
@@ -618,7 +618,7 @@ void DFATest2()
 		dfa1.min_dragon();
 		ss << dfa1;
 		temp.reconstruct(ss.str());
-		cout << temp.FA() << endl;
+		cout << temp.getDFA() << endl;
 		cout << "anwser is right?:  " << (temp == result2) << endl;
 		//temp.perform("A-2-a-dragon.ADS");
 		ss.str("");
@@ -630,7 +630,7 @@ void DFATest2()
 		dfa1.min_Watson();
 		ss << dfa1;
 		temp.reconstruct(ss.str());
-		cout << temp.FA() << endl;
+		cout << temp.getDFA() << endl;
 		cout << "anwser is right?:  " << (temp == result2) << endl;
 		//temp.perform("A-2-a-Watson.ADS");
 		ss.str("");

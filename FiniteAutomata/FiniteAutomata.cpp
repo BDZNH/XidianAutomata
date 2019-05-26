@@ -207,9 +207,50 @@ bool FiniteAutomata::analyze(std::string& str)
 	return false;
 }
 
-std::string FiniteAutomata::FA()
+DFA FiniteAutomata::getDFA()
 {
-	return theFA;
+	
+	DFA_components ret;
+
+	int i = num_state;
+	while (i--)
+	{
+		ret.Q.allocate();
+	}
+
+	ret.S.set_domain(ret.Q.size());
+	ret.S.add(0);
+
+	ret.F.set_domain(ret.Q.size());
+	for (auto it = this->F.begin(); it != this->F.end(); it++)
+	{
+		ret.F.add((*it));
+	}
+
+	ret.T.set_domain(ret.Q.size());
+
+	// 用来解析 label 
+	std::stringstream ss;
+	std::string temp;
+
+	for (auto it = this->Trans.begin(); it != this->Trans.end(); it++)
+	{
+		ss << (*it).T;
+		temp = ss.str();
+		assert(temp.size() == 1);
+		assert(temp.at(0) >= '0'&&temp.at(0) <= '9');
+		assert(it->stprime >= 0 && it->stprime < num_state);
+		assert(it->stdest >= 0 && it->stdest < num_state);
+		ret.T.add_transition(it->stprime, temp.at(0) , it->stdest);
+		
+		// 用完需要清空
+		ss.str("");
+		temp = "";
+	}
+
+
+	DFA dfa(ret);
+	return dfa;
 }
 
 bool FiniteAutomata::perform()
@@ -396,12 +437,7 @@ std::ostream & operator<<(std::ostream & output, FiniteAutomata & D)
 	}
 	output << "\nVocal states:\n# <-- Enter vocal output states, one per line.\n# Format: State  Vocal_Output.Vocal_Output in range 10 to 99.\n# Example : 0 10\n# If no vocal states, leave line blank.\n# End vocal list with blank line.\n" << std::endl;
 	output << "Transitions:\n# <-- Enter transition triple, one per line.\n# Format: Exit_(Source)_State  Transition_Label  Entrance_(Target)_State.\n# Transition_Label in range 0 to 999.\n# Example: 2 0 1 (for transition labeled 0 from state 2 to state 1)." << std::endl;
-	////auto itt = Trans.begin();
-	//for (size_t i = 0; i < D.Trans.size(); ++i)
-	//{
-	//	output << D.Trans[i].Q0 << " " << D.Trans[i].T << " " << D.Trans[i].stdest << std::endl;
-	//}
-
+	
 	for (auto iter = D.Trans.begin(); iter != D.Trans.end(); iter++)
 	{
 		output << iter->stprime << " " << iter->T << " " << iter->stdest << std::endl;
