@@ -36,47 +36,15 @@
       <Compartment Name="Methods" Collapsed="true" />
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
-    <AssociationLine Name="F" Type="StateSet" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="5.938" Y="5.476" />
-        <Point X="5.938" Y="7.089" />
-        <Point X="6.75" Y="7.089" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="S" Type="StateSet" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="6.188" Y="5.476" />
-        <Point X="6.188" Y="6.888" />
-        <Point X="6.75" Y="6.888" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="T" Type="DTransRel" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="6.438" Y="5.476" />
-        <Point X="6.606" Y="5.476" />
-        <Point X="6.606" Y="6.23" />
-        <Point X="7.792" Y="6.23" Type="JumpStart" />
-        <Point X="7.958" Y="6.23" Type="JumpEnd" />
-        <Point X="8.042" Y="6.23" Type="JumpStart" />
-        <Point X="8.208" Y="6.23" Type="JumpEnd" />
-        <Point X="8.417" Y="6.23" Type="JumpStart" />
-        <Point X="8.583" Y="6.23" Type="JumpEnd" />
-        <Point X="8.698" Y="6.23" Type="JumpStart" />
-        <Point X="8.865" Y="6.23" Type="JumpEnd" />
-        <Point X="9.145" Y="6.23" />
-        <Point X="9.145" Y="10.812" />
-        <Point X="9" Y="10.812" />
-      </Path>
-    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AIgIEBACAAIAAAAQABABAAAAgJAAAIKAAAgAEAikCAA=</HashCode>
+      <HashCode>AIgIEBACAgIAAAIQABABAAAAkJAAAIKAAAgAEAikCAA=</HashCode>
       <FileName>DFA.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="F" />
-      <Field Name="S" />
-      <Field Name="T" />
       <Field Name="Q" />
+      <Field Name="S" />
+      <Field Name="F" />
+      <Field Name="T" />
     </ShowAsAssociation>
   </Class>
   <Class Name="DSDeRemer" Collapsed="true">
@@ -124,7 +92,7 @@
   <Class Name="DTransRel" Collapsed="true">
     <Position X="7.5" Y="10.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAEAIAAAAAAAAAAAACAAAAEACOAAAABAAgAACQAAA=</HashCode>
+      <HashCode>AAAAEAIAAAAAAAAAAAACEAAAEACOAAAABAAgAACQAAA=</HashCode>
       <FileName>DTransRel.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -140,17 +108,10 @@
       <Path>
         <Point X="8.5" Y="5.515" />
         <Point X="8.5" Y="9.423" />
+        <Point X="6.583" Y="9.423" Type="JumpStart" />
+        <Point X="6.417" Y="9.423" Type="JumpEnd" />
         <Point X="6" Y="9.423" />
         <Point X="6" Y="8.548" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="E" Type="StateRel" ManuallyRouted="true">
-      <Path>
-        <Point X="8.781" Y="5.515" />
-        <Point X="8.781" Y="9.793" />
-        <Point X="6.75" Y="9.793" />
-        <Point X="6.75" Y="10.839" />
-        <Point X="5.75" Y="10.839" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="Transitions" Type="TransRel" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
@@ -162,16 +123,25 @@
         <Point X="10.375" Y="10.5" />
       </Path>
     </AssociationLine>
+    <AssociationLine Name="E" Type="StateRel" ManuallyRouted="true">
+      <Path>
+        <Point X="8.781" Y="5.515" />
+        <Point X="8.781" Y="9.793" />
+        <Point X="6.75" Y="9.793" />
+        <Point X="6.75" Y="10.839" />
+        <Point X="5.75" Y="10.839" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AIgIEBACAAIAAAAAAAAAAAAEgACAAIAAAAAAGgCgQAA=</HashCode>
       <FileName>FA.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="E" />
-      <Field Name="F" />
       <Field Name="Q" />
       <Field Name="S" />
+      <Field Name="F" />
       <Field Name="Transitions" />
+      <Field Name="E" />
     </ShowAsAssociation>
   </Class>
   <Class Name="FAabs" Collapsed="true">
@@ -227,10 +197,10 @@
       <FileName>LBFA.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="F" />
       <Field Name="Q" />
-      <Field Name="Qmap_inverse" />
       <Field Name="s" />
+      <Field Name="F" />
+      <Field Name="Qmap_inverse" />
       <Field Name="follow" />
     </ShowAsAssociation>
   </Class>
@@ -243,13 +213,6 @@
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
-    <AssociationLine Name="follow" Type="StateRel" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="3.801" Y="5.515" />
-        <Point X="3.801" Y="10.625" />
-        <Point X="4.25" Y="10.625" />
-      </Path>
-    </AssociationLine>
     <AssociationLine Name="Qmap_inverse" Type="Trans" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="3" Y="5.433" />
@@ -259,16 +222,23 @@
         <Point X="5.188" Y="2.677" />
       </Path>
     </AssociationLine>
+    <AssociationLine Name="follow" Type="StateRel" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.801" Y="5.515" />
+        <Point X="3.801" Y="10.625" />
+        <Point X="4.25" Y="10.625" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AIgIEBAAAAKAgAAAAAAAAAAAgAAAAIRQAAAAAQCgAAA=</HashCode>
       <FileName>RBFA.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="f" />
-      <Field Name="follow" />
       <Field Name="Q" />
-      <Field Name="Qmap_inverse" />
       <Field Name="S" />
+      <Field Name="f" />
+      <Field Name="Qmap_inverse" />
+      <Field Name="follow" />
     </ShowAsAssociation>
   </Class>
   <Class Name="RE" Collapsed="true">
@@ -300,29 +270,13 @@
       <Path>
         <Point X="10.188" Y="5.515" />
         <Point X="10.188" Y="7.188" />
-        <Point X="9.45" Y="7.187" Type="JumpStart" />
+        <Point X="9.45" Y="7.188" Type="JumpStart" />
         <Point X="9.284" Y="7.188" Type="JumpEnd" />
-        <Point X="9.229" Y="7.187" Type="JumpStart" />
-        <Point X="9.062" Y="7.188" Type="JumpEnd" />
-        <Point X="8.865" Y="7.187" Type="JumpStart" />
+        <Point X="8.864" Y="7.188" Type="JumpStart" />
         <Point X="8.698" Y="7.188" Type="JumpEnd" />
-        <Point X="8.583" Y="7.187" Type="JumpStart" />
+        <Point X="8.583" Y="7.188" Type="JumpStart" />
         <Point X="8.417" Y="7.188" Type="JumpEnd" />
         <Point X="8.25" Y="7.188" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="follow" Type="StateRel" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="10.812" Y="5.515" />
-        <Point X="10.812" Y="10.125" />
-        <Point X="9.45" Y="10.125" Type="JumpStart" />
-        <Point X="9.284" Y="10.125" Type="JumpEnd" />
-        <Point X="9.229" Y="10.125" Type="JumpStart" />
-        <Point X="9.062" Y="10.125" Type="JumpEnd" />
-        <Point X="6.834" Y="10.125" Type="JumpStart" />
-        <Point X="6.667" Y="10.125" Type="JumpEnd" />
-        <Point X="5.5" Y="10.125" />
-        <Point X="5.5" Y="10.5" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="Qmap_inverse" Type="Trans" FixedFromPoint="true" FixedToPoint="true">
@@ -333,16 +287,30 @@
         <Point X="6.375" Y="2.677" />
       </Path>
     </AssociationLine>
+    <AssociationLine Name="follow" Type="StateRel" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="10.812" Y="5.515" />
+        <Point X="10.812" Y="10.125" />
+        <Point X="9.45" Y="10.125" Type="JumpStart" />
+        <Point X="9.284" Y="10.125" Type="JumpEnd" />
+        <Point X="6.833" Y="10.125" Type="JumpStart" />
+        <Point X="6.667" Y="10.125" Type="JumpEnd" />
+        <Point X="6.583" Y="10.125" Type="JumpStart" />
+        <Point X="6.417" Y="10.125" Type="JumpEnd" />
+        <Point X="5.5" Y="10.125" />
+        <Point X="5.5" Y="10.5" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AIgIUBAAAAIAAAAAAIEAAEAAgACAAIQAAAAAAQAgIgA=</HashCode>
       <FileName>RFA.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="first" />
-      <Field Name="follow" />
-      <Field Name="last" />
       <Field Name="Q" />
+      <Field Name="first" />
+      <Field Name="last" />
       <Field Name="Qmap_inverse" />
+      <Field Name="follow" />
     </ShowAsAssociation>
   </Class>
   <Class Name="StateEqRel" Collapsed="true">
@@ -473,17 +441,10 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Reg&lt;T&gt;" Collapsed="true">
-    <Position X="10.25" Y="15.75" Width="1.5" />
+    <Position X="8" Y="15.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAIAAAAAAAIAgAAAAAAABACAASAIAAgAAAgABAAAAA=</HashCode>
       <FileName>Sigma.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="RFATestClass" Collapsed="true">
-    <Position X="8" Y="15.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAABAEAAAMAAhABAAAAAAAAAAAAAAAAACA=</HashCode>
-      <FileName>Test\RFATest.cpp</FileName>
     </TypeIdentifier>
   </Class>
   <Struct Name="DFA_components" Collapsed="true">
