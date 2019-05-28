@@ -135,11 +135,15 @@ int main()
 			system("cls");
 			cin >> ffa;  // 通过控制台输入，简化 TCT 的输入过程。
 
-			DFA dfa1 = ffa.getDFA(); // 生成的类 DFA 的对象
+			// 生成的类 DFA 的对象
+			DFA_components dfa_com = ffa.getDFA();
+			DFA dfa1(dfa_com); 
 
 			std::cout << "Now you have a object of TCT Tool and class DFA\n" << std::flush;
 			
 			std::cout << dfa1 << std::endl;// 简单的把 DFA 对象输出来看一下，也可以用这个 DFA 的对象干别的事情。
+
+
 
 			hint();
 			flag = true;
@@ -173,17 +177,41 @@ int main()
 			hint();
 			usage();
 		}
-		else if (temp == "q" || temp == "5")
+		else if (temp == "r" || temp == "5")  // 读入一个ADS文件，实例化一个DFA对象
+		{
+			system("cls");
+			std::cout << "type in the .ADS file's name: " << std::flush;
+			std::string filename;
+			std::cin >> filename;
+			while (filename == "")
+			{
+				std::cin >> filename;
+			}
+			if (-1 == filename.find(".ads") && -1 == filename.find(".ADS"))
+			{
+				filename += ".ADS";
+			}
+
+			//std::transform(filename.begin(), filename.end(), filename.begin(), ::toupper); // 把输出文件名转换成大写
+
+			ffa.adsToDFA(filename);
+			DFA_components  dfa_com = ffa.getDFA();
+			DFA dfa1(dfa_com);
+			std::cout << dfa1 << std::endl; //简单的输出一下
+
+			hint();
+			usage();
+		}
+		else if(temp=="q"||temp=="6")
 		{
 			break;
 		}
 		else
 		{
-			usage();
+		usage();
 		}
 	}
 
-	
 	return 0;
 }
 
@@ -196,8 +224,9 @@ void usage()
 	std::cout << "##        g , type g or 1 to generate a standard data                                                ##\n" << std::flush;
 	std::cout << "##        c , type c or 2 compare with the standard data                                             ##\n" << std::flush;
 	std::cout << "##        f , type f or 3 to type in a DFA for TCT Tool and get a DFA's object for the FIRE engine   ##\n" << std::flush;
-	std::cout << "##        d , type d or 4 to get a ADS file for TCT Tools                                            ##\n" << std::flush;
-	std::cout << "##        q , type q or 5 to quit                                                                    ##\n" << std::flush;
+	std::cout << "##        d , type d or 4 to generate a ADS file for TCT Tools(after step 3)                         ##\n" << std::flush;
+	std::cout << "##        r , type r or 5 to read in a ADS file to instant an object of DFA                          ##\n" << std::flush;
+	std::cout << "##        q , type q or 6 to quit                                                                    ##\n" << std::flush;
 	std::cout << "##                                                                                                   ##\n" << std::flush;
 	std::cout << "##                                                                                                   ##\n" << std::flush;
 	std::cout << "#######################################################################################################" << std::endl;

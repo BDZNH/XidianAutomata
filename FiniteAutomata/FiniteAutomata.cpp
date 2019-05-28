@@ -31,7 +31,7 @@ FiniteAutomata & FiniteAutomata::reconstruct(std::string str)
 	this->F.clear();
 	this->Q.clear();
 	this->V.clear();
-	this->theFA = "";
+	this->theDFA = "";
 	this->num_state = 0;
 	analyze(str);
 	return (*this);
@@ -45,7 +45,7 @@ size_t FiniteAutomata::size()
 // 将 FIRE engine 的输出解析成为当前项目可以识别的格式。
 bool FiniteAutomata::analyze(std::string& str)
 {
-	theFA = str;
+	theDFA = str;
 	size_t len = str.size();
 	size_t i = 0;
 	
@@ -207,12 +207,12 @@ bool FiniteAutomata::analyze(std::string& str)
 	return false;
 }
 
-DFA FiniteAutomata::getDFA()
+DFA_components FiniteAutomata::getDFA()
 {
 	
 	DFA_components ret;
 
-	int i = num_state;
+	size_t i = num_state;
 	while (i--)
 	{
 		ret.Q.allocate();
@@ -235,12 +235,14 @@ DFA FiniteAutomata::getDFA()
 
 	for (auto it = this->Trans.begin(); it != this->Trans.end(); it++)
 	{
+		// 将 label 转换成 char，以符合 add_transition() 的要求
 		ss << (*it).T;
 		temp = ss.str();
 		assert(temp.size() == 1);
 		assert(temp.at(0) >= '0'&&temp.at(0) <= '9');
 		assert(it->stprime >= 0 && it->stprime < num_state);
 		assert(it->stdest >= 0 && it->stdest < num_state);
+
 		ret.T.add_transition(it->stprime, temp.at(0) , it->stdest);
 		
 		// 用完需要清空
@@ -249,8 +251,104 @@ DFA FiniteAutomata::getDFA()
 	}
 
 
-	DFA dfa(ret);
-	return dfa;
+	
+	return ret;
+}
+
+bool FiniteAutomata::adsToDFA(std::string adsfilename)
+{
+	std::ifstream ifile;
+	ifile.open(adsfilename.c_str(), std::ios::in);
+	if (!ifile)
+	{
+		std::cout << "No such a file: " << adsfilename << std::endl;
+		return false;
+	}
+
+	std::string temp;
+	while (std::getline(ifile,temp))
+	{
+		if (temp == "# <-- Enter state size, in range 0 to 2000000, on line below.")
+			break;
+		if (ifile.eof())
+		{
+			std::cout << "Invalid .ADS file :" << adsfilename << std::endl;
+			return false;
+		}
+		temp = "";
+	}
+
+	// 状态数
+	int n=-1;
+	ifile >> n;
+	if (n <= 0)
+	{
+		std::cout << "Invalid .ADS file :" << adsfilename << std::endl;
+		return false;
+	}
+	num_state = n;
+
+	// 结束状态
+	while (std::getline(ifile, temp))
+	{
+		if (temp == "# End marker list with blank line.")
+			break;
+		if (ifile.eof())
+		{
+			std::cout << "Invalid .ADS file :" << adsfilename << std::endl;
+			return false;
+		}
+		temp = "";
+	}
+	
+	n = -1;
+	while (std::getline(ifile, temp))
+	{
+		if (temp == "Vocal states:" || temp=="")
+			break;
+		if (ifile.eof())
+		{
+			std::cout << "Invalid .ADS file :" << adsfilename << std::endl;
+			return false;
+		}
+		std::stringstream ss;
+		ss << temp;
+		ss >> n;
+		assert(n >= 0 && n < num_state);
+		this->F.push_back(n);
+		n = -1;
+	}
+
+	while (std::getline(ifile, temp))
+	{
+		if (temp == "# Example: 2 0 1 (for transition labeled 0 from state 2 to state 1).")
+			break;
+		if (ifile.eof())
+		{
+			std::cout << "Invalid .ADS file :" << adsfilename << std::endl;
+			return false;
+		}
+		temp = "";
+	}
+
+	state stprime;
+	label llb;
+	state stdest;
+	Transition T;
+	while (true)
+	{
+		ifile >> stprime >> llb >> stdest;
+		if (ifile.eof())
+		{
+			break;
+		}
+		T.stprime = stprime;
+		T.T = llb;
+		T.stdest = stdest;
+		Trans.push_back(T);
+	}
+
+	return true;
 }
 
 bool FiniteAutomata::perform()
@@ -304,7 +402,7 @@ FiniteAutomata& FiniteAutomata::clear()
 	this->F.clear();
 	this->Q.clear();
 	this->V.clear();
-	this->theFA = "";
+	this->theDFA = "";
 	this->num_state = 0;
 	return (*this);
 }

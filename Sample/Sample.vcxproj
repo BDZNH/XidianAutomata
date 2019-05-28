@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{E9407961-7B3C-415F-BE48-026C0483F936}</ProjectGuid>
-    <RootNamespace>Test</RootNamespace>
+    <ProjectGuid>{41BF2FCD-1FFD-442D-8338-C5A8B3783651}</ProjectGuid>
+    <RootNamespace>Sample</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -70,16 +70,16 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../Automata;../FiniteAutomata</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../Automata;../FiniteAutomata;</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../Automata;../FiniteAutomata</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../Automata;../FiniteAutomata;</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../Automata;../FiniteAutomata</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../Automata;../FiniteAutomata;</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../Automata;../FiniteAutomata</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../Automata;../FiniteAutomata;</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -87,11 +87,10 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../FiniteAutomata;../Automata;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)\lib\$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>FiniteAutomata.lib;Automata.lib</AdditionalDependencies>
+      <AdditionalDependencies>FiniteAutomata.lib;Automata.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -100,11 +99,10 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../FiniteAutomata;../Automata;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>FiniteAutomata.lib;Automata.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)\lib\$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>FiniteAutomata.lib;Automata.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -115,13 +113,12 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../FiniteAutomata;../Automata;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>FiniteAutomata.lib;Automata.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)\lib\$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>FiniteAutomata.lib;Automata.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -132,50 +129,16 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../FiniteAutomata;../Automata;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>FiniteAutomata.lib;Automata.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)\lib\$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>FiniteAutomata.lib;Automata.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ASUTest.cpp" />
-    <ClCompile Include="Automata.cpp" />
-    <ClCompile Include="AutomataTest.cpp" />
-    <ClCompile Include="BitVecTest.cpp" />
-    <ClCompile Include="BSTest.cpp" />
-    <ClCompile Include="CharRangeTest.cpp" />
-    <ClCompile Include="CRSetTest.cpp" />
-    <ClCompile Include="CRSetTest_New.cpp" />
-    <ClCompile Include="DFATest.cpp" />
-    <ClCompile Include="DTransRelTest.cpp" />
-    <ClCompile Include="DTransTest.cpp" />
-    <ClCompile Include="FATest.cpp" />
-    <ClCompile Include="FA_AddTest.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="MYGTest.cpp" />
-    <ClCompile Include="RETest.cpp" />
-    <ClCompile Include="RFATest.cpp" />
-    <ClCompile Include="StateEqRelTest.cpp" />
-    <ClCompile Include="StatePoolTest.cpp" />
-    <ClCompile Include="StateRelTest.cpp" />
-    <ClCompile Include="StateRelTest_New.cpp" />
-    <ClCompile Include="StateSetTest.cpp" />
-    <ClCompile Include="StateSetTest_New.cpp" />
-    <ClCompile Include="StateTo(State)Test.cpp" />
-    <ClCompile Include="StateTo(StateSet)Test.cpp" />
-    <ClCompile Include="SymRelTest.cpp" />
-    <ClCompile Include="ThompsonTest.cpp" />
-    <ClCompile Include="TransRelTest.cpp" />
-    <ClCompile Include="TransTest.cpp" />
-    <ClCompile Include="TransTest_New.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

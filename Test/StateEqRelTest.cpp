@@ -1,39 +1,49 @@
-﻿#include"StateEqRel.h"
+#include<iostream>
+#include"StateEqRel.h"
 #include"StateSet.h"
+
 using namespace std;
+
+class StateEqRelTestClass
+{
+public:
+	void ss()
+	{
+		StateEqRel s(5);//domain = 5
+		cout << "s domain: " << s.domain() << endl;
+		cout << "s= " << s << endl;//{0,1,2,3,4}
+
+		StateSet ss1, ss2;
+
+		ss1.set_domain(5);//the same as StateEqRel s
+		ss2.set_domain(5);
+
+		ss1.add(0);
+		ss2.add(1).add(2);
+
+		cout << "ss1= " << ss1 << endl;//{0}
+		cout << "ss2= " << ss2 << endl;//{1,2}
+
+		cout << "split s with ss1 and ss2: " << s.split(ss1).split(ss2) << endl;//{0} {1,2} {3,4}
+		cout << "what StateSet equivalize with State 1? " << s.equiv_class(1) << endl;//{2}
+		cout << "what StateSet equivalize with State 3? " << s.equiv_class(3) << endl;//{4}
+		cout << "state 0 eq_class_representative in s: " << s.eq_class_representative(0) << endl;//0
+		cout << "state 2 eq_class_representative in s: " << s.eq_class_representative(2) << endl;//1
+		
+		cout << "are state 0 & 1 equivalent? " << s.equivalent(0, 1) << endl;//0
+		assert(s.equivalent(0, 1)==0);
+		cout << "are state 1 & 2 equivalent? " << s.equivalent(1, 2) << endl;//1
+		assert(s.equivalent(1, 2)==1);
+		s.equivalize(0, 1);
+		cout << "equivalize state 0 & 1..." << endl;
+		cout << "are state 0 & 1 equivalent? " << s.equivalent(0, 1) << endl;//1
+		assert(s.equivalent(0, 1)==1);
+		cout << "make *this identity..." << s.identity() << endl;
+	}
+};
+
 void StateEqRelTest()
 {
-	StateEqRel P(10);  //初始化等价类集合 [0,10) 
-	cout << P << endl;
-
-	StateSet st1;
-	st1.set_domain(10);
-	st1.add(0);
-	st1.add(1);
-	st1.add(2);         
-	cout << st1 << endl;// 状态集 (0,1,2)
-
-	P.split(st1);       // 从 P 中分离 st1
-	cout << P << endl;
-
-	StateSet st2;
-	st2.set_domain(10);
-	st2.add(5);
-	st2.add(6);
-	cout << st2 << endl;// 状态集 (0,5,6)
-
-	P.split(st2);       // 从 P 中分离 st2
-	cout << P << endl;
-
-	cout << P.representatives() << endl;// P 中等价类代表的集合
-	cout << P.equivalent(0, 1) << endl; // 0 和 1 是否在一个等价类
-	cout << P.equivalent(0, 9) << endl; // 0 和 9 是否在一个等价类
-	cout << P.equivalent(0, 5) << endl; // 0 和 5 是否在一个等价类
-	cout << P.equiv_class(5) << endl;   // [5]
-	cout << P.eq_class_representative(8) << endl; // [8] 的代表
-	cout << P.eq_class_representative(6) << endl; // [6] 的代表
-	cout << P << endl;
-	cout << P.equivalize(0, 5) << endl; // 合并 (0,1,2) 和 (5,6)
-	P.identity();                       // 使所有状态都不等价
-	cout << P << endl;                  
+	StateEqRelTestClass t;
+	t.ss();
 }

@@ -64,7 +64,8 @@ public:
 	~FiniteAutomata();
 	FiniteAutomata& reconstruct(std::string str);
 	size_t size();
-	DFA getDFA();
+	DFA_components getDFA();
+	bool adsToDFA(std::string adsfilename);
 	bool perform();
 	bool perform(std::string filepath);
 	bool perform(DFA &dfa, std::string filepath);
@@ -74,14 +75,14 @@ public:
 	bool operator==(FiniteAutomata& D);                                       
 	bool quite;  // 这里是为命令参数设置的一个选项。
 private:
-	bool analyze(std::string& str);
+	bool analyze(std::string& str);  // 解析类 DFA 的输出，当作字符串来解析
 	bool check(const state& t);
 	std::vector<Transition> Trans;
 	//std::vector<state> initial;
-	std::vector<state> F;
-	std::vector<state> Q;
-	std::vector<label> V;
-	std::string theFA;
+	std::vector<state> F;  // Final State Set. 正整数
+	std::vector<state> Q;  // StatePool ，预留
+	std::vector<label> V;  // .为 [0,9] 的整数
+	std::string theDFA;     // 保存类DFA的输出
 	size_t num_state;
 };
 
