@@ -1,9 +1,9 @@
 ﻿#include <iostream>
-#include "../Sigma.h"
-#include "../FA.h"
-#include "../Constrs.h"
-#include "../RFA.h"
-#include "../LBFA.h"
+#include "Sigma.h"
+#include "FA.h"
+#include "Constrs.h"
+#include "RFA.h"
+#include "LBFA.h"
 
 using namespace std;
 

@@ -154,12 +154,7 @@
     <ClCompile Include="DTransRelTest.cpp" />
     <ClCompile Include="DTransTest.cpp" />
     <ClCompile Include="FATest.cpp" />
-    <ClCompile Include="FA_AddTest.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="FA_Add_Test.cpp" />
     <ClCompile Include="MYGTest.cpp" />
     <ClCompile Include="RETest.cpp" />
     <ClCompile Include="RFATest.cpp" />

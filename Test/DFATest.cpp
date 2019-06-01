@@ -9,15 +9,12 @@ using namespace std;
 
 
 //  A.1(a) 与 A.1(b)
-//  最小化功能测试
 void DFATest1();
 
 //  A.2(a) 与 A.2(b)
-//  最小化功能测试
 void DFATest2();
 
 // A.3(a) 与 A.3(b)
-// 最小化功能测试
 void DFATest3();
 
 // A.4(a) 与 A.4(b)
@@ -176,7 +173,7 @@ void DFATest1()
 		temp.reconstruct(ss.str());
 		ss.str("");
 		//cout << temp << endl;
-		//temp.perform("A-1-a.ADS");
+		temp.perform("A-1-a.ADS");
 
 		//////////////////////////////////////////////////////////////////////////////
 		dfa1.reconstruct(dfa_com1);
@@ -186,7 +183,7 @@ void DFATest1()
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
-		//temp.perform("A-1-a-Brzozowski.ADS");
+		temp.perform("A-1-a-Brzozowski.ADS");
 		ss.str("");
 		temp.clear();
 
@@ -198,6 +195,7 @@ void DFATest1()
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
+		temp.perform("A-1-a-Hopcroft.ADS");
 		ss.str("");
 		temp.clear();
 
@@ -208,7 +206,7 @@ void DFATest1()
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
-		//temp.perform("A-1-a-HopcroftUllman.ADS");
+		temp.perform("A-1-a-HopcroftUllman.ADS");
 		ss.str("");
 		temp.clear();
 
@@ -220,7 +218,7 @@ void DFATest1()
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
-		//temp.perform("A-1-a-dragon.ADS");
+		temp.perform("A-1-a-dragon.ADS");
 		ss.str("");
 		temp.clear();
 
@@ -231,7 +229,7 @@ void DFATest1()
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
-		//temp.perform("A-1-a-Watson.ADS");
+		temp.perform("A-1-a-Watson.ADS");
 		ss.str("");
 		temp.clear();
 	}
@@ -286,7 +284,7 @@ void DFATest1()
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		ss.str("");
-		//temp.perform("A-1-b.ADS");
+		temp.perform("A-1-b.ADS");
 
 		//////////////////////////////////////////////////////////////////////////////
 		dfa1.reconstruct(dfa_com1);
@@ -296,7 +294,7 @@ void DFATest1()
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
-		//temp.perform("A-1-b-Brzozowski.ADS");
+		temp.perform("A-1-b-Brzozowski.ADS");
 		ss.str("");
 		temp.clear();
 
@@ -308,7 +306,7 @@ void DFATest1()
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
-		//temp.perform("A-1-b-Hopcroft.ADS");
+		temp.perform("A-1-b-Hopcroft.ADS");
 		ss.str("");
 		temp.clear();
 
@@ -319,7 +317,7 @@ void DFATest1()
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
-		//temp.perform("A-1-b-HopcroftUllman.ADS");
+		temp.perform("A-1-b-HopcroftUllman.ADS");
 		ss.str("");
 		temp.clear();
 
@@ -331,7 +329,7 @@ void DFATest1()
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
-		//temp.perform("A-1-b-dragon.ADS");
+		temp.perform("A-1-b-dragon.ADS");
 		ss.str("");
 		temp.clear();
 
@@ -342,7 +340,7 @@ void DFATest1()
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		cout << "anwser is right?:  " << (temp == result1 || temp == result2) << endl;
-		//temp.perform("A-1-b-Watson.ADS");
+		temp.perform("A-1-b-Watson.ADS");
 		ss.str("");
 		temp.clear();
 	}
@@ -452,12 +450,11 @@ void DFATest2()
 		DFA dfa1;
 
 		cout << "Now Test A.2(a) " << endl;
-		/*dfa1.reconstruct(dfa_com1);
+		dfa1.reconstruct(dfa_com1);
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		ss.str("");
-		cout << temp.FA() << endl;
-		temp.perform("A-2-a.ADS");*/
+		temp.perform("A-2-a.ADS");
 
 		//////////////////////////////////////////////////////////////////////////////
 		dfa1.reconstruct(dfa_com1);
@@ -467,7 +464,7 @@ void DFATest2()
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		cout << "anwser is right?:  " << (temp == result1) << endl;
-		//temp.perform("A-1-a-Brzozowski.ADS");
+		temp.perform("A-1-a-Brzozowski.ADS");
 		ss.str("");
 		temp.clear();
 
@@ -479,6 +476,7 @@ void DFATest2()
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		cout << "anwser is right?:  " << (temp == result1) << endl;
+		temp.perform("A-1-a-Hopcroft.ADS");
 		ss.str("");
 		temp.clear();
 
@@ -489,7 +487,7 @@ void DFATest2()
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		cout << "anwser is right?:  " << (temp == result1) << endl;
-		//temp.perform("A-1-a-HopcroftUllman.ADS");
+		temp.perform("A-1-a-HopcroftUllman.ADS");
 		ss.str("");
 		temp.clear();
 
@@ -501,7 +499,7 @@ void DFATest2()
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		cout << "anwser is right?:  " << (temp == result1) << endl;
-		//temp.perform("A-1-a-dragon.ADS");
+		temp.perform("A-1-a-dragon.ADS");
 		ss.str("");
 		temp.clear();
 
@@ -512,7 +510,7 @@ void DFATest2()
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		cout << "anwser is right?:  " << (temp == result1) << endl;
-		//temp.perform("A-1-a-Watson.ADS");
+		temp.perform("A-1-a-Watson.ADS");
 		ss.str("");
 		temp.clear();
 	}
@@ -565,7 +563,7 @@ void DFATest2()
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		cout << "anwser is right?:  " << (temp == result2) << endl;
-		//temp.perform("A-2-a-Brzozowski.ADS");
+		temp.perform("A-2-a-Brzozowski.ADS");
 		ss.str("");
 		temp.clear();
 
@@ -579,7 +577,7 @@ void DFATest2()
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		cout << "anwser is right?:  " << (temp == result2) << endl;
-		//temp.perform("A-2-a-Hopcroft.ADS");
+		temp.perform("A-2-a-Hopcroft.ADS");
 		ss.str("");
 		temp.clear();
 
@@ -590,7 +588,7 @@ void DFATest2()
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		cout << "anwser is right?:  " << (temp == result2) << endl;
-		//temp.perform("A-2-a-HopcroftUllman.ADS");
+		temp.perform("A-2-a-HopcroftUllman.ADS");
 		ss.str("");
 		temp.clear();
 
@@ -602,7 +600,7 @@ void DFATest2()
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		cout << "anwser is right?:  " << (temp == result2) << endl;
-		//temp.perform("A-2-a-dragon.ADS");
+		temp.perform("A-2-a-dragon.ADS");
 		ss.str("");
 		temp.clear();
 
@@ -613,7 +611,7 @@ void DFATest2()
 		ss << dfa1;
 		temp.reconstruct(ss.str());
 		cout << "anwser is right?:  " << (temp == result2) << endl;
-		//temp.perform("A-2-a-Watson.ADS");
+		temp.perform("A-2-a-Watson.ADS");
 		ss.str("");
 		temp.clear();
 	}
@@ -624,6 +622,8 @@ void DFATest2()
 
 void DFATest3()
 {
+	FiniteAutomata ffa;
+
 	{
 		// A.3(a) 预期结果为 A.3(c)
 		DFA_components dfa_com1;
@@ -667,18 +667,23 @@ void DFATest3()
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Brzozowski" << dfa1.min_Brzozowski() << endl;
+		ffa.perform(dfa1, "a-3-a-Brzozowski.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by dragon" << dfa1.min_dragon() << endl;
+		ffa.perform(dfa1, "a-3-a-dragon.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by HopcroftUllman" << dfa1.min_HopcroftUllman() << endl;
+		ffa.perform(dfa1, "a-3-a-HopcroftUllman.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Watson" << dfa1.min_Watson() << endl;
+		ffa.perform(dfa1, "a-3-a-Watson.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Hopcroft" << dfa1.min_Hopcroft() << endl;
+		ffa.perform(dfa1, "a-3-a-Hopcroft.ADS");
 	}
 
 	{
@@ -724,24 +729,31 @@ void DFATest3()
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Brzozowski" << dfa1.min_Brzozowski() << endl;
+		ffa.perform(dfa1, "a-3-b-Brzozowski.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by dragon" << dfa1.min_dragon() << endl;
+		ffa.perform(dfa1, "a-3-b-dragon.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by HopcroftUllman" << dfa1.min_HopcroftUllman() << endl;
+		ffa.perform(dfa1, "a-3-b-HopcroftUllman.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Watson" << dfa1.min_Watson() << endl;
+		ffa.perform(dfa1, "a-3-b-Watson.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Hopcroft" << dfa1.min_Hopcroft() << endl;
+		ffa.perform(dfa1, "a-3-b-Hopcroft.ADS");
 	}
 
 }
 
 void DFATest4()
 {
+	FiniteAutomata ffa;
+
 	{
 		// A.4(a) (完全自动机) 预期结果为 A.4(c)
 		DFA_components dfa_com1;
@@ -789,18 +801,23 @@ void DFATest4()
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Brzozowski" << dfa1.min_Brzozowski() << endl;
+		ffa.perform(dfa1, "a-4-a-Brzozowski.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by dragon" << dfa1.min_dragon() << endl;
+		ffa.perform(dfa1, "a-4-a-dragon.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by HopcroftUllman" << dfa1.min_HopcroftUllman() << endl;
+		ffa.perform(dfa1, "a-4-a-dragon.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Watson" << dfa1.min_Watson() << endl;
+		ffa.perform(dfa1, "a-4-a-Watson.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Hopcroft" << dfa1.min_Hopcroft() << endl;
+		ffa.perform(dfa1, "a-4-a-Hopcroft.ADS");
 	}
 
 	{
@@ -850,18 +867,23 @@ void DFATest4()
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Brzozowski" << dfa1.min_Brzozowski() << endl;
+		ffa.perform(dfa1, "a-4-b-Brzozowski.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by dragon" << dfa1.min_dragon() << endl;
+		ffa.perform(dfa1, "a-4-b-dragon.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by HopcroftUllman" << dfa1.min_HopcroftUllman() << endl;
+		ffa.perform(dfa1, "a-4-b-HopcroftUllman.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Watson" << dfa1.min_Watson() << endl;
+		ffa.perform(dfa1, "a-4-b-Watson.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Hopcroft" << dfa1.min_Hopcroft() << endl;
+		ffa.perform(dfa1, "a-4-b-Hopcroft.ADS");
 
 		/*FiniteAutomata ffa;
 		ffa.perform(dfa1, "A-4-b-min-hopcroft.ADS");*/
@@ -873,6 +895,8 @@ void DFATest4()
 // 不改变最小的 DFA 测试
 void DFATest5()
 {
+	FiniteAutomata ffa;
+
 	{
 		// A.5(a) (完全自动机) 预期结果为 A.5(a) 或 A.5(b)
 		DFA_components dfa_com1;
@@ -909,21 +933,27 @@ void DFATest5()
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Brzozowski" << dfa1.min_Brzozowski() << endl;
+		ffa.perform(dfa1, "a-5-a-Brzozowski.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by dragon" << dfa1.min_dragon() << endl;
+		ffa.perform(dfa1, "a-5-a-dragon.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by HopcroftUllman" << dfa1.min_HopcroftUllman() << endl;
+		ffa.perform(dfa1, "a-5-a-HopcroftUllman.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Watson" << dfa1.min_Watson() << endl;
+		ffa.perform(dfa1, "a-5-a-Watson.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Hopcroft" << dfa1.min_Hopcroft() << endl;
+		ffa.perform(dfa1, "a-5-a-Hopcroft.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------usefulf function" << dfa1.usefulf() << endl;
+		ffa.perform(dfa1, "a-5-a-usefulf.ADS");
 	}
 
 	{
@@ -962,24 +992,31 @@ void DFATest5()
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Brzozowski" << dfa1.min_Brzozowski() << endl;
+		ffa.perform(dfa1, "a-5-b-Brzozowski.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by dragon" << dfa1.min_dragon() << endl;
+		ffa.perform(dfa1, "a-5-b-dragon.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by HopcroftUllman" << dfa1.min_HopcroftUllman() << endl;
+		ffa.perform(dfa1, "a-5-b-HopcroftUllman.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Watson" << dfa1.min_Watson() << endl;
+		ffa.perform(dfa1, "a-5-b-Watson.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Hopcroft" << dfa1.min_Hopcroft() << endl;
+		ffa.perform(dfa1, "a-5-b-Hopcroft.ADS");
 	}
 }
 
 
 void DFATest6()
 {
+	FiniteAutomata ffa;
+
 	{
 		// A.6(a) (最小的DFA，含有开始不可达状态) 预期结果为 A.6(a) 或 A.6(b) 
 		DFA_components dfa_com1;
@@ -1020,27 +1057,35 @@ void DFATest6()
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Brzozowski" << dfa1.min_Brzozowski() << endl;
+		ffa.perform(dfa1,"a-6-Brzozowski.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by dragon" << dfa1.min_dragon() << endl;
+		ffa.perform(dfa1, "a-6-dragon.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by HopcroftUllman" << dfa1.min_HopcroftUllman() << endl;
+		ffa.perform(dfa1, "a-6-HopcroftUllman.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Watson" << dfa1.min_Watson() << endl;
+		ffa.perform(dfa1, "a-6-Watson.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Hopcroft" << dfa1.min_Hopcroft() << endl;
+		ffa.perform(dfa1, "a-6-Hopcroft.ADS");
 		
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------usefuls function" << dfa1.usefuls() << endl;
+		ffa.perform(dfa1, "a-6-usefuls.ADS");
 	}
 }
 
 
 void DFATest7()
 {
+	FiniteAutomata ffa;
+
 	{
 		// A.7(a) (最小的DFA，含有开始不可达状态) 预期结果为 A.7(a) 或 A.7(b) 
 		DFA_components dfa_com1;
@@ -1084,27 +1129,35 @@ void DFATest7()
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Brzozowski" << dfa1.min_Brzozowski() << endl;
+		ffa.perform(dfa1, "a-7-a-Brzozowski.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by dragon" << dfa1.min_dragon() << endl;
+		ffa.perform(dfa1, "a-7-a-dragon.ADS");
 
 		dfa1.reconstruct(dfa_com1);
-		cout << "------------min by HopcroftUllman" << dfa1.min_HopcroftUllman() << endl;
+		cout << "------------min by dragon" << dfa1.min_HopcroftUllman() << endl;
+		ffa.perform(dfa1, "a-6-dragon.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Watson" << dfa1.min_Watson() << endl;
+		ffa.perform(dfa1, "a-7-a-Watson.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Hopcroft" << dfa1.min_Hopcroft() << endl;
+		ffa.perform(dfa1, "a-7-a-Hopcroft.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------usefuls function" << dfa1.usefuls() << endl;
+		ffa.perform(dfa1, "a-7-a-usefuls.ADS");
 	}
 }
 
 // 此测试专门针对 Hopcroft，验证构造完全自动机的算法的正确性
 void DFATest8()
 {
+	FiniteAutomata ffa;
+
 	{
 		// A.8(a) (最小的DFA) 预期结果为 A.8(a)
 		DFA_components dfa_com1;
@@ -1143,11 +1196,13 @@ void DFATest8()
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Hopcroft" << dfa1.min_Hopcroft() << endl;
+		ffa.perform(dfa1, "A-8-a-default-Hopcroft.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------after complete " << dfa1.complete() << endl;
 		cout << "------------min by Hopcroft" << dfa1.min_Hopcroft() << endl;
 		cout << "------------after usefulf " << dfa1.usefulf() << endl;
+		ffa.perform(dfa1, "A-8-a-complete-Hopcroft.ADS");
 	}
 
 	{
@@ -1186,11 +1241,13 @@ void DFATest8()
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Hopcroft" << dfa1.min_Hopcroft() << endl;
+		ffa.perform(dfa1, "A-8-a-default-Hopcroft.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------after complete " << dfa1.complete() << endl;
 		cout << "------------min by Hopcroft" << dfa1.min_Hopcroft() << endl;
 		cout << "------------after usefulf " << dfa1.usefulf() << endl;
+		ffa.perform(dfa1, "A-8-a-complete-Hopcroft.ADS");
 	}
 
 	{
@@ -1227,11 +1284,13 @@ void DFATest8()
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Hopcroft" << dfa1.min_Hopcroft() << endl;
+		ffa.perform(dfa1, "A-8-a-default-Hopcroft.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------after complete " << dfa1.complete() << endl;
 		cout << "------------min by Hopcroft" << dfa1.min_Hopcroft() << endl;
 		cout << "------------after usefulf " << dfa1.usefulf() << endl;
+		ffa.perform(dfa1, "A-8-a-complete-Hopcroft.ADS");
 	}
 
 	{
@@ -1271,11 +1330,13 @@ void DFATest8()
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Hopcroft" << dfa1.min_Hopcroft() << endl;
+		ffa.perform(dfa1, "A-8-a-default-Hopcroft.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------after complete " << dfa1.complete() << endl;
 		cout << "------------min by Hopcroft" << dfa1.min_Hopcroft() << endl;
 		cout << "------------after usefulf " << dfa1.usefulf() << endl;
+		ffa.perform(dfa1, "A-8-a-complete-Hopcroft.ADS");
 	}
 
 	{
@@ -1314,17 +1375,21 @@ void DFATest8()
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Hopcroft" << dfa1.min_Hopcroft() << endl;
+		ffa.perform(dfa1, "A-8-a-default-Hopcroft.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------after complete " << dfa1.complete() << endl;
 		cout << "------------min by Hopcroft" << dfa1.min_Hopcroft() << endl;
 		cout << "------------after usefulf " << dfa1.usefulf() << endl;
+		ffa.perform(dfa1, "A-8-a-complete-Hopcroft.ADS");
 	}
 }
 
 
 void DFATest9()
 {
+	FiniteAutomata ffa;
+
 	{
 		// A.9(a) (最小的DFA，含有开始不可达状态) 预期结果为 A.9(a) 或 A.9(b) 
 		// 此例导致 Brzozowski 算法错误
@@ -1377,21 +1442,27 @@ void DFATest9()
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Brzozowski" << dfa1.min_Brzozowski() << endl;
+		ffa.perform(dfa1,"a-9-a-Brzozowski.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by dragon" << dfa1.min_dragon() << endl;
+		ffa.perform(dfa1, "a-9-a-dragon.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by HopcroftUllman" << dfa1.min_HopcroftUllman() << endl;
+		ffa.perform(dfa1, "a-9-a-HopcroftUllman.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Watson" << dfa1.min_Watson() << endl;
+		ffa.perform(dfa1, "a-9-a-Watson.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Hopcroft" << dfa1.min_Hopcroft() << endl;
+		ffa.perform(dfa1, "a-9-a-Hopcroft.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------after usefuls" << dfa1.usefuls() << endl;
+		ffa.perform(dfa1, "a-9-a-usefuls.ADS");
 	}
 
 	{
@@ -1446,18 +1517,27 @@ void DFATest9()
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Brzozowski" << dfa1.min_Brzozowski() << endl;
+		ffa.perform(dfa1, "a-9-a-Brzozowski.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by dragon" << dfa1.min_dragon() << endl;
+		ffa.perform(dfa1, "a-9-a-dragon.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by HopcroftUllman" << dfa1.min_HopcroftUllman() << endl;
+		ffa.perform(dfa1, "a-9-a-HopcroftUllman.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Watson" << dfa1.min_Watson() << endl;
+		ffa.perform(dfa1, "a-9-a-Watson.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Hopcroft" << dfa1.min_Hopcroft() << endl;
+		ffa.perform(dfa1, "a-9-a-Hopcroft.ADS");
+
+		dfa1.reconstruct(dfa_com1);
+		cout << "------------after usefuls" << dfa1.usefuls() << endl;
+		ffa.perform(dfa1, "a-9-a-usefuls.ADS");
 	}
 
 	{
@@ -1512,27 +1592,35 @@ void DFATest9()
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Brzozowski" << dfa1.min_Brzozowski() << endl;
+		ffa.perform(dfa1, "a-9-a-Brzozowski.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by dragon" << dfa1.min_dragon() << endl;
+		ffa.perform(dfa1, "a-9-a-dragon.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by HopcroftUllman" << dfa1.min_HopcroftUllman() << endl;
+		ffa.perform(dfa1, "a-9-a-HopcroftUllman.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Watson" << dfa1.min_Watson() << endl;
+		ffa.perform(dfa1, "a-9-a-Watson.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------min by Hopcroft" << dfa1.min_Hopcroft() << endl;
+		ffa.perform(dfa1, "a-9-a-Hopcroft.ADS");
 
 		dfa1.reconstruct(dfa_com1);
 		cout << "------------after usefuls" << dfa1.usefuls() << endl;
+		ffa.perform(dfa1, "a-9-a-usefuls.ADS");
 	}
 }
 
 //此例是含有一个开始不可达的结束状态。
 void aspecialDFA()
 {
+	FiniteAutomata ffa;
+
 	DFA_components dfa_com1;
 
 	// StateSet S  开始状态集
@@ -1564,18 +1652,24 @@ void aspecialDFA()
 
 	//实例化一个DFA对象
 	DFA dfa1(dfa_com1);
+	cout << "\n\n\n#################################################################" << endl;
+	cout << "A DFA with a final state witch is can not reacha from start state" << endl;
 	cout << "\n************ DFA\n" << std::flush;
 	cout << "original DFA :" << endl;
 	cout << dfa1 << endl;
+	ffa.perform(dfa1, "special-original.ADS");
 
 	dfa1.usefuls();  // 
 	cout << "after usefuls " << dfa1 << endl;
+	ffa.perform(dfa1, "special-usefuls.ADS");
 	dfa1.complete();
 	cout << "after complete " << dfa1 << endl;
+	ffa.perform(dfa1, "special-complete.ADS");
 
 	dfa1.min_Hopcroft();
 	cout << "\n************ minDFA\n" << std::flush;
 	cout << dfa1 << endl;
+	ffa.perform(dfa1, "special-Hopcroft.ADS");
 }
 
 

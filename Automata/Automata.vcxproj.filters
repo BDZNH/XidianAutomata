@@ -272,6 +272,12 @@
     <ClInclude Include="TransRel.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Test\FA_Add.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="Test\StateToState.h">
+      <Filter>Test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Makefile" />
@@ -288,5 +294,10 @@
     <None Include="LBFA.cd" />
     <None Include="FIRE_engine.cd" />
     <None Include="DFA 转移关系分析.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Test\README.txt">
+      <Filter>Test</Filter>
+    </Text>
   </ItemGroup>
 </Project>

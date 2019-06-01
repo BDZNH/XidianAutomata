@@ -221,6 +221,8 @@
     <ClInclude Include="StateSet.h" />
     <ClInclude Include="StateTo.h" />
     <ClInclude Include="SymRel.h" />
+    <ClInclude Include="Test\FA_Add.h" />
+    <ClInclude Include="Test\StateToState.h" />
     <ClInclude Include="Trans.h" />
     <ClInclude Include="TransImpl.h" />
     <ClInclude Include="TransPair.h" />
@@ -237,6 +239,9 @@
     <None Include="RBFA.cd" />
     <None Include="RFA.cd" />
     <None Include="总关系图.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Test\README.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
