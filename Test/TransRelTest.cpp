@@ -6,6 +6,12 @@ using namespace std;
 class TransRelTestClass
 {
 public:
+	TransRelTestClass()
+	{
+		cout << "***********************" << endl;
+		cout << "      TransRelTest" << endl;
+		cout << "***********************" << endl;
+	}
 
 	/*
 	1.set_domian
@@ -165,11 +171,11 @@ public:
 void TransRelTest()
 {
 	TransRelTestClass t;
-	//t.SetDomainTest();
-	//t.AddTransitionTest();
-	//t.ImageTest();
+	t.SetDomainTest();
+	t.AddTransitionTest();
+	t.ImageTest();
 	t.TransRangesTest();
-	//t.OutlabelTest();
-	//t.Disjointing_UnionTest();
-	//t.ReincarnateTest();
+	t.OutlabelTest();
+	t.Disjointing_UnionTest();
+	t.ReincarnateTest();
 }

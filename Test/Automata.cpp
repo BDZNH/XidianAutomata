@@ -29,6 +29,13 @@ bool compare(std::string file1, std::string file2);
 bool createADSdirectory();
 #endif // _WIN32
 
+// Windows 系统与 Linux 系统的清屏命令不一样
+#ifdef _WIN32
+#define CLSINFO "cls"
+#else
+#define CLSINFO "clear"
+#endif // _WIN32
+
 
 int main()
 {
@@ -49,7 +56,7 @@ int main()
 	{
 		if (temp=="g"||temp=="1")      //     选项 1，生成一个标准文件
 		{
-			system("cls");
+			system(CLSINFO);
 			std::cout << "\n\n\n\n             processing" << std::endl;
 			if (generatedata("Standard_Data.txt"))
 			{
@@ -60,7 +67,7 @@ int main()
 		}
 		else if (temp == "c" || temp == "2")  //   选项 2 ，生成本次的数据，并与标准数据进行比较
 		{
-			system("cls");
+			system(CLSINFO);
 			std::cout << "\n\n\n\n             processing..." << std::endl;
 			if (!generatedata("Data.txt"))
 			{
@@ -78,7 +85,7 @@ int main()
 		}
 		else if (temp == "f" || temp == "3")    // 选项  3，从键盘输入一个DFA
 		{
-			system("cls");
+			system(CLSINFO);
 			cin >> ffa;  // 通过控制台输入，简化 TCT 的输入过程。
 
 			// 生成的类 DFA 的对象
@@ -97,7 +104,7 @@ int main()
 		}
 		else if (temp == "d" || temp == "4")   // 选项 4，把第三步生成的DFA转换成ADS文件。
 		{
-			system("cls");
+			system(CLSINFO);
 			if (!flag)
 			{
 				std::cout << "before execute this step, you must execute step 3(d)" << std::endl;
@@ -125,7 +132,7 @@ int main()
 		}
 		else if (temp == "r" || temp == "5")  // 选项5，读入一个ADS文件，实例化一个DFA对象
 		{
-			system("cls");
+			system(CLSINFO);
 			std::cout << "type in the .ADS file's name: " << std::flush;
 			std::string filename;
 			std::cin >> filename;
@@ -163,7 +170,7 @@ int main()
 
 void usage()
 {
-	system("cls");
+	system(CLSINFO);
 	std::cout << "#######################################################################################################" << std::endl;
 	std::cout << "##                                                                                                   ##\n" << std::flush;
 	std::cout << "##                                                                                                   ##\n" << std::flush;
@@ -304,6 +311,10 @@ bool compare(std::string file1, std::string file2)
 			}
 			
 		}
+		if (i > 4)
+		{
+			std::cout << "See more info at resultlog.txt" << std::endl;
+		}
 	}
 	else
 	{
@@ -311,7 +322,7 @@ bool compare(std::string file1, std::string file2)
 		std::cout << "             Standard data = current  data\n             Nothing changed!" << std::endl;
 	}
 	result.clear();
-	return false;
+	return true;
 }
 
 #ifdef _WIN32

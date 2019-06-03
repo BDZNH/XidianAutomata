@@ -4,7 +4,7 @@
 #include "Constrs.h"
 #include "RFA.h"
 #include "LBFA.h"
-
+#include "FiniteAutomata.h"
 using namespace std;
 
 /*******************************************************************
@@ -246,9 +246,9 @@ public:
 
 };
 
-void reExample315RFATest()
+void RFATest1()
 {
-	cout << "=====reExample315RFATest=====\n";
+	cout << "=====RFATest1=====\n";
 	RFATestClass test;
 	RFA rfa1,rfa2;
 	LBFA lbfa1,lbfa2;
@@ -284,29 +284,35 @@ void reExample315RFATest()
 	current = {}
 		 **/
 	cout << "以下分别为各类型FA对应转换的DFA\n" << endl;
-	DFA DFA1 = rfa1.determinism();
-	cout << "————————DFA1_rfa1:" << DFA1 << endl;//——————————————————————成功转换成DFA
-	DFA DFA2 = rfa2.determinism();
-	cout << "————————DFA2_rfa2:" << DFA2 << endl; //——————————————————————成功转换成DFA
-	DFA DFA3 = lbfa1.determinism();
-	cout << "————————DFA3_lbfa1:" << DFA3 << endl;//——————————————————————成功转换成DFA
-	DFA DFA4 = lbfa2.determinism();
-	cout << "————————DFA4_lbfa2:" << DFA4 << endl;//——————————————————————成功转换成DFA
-
+	DFA RFATest1_dfa1 = rfa1.determinism();
+	cout << "———RFATest1_dfa1:" << RFATest1_dfa1 << endl;//——————————————————————成功转换成DFA
+	DFA RFATest1_dfa2 = rfa2.determinism();
+	cout << "———RFATest1_dfa2:" << RFATest1_dfa2 << endl; //——————————————————————成功转换成DFA
+	DFA RFATest1_dfa3 = lbfa1.determinism();
+	cout << "———RFATest1_dfa3:" << RFATest1_dfa3 << endl;//——————————————————————成功转换成DFA
+	DFA RFATest1_dfa4 = lbfa2.determinism();
+	cout << "———RFATest1_dfa4:" << RFATest1_dfa4 << endl;//——————————————————————成功转换成DFA
 	cout << "以下为lbfa1通过另一种方式对应转换的DFA\n" << endl;
-	DFA dfa = test.DFAfromLBFA(re);
-	cout << dfa << endl;
+	DFA RFATest1_dfa5 = test.DFAfromLBFA(re);
+	cout << RFATest1_dfa5 << endl;
 	/**
 	DFA————由状态转移图可得RE=(a|1)b*
 	Q = [0,3) S = { 0 } F = { 0  1  2 }
 	Transitions = 0->{ 'a'->1  'b'->2 } 1->{ 'b'->2 } 2->{ 'b'->2 }
 	current = -1
 	**/
+	//因为1-2DFA是完全一样的，3-4同理，所以只比较1,3,5的DFA，以下同理不再注释
+	FiniteAutomata ffa1;
+	ffa1.perform(RFATest1_dfa1, "RFATest1_dfa1.ADS");
+	FiniteAutomata ffa2;
+	ffa2.perform(RFATest1_dfa3, "RFATest1_dfa3.ADS");
+	FiniteAutomata ffa3;
+	ffa3.perform(RFATest1_dfa5, "RFATest1_dfa5.ADS");
 }
 
-void reExample2_9noStarRFATest()
+void RFATest2()
 {
-	cout << "=====reExample2_9noStarRFATest=====\n";
+	cout << "=====rRFATest2=====\n";
 	RFATestClass test;
 	RFA rfa1, rfa2;
 	LBFA lbfa1,lbfa2;
@@ -346,28 +352,34 @@ void reExample2_9noStarRFATest()
 	 current = {}
 	 **/
 	cout << "以下分别为各类型FA对应转换的DFA\n" << endl;
-	DFA DFA1 = rfa1.determinism();
-	cout << "————————DFA1_rfa1:" << DFA1 << endl;//——————————————————————成功转换成DFA
-	DFA DFA2 = rfa2.determinism();
-	cout << "————————DFA2_rfa2:" << DFA2 << endl; //——————————————————————成功转换成DFA
-	DFA DFA3 = lbfa1.determinism();
-	cout << "————————DFA3_lbfa1:" << DFA3 << endl;//——————————————————————成功转换成DFA
-	DFA DFA4 = lbfa2.determinism();
-	cout << "————————DFA4_lbfa2:" << DFA4 << endl;//——————————————————————成功转换成DFA
+	DFA RFATest2_dfa1 = rfa1.determinism();
+	cout << "———RFATest2_dfa1:" << RFATest2_dfa1 << endl;//——————————————————————成功转换成DFA
+	DFA RFATest2_dfa2 = rfa2.determinism();
+	cout << "———RFATest2_dfa2:" << RFATest2_dfa2 << endl; //——————————————————————成功转换成DFA
+	DFA RFATest2_dfa3 = lbfa1.determinism();
+	cout << "———RFATest2_dfa3:" << RFATest2_dfa3 << endl;//——————————————————————成功转换成DFA
+	DFA RFATest2_dfa4 = lbfa2.determinism();
+	cout << "———RFATest2_dfa4:" << RFATest2_dfa4 << endl;//——————————————————————成功转换成DFA
 	cout << "以下为lbfa1通过另一种方式对应转换的DFA\n" << endl;
-	DFA dfa = test.DFAfromLBFA(re);
-	cout << dfa << endl;
+	DFA RFATest2_dfa5 = test.DFAfromLBFA(re);
+	cout << RFATest2_dfa5 << endl;
 	/**
 	 DFA————画状态图得RE=（a∪b)ab
 	 Q = [0,5) 	S = { 0 } 	F = { 4 }
 	 Transitions = 0->{ 'a'->1  'b'->2 }  1->{ 'a'->3 }	2->{ 'a'->3 } 3->{ 'b'->4 }
 	 4->{} current = -1
 	 **/
+	FiniteAutomata ffa1;
+	ffa1.perform(RFATest2_dfa1, "RFATest2_dfa1.ADS");
+	FiniteAutomata ffa2;
+	ffa2.perform(RFATest2_dfa3, "RFATest2_dfa3.ADS");
+	FiniteAutomata ffa3;
+	ffa3.perform(RFATest2_dfa5, "RFATest2_dfa5.ADS");
 }
 
-void reExample2_9StarRFATest()
+void RFATest3()
 {
-	cout << "=====reExample2_9StarRFATest=====\n";
+	cout << "=====RFATest3=====\n";
 	RFATestClass test;
 	RFA rfa1, rfa2;
 	LBFA lbfa1,lbfa2;
@@ -408,17 +420,17 @@ void reExample2_9StarRFATest()
 	current = {}
 	 **/
 	cout << "以下分别为各类型FA对应转换的DFA\n" << endl;
-	DFA DFA1 = rfa1.determinism();
-	cout << "————————DFA1_rfa1:" << DFA1 << endl;//——————————————————————成功转换成DFA
-	DFA DFA2 = rfa2.determinism();
-	cout << "————————DFA2_rfa2:" << DFA2 << endl; //——————————————————————成功转换成DFA
-	DFA DFA3 = lbfa1.determinism();
-	cout << "————————DFA3_lbfa1:" << DFA3 << endl;//——————————————————————成功转换成DFA
-	DFA DFA4 = lbfa2.determinism();
-	cout << "————————DFA4_lbfa2:" << DFA4 << endl;//——————————————————————成功转换成DFA
+	DFA RFATest3_dfa1 = rfa1.determinism();
+	cout << "———RFATest3_dfa1:" << RFATest3_dfa1 << endl;//——————————————————————成功转换成DFA
+	DFA RFATest3_dfa2 = rfa2.determinism();
+	cout << "———RFATest3_dfa2:" << RFATest3_dfa2 << endl; //——————————————————————成功转换成DFA
+	DFA RFATest3_dfa3 = lbfa1.determinism();
+	cout << "———RFATest3_dfa3:" << RFATest3_dfa3 << endl;//——————————————————————成功转换成DFA
+	DFA RFATest3_dfa4 = lbfa2.determinism();
+	cout << "———RFATest3_dfa4:" << RFATest3_dfa4 << endl;//——————————————————————成功转换成DFA
 	cout << "以下为lbfa1通过另一种方式对应转换的DFA\n" << endl;
-	DFA dfa = test.DFAfromLBFA(re);
-	cout << "\n"<<dfa << endl;
+	DFA RFATest3_dfa5 = test.DFAfromLBFA(re);
+	cout << "\n"<< RFATest3_dfa5 << endl;
 	/**
 	DFA from LBFA(————由状态转移图得出RE=(a∪b)*ab)
 	Q = [0,4)  S = { 0 }   F = { 3 }
@@ -440,10 +452,16 @@ void reExample2_9StarRFATest()
 	4->{ 'a'->1  'b'->2 }
 	current = -1
 	 **/
+	FiniteAutomata ffa1;
+	ffa1.perform(RFATest3_dfa1, "RFATest3_dfa1.ADS");
+	FiniteAutomata ffa2;
+	ffa2.perform(RFATest3_dfa3, "RFATest3_dfa3.ADS");
+	FiniteAutomata ffa3;
+	ffa3.perform(RFATest3_dfa5, "RFATest3_dfa5.ADS");
 }
-void ex4Test()
+void RFATest4()
 {
-	cout << "=====ex4Test=====\n";
+	cout << "=====RFATest4=====\n";
 	RFATestClass test;
 	RFA rfa1, rfa2;
 	LBFA lbfa1,lbfa2;
@@ -483,17 +501,17 @@ void ex4Test()
 	 follow = 0->{ 0 1 2 } 1->{ 0 1 2 } 2->{} 3->{ 4 } 4->{ 3 } 
 	 current = {}	 **/
 	cout << "以下分别为各类型FA对应转换的DFA\n" << endl;
-	DFA DFA1 = rfa1.determinism();
-	cout << "————————DFA1_rfa1:" << DFA1 << endl;//——————————————————————成功转换成DFA
-	DFA DFA2 = rfa2.determinism();
-	cout << "————————DFA2_rfa2:" << DFA2 << endl; //——————————————————————成功转换成DFA
-	DFA DFA3 = lbfa1.determinism();
-	cout << "————————DFA3_lbfa1:" << DFA3 << endl;//——————————————————————成功转换成DFA
-	DFA DFA4 = lbfa2.determinism();
-	cout << "————————DFA4_lbfa2:" << DFA4 << endl;//——————————————————————成功转换成DFA
+	DFA RFATest4_dfa1 = rfa1.determinism();
+	cout << "———RFATest4_dfa1:" << RFATest4_dfa1 << endl;//——————————————————————成功转换成DFA
+	DFA RFATest4_dfa2 = rfa2.determinism();
+	cout << "———RFATest4_dfa2:" << RFATest4_dfa2 << endl; //——————————————————————成功转换成DFA
+	DFA RFATest4_dfa3 = lbfa1.determinism();
+	cout << "———RFATest4_dfa3:" << RFATest4_dfa3 << endl;//——————————————————————成功转换成DFA
+	DFA RFATest4_dfa4 = lbfa2.determinism();
+	cout << "———RFATest4_dfa4:" << RFATest4_dfa4 << endl;//——————————————————————成功转换成DFA
 	cout << "以下为lbfa1通过另一种方式对应转换的DFA\n" << endl;
-	DFA dfa = test.DFAfromLBFA(re);
-	cout << dfa << endl;
+	DFA RFATest4_dfa5 = test.DFAfromLBFA(re);
+	cout << RFATest4_dfa5 << endl;
 	/**
 	 DFA————画状态图得RE=(a+b)*a+(aa)*
 	 Q = [0,5) 	S = { 0 } 	F = { 0 1 3 4 }
@@ -505,10 +523,16 @@ void ex4Test()
 	 4->{ 'a'->4  'b'->2 }
 	 current = -1
 	  **/
+	FiniteAutomata ffa1;
+	ffa1.perform(RFATest4_dfa1, "RFATest4_dfa1.ADS");
+	FiniteAutomata ffa2;
+	ffa2.perform(RFATest4_dfa3, "RFATest4_dfa3.ADS");
+	FiniteAutomata ffa3;
+	ffa3.perform(RFATest4_dfa5, "RFATest4_dfa5.ADS");
 }
-void ex5Test()
+void RFATest5()
 {
-	cout << "=====ex5Test=====\n";
+	cout << "=====RFATest5=====\n";
 	RFATestClass test;
 	RFA rfa1, rfa2;
 	LBFA lbfa1,lbfa2;
@@ -548,17 +572,17 @@ void ex5Test()
 	 follow = 0->{ 0  1  2 }   1->{ 2 }  2->{ 3 }  3->{ 3 }
 	 current = {}	 **/
 	cout << "以下分别为各类型FA对应转换的DFA\n" << endl;
-	DFA DFA1 = rfa1.determinism();
-	cout << "————————DFA1_rfa1:" << DFA1 << endl;//——————————————————————成功转换成DFA
-	DFA DFA2 = rfa2.determinism();
-	cout << "————————DFA2_rfa2:" << DFA2 << endl; //——————————————————————成功转换成DFA
-	DFA DFA3 = lbfa1.determinism();
-	cout << "————————DFA3_lbfa1:" << DFA3 << endl;//——————————————————————成功转换成DFA
-	DFA DFA4 = lbfa2.determinism();
-	cout << "————————DFA4_lbfa2:" << DFA4 << endl;//——————————————————————成功转换成DFA
+	DFA RFATest5_dfa1 = rfa1.determinism();
+	cout << "———RFATest5_dfa1:" << RFATest5_dfa1 << endl;//——————————————————————成功转换成DFA
+	DFA RFATest5_dfa2 = rfa2.determinism();
+	cout << "———RFATest5_dfa2:" << RFATest5_dfa2 << endl; //——————————————————————成功转换成DFA
+	DFA RFATest5_dfa3 = lbfa1.determinism();
+	cout << "———RFATest5_dfa3:" << RFATest5_dfa3 << endl;//——————————————————————成功转换成DFA
+	DFA RFATest5_dfa4 = lbfa2.determinism();
+	cout << "———RFATest5_dfa4:" << RFATest5_dfa4 << endl;//——————————————————————成功转换成DFA
 	cout << "以下为lbfa1通过另一种方式对应转换的DFA\n" << endl;
-	DFA dfa = test.DFAfromLBFA(re);
-	cout << dfa << endl;
+	DFA RFATest5_dfa5 = test.DFAfromLBFA(re);
+	cout << RFATest5_dfa5 << endl;
 	/**
 	 DFA————画状态图得RE=((a | epsilon)+)b?cd*|(empty())
 	 Q = [0,5) 	S = { 0 } 	F = { 3 4 }
@@ -570,16 +594,22 @@ void ex5Test()
 	 4->{ 'd'->4 }
 	 current = -1
 	  **/
+	FiniteAutomata ffa1;
+	ffa1.perform(RFATest5_dfa1, "RFATest5_dfa1.ADS");
+	FiniteAutomata ffa2;
+	ffa2.perform(RFATest5_dfa3, "RFATest5_dfa3.ADS");
+	FiniteAutomata ffa3;
+	ffa3.perform(RFATest5_dfa5, "RFATest5_dfa5.ADS");
 }
 void RFATest()
 {
 	cout << "=====RFATest=====\n" <<flush;
 	//从上往下依次为RE样例1-5
-	reExample315RFATest();
-	reExample2_9noStarRFATest();
-	reExample2_9StarRFATest();
-	ex4Test();
-	ex5Test();
+	RFATest1();
+	RFATest2();
+	RFATest3();
+	RFATest4();
+	RFATest5();
 }
 
 

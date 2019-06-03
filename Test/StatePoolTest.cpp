@@ -5,6 +5,13 @@ using namespace std;
 
 class StatePoolTestClass {
 public:
+	StatePoolTestClass()
+	{
+		cout << "************************" << endl;
+		cout << "      StatePoolTest" << endl;
+		cout << "************************" << endl;
+	}
+
 	void InitialTest()
 	{
 		StatePool sp;

@@ -6,6 +6,13 @@ using namespace std;
 class SymRelTestClass
 {
 public:
+	SymRelTestClass()
+	{
+		cout << "**********************" << endl;
+		cout << "     SymRelTest" << endl;
+		cout << "**********************" << endl;
+	}
+
 	/***********************************************************************
 								Set Domain Test
 	测试函数:

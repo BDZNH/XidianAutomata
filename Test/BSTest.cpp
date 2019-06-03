@@ -1,27 +1,10 @@
-#include <iostream>
-#include "../Automata/Sigma.h"
-#include "../Automata/FA.h"
-#include "../Automata/Constrs.h"
-#include "../Automata/LBFA.h"
-#include "../Automata/RBFA.h"
-
-void minTest(DFA dfa2)
-{
-	DFA dfa1_1 = dfa2;
-	std::cout << "-------------min by Brzozowski" << dfa1_1.min_Brzozowski() << std::endl;
-
-	DFA dfa1_2 = dfa2;
-	std::cout << "-------------min by dragon" << dfa1_1.min_dragon() << std::endl;
-
-	DFA dfa1_3 = dfa2;
-	std::cout << "-------------min by Hopcroft" << dfa1_1.complete().min_Hopcroft().usefulf() << std::endl;
-
-	DFA dfa1_4 = dfa2;
-	std::cout << "-------------min by HopcroftUllman" << dfa1_1.min_HopcroftUllman() << std::endl;
-
-	DFA dfa1_5 = dfa2;
-	std::cout << "-------------min by Watson" << dfa1_1.min_Watson() << std::endl;
-}
+ï»¿#include <iostream>
+#include "Sigma.h"
+#include "FA.h"
+#include "Constrs.h"
+#include "LBFA.h"
+#include "RBFA.h"
+#include "FiniteAutomata.h"
 
 using namespace std;
 class BSTestClass
@@ -40,7 +23,7 @@ public:
 		/////////////// non-basis operator(epsilon,empty,symbol): this ==> left = right = 0
 		// RE = epsilon
 		Reg<RE> re1;
-		//Reg<RE> re1 = Reg<RE>(); // µÈĞ§
+		//Reg<RE> re1 = Reg<RE>(); // ç­‰æ•ˆ
 		re1.epsilon();
 		cout << re1 << endl; // 1  ==> op = EPSILON, left = right = 0
 
@@ -90,8 +73,8 @@ public:
 		right.epsilon();
 		left.concat(right);
 		cout << left << endl;  // . 'a' 1(epsilon) ==> op = CONCAT, left = a, right = EPSILON
-		cout << "ÒÔÉÏÎª°Ë¸ö»ù´¡ÔËËã·ûµÄREÊä³ö\n" << endl;
-		////////////////////////////// ×ÛºÏÓ¦ÓÃ
+		cout << "ä»¥ä¸Šä¸ºå…«ä¸ªåŸºç¡€è¿ç®—ç¬¦çš„REè¾“å‡º\n" << endl;
+		////////////////////////////// ç»¼åˆåº”ç”¨
 		// RE = (a | epsilon)b* 
 
 		//// RE =  a | epsilon
@@ -103,30 +86,30 @@ public:
 		right.star();
 		// (a | epsilon) concat b* 
 		left.concat(right);
-		cout << left << "¡ª¡ª¡ª¡ªÕâÊÇ(a | epsilon) concat b* \n" << endl; // . | 'a' 1(epsilon) * 'b'  ==> op = .,left = (| 'a' 1(epsilon)),right = (* b)
+		cout << left << "â€”â€”â€”â€”è¿™æ˜¯(a | epsilon) concat b* \n" << endl; // . | 'a' 1(epsilon) * 'b'  ==> op = .,left = (| 'a' 1(epsilon)),right = (* b)
 
-		//(01)ĞÂÔö²âÊÔÑùÀı£º½¯×ÚÀñ°æ×Ô¶¯»ú½Ì²Äp127Ò³Ï°Ìâ4ÖĞÌôÑ¡×î¾ß´ú±íĞÔµÄ±í´ïÊ½½øĞĞ¸ÄÔìÊ¹Æä¸ü¸´ÔÓ
-		//µÃ£ºr+(sr?t|r|1)*¡ª¡ª1¾ÍÊÇepsilon
-		//°´ÕÕ×Ô¶¥ÏòÏÂ·½·¨¶Ô±í´ïÊ½½øĞĞ²ğ·ÖÈ»ºó¹¹ÔìÃ¿²½ÔËËã
-		/*cout << "\n\n¡ª¡ªĞÂÔö²âÊÔÑùÀı\n" << endl;
-		Reg<RE> left0, right0, left1, right1;//±ÜÃâÓëÉÏÃæ´úÂë»ìÂÒ²ÉÈ¡ĞÂµÄ±äÁ¿ÃûÎ²×º
+		//(01)æ–°å¢æµ‹è¯•æ ·ä¾‹ï¼šè’‹å®—ç¤¼ç‰ˆè‡ªåŠ¨æœºæ•™æp127é¡µä¹ é¢˜4ä¸­æŒ‘é€‰æœ€å…·ä»£è¡¨æ€§çš„è¡¨è¾¾å¼è¿›è¡Œæ”¹é€ ä½¿å…¶æ›´å¤æ‚
+		//å¾—ï¼šr+(sr?t|r|1)*â€”â€”1å°±æ˜¯epsilon
+		//æŒ‰ç…§è‡ªé¡¶å‘ä¸‹æ–¹æ³•å¯¹è¡¨è¾¾å¼è¿›è¡Œæ‹†åˆ†ç„¶åæ„é€ æ¯æ­¥è¿ç®—
+		/*cout << "\n\nâ€”â€”æ–°å¢æµ‹è¯•æ ·ä¾‹\n" << endl;
+		Reg<RE> left0, right0, left1, right1;//é¿å…ä¸ä¸Šé¢ä»£ç æ··ä¹±é‡‡å–æ–°çš„å˜é‡åå°¾ç¼€
 		left0.symbol('s');
 		right0.symbol('r');
 		right0.question();
 		left0.concat(right0);
 		right0.symbol('t');
-		left0.concat(right0);//¹¹³ÉÀ¨ºÅÀïµÄsrt
-		cout << left0 << "    ÕâÊÇsr?t \n" << endl;
+		left0.concat(right0);//æ„æˆæ‹¬å·é‡Œçš„srt
+		cout << left0 << "    è¿™æ˜¯sr?t \n" << endl;
 		right0.symbol('r');
-		right0.Or(right1.epsilon());//¹¹³ÉÀ¨ºÅÀïµÄr|1
-		cout << right0 << "    ÕâÊÇr|1 \n" << endl;
+		right0.Or(right1.epsilon());//æ„æˆæ‹¬å·é‡Œçš„r|1
+		cout << right0 << "    è¿™æ˜¯r|1 \n" << endl;
 		left0.Or(right0);
-		cout << left0 << "    ÕâÊÇsr?t+r|1 \n" << endl;
+		cout << left0 << "    è¿™æ˜¯sr?t+r|1 \n" << endl;
 		left1.symbol('r');
 		left1.plus();
 		left0.star();
 		left1.concat(left0);
-		cout << left1 << "    ÕâÊÇ×îºó½á¹ûr+(sr?t|r|1)* \n" << endl;//×îºó½á¹û
+		cout << left1 << "    è¿™æ˜¯æœ€åç»“æœr+(sr?t|r|1)* \n" << endl;//æœ€åç»“æœ
 		*/
 	}
 	void reExample315(RE& re)
@@ -148,17 +131,17 @@ public:
 
 		// (a | epsilon) concat b* 
 		left.concat(right);
-		//cout << left<<"    Êä³öÓ¦¸ÃÊÇ(a | epsilon) concat b*\n " << endl; // . | 'a' 1(epsilon) * 'b'  ==> op = .,left = (| 'a' 1(epsilon)),right = (* b)
+		//cout << left<<"    è¾“å‡ºåº”è¯¥æ˜¯(a | epsilon) concat b*\n " << endl; // . | 'a' 1(epsilon) * 'b'  ==> op = .,left = (| 'a' 1(epsilon)),right = (* b)
 		re = left;
 	}
 
-	//  RE =  (a ¡È b)ab
+	//  RE =  (a âˆª b)ab
 	void reExample2_9noStar(RE& re)
 	{
 		//cout << "=====reExample2_9noStar=====\n";
 		Reg<RE> left, right;
-		cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª²âÊÔµã11111\n" << endl;
-		//  RE =  (a ¡È b) ab
+		cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”æµ‹è¯•ç‚¹11111\n" << endl;
+		//  RE =  (a âˆª b) ab
 		//left.Or(right).concat(right.symbol('a')).concat(right.symbol('b')); // result error
 		left.symbol('a');
 		left.Or(right.symbol('b'));
@@ -172,14 +155,14 @@ public:
 		re = left;
 	}
 
-	//  RE =  (* (a ¡È b)) ab
+	//  RE =  (* (a âˆª b)) ab
 
 	void reExample2_9Star(RE& re)
 	{
 		//cout << "=====reExample2_9Star=====\n";
 		Reg<RE> left, right;
 
-		//  RE =  (* (a ¡È b)) ab
+		//  RE =  (* (a âˆª b)) ab
 		left.symbol('a');
 		left.Or(right.symbol('b'));
 		left.star();
@@ -233,14 +216,14 @@ public:
 		re = left;
 
 	}
-	//  RE =  ((a ¡È b*)) ab£¨ÎªÁËÑĞ¾¿ÓëRE =  (* (a ¡È b)) abµÄÇø±ğ¶àÉèÁ¢µÄÒ»¸öÍ¬µÈ×÷ÓÃµÄº¯Êı£©
+	//  RE =  ((a âˆª b*)) abï¼ˆä¸ºäº†ç ”ç©¶ä¸RE =  (* (a âˆª b)) abçš„åŒºåˆ«å¤šè®¾ç«‹çš„ä¸€ä¸ªåŒç­‰ä½œç”¨çš„å‡½æ•°ï¼‰
 	/**
 	void reExample2extra_9Star(RE& re)
 	{
 		cout << "\n=====reExample2extra_9Star=====\n";
 		Reg<RE> left, right;
 
-		//  RE =  ((a ¡È b*)) ab
+		//  RE =  ((a âˆª b*)) ab
 		left.symbol('a');
 		right.symbol('b');
 		right.star();
@@ -257,9 +240,9 @@ public:
 	}
 	**/
 	
-	//³öÏÖ´íÎóµÄµØ·½£¬Èç¹ûÏëÖ±½ÓLBFA->DFAµÄ»°
+	//å‡ºç°é”™è¯¯çš„åœ°æ–¹ï¼Œå¦‚æœæƒ³ç›´æ¥LBFA->DFAçš„è¯
 	
-	DFA LBFA2DFA(LBFA lbfa) //Êµ¼Ê¾ÍÊÇRE->RFA->LBFA->DFA(ÕÒ²»µ½±ğµÄÖ±½Ó´ÓLBFAµ½DFA)
+	DFA LBFA2DFA(LBFA lbfa) //å®é™…å°±æ˜¯RE->RFA->LBFA->DFA(æ‰¾ä¸åˆ°åˆ«çš„ç›´æ¥ä»LBFAåˆ°DFA)
 	{
 		
 		cout << "=====LBFA2DFA=====\n";
@@ -268,10 +251,10 @@ public:
 	}
 	
 	/**
-	ÕâÑùĞ´Ò²ÊÇ¿ÉÒÔµÄ£¬¾ÍÊÇRE->RFA->LBFA->DFA£¬µ«ÊÇÓÉÓÚÎÒÃÇÕâ¸ö²âÊÔÄ¿µÄ¾ÍÊÇ²âÊÔBerrySethi()£¬
-	ËùÒÔBerrySethi()º¯Êıµ¥¶ÀÌá³öÀ´ÊÇÍê³É×ª»»£ºRE->LBFA£¬ÎÒÃÇÖ»ĞèÒª½¨Á¢Ò»¸öLBFA->DFAµÄº¯Êı¾Í¿ÉÒÔÁË
-	Ò²²»ÓÃÏñRFATestÀïÃæÄÇÑùÖĞÍ¾¾­¹ıRFA£¬ÕâÒ²¾ÍÊÇÎÄµµÀïËµµÄBSÊÇÒ»¸ö½«½ÏÓÚrfa()+decode()À´Ëµ¸üÎª¸ßĞ§µÄ·½Ê½
-	DFA DFAfromLBFA(const RE& re) //Êµ¼Ê¾ÍÊÇRE->RFA->LBFA->DFA
+	è¿™æ ·å†™ä¹Ÿæ˜¯å¯ä»¥çš„ï¼Œå°±æ˜¯RE->RFA->LBFA->DFAï¼Œä½†æ˜¯ç”±äºæˆ‘ä»¬è¿™ä¸ªæµ‹è¯•ç›®çš„å°±æ˜¯æµ‹è¯•BerrySethi()ï¼Œ
+	æ‰€ä»¥BerrySethi()å‡½æ•°å•ç‹¬æå‡ºæ¥æ˜¯å®Œæˆè½¬æ¢ï¼šRE->LBFAï¼Œæˆ‘ä»¬åªéœ€è¦å»ºç«‹ä¸€ä¸ªLBFA->DFAçš„å‡½æ•°å°±å¯ä»¥äº†
+	ä¹Ÿä¸ç”¨åƒRFATesté‡Œé¢é‚£æ ·ä¸­é€”ç»è¿‡RFAï¼Œè¿™ä¹Ÿå°±æ˜¯æ–‡æ¡£é‡Œè¯´çš„BSæ˜¯ä¸€ä¸ªå°†è¾ƒäºrfa()+decode()æ¥è¯´æ›´ä¸ºé«˜æ•ˆçš„æ–¹å¼
+	DFA DFAfromLBFA(const RE& re) //å®é™…å°±æ˜¯RE->RFA->LBFA->DFA
 	{
 		cout << "=====DFAfromLBFA=====\n";
 		DFA dfa = BerrySethi(re).determinism();
@@ -287,55 +270,55 @@ public:
 		RBFA rbfa1, rbfa2;
 		RE re;
 		test.reExample315(re);
-		cout << "ÑùÀı1£¬RE=£¨a|epsilon) concat  b*: " << re << endl; // . | 'a' 1(epsilon) * 'b'  ==> op = .,left = (| 'a' 1(epsilon)),right = (* b)
+		cout << "æ ·ä¾‹1ï¼ŒRE=ï¼ˆa|epsilon) concat  b*: " << re << endl; // . | 'a' 1(epsilon) * 'b'  ==> op = .,left = (| 'a' 1(epsilon)),right = (* b)
 
 		
 		lbfa1 = BerrySethi(re); 
 		lbfa2 = BS_variation(re);
 		rbfa1 = BerrySethLdual(re);
 		rbfa2 = BS_variation_dual(re);
-		cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªLBFA1:\n" <<lbfa1 << endl;
-		cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªLBFA2:\n" << lbfa2 << endl;
-		cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªRBFA1:\n" << rbfa1 << endl;
-		cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªRBFA2:\n" << rbfa2 << endl;
+		cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”LBFA1:\n" <<lbfa1 << endl;
+		cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”LBFA2:\n" << lbfa2 << endl;
+		cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”RBFA1:\n" << rbfa1 << endl;
+		cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”RBFA2:\n" << rbfa2 << endl;
 		/**
-		 LBFA1¡ª¡ª¡ª¡ªÓÉ×´Ì¬×ªÒÆÍ¼¿ÉµÃRE=(a|1)b*
+		 LBFA1â€”â€”â€”â€”ç”±çŠ¶æ€è½¬ç§»å›¾å¯å¾—RE=(a|1)b*
 		Q = [0,3) s = 2 F = { 0  1  2 } Qmap_inverse = { 'a'->0  'b'->1 }
 		follow = 0->{ 1 } 1->{ 1 } 2->{ 0 1 }
 		current = {}
-		 LBFA2¡ª¡ª¡ª¡ª
+		 LBFA2â€”â€”â€”â€”
 		 Q = [0,3) s = 0 F = { 0  1  2 } Qmap_inverse = { '$'->0  'a'->1  'b'->2 }
 		follow = 0->{ 1 2 } 1->{ 2 } 2->{ 2 }
 		current = {}
-		 RBFA1¡ª¡ª¡ª¡ªÈç¹û°Ñs=0ÊÇÈë¿ÚÊÇ'a'Ëã½øÈ¥¾ÍÊÇÕıÈ·µÄ£¬µ«ÊÇÈ±ÉÙ1->2µÄ×ªÒÆÌõ¼ş£¿Ëã¿Õ×ªÒÆÂğ£¿¼ÓÉÏ'$'ÊÇÍêÕûµÄ£¬´ú±íÊ²Ã´£¿
+		 RBFA1â€”â€”â€”â€”å¦‚æœæŠŠs=0æ˜¯å…¥å£æ˜¯'a'ç®—è¿›å»å°±æ˜¯æ­£ç¡®çš„ï¼Œä½†æ˜¯ç¼ºå°‘1->2çš„è½¬ç§»æ¡ä»¶ï¼Ÿç®—ç©ºè½¬ç§»å—ï¼ŸåŠ ä¸Š'$'æ˜¯å®Œæ•´çš„ï¼Œä»£è¡¨ä»€ä¹ˆï¼Ÿ
 	    Q = [0,3) S = { 0  1  2 } f = 2 Qmap_inverse = { 'a'->0  'b'->1 }
 		follow = 0->{ 1 2 } 1->{ 1 2 }
 		current = {}
-		 RBFA2¡ª¡ª¡ª¡ª
+		 RBFA2â€”â€”â€”â€”
 		Q = [0,3) S = { 2 } f = 2 Qmap_inverse = { 'a'->0  'b'->1  '$'->2 }
 		follow = 0->{ 1 2 } 1->{ 1 2 } 
 		current = {}
 			 **/
-		cout << "ÒÔÏÂ·Ö±ğÊä³ölbfa1ºÍlbfa2¸÷×Ô×ª»»µÄDFAºÍlbfa1Í¨¹ıÁíÍâÒ»ÖÖ·½Ê½Êä³öµÄDFA\n" << endl;
-		DFA DFA1 = lbfa1.determinism();
-		cout << "¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªDFA1_lbfa1:" << DFA1 << endl;//¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª³É¹¦×ª»»³ÉDFA
-		DFA DFA2 = lbfa2.determinism();
-		cout << "¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªDFA1_lbfa2:" << DFA2 << endl;//¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª³É¹¦×ª»»³ÉDFA
+		cout << "ä»¥ä¸‹åˆ†åˆ«è¾“å‡ºlbfa1å’Œlbfa2å„è‡ªè½¬æ¢çš„DFAå’Œlbfa1é€šè¿‡å¦å¤–ä¸€ç§æ–¹å¼è¾“å‡ºçš„DFA\n" << endl;
+		DFA BSTest1_dfa1 = lbfa1.determinism();
+		cout << "â€”â€”â€”â€”BSTest1_dfa1:" << BSTest1_dfa1 << endl;//â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”æˆåŠŸè½¬æ¢æˆDFA
+		DFA BSTest1_dfa2 = lbfa2.determinism();
+		cout << "â€”â€”â€”â€”BSTest1_dfa2:" << BSTest1_dfa2 << endl;//â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”æˆåŠŸè½¬æ¢æˆDFA
 		
-		DFA dfa = test.LBFA2DFA(lbfa1);
-		cout << dfa << endl;
-
-		minTest(DFA1);
-		minTest(DFA2);
-
-
+		DFA BSTest1_dfa3 = test.LBFA2DFA(lbfa1);
+		cout << "â€”â€”â€”â€”BSTest1_dfa3:" << BSTest1_dfa3 << endl;
 		/**
-		DFA¡ª¡ª¡ª¡ªÓÉ×´Ì¬×ªÒÆÍ¼¿ÉµÃRE=(a|1)b*
+		DFAâ€”â€”â€”â€”ç”±çŠ¶æ€è½¬ç§»å›¾å¯å¾—RE=(a|1)b*
 		Q = [0,3) S = { 0 } F = { 0  1  2 }
 		Transitions = 0->{ 'a'->1  'b'->2 } 1->{ 'b'->2 } 2->{ 'b'->2 }
 		current = -1
 		**/
-		
+		FiniteAutomata ffa1;
+		ffa1.perform(BSTest1_dfa1, "BSTest1_dfa1.ADS");
+		FiniteAutomata ffa2;
+		ffa2.perform(BSTest1_dfa2, "BSTest1_dfa2.ADS");
+		FiniteAutomata ffa3;
+		ffa3.perform(BSTest1_dfa3, "BSTest1_dfa3.ADS");
 	}
 	void BSTest2()
 	{
@@ -345,57 +328,58 @@ public:
 		RBFA rbfa1, rbfa2;
 		RE re;
 		test.reExample2_9noStar(re);
-		cout << "ÑùÀı2£¬RE=£¨a¡Èb)ab: " << re << endl; // . . | 'a' 'b' 'a' 'b'
+		cout << "æ ·ä¾‹2ï¼ŒRE=ï¼ˆaâˆªb)ab: " << re << endl; // . . | 'a' 'b' 'a' 'b'
 
 		lbfa1 = BerrySethi(re);
 		lbfa2 = BS_variation(re);
 		rbfa1 = BerrySethLdual(re);
 		rbfa2 = BS_variation_dual(re);
-		cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªLBFA1:\n" << lbfa1 << endl;
-		cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªLBFA2:\n" << lbfa2 << endl;
-		cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªRBFA1:\n" << rbfa1 << endl;
-		cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªrBFA2:\n" << rbfa2 << endl;
+		cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”LBFA1:\n" << lbfa1 << endl;
+		cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”LBFA2:\n" << lbfa2 << endl;
+		cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”RBFA1:\n" << rbfa1 << endl;
+		cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”rBFA2:\n" << rbfa2 << endl;
 		/**
-	     LBFA1¡ª¡ª¡ª¡ª»­×´Ì¬Í¼µÃRE=£¨a¡Èb)ab
+	     LBFA1â€”â€”â€”â€”ç”»çŠ¶æ€å›¾å¾—RE=ï¼ˆaâˆªb)ab
 	     Q = [0,5) s = 4 F = { 3 }
 	     Qmap_inverse = { 'a'->0  'b'->1  'a'->2  'b'->3 }
 	     follow = 0->{ 2 } 1->{ 2 } 2->{ 3 } 3->{} 4->{ 0  1 }
 	     current = {}
-		 LBFA2¡ª¡ª¡ª¡ª
+		 LBFA2â€”â€”â€”â€”
 		 Q = [0,5) s = 0 F = { 4 }
 		 Qmap_inverse = { '$'->1 'a'->1  'b'->2  'a'->3  'b'->4 }
 		 follow = 0->{ 1 2 } 1->{ 3 } 2->{ 3 } 3->{ 4 } 4->{ }
 		 current = {}
-		 RBFA1¡ª¡ª¡ª¡ªÈç¹û°Ñs=0/1µÄÈë¿Ú'a''b'Ëã½øÈ¥¾ÍÊÇÕıÈ·µÄ£¬µ«ÊÇÈ±ÉÙ3->4µÄ×ªÒÆÌõ¼ş£¿Ëã¿Õ×ªÒÆÂğ£¿¼ÓÉÏ'$'ÊÇÍêÕûµÄ£¬´ú±íÊ²Ã´£¿
+		 RBFA1â€”â€”â€”â€”å¦‚æœæŠŠs=0/1çš„å…¥å£'a''b'ç®—è¿›å»å°±æ˜¯æ­£ç¡®çš„ï¼Œä½†æ˜¯ç¼ºå°‘3->4çš„è½¬ç§»æ¡ä»¶ï¼Ÿç®—ç©ºè½¬ç§»å—ï¼ŸåŠ ä¸Š'$'æ˜¯å®Œæ•´çš„ï¼Œä»£è¡¨ä»€ä¹ˆï¼Ÿ
 		 Q = [0,5) s = { 0 1 } F = 4
 		 Qmap_inverse = { 'a'->0  'b'->1  'a'->2  'b'->3 }
 		 follow = 0->{ 2 } 1->{ 2 } 2->{ 3 } 3->{ 4 } 
 		 current = {}
-		 RBFA2¡ª¡ª¡ª¡ª
+		 RBFA2â€”â€”â€”â€”
 		 Q = [0,5) s = { 4 } F = 4
 		 Qmap_inverse = { 'a'->0  'b'->1  'a'->2  'b'->3 '$'->4 }
 		 follow = 0->{ 2 } 1->{ 2 } 2->{ 3 } 3->{ 4 }
 		 current = {}
 			 **/
-		cout << "ÒÔÏÂ·Ö±ğÊä³ölbfa1ºÍlbfa2¸÷×Ô×ª»»µÄDFAºÍlbfa1Í¨¹ıÁíÍâÒ»ÖÖ·½Ê½Êä³öµÄDFA\n" << endl;
-		DFA DFA1 = lbfa1.determinism();
-		cout << "¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªDFA1_lbfa1:" << DFA1 << endl;//¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª³É¹¦×ª»»³ÉDFA
-		DFA DFA2 = lbfa2.determinism();
-		cout << "¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªDFA1_lbfa2:" << DFA2 << endl;//¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª³É¹¦×ª»»³ÉDFA
+		cout << "ä»¥ä¸‹åˆ†åˆ«è¾“å‡ºlbfa1å’Œlbfa2å„è‡ªè½¬æ¢çš„DFAå’Œlbfa1é€šè¿‡å¦å¤–ä¸€ç§æ–¹å¼è¾“å‡ºçš„DFA\n" << endl;
+		DFA BSTest2_dfa1 = lbfa1.determinism();
+		cout << "â€”â€”â€”â€”BSTest2_dfa1:" << BSTest2_dfa1 << endl;//â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”æˆåŠŸè½¬æ¢æˆDFA
+		DFA BSTest2_dfa2 = lbfa2.determinism();
+		cout << "â€”â€”â€”â€”BSTest2_dfa2:" << BSTest2_dfa2 << endl;//â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”æˆåŠŸè½¬æ¢æˆDFA
 		
-		DFA dfa = test.LBFA2DFA(lbfa1);
-		cout << dfa << endl;
+		DFA BSTest2_dfa3 = test.LBFA2DFA(lbfa1);
+		cout << "â€”â€”â€”â€”BSTest2_dfa3:" << BSTest2_dfa3 << endl;
 		/**
-	    DFA¡ª¡ª¡ª¡ª»­×´Ì¬Í¼µÃRE=£¨a¡Èb)ab
+	    DFAâ€”â€”â€”â€”ç”»çŠ¶æ€å›¾å¾—RE=ï¼ˆaâˆªb)ab
     	 Q = [0,5) 	S = { 0 } 	F = { 4 }
 	     Transitions = 0->{ 'a'->1  'b'->2 }  1->{ 'a'->3 }	2->{ 'a'->3 } 3->{ 'b'->4 }
 	     4->{} current = -1
 	     **/
-
-		minTest(DFA1);
-		minTest(DFA2);
-		minTest(dfa);
-
+		FiniteAutomata ffa1;
+		ffa1.perform(BSTest2_dfa1, "BSTest2_dfa1.ADS");
+		FiniteAutomata ffa2;
+		ffa2.perform(BSTest2_dfa2, "BSTest2_dfa2.ADS");
+		FiniteAutomata ffa3;
+		ffa3.perform(BSTest2_dfa3, "BSTest2_dfa3.ADS");
 	}
 	
 	void BSTest3()
@@ -406,51 +390,51 @@ public:
 		RBFA rbfa1, rbfa2;
 		RE re;
 		test.reExample2_9Star(re);
-		cout << "ÑùÀı3£¬RE=(£¨a¡Èb)*)ab: " << re << endl; // . . * | 'a' 'b' 'a' 'b'
+		cout << "æ ·ä¾‹3ï¼ŒRE=(ï¼ˆaâˆªb)*)ab: " << re << endl; // . . * | 'a' 'b' 'a' 'b'
 
 
 		lbfa1 = BerrySethi(re);
 		lbfa2 = BS_variation(re);
 		rbfa1 = BerrySethLdual(re);
 		rbfa2 = BS_variation_dual(re);
-		cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªLBFA1:\n" << lbfa1 << endl;
-		cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªLBFA2:\n" << lbfa2 << endl;
-		cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªRBFA1:\n" << rbfa1 << endl;
-		cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªrBFA2:\n" << rbfa2 << endl;
+		cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”LBFA1:\n" << lbfa1 << endl;
+		cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”LBFA2:\n" << lbfa2 << endl;
+		cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”RBFA1:\n" << rbfa1 << endl;
+		cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”rBFA2:\n" << rbfa2 << endl;
 		/**
-	     LBFA¡ª¡ª¡ª¡ªÓÉ×´Ì¬×ªÒÆÍ¼¿ÉµÃRE=(a¡Èb)*ab¡ª¡ª¡ª¡ª¼ÓÁËĞÂµÄ×´Ì¬q4×÷ÎªÎ¨Ò»ÆğÊ¼×´Ì¬Ê¹µÃ ÉÙÁËRFAÖĞÖ»ÓĞÒ»¸öbµÄÇé¿ö
+	     LBFAâ€”â€”â€”â€”ç”±çŠ¶æ€è½¬ç§»å›¾å¯å¾—RE=(aâˆªb)*abâ€”â€”â€”â€”åŠ äº†æ–°çš„çŠ¶æ€q4ä½œä¸ºå”¯ä¸€èµ·å§‹çŠ¶æ€ä½¿å¾— å°‘äº†RFAä¸­åªæœ‰ä¸€ä¸ªbçš„æƒ…å†µ
 	     Q = [0,5)  s = 4  F = { 3 }
 	     Qmap_inverse = { 'a'->0  'b'->1  'a'->2  'b'->3 }
          follow = 0->{ 0  1  2 }   1->{ 0  1  2 }  2->{ 3 }  3->{}   4 ->{ 0 1 2 }
 	     current = {}
-		 LBFA2¡ª¡ª¡ª¡ªÓÉ×´Ì¬×ªÒÆÍ¼¿ÉµÃRE=(a¡Èb)*ab
+		 LBFA2â€”â€”â€”â€”ç”±çŠ¶æ€è½¬ç§»å›¾å¯å¾—RE=(aâˆªb)*ab
 		 Q = [0,5)  s = 0  F = { 4 }
 		 Qmap_inverse = { '$'->0  'a'->1  'b'->2  'a'->3  'b'->4 }
 		 follow = 0->{ 1  2  3 }   1->{ 1  2  3 }  2->{ 1  2  3 }  3->{ 4 }   4 ->{ }
 		 current = {}
 
 
-		 RBFA1¡ª¡ª¡ª¡ª°ÑÊäÈëËãÉÏÒ²ÊÇ¶ÔµÄ£¬´óÖÂÇé¿öÍ¬ÉÏËùÊö£¨¼ÇµÃ°´ÕÕÉÏÃæ¸Ä¹ıµÄ¸Ä+×¢ÊÍÒ»ÏÂ£©
+		 RBFA1â€”â€”â€”â€”æŠŠè¾“å…¥ç®—ä¸Šä¹Ÿæ˜¯å¯¹çš„ï¼Œå¤§è‡´æƒ…å†µåŒä¸Šæ‰€è¿°ï¼ˆè®°å¾—æŒ‰ç…§ä¸Šé¢æ”¹è¿‡çš„æ”¹+æ³¨é‡Šä¸€ä¸‹ï¼‰
 		 Q = [0,5)  s = { 0  1  2 }  F = 4
 		 Qmap_inverse = { 'a'->0  'b'->1  'a'->2  'b'->3 }
 		 follow = 0->{ 0  1  2 }   1->{ 0  1  2 }  2->{ 3 }  3->{ 4 }   4 ->{ }
 		 current = {}
-		 RBFA2¡ª¡ª¡ª¡ª´óÖÂÇé¿öÍ¬ÉÏËùÊö£¨¼ÇµÃ°´ÕÕÉÏÃæ¸Ä¹ıµÄ¸Ä+×¢ÊÍÒ»ÏÂ£©
+		 RBFA2â€”â€”â€”â€”å¤§è‡´æƒ…å†µåŒä¸Šæ‰€è¿°ï¼ˆè®°å¾—æŒ‰ç…§ä¸Šé¢æ”¹è¿‡çš„æ”¹+æ³¨é‡Šä¸€ä¸‹ï¼‰
 		 Q = [0,5)  s = 4  F = { 4 }
 		 Qmap_inverse = { 'a'->0  'b'->1  'a'->2  'b'->3  '$'->4  }
 		 follow = 0->{ 0  1  2 }   1->{ 0  1  2 }  2->{ 3 }  3->{ 4 }   4 ->{ }
 		 current = {}
 			 **/
-		cout << "ÒÔÏÂ·Ö±ğÊä³ölbfa1ºÍlbfa2¸÷×Ô×ª»»µÄDFAºÍlbfa1Í¨¹ıÁíÍâÒ»ÖÖ·½Ê½Êä³öµÄDFA\n" << endl;
-		DFA DFA1 = lbfa1.determinism();
-		cout << "¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªDFA1_lbfa1:" << DFA1 << endl;//¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª³É¹¦×ª»»³ÉDFA
-		DFA DFA2 = lbfa2.determinism();
-		cout << "¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªDFA1_lbfa2:" << DFA2 << endl;//¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª³É¹¦×ª»»³ÉDFA
+		cout << "ä»¥ä¸‹åˆ†åˆ«è¾“å‡ºlbfa1å’Œlbfa2å„è‡ªè½¬æ¢çš„DFAå’Œlbfa1é€šè¿‡å¦å¤–ä¸€ç§æ–¹å¼è¾“å‡ºçš„DFA\n" << endl;
+		DFA BSTest3_dfa1 = lbfa1.determinism();
+		cout << "â€”â€”â€”â€”BSTest3_dfa1:" << BSTest3_dfa1 << endl;//â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”æˆåŠŸè½¬æ¢æˆDFA
+		DFA BSTest3_dfa2 = lbfa2.determinism();
+		cout << "â€”â€”â€”â€”BSTest3_dfa2:" << BSTest3_dfa2 << endl;//â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”æˆåŠŸè½¬æ¢æˆDFA
 		
-		DFA dfa = test.LBFA2DFA(lbfa1);
-		cout << dfa << endl;
+		DFA BSTest3_dfa3 = test.LBFA2DFA(lbfa1);
+		cout << "â€”â€”â€”â€”BSTest3_dfa3:" << BSTest3_dfa3 << endl;
 		/**
-		DFA from LBFA(¡ª¡ª¡ª¡ªÓÉ×´Ì¬×ªÒÆÍ¼µÃ³öRE=(a¡Èb)*ab)
+		DFA from LBFA(â€”â€”â€”â€”ç”±çŠ¶æ€è½¬ç§»å›¾å¾—å‡ºRE=(aâˆªb)*ab)
 		Q = [0,4)  S = { 0 }   F = { 3 }
 		Transitions =
 		0->{ 'a'->1  'b'->2 }
@@ -459,9 +443,12 @@ public:
 		3->{ 'a'->1  'b'->2 }
 		current = -1
 		 **/
-		minTest(DFA1);
-		minTest(DFA2);
-		minTest(dfa);
+		FiniteAutomata ffa1;
+		ffa1.perform(BSTest3_dfa1, "BSTest3_dfa1.ADS");
+		FiniteAutomata ffa2;
+		ffa2.perform(BSTest3_dfa2, "BSTest3_dfa2.ADS");
+		FiniteAutomata ffa3;
+		ffa3.perform(BSTest3_dfa3, "BSTest3_dfa3.ADS");
       }
 	void BSTest4()
 	{
@@ -471,48 +458,48 @@ public:
 		RBFA rbfa1, rbfa2;
 		RE re;
 		test.ex4(re);
-		cout << "ÑùÀı4£¬RE=(a+b)*a+(aa)*: " << re << endl; // | . * | 'a' 'b' 'a' * . 'a' 'a'
+		cout << "æ ·ä¾‹4ï¼ŒRE=(a+b)*a+(aa)*: " << re << endl; // | . * | 'a' 'b' 'a' * . 'a' 'a'
 
 		lbfa1 = BerrySethi(re);
 		lbfa2 = BS_variation(re);
 		rbfa1 = BerrySethLdual(re);
 		rbfa2 = BS_variation_dual(re);
-		cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªLBFA1:\n" << lbfa1 << endl;
-		cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªLBFA2:\n" << lbfa2 << endl;
-		cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªRBFA1:\n" << rbfa1 << endl;
-		cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªrBFA2:\n" << rbfa2 << endl;
+		cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”LBFA1:\n" << lbfa1 << endl;
+		cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”LBFA2:\n" << lbfa2 << endl;
+		cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”RBFA1:\n" << rbfa1 << endl;
+		cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”rBFA2:\n" << rbfa2 << endl;
 		/**
-		 LBFA1¡ª¡ª¡ª¡ª»­×´Ì¬Í¼µÃRE=(a+b)*a+(aa)*
+		 LBFA1â€”â€”â€”â€”ç”»çŠ¶æ€å›¾å¾—RE=(a+b)*a+(aa)*
 		 Q = [0,6) s = 5 F = { 2 4 5 }
 		 Qmap_inverse = { 'a'->0  'b'->1  'a'->2  'a'->3  'a'->4 }
 		 follow = 0->{ 0 1 2 } 1->{ 0 1 2 } 2->{} 3->{ 4 } 4->{ 3 } 5->{ 0 1 2 3 }
 		 current = {}
-		 LBFA2¡ª¡ª¡ª¡ª»­×´Ì¬Í¼µÃRE=(a+b)*a+(aa)*
+		 LBFA2â€”â€”â€”â€”ç”»çŠ¶æ€å›¾å¾—RE=(a+b)*a+(aa)*
 		 Q = [0,6) s = 0 F = { 0 3 5 }
 		 Qmap_inverse = { '$'->0  'a'->1  'b'->2  'a'->3  'a'->4  'a'->5 }
 		 follow = 0->{ 1 2 3 4 } 1->{ 1 2 3 } 2->{ 1 2 3 } 3->{} 4->{ 5 } 5->{ 4 } 
 		 current = {}
-		 RBFA1¡ª¡ª¡ª¡ªRE=(a+b)*a+(aa)*
+		 RBFA1â€”â€”â€”â€”RE=(a+b)*a+(aa)*
 		 Q = [0,6) s = {  0 1 2 3 5 } F = 5
 		 Qmap_inverse = { 'a'->0  'b'->1  'a'->2  'a'->3  'a'->4 }
 		 follow = 0->{ 0 1 2 } 1->{ 0 1 2 } 2->{ 5 } 3->{ 4 } 4->{ 3 5 } 5->{ }
 		 current = {}
-		 RBFA2¡ª¡ª¡ª¡ªRE=(a+b)*a+(aa)*
+		 RBFA2â€”â€”â€”â€”RE=(a+b)*a+(aa)*
 		 Q = [0,6) s = { 5 } F = 5
 		 Qmap_inverse = { 'a'->0  'b'->1  'a'->2  'a'->3  'a'->4 '$'->5 }
 		 follow = 0->{ 0 1 2 } 1->{ 0 1 2 } 2->{ 5 } 3->{ 4 } 4->{ 3 5 } 5->{ }
 		 current = {}
 			 **/
-		cout << "ÒÔÏÂ·Ö±ğÊä³ölbfa1ºÍlbfa2¸÷×Ô×ª»»µÄDFAºÍlbfa1Í¨¹ıÁíÍâÒ»ÖÖ·½Ê½Êä³öµÄDFA\n" << endl;
-		DFA DFA1 = lbfa1.determinism();
-		cout << "¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªDFA1_lbfa1:" << DFA1 << endl;//¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª³É¹¦×ª»»³ÉDFA
-		DFA DFA2 = lbfa2.determinism();
-		cout << "¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªDFA1_lbfa2:" << DFA2 << endl;//¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª³É¹¦×ª»»³ÉDFA
+		cout << "ä»¥ä¸‹åˆ†åˆ«è¾“å‡ºlbfa1å’Œlbfa2å„è‡ªè½¬æ¢çš„DFAå’Œlbfa1é€šè¿‡å¦å¤–ä¸€ç§æ–¹å¼è¾“å‡ºçš„DFA\n" << endl;
+		DFA BSTest4_dfa1 = lbfa1.determinism();
+		cout << "â€”â€”â€”â€”BSTest4_dfa1:" << BSTest4_dfa1 << endl;//â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”æˆåŠŸè½¬æ¢æˆDFA
+		DFA BSTest4_dfa2 = lbfa2.determinism();
+		cout << "â€”â€”â€”â€”BSTest4_dfa2:" << BSTest4_dfa2 << endl;//â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”æˆåŠŸè½¬æ¢æˆDFA
 		
-		DFA dfa = test.LBFA2DFA(lbfa1);
-		cout << dfa << endl;
+		DFA BSTest4_dfa3 = test.LBFA2DFA(lbfa1);
+		cout << "â€”â€”â€”â€”BSTest4_dfa3:" << BSTest4_dfa3 << endl;
 		/**
-		DFA¡ª¡ª¡ª¡ª»­×´Ì¬Í¼µÃRE=(a+b)*a+(aa)*
+		DFAâ€”â€”â€”â€”ç”»çŠ¶æ€å›¾å¾—RE=(a+b)*a+(aa)*
 		 Q = [0,5) 	S = { 0 } 	F = { 0 1 3 4 }
 		Transitions =
 		0->{ 'a'->1  'b'->2 }
@@ -522,10 +509,12 @@ public:
 		4->{ 'a'->4  'b'->2 }
 		current = -1
 		 **/
-
-		minTest(DFA1);
-		minTest(DFA2);
-		minTest(dfa);
+		FiniteAutomata ffa1;
+		ffa1.perform(BSTest4_dfa1, "BSTest4_dfa1.ADS");
+		FiniteAutomata ffa2;
+		ffa2.perform(BSTest4_dfa2, "BSTest4_dfa2.ADS");
+		FiniteAutomata ffa3;
+		ffa3.perform(BSTest4_dfa3, "BSTest4_dfa3.ADS");
 	}
 	void BSTest5()
 	{
@@ -535,48 +524,48 @@ public:
 		RBFA rbfa1, rbfa2;
 		RE re;
 		test.ex5(re);
-		cout << "ÑùÀı5£¬RE=((a | epsilon)+)b?cd*|(empty()): " << re << endl; // | . . . + | 'a' 1 ? 'a' 'c' * 'd' 0
+		cout << "æ ·ä¾‹5ï¼ŒRE=((a | epsilon)+)b?cd*|(empty()): " << re << endl; // | . . . + | 'a' 1 ? 'a' 'c' * 'd' 0
 
 		lbfa1 = BerrySethi(re);
 		lbfa2 = BS_variation(re);
 		rbfa1 = BerrySethLdual(re);
 		rbfa2 = BS_variation_dual(re);
-		cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªLBFA1:\n" << lbfa1 << endl;
-		cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªLBFA2:\n" << lbfa2 << endl;
-		cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªRBFA1:\n" << rbfa1 << endl;
-		cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªrBFA2:\n" << rbfa2 << endl;
+		cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”LBFA1:\n" << lbfa1 << endl;
+		cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”LBFA2:\n" << lbfa2 << endl;
+		cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”RBFA1:\n" << rbfa1 << endl;
+		cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”rBFA2:\n" << rbfa2 << endl;
 		/**
-	     LBFA1¡ª¡ª¡ª¡ª»­×´Ì¬Í¼µÃRE=((a | epsilon)+)b?cd*|(empty())
+	     LBFA1â€”â€”â€”â€”ç”»çŠ¶æ€å›¾å¾—RE=((a | epsilon)+)b?cd*|(empty())
 	     Q = [0,5) s = 4 F = { 2 3 }
 	     Qmap_inverse = { 'a'->0  'b'->1  'c'->2  'd'->3  }
 	     follow = 0->{ 0 1 2 }   1->{ 2 }  2->{ 3 }  3->{ 3 }  4->{ 0 1 2 }
 	     current = {}
-		 LBFA2¡ª¡ª¡ª¡ª»­×´Ì¬Í¼µÃRE=((a | epsilon)+)b?cd*|(empty())
+		 LBFA2â€”â€”â€”â€”ç”»çŠ¶æ€å›¾å¾—RE=((a | epsilon)+)b?cd*|(empty())
 		 Q = [0,5) s = 0 F = { 3 4 }
 	     Qmap_inverse = { '$'->0  'a'->1  'b'->2  'c'->3  'd'->4  }
 	     follow = 0->{ 1 2 3 }   1->{ 1  2  3 }  2->{ 3 }  3->{ 4 }  4->{ 4 }
 	     current = {}
-		 RBFA1¡ª¡ª¡ª¡ª»­×´Ì¬Í¼µÃRE=((a | epsilon)+)b?cd*|(empty())
+		 RBFA1â€”â€”â€”â€”ç”»çŠ¶æ€å›¾å¾—RE=((a | epsilon)+)b?cd*|(empty())
 		 Q = [0,5) s = { 0 1 2 } F = 4
 	     Qmap_inverse = { 'a'->0  'b'->1  'c'->2  'd'->3  }
 	     follow = 0->{ 0 1 2 }   1->{ 2 }  2->{ 3 4 }  3->{ 3 4 }  4->{}
 	     current = {}
-		 RBFA2¡ª¡ª¡ª¡ª»­×´Ì¬Í¼µÃRE=((a | epsilon)+)b?cd*|(empty())
+		 RBFA2â€”â€”â€”â€”ç”»çŠ¶æ€å›¾å¾—RE=((a | epsilon)+)b?cd*|(empty())
 		 Q = [0,5) s = { 4 } F = 4
 	     Qmap_inverse = { 'a'->0  'b'->1  'c'->2  'd'->3  '$'->4 }
 	     follow = 0->{ 0  1  2 }   1->{ 2 }  2->{ 3 4 }  3->{ 3 4 }  4->{}
 	     current = {}
 			 **/
-		cout << "ÒÔÏÂ·Ö±ğÊä³ölbfa1ºÍlbfa2¸÷×Ô×ª»»µÄDFAºÍlbfa1Í¨¹ıÁíÍâÒ»ÖÖ·½Ê½Êä³öµÄDFA\n" << endl;
-		DFA DFA1 = lbfa1.determinism();
-		cout << "¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªDFA1_lbfa1:" << DFA1 << endl;//¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª³É¹¦×ª»»³ÉDFA
-		DFA DFA2 = lbfa2.determinism();
-		cout << "¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªDFA1_lbfa2:" << DFA2 << endl;//¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª³É¹¦×ª»»³ÉDFA
+		cout << "ä»¥ä¸‹åˆ†åˆ«è¾“å‡ºlbfa1å’Œlbfa2å„è‡ªè½¬æ¢çš„DFAå’Œlbfa1é€šè¿‡å¦å¤–ä¸€ç§æ–¹å¼è¾“å‡ºçš„DFA\n" << endl;
+		DFA BSTest5_dfa1 = lbfa1.determinism();
+		cout << "â€”â€”â€”â€”BSTest5_dfa1:" << BSTest5_dfa1 << endl;//â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”æˆåŠŸè½¬æ¢æˆDFA
+		DFA BSTest5_dfa2 = lbfa2.determinism();
+		cout << "â€”â€”â€”â€”BSTest5_dfa2:" << BSTest5_dfa2 << endl;//â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”æˆåŠŸè½¬æ¢æˆDFA
 		
-		DFA dfa = test.LBFA2DFA(lbfa1);
-		cout << dfa << endl;
+		DFA BSTest5_dfa3 = test.LBFA2DFA(lbfa1);
+		cout << "â€”â€”â€”â€”BSTest5_dfa3:" << BSTest5_dfa3 << endl;
 		/**
-	     DFA¡ª¡ª¡ª¡ª»­×´Ì¬Í¼µÃRE=((a | epsilon)+)b?cd*|(empty())
+	     DFAâ€”â€”â€”â€”ç”»çŠ¶æ€å›¾å¾—RE=((a | epsilon)+)b?cd*|(empty())
 	     Q = [0,5) 	S = { 0 } 	F = { 3 4 }
 	     Transitions =
 	     0->{ 'a'->1  'b'->2  'c'->3 }
@@ -586,16 +575,18 @@ public:
 	     4->{ 'd'->4 }
 	     current = -1
 	      **/
-
-		minTest(DFA1);
-		minTest(DFA2);
-		minTest(dfa);
+		FiniteAutomata ffa1;
+		ffa1.perform(BSTest5_dfa1, "BSTest5_dfa1.ADS");
+		FiniteAutomata ffa2;
+		ffa2.perform(BSTest5_dfa2, "BSTest5_dfa2.ADS");
+		FiniteAutomata ffa3;
+		ffa3.perform(BSTest5_dfa3, "BSTest5_dfa3.ADS");
 	}
 void BSTest()
 {
-	cout << "=====BSTest²âÊÔ11111=====\n";
-	BSTestClass test;//Reg_RE_Test()ÓÃÀ´²âÊÔRE¹¹ÔìÊÇ·ñÕıÈ·£»
-	//´ÓÉÏÍùÏÂÒÀ´ÎÎªREÑùÀı1-5
+	cout << "=====BSTestæµ‹è¯•=====\n";
+	//BSTestClass test;//Reg_RE_Test()ç”¨æ¥æµ‹è¯•REæ„é€ æ˜¯å¦æ­£ç¡®ï¼›
+	//ä»ä¸Šå¾€ä¸‹ä¾æ¬¡ä¸ºREæ ·ä¾‹1-5
 	//test.Reg_RE_Test();
 	BSTest1();
 	BSTest2();

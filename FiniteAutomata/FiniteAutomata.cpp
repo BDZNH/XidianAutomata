@@ -426,7 +426,7 @@ bool FiniteAutomata::operator==(FiniteAutomata & D)
 
 bool FiniteAutomata::check(const state& t)
 {
-	if (t < 999 && t >= 0)
+	if (t < num_state && t >= 0)
 		return true;
 	else
 		return false;
@@ -466,7 +466,7 @@ std::istream& operator>>(std::istream& input, FiniteAutomata& D)
 		}
 		else
 		{
-			std::cout << "Invalid argument: " << temp << std::endl;
+			std::cout << "Invalid value: " << temp << std::endl;
 		}
 
 	}

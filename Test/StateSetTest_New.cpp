@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include"StateSet.h"
 
 using namespace std;
@@ -6,11 +6,18 @@ using namespace std;
 class StateSetTest_NewClass
 {
 public:
+	StateSetTest_NewClass()
+	{
+		cout << "**********************" << endl;
+		cout << "     StateSetTest" << endl;
+		cout << "**********************" << endl;
+	}
+
 	/**************************************************
-				  ·ÖÅä¼°¼ì²é·ÖÅä×´Ì¬Êý²âÊÔ
-	²âÊÔº¯Êý£º
-	1.set_domain(const int r)   ÎªÒ»¸öStateSetÀà·ÖÅä´óÐ¡ÎªrµÄ×´Ì¬³Ø
-	2.domain()                  ·µ»Ø·ÖÅäµÄ×´Ì¬Êý
+				  åˆ†é…åŠæ£€æŸ¥åˆ†é…çŠ¶æ€æ•°æµ‹è¯•
+	æµ‹è¯•å‡½æ•°ï¼š
+	1.set_domain(const int r)   ä¸ºä¸€ä¸ªStateSetç±»åˆ†é…å¤§å°ä¸ºrçš„çŠ¶æ€æ± 
+	2.domain()                  è¿”å›žåˆ†é…çš„çŠ¶æ€æ•°
 	**************************************************/
 	void AllocatingTest()
 	{
@@ -22,11 +29,11 @@ public:
 	}
 
 	/************************************************
-					Ìí¼Ó/È¥³ý×´Ì¬²âÊÔ
-	²âÊÔº¯Êý:
-	1.add(const State r)          Ìí¼Ó×´Ì¬r
-	2.remove(const State r)       ÒÆ³ý×´Ì¬r
-	3.remove(const StateSet& r)   ÒÆ³ýStateSet rÖÐ°üº¬µÄ×´Ì¬
+					æ·»åŠ /åŽ»é™¤çŠ¶æ€æµ‹è¯•
+	æµ‹è¯•å‡½æ•°:
+	1.add(const State r)          æ·»åŠ çŠ¶æ€r
+	2.remove(const State r)       ç§»é™¤çŠ¶æ€r
+	3.remove(const StateSet& r)   ç§»é™¤StateSet rä¸­åŒ…å«çš„çŠ¶æ€
 	*************************************************/
 	void Add_RemoveTest()
 	{
@@ -48,13 +55,13 @@ public:
 	}
 
 	/***********************************************************
-							¼ì²é×´Ì¬²âÊÔ
-	²âÊÔº¯Êý:
-	1.empty()                      Ìí¼Ó×´Ì¬Óë·ñ
-	2.size()				       Ìí¼Ó×´Ì¬ÊýÄ¿
-	3.contains(state r)            ÊÇ·ñÌí¼ÓÁË×´Ì¬r
-	4.contains(StateSet &r)		   Ìí¼ÓµÄ×´Ì¬ÊÇ·ñ°üº¬StateSet rÖÐÌí¼ÓµÄ×´Ì¬
-	5.not_disjoint(StateSet &r)    *thisÓërÊÇ·ñÓÐÏà½»£¨×´Ì¬±àºÅÏàÍ¬£©µÄ×´Ì¬
+							æ£€æŸ¥çŠ¶æ€æµ‹è¯•
+	æµ‹è¯•å‡½æ•°:
+	1.empty()                      æ·»åŠ çŠ¶æ€ä¸Žå¦
+	2.size()				       æ·»åŠ çŠ¶æ€æ•°ç›®
+	3.contains(state r)            æ˜¯å¦æ·»åŠ äº†çŠ¶æ€r
+	4.contains(StateSet &r)		   æ·»åŠ çš„çŠ¶æ€æ˜¯å¦åŒ…å«StateSet rä¸­æ·»åŠ çš„çŠ¶æ€
+	5.not_disjoint(StateSet &r)    *thisä¸Žræ˜¯å¦æœ‰ç›¸äº¤ï¼ˆçŠ¶æ€ç¼–å·ç›¸åŒï¼‰çš„çŠ¶æ€
 	***********************************************************/
 	void CheckStateTest()
 	{
@@ -103,12 +110,12 @@ public:
 	}
 
 	/******************************************
-				  ²éÕÒ×´Ì¬¹¦ÄÜ²âÊÔ
-	²âÊÔº¯Êý£º
-	1.smallest()			  ·µ»Ø±àºÅ×îÐ¡×´Ì¬
-	2.iter_start(State &r)	  Áîr=¿ªÊ¼£¨×îÐ¡£©×´Ì¬±àºÅ£¬²¢·µ»Ø
-	3.iter_end(State &r)	  rÊÇ·ñÎª½áÊø×´Ì¬
-	4.iter_next(State &r)	  ×´Ì¬rµÄÏÂÒ»¸ö×´Ì¬
+				  æŸ¥æ‰¾çŠ¶æ€åŠŸèƒ½æµ‹è¯•
+	æµ‹è¯•å‡½æ•°ï¼š
+	1.smallest()			  è¿”å›žç¼–å·æœ€å°çŠ¶æ€
+	2.iter_start(State &r)	  ä»¤r=å¼€å§‹ï¼ˆæœ€å°ï¼‰çŠ¶æ€ç¼–å·ï¼Œå¹¶è¿”å›ž
+	3.iter_end(State &r)	  ræ˜¯å¦ä¸ºç»“æŸçŠ¶æ€
+	4.iter_next(State &r)	  çŠ¶æ€rçš„ä¸‹ä¸€ä¸ªçŠ¶æ€
 	******************************************/
 	void SearchStateTest()
 	{
@@ -119,23 +126,23 @@ public:
 
 		s.add(0).add(1).add(2);
 
-		cout << "s smallese state number£º" << s.smallest() << endl;//0
+		cout << "s smallese state numberï¼š" << s.smallest() << endl;//0
 		assert(s.smallest() == 0);
 		State i = 1;
 		cout << "i=" << i << endl;
-		cout << "s initial state number(s.iter_start(i))£º" << s.iter_start(i) << endl;//0
+		cout << "s initial state number(s.iter_start(i))ï¼š" << s.iter_start(i) << endl;//0
 		cout << "now i=" << i << endl;//0
-		cout << "the next state of 0£º" << s.iter_next(i) << endl;//1
+		cout << "the next state of 0ï¼š" << s.iter_next(i) << endl;//1
 		i = 2;
-		cout << "the next state of 2£º" << s.iter_next(i) << endl;//null
+		cout << "the next state of 2ï¼š" << s.iter_next(i) << endl;//null
 		cout << "end with state 2?" << s.iter_end(i) << endl;//1
 		i = 1;
 		cout << "end with state 1?" << s.iter_end(i) << endl;//0
 	}
 
 	/******************************************
-					ÔËËã·û¹¦ÄÜ²âÊÔ
-	²âÊÔº¯Êý£º
+					è¿ç®—ç¬¦åŠŸèƒ½æµ‹è¯•
+	æµ‹è¯•å‡½æ•°ï¼š
 	1.operator ==(const StateSet &r)   *this==r?1:0
 	2.operator !=(const StateSet &r)   *this!=r?1:0
 	3.operator =(const StateSet &r)    *this=r
@@ -168,8 +175,8 @@ public:
 	}
 
 	/*******************************************
-				   ¸³Öµ¹¦ÄÜ²âÊÔ
-	²âÊÔº¯Êý£º
+				   èµ‹å€¼åŠŸèƒ½æµ‹è¯•
+	æµ‹è¯•å‡½æ•°ï¼š
 	1.operator = (const StateSet &r)   *this=r
 	*******************************************/
 	void AssignmentTest()
@@ -190,13 +197,13 @@ public:
 	}
 
 	/******************************************************
-						 ÔËËã¹¦ÄÜ²âÊÔ
-	²âÊÔº¯Êý£º
-	1.complement()                            ·µ»Ø*this²¹¼¯
-	2.set_union(const StateSet &r)            ·µ»Ø*this¡Èr
-	3.intersection(const StateSet &r)         ·µ»Ø*this¡Ér
-	4.disjointing_union(const StateSet &r)    ºÏ²¢£¨{{*this},{r}}£©
-	5.st_rename(const int r)                  ×óÒÆ£¨Ôö´ó£©rÎ»
+						 è¿ç®—åŠŸèƒ½æµ‹è¯•
+	æµ‹è¯•å‡½æ•°ï¼š
+	1.complement()                            è¿”å›ž*thisè¡¥é›†
+	2.set_union(const StateSet &r)            è¿”å›ž*thisâˆªr
+	3.intersection(const StateSet &r)         è¿”å›ž*thisâˆ©r
+	4.disjointing_union(const StateSet &r)    åˆå¹¶ï¼ˆ{{*this},{r}}ï¼‰
+	5.st_rename(const int r)                  å·¦ç§»ï¼ˆå¢žå¤§ï¼‰rä½
 	*****************************************************/
 	void ComputeTest()
 	{
@@ -226,8 +233,8 @@ public:
 		cout << "s4 domain: " << s4.domain() << endl;
 		cout << "s5 domain: " << s5.domain() << endl;
 		cout << "s1 complement: " << s1.complement() << endl;
-		cout << "s2¡Ès3: " << s2.set_union(s3) << endl;
-		cout << "s3¡És4: " << s3.intersection(s4) << endl;
+		cout << "s2âˆªs3: " << s2.set_union(s3) << endl;
+		cout << "s3âˆ©s4: " << s3.intersection(s4) << endl;
 		cout << "s5 left_shift 4: " << s5.st_rename(4) << endl;
 		cout << "s5 domain: " << s5.domain() << endl;
 		cout << "s4 disjoint_union with s5: " << s4.disjointing_union(s5) << endl;
@@ -235,9 +242,9 @@ public:
 	}
 
 	/******************************
-			  »ØÊÕ¹¦ÄÜ²âÊÔ
-	²âÊÔº¯Êý£º
-	1.reincarnate()   »ØÊÕStateSet r
+			  å›žæ”¶åŠŸèƒ½æµ‹è¯•
+	æµ‹è¯•å‡½æ•°ï¼š
+	1.reincarnate()   å›žæ”¶StateSet r
 	******************************/
 	void RecycleTest()
 	{

@@ -8,6 +8,13 @@ using namespace std;
 class RETestClass
 {
 public:
+	RETestClass()
+	{
+		cout << "**********************" << endl;
+		cout << "        RETest" << endl;
+		cout << "**********************" << endl;
+	}
+
 	void SingleCharacterTest()
 	{
 		cout << "SingleCharacterTest:" << endl;
@@ -107,7 +114,7 @@ void RETest()
 {
 	RETestClass t;
 	t.SingleCharacterTest();
-	//t.StringTest();
-	//t.ComplexTest();
-	//t.CompareFunctionTest();
+	t.StringTest();
+	t.ComplexTest();
+	t.CompareFunctionTest();
 }

@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include"StateRel.h"
 
 using namespace std;
@@ -6,9 +6,16 @@ using namespace std;
 class StateRelTest_NewClass
 {
 public:
+	StateRelTest_NewClass()
+	{
+		cout << "***********************" << endl;
+		cout << "      StateRelTest" << endl;
+		cout << "***********************" << endl;
+	}
+
 	/*****************************************************************************
 									UnionCrossTest
-	²âÊÔº¯Êı£º
+	æµ‹è¯•å‡½æ•°ï¼š
 	1.StateRel& union_cross(State p, State q)						map:State-->State
 	2.StateRel& union_cross(State st, const StateSet& S)			map:State-->StateSet
 	3.StateRel& union_cross(const StateSet& S, State st)			map:StateSet-->State
@@ -54,9 +61,9 @@ public:
 
 	/*********************************************************************
 								ImageTest
-	²âÊÔº¯Êı£º
-	1.StateSet image(const State& r) const        ·µ»Ø×´Ì¬0Ó³ÉäµÄStateSet
-	2.StateSet image(const StateSet& r) const	  ·µ»ØStateSet rÖĞËùº¬×´Ì¬Ó³ÉäµÄStateSet
+	æµ‹è¯•å‡½æ•°ï¼š
+	1.StateSet image(const State& r) const        è¿”å›çŠ¶æ€0æ˜ å°„çš„StateSet
+	2.StateSet image(const StateSet& r) const	  è¿”å›StateSet rä¸­æ‰€å«çŠ¶æ€æ˜ å°„çš„StateSet
 	*********************************************************************/
 	void ImageTest()
 	{
@@ -84,7 +91,7 @@ public:
 	}
 
 	/*
-	closure(const StateSet& r) const ±Õ°ü:·µ»ØrÒÔ¼°ÆäÔÚ*thisÖĞÓ³ÉäµÄÄ¿±êStateSet
+	closure(const StateSet& r) const é—­åŒ…:è¿”å›rä»¥åŠå…¶åœ¨*thisä¸­æ˜ å°„çš„ç›®æ ‡StateSet
 	*/
 	void ClosureTest()
 	{
@@ -110,10 +117,10 @@ public:
 	}
 
 	/****************************************************************************
-									ÒÆ³ıÓ³Éä²âÊÔ
-	²âÊÔº¯Êı£º
-	1.StateRel& remove_pair(const State p, const State q)			ÒÆ³ıÓ³Éä(State):p->q
-	2.StateRel& remove_pairs(const StateSet& P, const StateSet& Q)	ÒÆ³ıÓ³Éä(StateSet):p->q
+									ç§»é™¤æ˜ å°„æµ‹è¯•
+	æµ‹è¯•å‡½æ•°ï¼š
+	1.StateRel& remove_pair(const State p, const State q)			ç§»é™¤æ˜ å°„(State):p->q
+	2.StateRel& remove_pairs(const StateSet& P, const StateSet& Q)	ç§»é™¤æ˜ å°„(StateSet):p->q
 	****************************************************************************/
 	void RemovePairTest()
 	{
@@ -142,7 +149,7 @@ public:
 	}
 
 	/*
-	ÖØÖÃ²Ù×÷²âÊÔ
+	é‡ç½®æ“ä½œæµ‹è¯•
 	*/
 	void ClearAndReincarnateTest()
 	{
@@ -164,7 +171,7 @@ public:
 	}
 
 	/*
-	ºÏ²¢²âÊÔ
+	åˆå¹¶æµ‹è¯•
 	*/
 	void UnionAndDisjointingUnionTest()
 	{
@@ -195,10 +202,10 @@ public:
 void StateRelTest_New()
 {
 	StateRelTest_NewClass t;
-	/*t.UnionCrossTest();
-	t.ImageTest();*/
+	t.UnionCrossTest();
+	t.ImageTest();
 	t.ClosureTest();
-	/*t.RemovePairTest();
+	t.RemovePairTest();
 	t.ClearAndReincarnateTest();
-	t.UnionAndDisjointingUnionTest();*/
+	t.UnionAndDisjointingUnionTest();
 }

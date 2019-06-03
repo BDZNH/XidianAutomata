@@ -29,9 +29,6 @@
     <ClCompile Include="CRSetTest.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="RFATest.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="StateRelTest.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -106,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="FA_Add_Test.cpp">
       <Filter>王浩宇</Filter>
+    </ClCompile>
+    <ClCompile Include="RFATest.cpp">
+      <Filter>郑浩雨</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

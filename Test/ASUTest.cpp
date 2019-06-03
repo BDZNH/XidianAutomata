@@ -1,9 +1,9 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include "../Automata/Sigma.h"
 #include "../Automata/FA.h"
 #include "../Automata/Constrs.h"
 #include "../Automata/LBFA.h"
-
+#include "../FiniteAutomata/FiniteAutomata.h"
 using namespace std;
 /**
 // Construction 4.39 (variation of McNaughton-Yamada-Glushkov)
@@ -28,7 +28,7 @@ public:
 		/////////////// non-basis operator(epsilon,empty,symbol): this ==> left = right = 0
 		// RE = epsilon
 		Reg<RE> re1;
-		//Reg<RE> re1 = Reg<RE>(); // µÈĞ§
+		//Reg<RE> re1 = Reg<RE>(); // ç­‰æ•ˆ
 		re1.epsilon();
 		cout << re1 << endl; // 1  ==> op = EPSILON, left = right = 0
 
@@ -78,8 +78,8 @@ public:
 		right.epsilon();
 		left.concat(right);
 		cout << left << endl;  // . 'a' 1(epsilon) ==> op = CONCAT, left = a, right = EPSILON
-		cout << "ÒÔÉÏÎª°Ë¸ö»ù´¡ÔËËã·ûµÄREÊä³ö\n" << endl;
-		////////////////////////////// ×ÛºÏÓ¦ÓÃ
+		cout << "ä»¥ä¸Šä¸ºå…«ä¸ªåŸºç¡€è¿ç®—ç¬¦çš„REè¾“å‡º\n" << endl;
+		////////////////////////////// ç»¼åˆåº”ç”¨
 		// RE = (a | epsilon)b* 
 
 		//// RE =  a | epsilon
@@ -91,30 +91,30 @@ public:
 		right.star();
 		// (a | epsilon) concat b* 
 		left.concat(right);
-		cout << left << "¡ª¡ª¡ª¡ªÕâÊÇ(a | epsilon) concat b* \n" << endl; // . | 'a' 1(epsilon) * 'b'  ==> op = .,left = (| 'a' 1(epsilon)),right = (* b)
+		cout << left << "â€”â€”â€”â€”è¿™æ˜¯(a | epsilon) concat b* \n" << endl; // . | 'a' 1(epsilon) * 'b'  ==> op = .,left = (| 'a' 1(epsilon)),right = (* b)
 
-		//(01)ĞÂÔö²âÊÔÑùÀı£º½¯×ÚÀñ°æ×Ô¶¯»ú½Ì²Äp127Ò³Ï°Ìâ4ÖĞÌôÑ¡×î¾ß´ú±íĞÔµÄ±í´ïÊ½½øĞĞ¸ÄÔìÊ¹Æä¸ü¸´ÔÓ
-		//µÃ£ºr+(sr?t|r|1)*¡ª¡ª1¾ÍÊÇepsilon
-		//°´ÕÕ×Ô¶¥ÏòÏÂ·½·¨¶Ô±í´ïÊ½½øĞĞ²ğ·ÖÈ»ºó¹¹ÔìÃ¿²½ÔËËã
-		/*cout << "\n\n¡ª¡ªĞÂÔö²âÊÔÑùÀı\n" << endl;
-		Reg<RE> left0, right0, left1, right1;//±ÜÃâÓëÉÏÃæ´úÂë»ìÂÒ²ÉÈ¡ĞÂµÄ±äÁ¿ÃûÎ²×º
+		//(01)æ–°å¢æµ‹è¯•æ ·ä¾‹ï¼šè’‹å®—ç¤¼ç‰ˆè‡ªåŠ¨æœºæ•™æp127é¡µä¹ é¢˜4ä¸­æŒ‘é€‰æœ€å…·ä»£è¡¨æ€§çš„è¡¨è¾¾å¼è¿›è¡Œæ”¹é€ ä½¿å…¶æ›´å¤æ‚
+		//å¾—ï¼šr+(sr?t|r|1)*â€”â€”1å°±æ˜¯epsilon
+		//æŒ‰ç…§è‡ªé¡¶å‘ä¸‹æ–¹æ³•å¯¹è¡¨è¾¾å¼è¿›è¡Œæ‹†åˆ†ç„¶åæ„é€ æ¯æ­¥è¿ç®—
+		/*cout << "\n\nâ€”â€”æ–°å¢æµ‹è¯•æ ·ä¾‹\n" << endl;
+		Reg<RE> left0, right0, left1, right1;//é¿å…ä¸ä¸Šé¢ä»£ç æ··ä¹±é‡‡å–æ–°çš„å˜é‡åå°¾ç¼€
 		left0.symbol('s');
 		right0.symbol('r');
 		right0.question();
 		left0.concat(right0);
 		right0.symbol('t');
-		left0.concat(right0);//¹¹³ÉÀ¨ºÅÀïµÄsrt
-		cout << left0 << "    ÕâÊÇsr?t \n" << endl;
+		left0.concat(right0);//æ„æˆæ‹¬å·é‡Œçš„srt
+		cout << left0 << "    è¿™æ˜¯sr?t \n" << endl;
 		right0.symbol('r');
-		right0.Or(right1.epsilon());//¹¹³ÉÀ¨ºÅÀïµÄr|1
-		cout << right0 << "    ÕâÊÇr|1 \n" << endl;
+		right0.Or(right1.epsilon());//æ„æˆæ‹¬å·é‡Œçš„r|1
+		cout << right0 << "    è¿™æ˜¯r|1 \n" << endl;
 		left0.Or(right0);
-		cout << left0 << "    ÕâÊÇsr?t+r|1 \n" << endl;
+		cout << left0 << "    è¿™æ˜¯sr?t+r|1 \n" << endl;
 		left1.symbol('r');
 		left1.plus();
 		left0.star();
 		left1.concat(left0);
-		cout << left1 << "    ÕâÊÇ×îºó½á¹ûr+(sr?t|r|1)* \n" << endl;//×îºó½á¹û
+		cout << left1 << "    è¿™æ˜¯æœ€åç»“æœr+(sr?t|r|1)* \n" << endl;//æœ€åç»“æœ
 		*/
 	}
 	void reExample315(RE& re)
@@ -136,17 +136,17 @@ public:
 
 		// (a | epsilon) concat b* 
 		left.concat(right);
-		//cout << left<<"    Êä³öÓ¦¸ÃÊÇ(a | epsilon) concat b*\n " << endl; // . | 'a' 1(epsilon) * 'b'  ==> op = .,left = (| 'a' 1(epsilon)),right = (* b)
+		//cout << left<<"    è¾“å‡ºåº”è¯¥æ˜¯(a | epsilon) concat b*\n " << endl; // . | 'a' 1(epsilon) * 'b'  ==> op = .,left = (| 'a' 1(epsilon)),right = (* b)
 		re = left;
 	}
 
-	//  RE =  (a ¡È b)ab
+	//  RE =  (a âˆª b)ab
 	void reExample2_9noStar(RE& re)
 	{
 		//cout << "=====reExample2_9noStar=====\n";
 		Reg<RE> left, right;
-		//cout << "\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª²âÊÔµã11111\n" << endl;
-		//  RE =  (a ¡È b) ab
+		//cout << "\nâ€”â€”â€”â€”â€”â€”â€”â€”æµ‹è¯•ç‚¹11111\n" << endl;
+		//  RE =  (a âˆª b) ab
 		//left.Or(right).concat(right.symbol('a')).concat(right.symbol('b')); // result error
 		left.symbol('a');
 		left.Or(right.symbol('b'));
@@ -160,14 +160,14 @@ public:
 		re = left;
 	}
 
-	//  RE =  (* (a ¡È b)) ab
+	//  RE =  (* (a âˆª b)) ab
 
 	void reExample2_9Star(RE& re)
 	{
 		//cout << "=====reExample2_9Star=====\n";
 		Reg<RE> left, right;
 
-		//  RE =  (* (a ¡È b)) ab
+		//  RE =  (* (a âˆª b)) ab
 		left.symbol('a');
 		left.Or(right.symbol('b'));
 		left.star();
@@ -221,14 +221,14 @@ public:
 		re = left;
 
 	}
-	//  RE =  ((a ¡È b*)) ab£¨ÎªÁËÑĞ¾¿ÓëRE =  (* (a ¡È b)) abµÄÇø±ğ¶àÉèÁ¢µÄÒ»¸öÍ¬µÈ×÷ÓÃµÄº¯Êı£©
+	//  RE =  ((a âˆª b*)) abï¼ˆä¸ºäº†ç ”ç©¶ä¸RE =  (* (a âˆª b)) abçš„åŒºåˆ«å¤šè®¾ç«‹çš„ä¸€ä¸ªåŒç­‰ä½œç”¨çš„å‡½æ•°ï¼‰
 	/**
 	void reExample2extra_9Star(RE& re)
 	{
 		cout << "\n=====reExample2extra_9Star=====\n";
 		Reg<RE> left, right;
 
-		//  RE =  ((a ¡È b*)) ab
+		//  RE =  ((a âˆª b*)) ab
 		left.symbol('a');
 		right.symbol('b');
 		right.star();
@@ -265,65 +265,28 @@ void ASUTest1()
 	LBFA lbfa1;
 	RE re;
 	test.reExample315(re);
-	cout << "ÑùÀı1£¬RE=£¨a|epsilon) concat b*: " << re << endl; // . | 'a' 1(epsilon) * 'b'  ==> op = .,left = (| 'a' 1(epsilon)),right = (* b)
+	cout << "æ ·ä¾‹1ï¼ŒRE=ï¼ˆa|epsilon) concat b*: " << re << endl; // . | 'a' 1(epsilon) * 'b'  ==> op = .,left = (| 'a' 1(epsilon)),right = (* b)
 
 	/**
-	 LBFA¡ª¡ª¡ª¡ªÓÉ×´Ì¬×ªÒÆÍ¼¿ÉµÃRE=(a|1)b*¡ª¡ªÕâÀïÖ»ÎªÁËÑéÖ¤LBFAÕıÈ·ĞÔ£¬¸úÊµ¼ÊASUTest¹¦ÄÜÃ»ÓĞ¹ØÁª£¬ËùÒÔTEST2/3Ê¡ÂÔ´Ë»·½Ú
+	 LBFAâ€”â€”â€”â€”ç”±çŠ¶æ€è½¬ç§»å›¾å¯å¾—RE=(a|1)b*â€”â€”è¿™é‡Œåªä¸ºäº†éªŒè¯LBFAæ­£ç¡®æ€§ï¼Œè·Ÿå®é™…ASUTeståŠŸèƒ½æ²¡æœ‰å…³è”ï¼Œæ‰€ä»¥TEST2/3çœç•¥æ­¤ç¯èŠ‚
 	Q = [0,3) s = 2 F = { 0  1 2 } Qmap_inverse = { 'a'->0  'b'->1 }
 	follow = 0->{ 1 } 1->{ 1 } 2->{ 0 1 }
 	current = {}
 		 **/
 
-	DFA dfa1 = test.ASU_shortcut(re);
-	DFA dfa2 = test.ASU(re);
-	cout << "DFA1__MYG_shortcut\n" << dfa1 << endl;
-	cout << "DFA2__MYG\n" << dfa2 << endl;
+	DFA ASUTest1_dfa1 = test.ASU_shortcut(re);
+	DFA ASUTest1_dfa2 = test.ASU(re);
+	cout << "ASUTest1_dfa1__ASU_shortcut\n" << ASUTest1_dfa1 << endl;
+	cout << "ASUTest1_dfa2__ASU\n" << ASUTest1_dfa2 << endl;
 	/**
-	DFA1=DFA2¡ª¡ª¡ª¡ªÓÉ×´Ì¬×ªÒÆÍ¼¿ÉµÃRE=(a|1)b*
+	DFA1=DFA2â€”â€”â€”â€”ç”±çŠ¶æ€è½¬ç§»å›¾å¯å¾—RE=(a|1)b*
 	Q = [0,3) S = { 0 } F = { 0  1  2 }
 	Transitions = 0->{ 'a'->1  'b'->2 } 1->{ 'b'->2 } 2->{ 'b'->2 }
 	current = -1
-	Á½¸öº¯Êı³öÀ´µÄ½á¹ûÊÇÒ»ÑùµÄ
+	ä¸¤ä¸ªå‡½æ•°å‡ºæ¥çš„ç»“æœæ˜¯ä¸€æ ·çš„
 	**/
-
-	// ¶ÔÒÔÉÏÁ½¸öDFA½øĞĞ×îĞ¡»¯
-
-	// ¶Ô dfa1 ½øĞĞ×îĞ¡»¯
-	{
-		DFA dfa1_1 = dfa1;
-		std::cout << "-------------min by Brzozowski" << dfa1_1.min_Brzozowski() << std::endl;
-
-		DFA dfa1_2 = dfa1;
-		std::cout << "-------------min by dragon" << dfa1_1.min_dragon() << std::endl;
-
-		DFA dfa1_3 = dfa1;
-		std::cout << "-------------min by Hopcroft" << dfa1_1.complete().min_Hopcroft().usefulf() << std::endl;
-
-		DFA dfa1_4 = dfa1;
-		std::cout << "-------------min by HopcroftUllman" << dfa1_1.min_HopcroftUllman() << std::endl;
-
-		DFA dfa1_5 = dfa1;
-		std::cout << "-------------min by Watson" << dfa1_1.min_Watson() << std::endl;
-	}
-
-
-	// ¶Ô dfa2 ½øĞĞ×îĞ¡»¯
-	{
-		DFA dfa1_1 = dfa2;
-		std::cout << "-------------min by Brzozowski" << dfa1_1.min_Brzozowski() << std::endl;
-
-		DFA dfa1_2 = dfa2;
-		std::cout << "-------------min by dragon" << dfa1_1.min_dragon() << std::endl;
-
-		DFA dfa1_3 = dfa2;
-		std::cout << "-------------min by Hopcroft" << dfa1_1.complete().min_Hopcroft().usefulf() << std::endl;
-
-		DFA dfa1_4 = dfa2;
-		std::cout << "-------------min by HopcroftUllman" << dfa1_1.min_HopcroftUllman() << std::endl;
-
-		DFA dfa1_5 = dfa2;
-		std::cout << "-------------min by Watson" << dfa1_1.min_Watson() << std::endl;
-	}
+	FiniteAutomata ffa;
+	ffa.perform(ASUTest1_dfa1, "ASUTest1_dfa1.ADS");
 }
 void ASUTest2()
 {
@@ -331,59 +294,24 @@ void ASUTest2()
 	ASUTestClass test;
 	RE re;
 	test.reExample2_9noStar(re);
-	cout << "ÑùÀı2£¬RE=£¨a¡Èb)ab: " << re << endl; // . . | 'a' 'b' 'a' 'b'
+	cout << "æ ·ä¾‹2ï¼ŒRE=ï¼ˆaâˆªb)ab: " << re << endl; // . . | 'a' 'b' 'a' 'b'
 
-	DFA dfa1 = test.ASU_shortcut(re);
-	DFA dfa2 = test.ASU(re);
-	cout << "DFA1__MYG_shortcut\n" << dfa1 << endl;
-	cout << "DFA2__MYG\n" << dfa2 << endl;
+	DFA ASUTest2_dfa1 = test.ASU_shortcut(re);
+	DFA ASUTest2_dfa2 = test.ASU(re);
+	cout << "ASUTest2_dfa1__ASU_shortcut\n" << ASUTest2_dfa1 << endl;
+	cout << "ASUTest2_dfa2__ASU\n" << ASUTest2_dfa2 << endl;
 	/**
-	DFA1=DFA2¡ª¡ª¡ª¡ª»­×´Ì¬Í¼µÃRE=£¨a¡Èb)ab
+	DFA1=DFA2â€”â€”â€”â€”ç”»çŠ¶æ€å›¾å¾—RE=ï¼ˆaâˆªb)ab
 	 Q = [0,5) 	S = { 0 } 	F = { 4 }
 	 Transitions = 0->{ 'a'->1  'b'->2 }  1->{ 'a'->3 }	2->{ 'a'->3 } 3->{ 'b'->4 }
 	 4->{} 
 	 current = -1
-	 Á½¸öº¯Êı³öÀ´µÄ½á¹ûÊÇÒ»ÑùµÄ
+	 ä¸¤ä¸ªå‡½æ•°å‡ºæ¥çš„ç»“æœæ˜¯ä¸€æ ·çš„
 	 **/
 
-	 // ¶ÔÒÔÉÏÁ½¸öDFA½øĞĞ×îĞ¡»¯
-
-	 // ¶Ô dfa1 ½øĞĞ×îĞ¡»¯
-	{
-		DFA dfa1_1 = dfa1;
-		std::cout << "-------------min by Brzozowski" << dfa1_1.min_Brzozowski() << std::endl;
-
-		DFA dfa1_2 = dfa1;
-		std::cout << "-------------min by dragon" << dfa1_1.min_dragon() << std::endl;
-
-		DFA dfa1_3 = dfa1;
-		std::cout << "-------------min by Hopcroft" << dfa1_1.complete().min_Hopcroft().usefulf() << std::endl;
-
-		DFA dfa1_4 = dfa1;
-		std::cout << "-------------min by HopcroftUllman" << dfa1_1.min_HopcroftUllman() << std::endl;
-
-		DFA dfa1_5 = dfa1;
-		std::cout << "-------------min by Watson" << dfa1_1.min_Watson() << std::endl;
-	}
-
-
-	// ¶Ô dfa2 ½øĞĞ×îĞ¡»¯
-	{
-		DFA dfa1_1 = dfa2;
-		std::cout << "-------------min by Brzozowski" << dfa1_1.min_Brzozowski() << std::endl;
-
-		DFA dfa1_2 = dfa2;
-		std::cout << "-------------min by dragon" << dfa1_1.min_dragon() << std::endl;
-
-		DFA dfa1_3 = dfa2;
-		std::cout << "-------------min by Hopcroft" << dfa1_1.complete().min_Hopcroft().usefulf() << std::endl;
-
-		DFA dfa1_4 = dfa2;
-		std::cout << "-------------min by HopcroftUllman" << dfa1_1.min_HopcroftUllman() << std::endl;
-
-		DFA dfa1_5 = dfa2;
-		std::cout << "-------------min by Watson" << dfa1_1.min_Watson() << std::endl;
-	}
+	FiniteAutomata ffa;
+	ffa.perform(ASUTest2_dfa1, "ASUTest2_dfa1.ADS");
+	
 
 }
 void ASUTest3()
@@ -392,14 +320,14 @@ void ASUTest3()
 	ASUTestClass test;
 	RE re;
 	test.reExample2_9Star(re);
-	cout << "ÑùÀı3£¬RE=(a¡Èb)*ab: " << re << endl; // . . * | 'a' 'b' 'a' 'b'
+	cout << "æ ·ä¾‹3ï¼ŒRE=(aâˆªb)*ab: " << re << endl; // . . * | 'a' 'b' 'a' 'b'
 
-	DFA dfa1 = test.ASU_shortcut(re);
-	DFA dfa2 = test.ASU(re);
-	cout << "DFA1__MYG_shortcut\n" << dfa1 << endl;
-	cout << "DFA2__MYG\n" << dfa2 << endl;
+	DFA ASUTest3_dfa1 = test.ASU_shortcut(re);
+	DFA ASUTest3_dfa2 = test.ASU(re);
+	cout << "ASUTest3_dfa1__ASU_shortcut\n" << ASUTest3_dfa1 << endl;
+	cout << "ASUTest3_dfa2__ASU\n" << ASUTest3_dfa2 << endl;
 	/**
-	DFA1=DFA2¡ª¡ª¡ª¡ªÓÉ×´Ì¬×ªÒÆÍ¼µÃ³öRE=(a¡Èb)*ab
+	DFA1=DFA2â€”â€”â€”â€”ç”±çŠ¶æ€è½¬ç§»å›¾å¾—å‡ºRE=(aâˆªb)*ab
 	Q = [0,4)  S = { 0 }   F = { 3 }
 	Transitions =
 	0->{ 'a'->1  'b'->2 }
@@ -407,47 +335,10 @@ void ASUTest3()
 	2->{ 'a'->1  'b'->2 }
 	3->{ 'a'->1  'b'->2 }
 	current = -1
-	Á½¸öº¯Êı³öÀ´µÄ½á¹ûÊÇÒ»ÑùµÄ
+	ä¸¤ä¸ªå‡½æ•°å‡ºæ¥çš„ç»“æœæ˜¯ä¸€æ ·çš„
 	 **/
-
-	 // ¶ÔÒÔÉÏÁ½¸öDFA½øĞĞ×îĞ¡»¯
-
-	 // ¶Ô dfa1 ½øĞĞ×îĞ¡»¯
-	{
-		DFA dfa1_1 = dfa1;
-		std::cout << "-------------min by Brzozowski" << dfa1_1.min_Brzozowski() << std::endl;
-
-		DFA dfa1_2 = dfa1;
-		std::cout << "-------------min by dragon" << dfa1_1.min_dragon() << std::endl;
-
-		DFA dfa1_3 = dfa1;
-		std::cout << "-------------min by Hopcroft" << dfa1_1.complete().min_Hopcroft().usefulf() << std::endl;
-
-		DFA dfa1_4 = dfa1;
-		std::cout << "-------------min by HopcroftUllman" << dfa1_1.min_HopcroftUllman() << std::endl;
-
-		DFA dfa1_5 = dfa1;
-		std::cout << "-------------min by Watson" << dfa1_1.min_Watson() << std::endl;
-	}
-
-
-	// ¶Ô dfa2 ½øĞĞ×îĞ¡»¯
-	{
-		DFA dfa1_1 = dfa2;
-		std::cout << "-------------min by Brzozowski" << dfa1_1.min_Brzozowski() << std::endl;
-
-		DFA dfa1_2 = dfa2;
-		std::cout << "-------------min by dragon" << dfa1_1.min_dragon() << std::endl;
-
-		DFA dfa1_3 = dfa2;
-		std::cout << "-------------min by Hopcroft" << dfa1_1.complete().min_Hopcroft().usefulf() << std::endl;
-
-		DFA dfa1_4 = dfa2;
-		std::cout << "-------------min by HopcroftUllman" << dfa1_1.min_HopcroftUllman() << std::endl;
-
-		DFA dfa1_5 = dfa2;
-		std::cout << "-------------min by Watson" << dfa1_1.min_Watson() << std::endl;
-	}
+	FiniteAutomata ffa;
+	ffa.perform(ASUTest3_dfa1, "ASUTest3_dfa1.ADS");
 }
 void ASUTest4()
 {
@@ -455,14 +346,14 @@ void ASUTest4()
 	ASUTestClass test;
 	RE re;
 	test.ex4(re);
-	cout << "ÑùÀı4£¬RE=(a+b)*a+(aa)*: " << re << endl; // | . * | 'a' 'b' 'a' * . 'a' 'a'
+	cout << "æ ·ä¾‹4ï¼ŒRE=(a+b)*a+(aa)*: " << re << endl; // | . * | 'a' 'b' 'a' * . 'a' 'a'
 
-	DFA dfa1 = test.ASU_shortcut(re);
-	DFA dfa2 = test.ASU(re);
-	cout << "DFA1__MYG_shortcut\n" << dfa1 << endl;
-	cout << "DFA2__MYG\n" << dfa2 << endl;
+	DFA ASUTest4_dfa1 = test.ASU_shortcut(re);
+	DFA ASUTest4_dfa2 = test.ASU(re);
+	cout << "ASUTest4_dfa1__ASU_shortcut\n" << ASUTest4_dfa1 << endl;
+	cout << "ASUTest4_dfa2__ASU\n" << ASUTest4_dfa2 << endl;
 	/**
-	DFA1=DFA2¡ª¡ª¡ª¡ª»­×´Ì¬Í¼µÃRE=(a+b)*a+(aa)*
+	DFA1=DFA2â€”â€”â€”â€”ç”»çŠ¶æ€å›¾å¾—RE=(a+b)*a+(aa)*
 	Q = [0,5)  S = { 0 }   F = { 0  1  3  4 }
 	Transitions =
 	0->{ 'a'->1  'b'->2 }
@@ -471,47 +362,8 @@ void ASUTest4()
 	3->{ 'a'->1  'b'->2 }
 	4->{ 'a'->4  'b'->2 }
 	current = -1
-	Á½¸öº¯Êı³öÀ´µÄ½á¹ûÊÇÒ»ÑùµÄ
+	ä¸¤ä¸ªå‡½æ•°å‡ºæ¥çš„ç»“æœæ˜¯ä¸€æ ·çš„
 	 **/
-
-	 // ¶ÔÒÔÉÏÁ½¸öDFA½øĞĞ×îĞ¡»¯
-
-	 // ¶Ô dfa1 ½øĞĞ×îĞ¡»¯
-	{
-		DFA dfa1_1 = dfa1;
-		std::cout << "-------------min by Brzozowski" << dfa1_1.min_Brzozowski() << std::endl;
-
-		DFA dfa1_2 = dfa1;
-		std::cout << "-------------min by dragon" << dfa1_1.min_dragon() << std::endl;
-
-		DFA dfa1_3 = dfa1;
-		std::cout << "-------------min by Hopcroft" << dfa1_1.complete().min_Hopcroft().usefulf() << std::endl;
-
-		DFA dfa1_4 = dfa1;
-		std::cout << "-------------min by HopcroftUllman" << dfa1_1.min_HopcroftUllman() << std::endl;
-
-		DFA dfa1_5 = dfa1;
-		std::cout << "-------------min by Watson" << dfa1_1.min_Watson() << std::endl;
-	}
-
-
-	// ¶Ô dfa2 ½øĞĞ×îĞ¡»¯
-	{
-		DFA dfa1_1 = dfa2;
-		std::cout << "-------------min by Brzozowski" << dfa1_1.min_Brzozowski() << std::endl;
-
-		DFA dfa1_2 = dfa2;
-		std::cout << "-------------min by dragon" << dfa1_1.min_dragon() << std::endl;
-
-		DFA dfa1_3 = dfa2;
-		std::cout << "-------------min by Hopcroft" << dfa1_1.complete().min_Hopcroft().usefulf() << std::endl;
-
-		DFA dfa1_4 = dfa2;
-		std::cout << "-------------min by HopcroftUllman" << dfa1_1.min_HopcroftUllman() << std::endl;
-
-		DFA dfa1_5 = dfa2;
-		std::cout << "-------------min by Watson" << dfa1_1.min_Watson() << std::endl;
-	}
 
 }
 void ASUTest5()
@@ -520,14 +372,14 @@ void ASUTest5()
 	ASUTestClass test;
 	RE re;
 	test.ex5(re);
-	cout << "ÑùÀı5£¬RE=((a | epsilon)+)b?cd*|(empty()): " << re << endl; // | . . . + | 'a' 1 ? 'a' 'c' * 'd' 0
+	cout << "æ ·ä¾‹5ï¼ŒRE=((a | epsilon)+)b?cd*|(empty()): " << re << endl; // | . . . + | 'a' 1 ? 'a' 'c' * 'd' 0
 
-	DFA dfa1 = test.ASU_shortcut(re);
-	DFA dfa2 = test.ASU(re);
-	cout << "DFA1__MYG_shortcut\n" << dfa1 << endl;
-	cout << "DFA2__MYG\n" << dfa2 << endl;
+	DFA ASUTest5_dfa1 = test.ASU_shortcut(re);
+	DFA ASUTest5_dfa2 = test.ASU(re);
+	cout << " ASUTest5_dfa1__ASU_shortcut\n" << ASUTest5_dfa1 << endl;
+	cout << " ASUTest5_dfa2__ASU\n" << ASUTest5_dfa2 << endl;
 	/**
-	 DFA1=DFA2¡ª¡ª¡ª¡ª»­×´Ì¬Í¼µÃRE=((a | epsilon)+)b?cd*|(empty())
+	 DFA1=DFA2â€”â€”â€”â€”ç”»çŠ¶æ€å›¾å¾—RE=((a | epsilon)+)b?cd*|(empty())
      Q = [0,5) 	S = { 0 } 	F = { 3 4 }
 	 Transitions =
 	 0->{ 'a'->1  'b'->2  'c'->3 }
@@ -536,52 +388,14 @@ void ASUTest5()
 	 3->{ 'd'->4 }
 	 4->{ 'd'->4 }
 	 current = -1
-	Á½¸öº¯Êı³öÀ´µÄ½á¹ûÊÇÒ»ÑùµÄ
+	ä¸¤ä¸ªå‡½æ•°å‡ºæ¥çš„ç»“æœæ˜¯ä¸€æ ·çš„
 	 **/
 
-	 // ¶ÔÒÔÉÏÁ½¸öDFA½øĞĞ×îĞ¡»¯
-
-	 // ¶Ô dfa1 ½øĞĞ×îĞ¡»¯
-	{
-		DFA dfa1_1 = dfa1;
-		std::cout << "-------------min by Brzozowski" << dfa1_1.min_Brzozowski() << std::endl;
-
-		DFA dfa1_2 = dfa1;
-		std::cout << "-------------min by dragon" << dfa1_1.min_dragon() << std::endl;
-
-		DFA dfa1_3 = dfa1;
-		std::cout << "-------------min by Hopcroft" << dfa1_1.complete().min_Hopcroft().usefulf() << std::endl;
-
-		DFA dfa1_4 = dfa1;
-		std::cout << "-------------min by HopcroftUllman" << dfa1_1.min_HopcroftUllman() << std::endl;
-
-		DFA dfa1_5 = dfa1;
-		std::cout << "-------------min by Watson" << dfa1_1.min_Watson() << std::endl;
-	}
-
-
-	// ¶Ô dfa2 ½øĞĞ×îĞ¡»¯
-	{
-		DFA dfa1_1 = dfa2;
-		std::cout << "-------------min by Brzozowski" << dfa1_1.min_Brzozowski() << std::endl;
-
-		DFA dfa1_2 = dfa2;
-		std::cout << "-------------min by dragon" << dfa1_1.min_dragon() << std::endl;
-
-		DFA dfa1_3 = dfa2;
-		std::cout << "-------------min by Hopcroft" << dfa1_1.complete().min_Hopcroft().usefulf() << std::endl;
-
-		DFA dfa1_4 = dfa2;
-		std::cout << "-------------min by HopcroftUllman" << dfa1_1.min_HopcroftUllman() << std::endl;
-
-		DFA dfa1_5 = dfa2;
-		std::cout << "-------------min by Watson" << dfa1_1.min_Watson() << std::endl;
-	}
 }
 void ASUTest()
 {
-	cout << "=====ASUTest²âÊÔ11111=====\n";
-	ASUTestClass test; //Reg_RE_Test()ÓÃÀ´²âÊÔRE¹¹ÔìÊÇ·ñÕıÈ·£»
+	cout << "=====ASUTestæµ‹è¯•11111=====\n";
+	//ASUTestClass test; //Reg_RE_Test()ç”¨æ¥æµ‹è¯•REæ„é€ æ˜¯å¦æ­£ç¡®ï¼›
 	//test.Reg_RE_Test();
 	ASUTest1();
 	ASUTest2();

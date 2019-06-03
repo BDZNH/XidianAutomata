@@ -6,6 +6,12 @@ using namespace std;
 class DTransRelTestClass
 {
 public:
+	DTransRelTestClass()
+	{
+		cout << "***************************" << endl;
+		cout << "      DTransRelTest" << endl;
+		cout << "***************************" << endl;
+	}
 
 	void BasicFuncTest()
 	{

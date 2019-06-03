@@ -57,12 +57,14 @@ public:
 
 CharRangeTestClass::CharRangeTestClass()
 {
-	cout << "CharRangeTest:" << endl;
+	cout << "****************************" << endl;
+	cout << "        CharRangeTest:" << endl;
+	cout << "****************************" << endl;
 }
 
 void CharRangeTest()
 {
 	CharRangeTestClass t;
-	//t.InitialTest();
+	t.InitialTest();
 	t.AdvanceTest();
 }

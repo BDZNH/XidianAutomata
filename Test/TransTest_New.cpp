@@ -6,6 +6,13 @@ using namespace std;
 class TransTestClass_New
 {
 public:
+	TransTestClass_New()
+	{
+		cout << "**********************" << endl;
+		cout << "      TransTest" << endl;
+		cout << "**********************" << endl;
+	}
+
 	/******************************************
 					SetRangeTest
 	测试函数:
@@ -206,12 +213,12 @@ public:
 void TransTest_New()
 {
 	TransTestClass_New t;
-	//t.SetRangeTest();
-	//t.AddTransTest();
+	t.SetRangeTest();
+	t.AddTransTest();
 	t.CheckTransTest();
-	//t.UnionTest();
-	//t.Disjointing_UnionTest();
-	//t.RenameTest();
-	//t.AssignmentTest();
-	//t.ReincarnateTest();
+	t.UnionTest();
+	t.Disjointing_UnionTest();
+	t.RenameTest();
+	t.AssignmentTest();
+	t.ReincarnateTest();
 }

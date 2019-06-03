@@ -6,6 +6,13 @@ using namespace std;
 class DTransTestClass
 {
 public:
+	DTransTestClass()
+	{
+		cout << "***********************" << endl;
+		cout << "      DTransTest" << endl;
+		cout << "***********************" << endl;
+	}
+
 	void IOTest()
 	{
 		DTrans dt;
@@ -114,10 +121,10 @@ public:
 void DTransTest()
 {
 	DTransTestClass dtc;
-	/*dtc.IOTest();
-	dtc.LabelsTest();*/
+	dtc.IOTest();
+	dtc.LabelsTest();
 	dtc.RangeTest();
-	/*dtc.MapTest();
+	dtc.MapTest();
 	dtc.AssignmentTest();
-	dtc.ReincarnateTest();*/
+	dtc.ReincarnateTest();
 }

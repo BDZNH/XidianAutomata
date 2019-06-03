@@ -4,6 +4,13 @@
 class StateToStateTestClass
 {
 public:
+	StateToStateTestClass()
+	{
+		cout << "**********************" << endl;
+		cout << "      StateToTest" << endl;
+		cout << "**********************" << endl;
+	}
+
 	void basictest()
 	{
 		StateToState sti;
@@ -14,8 +21,10 @@ public:
 		sti.add(2, 3);
 
 		cout << "sti = " << sti << endl;
-		cout << "state 0 maps..." << sti.image(0) << endl;
-		cout << "sti domain = " << sti << endl;
+		cout << "state 0 maps..." << sti.image(0) << endl;//1
+		assert(sti.image(0) == 1);
+		cout << "sti domain = " << sti.domain() << endl;//5
+		assert(sti.domain() == 5);
 
 		sti.remove(0, 1);
 

@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include"CRSet.h"
 
 using namespace std;
@@ -6,12 +6,19 @@ using namespace std;
 class CRSetTestClass
 {
 public:
+	CRSetTestClass()
+	{
+		cout << "**********************" << endl;
+		cout << "      CRSetTest" << endl;
+		cout << "**********************" << endl;
+	}
+
 	/****************************************************************************
-										³õÊ¼»¯²âÊÔ
-	²âÊÔº¯Êý£º
-	1.CRSet& add(const CharRange a)		 Ìí¼ÓCharRange a
-	2.CRSet& append(const CharRange& a)  ¸½¼ÓCharRange a(²»ÄÜÓë*thisÓÐÖØµþ²¿·Ö)
-	3.CRSet& combine(const CRSet& r)	 ºÏ²¢*thisÓëCharRange r
+										åˆå§‹åŒ–æµ‹è¯•
+	æµ‹è¯•å‡½æ•°ï¼š
+	1.CRSet& add(const CharRange a)		 æ·»åŠ CharRange a
+	2.CRSet& append(const CharRange& a)  é™„åŠ CharRange a(ä¸èƒ½ä¸Ž*thisæœ‰é‡å éƒ¨åˆ†)
+	3.CRSet& combine(const CRSet& r)	 åˆå¹¶*thisä¸ŽCharRange r
 	****************************************************************************/
 	void InitialTest()
 	{
@@ -35,11 +42,11 @@ public:
 
 	/*************************************************************************
 									CheckTest
-	²âÊÔº¯Êý:
-	1.CharRange& iterator(const int it) const;		*thisÖÐµÚit'th¸ö×Ö·û¼¯
-	2.int iter_end(const int it) const				*thisÊÇ·ñµÚit'th¸ö×Ö·û¼¯½áÊø
-	3.int size() const								*this ×Ö·û¼¯ÊýÄ¿
-	4.int equivalent_cover(const CRSet& r) const	*this ÓërÊÇ·ñ¸²¸ÇÏàÍ¬×Ö·û¼¯
+	æµ‹è¯•å‡½æ•°:
+	1.CharRange& iterator(const int it) const;		*thisä¸­ç¬¬it'thä¸ªå­—ç¬¦é›†
+	2.int iter_end(const int it) const				*thisæ˜¯å¦ç¬¬it'thä¸ªå­—ç¬¦é›†ç»“æŸ
+	3.int size() const								*this å­—ç¬¦é›†æ•°ç›®
+	4.int equivalent_cover(const CRSet& r) const	*this ä¸Žræ˜¯å¦è¦†ç›–ç›¸åŒå­—ç¬¦é›†
 	*************************************************************************/
 	void CheckTest()
 	{
@@ -56,14 +63,14 @@ public:
 		cout << "c1 covers the same with c2? " << c1.equivalent_cover(c2) << endl;//1
 		cout << "c1 covers the same with c3? " << c1.equivalent_cover(c3) << endl;//0
 		cout << "c1 size: " << c1.size() << endl;//2
-		cout << "1st charrange in c1 " << c1.iterator(0) << endl;//'a'´Ë´¦×Ö·û(¼¯)Ã»ÓÐÀíÂÛÉÏµÄ¡°ÅÅÐò¡±
-		//cout << "c1µÚÈý¸ö×Ö·û: " << c1.iterator(2) << endl;(²»ÄÜ³¬¹ý×Ö·û¼¯ÊýÄ¿ÉÏÏÞ)
+		cout << "1st charrange in c1 " << c1.iterator(0) << endl;//'a'æ­¤å¤„å­—ç¬¦(é›†)æ²¡æœ‰ç†è®ºä¸Šçš„â€œæŽ’åºâ€
+		//cout << "c1ç¬¬ä¸‰ä¸ªå­—ç¬¦: " << c1.iterator(2) << endl;(ä¸èƒ½è¶…è¿‡å­—ç¬¦é›†æ•°ç›®ä¸Šé™)
 		cout << "c1 ends with 3rd charrange? " << c1.iter_end(2) << endl;//1
 	}
 
 	/*********************************************
 					  AssignTest
-	²âÊÔº¯Êý:
+	æµ‹è¯•å‡½æ•°:
 	1.CRSet& operator=(const CRSet& r)	*this = r
 	*********************************************/
 	void AssignTest()

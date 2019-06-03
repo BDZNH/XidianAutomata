@@ -7,6 +7,13 @@ using namespace std;
 class StateEqRelTestClass
 {
 public:
+	StateEqRelTestClass()
+	{
+		cout << "*************************" << endl;
+		cout << "      StateEqRelTest" << endl;
+		cout << "*************************" << endl;
+	}
+
 	void ss()
 	{
 		StateEqRel s(5);//domain = 5

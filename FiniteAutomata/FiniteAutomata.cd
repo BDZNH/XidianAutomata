@@ -1,2 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FiniteAutomata">
+    <Position X="4.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAABAiAAAKABACAICAAQAAAAAACAAAAAAgEIAwAAA=</HashCode>
+      <FileName>FiniteAutomata.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Transition" Collapsed="true">
+    <Position X="4.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAQAAAABAAAAAAAAgAAAEAAI=</HashCode>
+      <FileName>FiniteAutomata.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Typedef Name="state" Collapsed="true">
+    <Position X="6.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FiniteAutomata.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="label" Collapsed="true">
+    <Position X="4.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FiniteAutomata.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

@@ -147,7 +147,9 @@ private:
 
 BitVecTestClass::BitVecTestClass()
 {
-	cout << "BitVecTest" << endl;
+	cout << "*************************" << endl;
+	cout << "       BitVecTest" << endl;
+	cout << "*************************" << endl;
 }
 
 BitVecTestClass::~BitVecTestClass()

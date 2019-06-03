@@ -8,6 +8,13 @@ using namespace std;
 class FATestClass
 {
 public:
+	FATestClass()
+	{
+		cout << "**********************" << endl;
+		cout << "         FATest" << endl;
+		cout << "**********************" << endl;
+	}
+
 	void FA_RETest1()
 	{
 		cout << "input a regular expression re:" << endl;
@@ -48,7 +55,7 @@ public:
 void FATest()
 {
 	FATestClass fat;
-	//fat.FA_RETest1();
-	//fat.FA_RETest2();
+	fat.FA_RETest1();
+	fat.FA_RETest2();
 	fat.FA_RETest3();
 }
